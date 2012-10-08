@@ -1,0 +1,135 @@
+{
+  "name": "Luna",
+  "javascripts": [
+    "jquery.flexslider-min",
+    "jquery.quickfit"
+  ],
+  "images": [
+    {
+      "variable": "image",
+      "label": "Header image",
+      "description": "Suggested width of 740 pixels"
+    },
+    {
+      "variable": "background_image",
+      "label": "Background Image",
+      "description": "Adds a repeating background image"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "font",
+      "label": "Font",
+      "default": "Verdana"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background",
+      "label": "Background",
+      "default": "#cccccc"
+    },
+    {
+      "variable": "text",
+      "label": "Text",
+      "default": "#666666"
+    },
+    {
+      "variable": "links",
+      "label": "Links",
+      "default": "#5575dd"
+    },
+    {
+      "variable": "links_rollover",
+      "label": "Link rollovers",
+      "default": "#0e1b79"
+    },
+    {
+      "variable": "header_background",
+      "label": "Header background",
+      "default": "#404040"
+    },
+    {
+      "variable": "header_text",
+      "label": "Header text",
+      "default": "#cde2f0"
+    },
+    {
+      "variable": "sidebar_links",
+      "label": "Sidebar links",
+      "default": "#5575dd"
+    },
+    {
+      "variable": "sidebar_rollovers",
+      "label": "Sidebar link rollovers",
+      "default": "#0e1b79"
+    },
+    {
+      "variable": "products_background",
+      "label": "Products background",
+      "default": "#e4e4e4"
+    }
+  ],
+  "options": [
+    {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "1..100",
+      "default": 9,
+      "description": "The number of products shown on the Home page"
+    },
+    {
+      "variable": "featured_order",
+      "label": "Featured products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "position",
+      "description": "The order of products on the Home page"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 9,
+      "description": "The number of products shown at a time on the Products page"
+    },
+    {
+      "variable": "show_inventory_bars",
+      "label": "Show inventory bars",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows the product search area"
+    },
+    {
+      "variable": "show_newest",
+      "label": "Show newest products",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a list of your newest products"
+    },
+    {
+      "variable": "show_top_selling",
+      "label": "Show top selling products",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a list of your top selling products"
+    },
+    {
+      "variable": "show_products_feed",
+      "label": "Show product RSS feed",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a link to your product RSS feed"
+    }
+  ]
+}
