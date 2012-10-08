@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>{{ page.name }} / {{ store.name }}</title>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width" />  
+  <meta name="description" content="{{ page.meta_description }}" />
+  <meta name="keywords" content="{{ page.meta_keywords }}" />
+
+  <!-- Webfonts -->
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Varela+Round' type='text/css'>
+  
+  <style type="text/css">
+    body {
+      font-weight: normal;
+      font-size: 100%;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;	
+      background: #fff;
+      }
+  
+    .canvas {
+      width: 40%;
+      max-width: 450px;
+      padding: 25px 30px 20px;
+      margin: 20% auto 0;
+      border: 3px solid #151515;
+      text-align: center;
+      }
+    
+    .canvas h1 {
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.3em;
+      font-family: "Varela Round", "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; 
+      }
+    
+    .canvas p {
+      margin-top: 10px;
+      font-style: italic;
+      font-family: "Times New Roman";
+      color: #999;
+      }  
+  </style>
+  
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" charset="utf-8">
+    function checkout() {
+      if(top != self) {
+        top.location.replace(self.location.href);
+        } else {
+        document.checkout_form.submit();
+      }
+    }
+  </script>  
+  {{ head_content }}
+  
+</head>
+<body id="{{ page.permalink }}_page" onload="checkout();">
+  <div class="canvas">      
+    <h1>One moment...</h1>
+    {% checkoutform %}
+    <noscript>
+      <input type="submit" value="Checkout" />
+    </noscript>
+    {% endcheckoutform %}
+  </div>
+</body>
+</html>

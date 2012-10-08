@@ -1,0 +1,125 @@
+<!-- =========================================================
+  Page Settings
+========================================================== --> 
+
+<!-- Edit the settings below to let customers share your 
+     products on popular social networking sites -->
+
+
+<!-- To add a Facebook 'Like' button to your product page, 
+     change 'off' to 'on' between the single quotes below -->
+
+     {% assign social_facebook = 'off' %}
+
+<!-- To add a Twitter 'Tweet' button to your product page, 
+     change 'off' to 'on' between the single quotes below -->
+
+     {% assign social_twitter = 'off' %}
+
+<!-- Add your Twitter username between the single quotes below,
+     ie: 'mytwittername' (without the @ symbol) -->  
+ 
+     {% assign twitter_handle = '' %}
+
+<!-- To add a Pinterest 'Pin It' button to your product page, 
+     change 'off' to 'on' between the single quotes below -->
+   
+     {% assign social_pinterest = 'off' %}
+
+
+<!-- =========================================================
+  End Page Settings
+========================================================== --> 
+
+<header class="product_header page_header">
+  <h2>{{ product.name }}</h2>
+  <span class="dash"></span>            
+  <h3>{{ product.default_price | money_with_sign }}</h3>
+  {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
+</header>
+
+<section id="product_images">
+  <ul class="slides">
+    {% for image in product.images %}
+    {% if image.first %}
+      {% assign image_height = image.height %}
+    {% endif %}
+    {{ image_height }}
+    <li id="image_{{ forloop.index }}">
+      <img src="{{ image | product_image_url size:"fullsize" }}" class="fade_in" alt="Image of {{ product.name | escape }}" />
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<div id="product_info">
+  {% if product.description != blank %}
+  <section id="product_description">
+    {{ product.description | paragraphs }}
+  </section>
+  {% endif %}
+
+  {% case product.status %}
+  {% when 'active' %}  
+    {% if theme.show_inventory_bars %}
+    <section id="product_inventory">
+    	<h3>Availability</h3>
+    	<ul>
+        {% for option in product.options %}
+    		<li>
+    		  {% unless product.has_default_option %}<h5>{{ option.name }}</h5>{% endunless %}
+    			<div class="bar">
+    			  <span style="width:{{ option.inventory }}%;"><em>{{ option.inventory }} in stock</em></span>
+    			</div>
+    		</li>
+    		{% endfor %}  				
+    	</ul>
+    </section>
+    {% endif %}
+    <section id="product_form">
+      <form method="post" action="/cart">
+        {% if product.has_default_option %}
+          {{ product.option | hidden_option_input }}
+        {% else %}
+          {{ product.options_in_stock | options_select }}
+        {% endif %}
+        <button id="product-addtocart" name="submit" type="submit" class="button"><span>Add to cart</span></button>
+      </form>
+    </section>
+  {% when 'sold-out' %}
+		<h4 class="button disabled">Sold Out</h4>
+  {% when 'coming-soon' %}
+		<h4 class="button disabled">Coming Soon</h4>
+  {% endcase %}
+  
+  {% if social_facebook == 'on' or social_twitter == 'on' or social_pinterest == 'on' %}
+  <ul id="social_links">
+    {% if social_facebook == 'on' %}
+    <li id="social_facebook">
+      <h4>Like it</h4>
+      <div class="social_action">
+        <iframe src="//www.facebook.com/plugins/like.php?href={{ page.full_url }}&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50%; height:20px;" allowTransparency="true"></iframe>
+      </div>
+    </li>
+    {% endif %}
+    {% if social_twitter == 'on' %}    
+    <li id="social_tweet">
+      <h4>Tweet it</h4>
+      <div class="social_action">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!" {% if twitter_handle != blank %}data-via="{{ twitter_handle }}{% endif %}">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+    </li>
+    {% endif %}
+    {% if social_pinterest == 'on' %}    
+    <li id="social_pinterest">
+      <h4>Pin it</h4>
+      <div class="social_action">
+        <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+      </div>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</div>

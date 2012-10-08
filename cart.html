@@ -1,0 +1,113 @@
+<header class="product_header page_header">
+  <h2>Cart</h2>
+  <span class="dash"></span>            
+</header>
+
+{% if cart.items != blank %}
+<form id="cart-form" {% unless cart.shipping.enabled or cart.discount.enabled %}class="no_options"{% endunless %} method="post" action="/cart">
+  <section id="cart_items">
+    <ul>
+      {% for item in cart.items %}
+      <li class="cart_item {% unless item.product.has_default_option %}with_option{% endunless %}" id="item-{{ item.id }}">          
+        <div class="item_image"><img src="{{ item.product.image | product_image_url size:"thumb" }}" alt="Photo of {{ item.name }}" /></div>          
+        <dl>
+          <dt><a href="{{ item.product.url }}">{{ item.product.name }}</a></dt>
+          <dd class="item_price">{{ item.unit_price | money_with_sign }}{% if item.quantity > 1 %}<span class="item_quantity">(x{{ item.quantity }})</span>{% endif %}</dd>
+          <dd class="quantity_input" style="display: none;">{{ item | item_quantity_input }}</dd>
+          {% unless item.product.has_default_option %}<dd class="item_option">{{ item.option.name }}</dd>{% endunless %}
+        </dl>
+        
+        <a href="#" onclick="Store.removeItem({{ item.id }}); return false" class="remove_item" title="Remove item from cart">Remove item</a>
+      </li>
+      {% endfor %}         
+    </ul>
+  </section>
+
+  {% if cart.shipping.enabled or cart.discount.enabled %}
+  <section id="cart_options">
+    <ul>
+      {% if cart.shipping.enabled %}
+      {% if cart.shipping.strict %}
+      <li id="shipping_option">
+        <label for="country">Shipping</label>
+        {{ store.country | country_select }}
+      </li>
+      {% endif %}
+      {% endif %}
+      
+      {% if cart.discount.enabled %}
+      <li id="cart_discount" class="cart_item">
+        {% if cart.discount.pending %}
+          <label id="cart_discount_label" for="cart_discount_code">Discount</label>
+          {{ cart.discount | discount_code_input }}
+        {% elsif cart.discount.free_shipping %}
+           <label for="cart_discount_code">Discount</label>        
+          <p>{{ cart.discount.name }}</p>         
+        {% else %}
+          <label for="cart_discount_code">Discount</label>        
+          <p>{{ cart.discount.name }}</p>
+        {% endif %}
+      </li>
+      {% endif %}
+    </ul>
+    
+    <div class="cart-update">
+      <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
+    </div>    
+  </section>
+  {% endif %}
+  
+  <section id="cart_summary">
+    <ul>
+      <li>
+        <h3>Items</h3>
+        <span>{{ cart.subtotal | money_with_sign }}</span>
+      </li>
+      {% if cart.shipping.enabled %}
+      <li id="cart-shipping-tax">
+        <h3>Shipping</h3>
+        {% if cart.shipping.pending %}
+        <span class="shipping-amount">Select country</span>
+        {% else %}
+        <span class="shipping-amount">{{ cart.shipping.amount | money_with_sign }}</span>
+        {% endif %}
+      </li>
+      {% else %}
+      <li id="cart-shipping-tax" class="not_set">
+        <h3>Shipping</h3>
+        <span>Applicable fees apply</span>
+      </li>        
+      {% endif %}
+      
+      {% if cart.discount.enabled %}
+        {% if cart.discount.pending %}
+        
+        {% elsif cart.discount.free_shipping %}
+        <li>
+          <h3>Discount</h3>
+          <span>Free shipping!</span>
+        </li>
+        {% else %}
+        <li>
+          <h3>Discount</h3>
+          <span>-{{ cart.discount.amount | money_with_sign }}</span>
+        </li>
+        {% endif %}
+      {% endif %}
+      <li id="cart_total">
+        <h3>Total</h3>
+        <h2>{{ cart.total | money_with_sign }}</h2>
+      </li>                              
+    </ul>
+    
+    <button class="button" type="submit" title="Checkout" onclick="Store.checkout(); return false">Checkout</button>
+  </section>
+</form>
+
+{% else %}
+
+<div id="cart_empty">
+  <p>Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</p>
+</div>
+
+{% endif %}
