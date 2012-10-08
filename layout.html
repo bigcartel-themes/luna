@@ -44,23 +44,15 @@
   <meta property="og:site_name" content="{{ store.name | escape }}" />
   {% endif %}  
   
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="http://singlenaut.com/themes/luna/resources/stylesheets/flexslider.css">      
+  <!-- Stylesheets -->   
   <link rel="stylesheet" href="{{ theme | theme_css_url }}">  
 
   <!-- Javascripts -->
-  <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
-  <script src="{{ 'prototype' | theme_js_url }}" type="text/javascript"></script>
-  <script src="{{ 'store' | theme_js_url }}" type="text/javascript"></script>  
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  <script src="http://singlenaut.com/themes/luna/resources/javascripts/jquery.flexslider-min.js" type="text/javascript"></script>
-  <script src="http://singlenaut.com/themes/luna/resources/javascripts/jquery.quickfit.js" type="text/javascript"></script>  
+  <script src="{{ theme | theme_js_url }}" type="text/javascript"></script> 
   
   <script type="text/javascript" charset="utf-8">
-    $.noConflict();
-    
-    jQuery(document).ready(function($) {
-      
+    $(function() {      
       // Resize store name on resize
       $(window).on('resize', function() {
         $('#store_name').quickfit({ max: 42, min: 26, truncate: false });
@@ -158,8 +150,7 @@
   <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   
-  {{ head_content }}
-  
+  {{ head_content }}  
 </head>
 <body id="{{ page.permalink }}_page" class="{% unless page.url contains '/lookbook' %}{{ page.category }}{% endunless %}">
   <div id="site_header" class="strip">
