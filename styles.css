@@ -303,6 +303,27 @@ label {
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
   }
 
+/* Big Cartel Badge
+------------------------------------------------------------*/
+
+#badge {
+  float: left;
+  width: 100%;
+  }
+
+#badge a {
+  float: left;
+  display: block;
+  width: 79px;
+  height: 23px;
+  background: url({{ 'badge.png' | theme_image_url }}) no-repeat !important;
+  background: url({{ 'badge.gif' | theme_image_url }}) no-repeat;
+  }
+
+#badge span {
+  display: none;
+  }
+
 
 /* -------------------------------------------------------------- 
   Structure
