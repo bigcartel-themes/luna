@@ -307,15 +307,20 @@ label {
 ------------------------------------------------------------*/
 
 #badge {
-  float: left;
   width: 100%;
+  margin-top: 20px;  
+  }
+
+#website + #badge {
+  margin-top: 35px;
   }
 
 #badge a {
-  float: left;
   display: block;
+  margin: 0 auto;
   width: 79px;
   height: 23px;
+  border: none;
   background: url({{ 'badge.png' | theme_image_url }}) no-repeat !important;
   background: url({{ 'badge.gif' | theme_image_url }}) no-repeat;
   }
