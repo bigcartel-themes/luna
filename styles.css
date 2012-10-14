@@ -2527,12 +2527,45 @@ body,
   background-repeat: repeat;
 {% endif %}
   }
+  
+
+/* Header background */
+#content,
+#lookbook_page #site_header,
+#product_page #content,
+.custom #content,
+#contact_page #content,
+#cart_summary,
+#cart_page #site_header 
+{ background-color: {{ theme.header_background }}; }  
+
 
 /* Text */
 body,
 p, blockquote, ul, ol, dl,
 #error li
 { color: {{ theme.text }}; }  
+
+/* Text - Secondary  */
+#site_footer footer p,
+.alert-noproducts, 
+#cart_page #cart_empty p,
+#success_page #content .canvas p,
+#maintenance_page .canvas p,
+#product_description h3,
+#product_inventory h3,
+#cart_items li .item_quantity,
+#cart_items li .item_option,
+#social_links li h4  
+{ color: {{ theme.text_secondary }} }
+
+
+/* Text - Tertiary */
+.page_header.product_header h5,
+.custom #page_body p:first-child,
+#contact_page #page_body p:first-child,
+#site_footer #search input
+{ color: {{ theme.text_tertiary }} }
 
 
 /* Links */
@@ -2546,17 +2579,6 @@ a:visited
 a:hover,
 a:active
 { color: {{ theme.links_rollover }}; }
-
-
-/* Header background */
-#content,
-#lookbook_page #site_header,
-#product_page #content,
-.custom #content,
-#contact_page #content,
-#cart_summary,
-#cart_page #site_header 
-{ background-color: {{ theme.header_background }}; }
 
 
 /* Header text */
@@ -2597,6 +2619,22 @@ a:active
 {% endif %}
 
 
+/* Border color */
+#main_nav,
+.category_nav,
+#more_products,
+#contact_page #page_body p:first-child,
+#contact_links,
+#cart_items,
+#cart_items li,
+#cart_options,
+#cart_page #cart_empty,
+#lookbook_page #lookbook_body,
+#contact_links.no_intro {
+  border-color: {{ theme.borders }}; 
+  }
+
+
 /*============================================================
   Colors + Custom Styles - add and override styles below
 ============================================================*/
@@ -2615,45 +2653,4 @@ h1, h2, h3, h4, h5, h6,
 { font-family: "Varela Round", "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
 
 
-/* Text - Light grey text color not handled by simple controls  */
 
-#site_footer footer p,
-.alert-noproducts, 
-#cart_page #cart_empty p,
-#success_page #content .canvas p,
-#maintenance_page .canvas p,
-#product_description h3,
-#product_inventory h3,
-#cart_items li .item_quantity,
-#cart_items li .item_option,
-#social_links li h4  
-{ color: #999999; }
-
-#product_inventory .bar span 
-{ background-color: #999999; }
-
-
-/* Text - Medium grey text color not handled by simple controls */
-
-.page_header.product_header h5,
-.custom #page_body p:first-child,
-#contact_page #page_body p:first-child,
-#site_footer #search input
-{ color: #666666; }
-
-
-/* Border color - light grey border color not handled by simple controls */
-
-#main_nav,
-.category_nav,
-#more_products,
-#contact_page #page_body p:first-child,
-#contact_links,
-#cart_items,
-#cart_items li,
-#cart_options,
-#cart_page #cart_empty,
-#lookbook_page #lookbook_body,
-#contact_links.no_intro {
-  border-color: #e5e5e5; 
-  }
