@@ -136,19 +136,19 @@
       "default": false,
       "description": "Adds a Pin It button to the Product page"
     }                 
-  ]
+  ],
   "links": [
     {
       "variable": "facebook_link",
       "label": "Facebook",
       "type": "input",
-      "description": "Adds your Facebook link to the site footer"
+      "description": "Adds your Facebook link to the site footer and contact page"
     },
     {
       "variable": "twitter_link",
       "label": "Twitter",
       "type": "input",
-      "description": "Adds your Twitter link to the site footer"
+      "description": "Adds your Twitter link to the site footer and contact page"
     }        
   ]  
 }
