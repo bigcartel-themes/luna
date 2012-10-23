@@ -1,36 +1,3 @@
-<!-- =========================================================
-  Page Settings
-========================================================== --> 
-
-<!-- Edit the settings below to let customers share your 
-     products on popular social networking sites -->
-
-
-<!-- To add a Facebook 'Like' button to your product page, 
-     change 'off' to 'on' between the single quotes below -->
-
-     {% assign social_facebook = 'off' %}
-
-<!-- To add a Twitter 'Tweet' button to your product page, 
-     change 'off' to 'on' between the single quotes below -->
-
-     {% assign social_twitter = 'off' %}
-
-<!-- Add your Twitter username between the single quotes below,
-     ie: 'mytwittername' (without the @ symbol) -->  
- 
-     {% assign twitter_handle = '' %}
-
-<!-- To add a Pinterest 'Pin It' button to your product page, 
-     change 'off' to 'on' between the single quotes below -->
-   
-     {% assign social_pinterest = 'off' %}
-
-
-<!-- =========================================================
-  End Page Settings
-========================================================== --> 
-
 <header class="product_header page_header">
   <h2>{{ product.name }}</h2>
   <span class="dash"></span>            
@@ -92,9 +59,9 @@
 		<h4 class="button disabled">Coming Soon</h4>
   {% endcase %}
   
-  {% if social_facebook == 'on' or social_twitter == 'on' or social_pinterest == 'on' %}
+  {% if theme.show_facebook or theme.show_twitter or theme.show_pinterest %}
   <ul id="social_links">
-    {% if social_facebook == 'on' %}
+    {% if theme.show_facebook %}
     <li id="social_facebook">
       <h4>Like it</h4>
       <div class="social_action">
@@ -102,16 +69,16 @@
       </div>
     </li>
     {% endif %}
-    {% if social_twitter == 'on' %}    
+    {% if theme.show_twitter %}    
     <li id="social_tweet">
       <h4>Tweet it</h4>
       <div class="social_action">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!" {% if twitter_handle != blank %}data-via="{{ twitter_handle }}{% endif %}">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!" {% if twitter_username != blank %}data-via="{{ twitter_username | replace: "@", "" }}{% endif %}">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       </div>
     </li>
     {% endif %}
-    {% if social_pinterest == 'on' %}    
+    {% if theme.show_pinterest %}    
     <li id="social_pinterest">
       <h4>Pin it</h4>
       <div class="social_action">

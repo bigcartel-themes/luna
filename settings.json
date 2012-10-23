@@ -18,10 +18,15 @@
   ],
   "fonts": [
     {
-      "variable": "font",
-      "label": "Font",
-      "default": "Verdana"
-    }
+      "variable": "header_font",
+      "label": "Header Font",
+      "default": "Varela Round"
+    },
+    {
+      "variable": "body_font",
+      "label": "Body Font",
+      "default": "Times New Roman"
+    }    
   ],
   "colors": [
     {
@@ -135,20 +140,18 @@
       "type": "boolean",
       "default": false,
       "description": "Adds a Pin It button to the Product page"
-    }                 
-  ],
-  "links": [
-    {
-      "variable": "facebook_link",
-      "label": "Facebook",
-      "type": "input",
-      "description": "Adds your Facebook link to the site footer and contact page"
     },
     {
-      "variable": "twitter_link",
-      "label": "Twitter",
-      "type": "input",
-      "description": "Adds your Twitter link to the site footer and contact page"
-    }        
+      "variable": "twitter_username",
+      "label": "Twitter username",
+      "type": "text",
+      "description": "Ex: @bigcartel"
+    },
+    {
+      "variable": "facebook_username",
+      "label": "Facebook username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    }
   ]  
 }

@@ -2514,7 +2514,21 @@ body,
 #cart_items li .item_option,
 #cart_summary li h3,
 #social_links li h4
-{ font-family: {{ theme.font | font_family_for_group }}; }
+{ font-family: {{ theme.body_font | font_family_for_group }}, Times, serif; }
+
+
+/* Header Font */
+h1, h2, h3, h4, h5, h6,
+.button,
+#error li,
+#site_footer ul,
+#site_footer #search input,
+#main_nav li,
+#cart_items li dt,
+#cart_items li dd,
+#cart_options #cart_discount p,
+#cart_summary li span
+{ font-family: {{ theme.header_font | font_family_for_group }}, "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
 
 
 /* Background */
@@ -2639,18 +2653,6 @@ a:active
   Colors + Custom Styles - add and override styles below
 ============================================================*/
 
-/* Header Font */
-h1, h2, h3, h4, h5, h6,
-.button,
-#error li,
-#site_footer ul,
-#site_footer #search input,
-#main_nav li,
-#cart_items li dt,
-#cart_items li dd,
-#cart_options #cart_discount p,
-#cart_summary li span
-{ font-family: "Varela Round", "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
 
 
 

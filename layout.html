@@ -1,32 +1,6 @@
 <!doctype html>
 <!--[if lte IE 9 ]><html class="ie" lang="en"><![endif]--><!--[if !IE ]> --><html lang="en"><!-- <![endif]-->
 <head>
-
-  <!-- =========================================================
-    Page Settings
-  ========================================================== -->  
-  
-  <!-- Edit the settings below to add a Twitter or Facebook
-       link to the footer of your store -->
-       
-       
-  <!-- To add a Twitter link to your footer, 
-       add your Twitter URL between the single quotes below 
-       ie: 'http://twitter.com/mytwitterurl' -->     
-       
-       {% assign twitter_link = '' %}
-  
-  <!-- To add a Facebook link to your footer, 
-       add your facebook URL between the single quotes below 
-       ie: 'http://facebook.com/myfacebookurl' -->  
-  
-       {% assign facebook_link = '' %}
-  
-  
-  <!-- =========================================================
-    End Page Settings
-  ========================================================== -->
-
   <title>{{ page.name }} / {{ store.name }}</title>
   
   <meta charset="UTF-8">
@@ -275,11 +249,11 @@
         {% endfor %}      
         <li><a href="/contact">Contact</a></li>
         <li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>        
-        {% if twitter_link != blank %}
-        <li><a href="{{ twitter_link }}" title="Follow us on Twitter">Twitter</a></li>
+        {% if twitter_username != blank %}
+        <li><a href="http://twitter.com/{{ twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
         {% endif %}
-        {% if facebook_link != blank %}
-        <li><a href="{{ facebook_link }}" title="Friend us on Facebook">Facebook</a></li>
+        {% if facebook_username != blank %}
+        <li><a href="http://facebook.com/{{ facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
         {% endif %}
         {% if theme.show_search %}
         <li id="search">
