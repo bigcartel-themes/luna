@@ -8,7 +8,7 @@
     {
       "variable": "image",
       "label": "Header image",
-      "description": "Suggested width of 740 pixels"
+      "description": "A transparent background is recommended"
     },
     {
       "variable": "background_image",
@@ -18,56 +18,66 @@
   ],
   "fonts": [
     {
-      "variable": "font",
-      "label": "Font",
-      "default": "Verdana"
-    }
+      "variable": "header_font",
+      "label": "Header Font",
+      "default": "Varela Round"
+    },
+    {
+      "variable": "body_font",
+      "label": "Body Font",
+      "default": "Times New Roman"
+    }    
   ],
   "colors": [
     {
       "variable": "background",
       "label": "Background",
-      "default": "#cccccc"
-    },
-    {
-      "variable": "text",
-      "label": "Text",
-      "default": "#666666"
-    },
-    {
-      "variable": "links",
-      "label": "Links",
-      "default": "#5575dd"
-    },
-    {
-      "variable": "links_rollover",
-      "label": "Link rollovers",
-      "default": "#0e1b79"
+      "default": "#ffffff"
     },
     {
       "variable": "header_background",
       "label": "Header background",
-      "default": "#404040"
+      "default": "#f0f0f0"
+    },    
+    {
+      "variable": "text",
+      "label": "Text",
+      "default": "#333333"
+    },
+    {
+      "variable": "text_secondary",
+      "label": "Text secondary",
+      "default": "#999999"
+    },
+    {
+      "variable": "text_tertiary",
+      "label": "Text tertiary",
+      "default": "#666666"
+    },        
+    {
+      "variable": "links",
+      "label": "Links",
+      "default": "#333333"
+    },
+    {
+      "variable": "links_rollover",
+      "label": "Link rollovers",
+      "default": "#888888"
     },
     {
       "variable": "header_text",
       "label": "Header text",
-      "default": "#cde2f0"
-    },
-    {
-      "variable": "sidebar_links",
-      "label": "Sidebar links",
-      "default": "#5575dd"
-    },
-    {
-      "variable": "sidebar_rollovers",
-      "label": "Sidebar link rollovers",
-      "default": "#0e1b79"
+      "default": "#333333"
     },
     {
       "variable": "products_background",
       "label": "Products background",
-      "default": "#e4e4e4"
+      "default": "#000000"
+    },    
+    {
+      "variable": "borders",
+      "label": "Borders",
+      "default": "#e5e5e5"
     }
   ],
   "options": [
@@ -76,7 +86,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "1..100",
-      "default": 9,
+      "default": 6,
       "description": "The number of products shown on the Home page"
     },
     {
@@ -111,25 +121,37 @@
       "description": "Shows the product search area"
     },
     {
-      "variable": "show_newest",
-      "label": "Show newest products",
+      "variable": "show_facebook",
+      "label": "Show Facebook's Like button",
       "type": "boolean",
       "default": false,
-      "description": "Shows a list of your newest products"
+      "description": "Adds a Like button to the Product page"
     },
     {
-      "variable": "show_top_selling",
-      "label": "Show top selling products",
+      "variable": "show_twitter",
+      "label": "Show Twitter's Tweet button",
       "type": "boolean",
       "default": false,
-      "description": "Shows a list of your top selling products"
+      "description": "Adds a Tweet button to the Product page"
     },
     {
-      "variable": "show_products_feed",
-      "label": "Show product RSS feed",
+      "variable": "show_pinterest",
+      "label": "Show Pinterest's Pin It button",
       "type": "boolean",
       "default": false,
-      "description": "Shows a link to your product RSS feed"
+      "description": "Adds a Pin It button to the Product page"
+    },
+    {
+      "variable": "twitter_username",
+      "label": "Twitter username",
+      "type": "text",
+      "description": "Ex: @bigcartel"
+    },
+    {
+      "variable": "facebook_username",
+      "label": "Facebook username",
+      "type": "text",
+      "description": "Ex: bigcartel"
     }
-  ]
+  ]  
 }

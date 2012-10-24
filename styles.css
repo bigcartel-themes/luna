@@ -76,7 +76,6 @@ html[xmlns] .slides {display: block;}
 }
 
 
-
 /* -------------------------------------------------------------- 
 
    Luna
@@ -301,6 +300,32 @@ label {
   box-shadow: 0 1px 2px rgba(0,0,0, .4);
   font-weight: normal;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+  }
+
+/* Big Cartel Badge
+------------------------------------------------------------*/
+
+#badge {
+  width: 100%;
+  margin-top: 20px;  
+  }
+
+#website + #badge {
+  margin-top: 35px;
+  }
+
+#badge a {
+  display: block;
+  margin: 0 auto;
+  width: 79px;
+  height: 23px;
+  border: none;
+  background: url({{ 'badge.png' | theme_image_url }}) no-repeat !important;
+  background: url({{ 'badge.gif' | theme_image_url }}) no-repeat;
+  }
+
+#badge span {
+  display: none;
   }
 
 
@@ -1411,37 +1436,6 @@ label {
   }
 
 
-/* -------------------------------------------------------------- 
-  Lookbook
--------------------------------------------------------------- */   
-
-#lookbook_page #content {
-  padding-bottom: 0;
-  }
-  
-#lookbook_page #page_body {
-  width: 100%;
-  margin: 0 auto;
-  }    
-
-#lookbook_page .slides li {
-  line-height: 0;
-  text-align: center;  
-  } 
-  
-#lookbook_page #lookbook_slides {
-  position: relative;
-  }
-
-#lookbook_page #lookbook_body  {
-  width: 530px;
-  padding: 20px 0 4px;
-  margin: 80px auto 0;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
-  }
-
-
 /*============================================================
   Success Page
 ============================================================*/ 
@@ -1519,7 +1513,6 @@ p, blockquote, ul, ol, dl {
 #product_page #site_header h1 a,
 #product_page #site_footer h3,
 #products_page #site_footer h3, 
-#lookbook_page #site_footer footer h3,
 #cart_page #site_footer h3 {
   color: #151515;
   }
@@ -1528,8 +1521,6 @@ p, blockquote, ul, ol, dl {
 #product_page #site_footer li,
 #products_page #site_footer ul,
 #products_page #site_footer li,
-#lookbook_page #site_footer ul,
-#lookbook_page #site_footer li,
 #cart_page #site_footer ul,
 #cart_page #site_footer li {
   border-color: #e5e5e5;
@@ -2056,37 +2047,6 @@ p, blockquote, ul, ol, dl {
   width: 90%;
   margin: 0 auto 2px;
   }  
-  
-  
-/* Lookbook
-------------------------------------------------------------*/
-
-#lookbook_slides {
-  float: none;
-  width: 90%;
-  margin: 0 auto;
-  }
-
-#lookbook_page .slides li {
-  line-height: 0;
-  text-align: center;
-  }  
-
-#lookbook_page #lookbook_body {
-  width: 90%;
-  padding: 0 0 4px;
-  margin: 40px auto 30px;
-  border: none;  
-  } 
-
-#lookbook_page .flex-control-nav {
-  bottom: -30px;
-  }    
-  
-#lookbook_page .flex-direction-nav {
-  display: none;
-  }
-  
 }
 
 
@@ -2425,38 +2385,9 @@ p, blockquote, ul, ol, dl {
 #cart_summary button {
   width: 95%;
   margin: 0 auto 10px;
-  } 
-  
-    
-/* Lookbook Page
-------------------------------------------------------------*/  
-  
-#lookbook_page #lookbook_slides {
-  width: 92%; 
-  margin: 0 auto;
-  }  
-  
-#lookbook_page #lookbook_body {
-  margin-top: 60px;
-  }  
-  
-#lookbook_page .slides li { 
-  min-height: 40%;
-  }  
-  
-#lookbook_page .flex-direction-nav {
-  display: none;
-  }
-        
+  }     
 }
 
-@media screen and (min-width: 480px) and (max-width: 575px) { 
-
-#lookbook_page #lookbook_body  {
-  width: 90% !important;
-  }
-
-}
 
 /*============================================================
   IE Hacks
@@ -2476,6 +2407,7 @@ p, blockquote, ul, ol, dl {
   padding-bottom: 6px;
   } 
   
+  
 /*============================================================
   Basic Styles - used for the simple controls
 ============================================================*/
@@ -2488,25 +2420,71 @@ body,
 #cart_items li .item_option,
 #cart_summary li h3,
 #social_links li h4
-{ font-family: {{ theme.font | font_family_for_group }}; }
+{ font-family: {{ theme.body_font | font_family_for_group }}, Times, serif; }
+
+
+/* Header Font */
+h1, h2, h3, h4, h5, h6,
+.button,
+#error li,
+#site_footer ul,
+#site_footer #search input,
+#main_nav li,
+#cart_items li dt,
+#cart_items li dd,
+#cart_options #cart_discount p,
+#cart_summary li span
+{ font-family: {{ theme.header_font | font_family_for_group }}, "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
 
 
 /* Background */
 body,
-#cart_page #content,
-#lookbook_page #content {
+#cart_page #content {
   background-color: {{ theme.background }};
 {% if theme.background_image != blank %}
   background-image: url({{ theme.background_image.url }});
   background-repeat: repeat;
 {% endif %}
   }
+  
+
+/* Header background */
+#content,
+#product_page #content,
+.custom #content,
+#contact_page #content,
+#cart_summary,
+#cart_page #site_header 
+{ background-color: {{ theme.header_background }}; }  
+
 
 /* Text */
 body,
 p, blockquote, ul, ol, dl,
 #error li
 { color: {{ theme.text }}; }  
+
+
+/* Text - Secondary  */
+#site_footer footer p,
+.alert-noproducts, 
+#cart_page #cart_empty p,
+#success_page #content .canvas p,
+#maintenance_page .canvas p,
+#product_description h3,
+#product_inventory h3,
+#cart_items li .item_quantity,
+#cart_items li .item_option,
+#social_links li h4  
+{ color: {{ theme.text_secondary }} }
+
+
+/* Text - Tertiary */
+.page_header.product_header h5,
+.custom #page_body p:first-child,
+#contact_page #page_body p:first-child,
+#site_footer #search input
+{ color: {{ theme.text_tertiary }} }
 
 
 /* Links */
@@ -2520,17 +2498,6 @@ a:visited
 a:hover,
 a:active
 { color: {{ theme.links_rollover }}; }
-
-
-/* Header background */
-#content,
-#lookbook_page #site_header,
-#product_page #content,
-.custom #content,
-#contact_page #content,
-#cart_summary,
-#cart_page #site_header 
-{ background-color: {{ theme.header_background }}; }
 
 
 /* Header text */
@@ -2571,53 +2538,7 @@ a:active
 {% endif %}
 
 
-/*============================================================
-  Colors + Custom Styles - add and override styles below
-============================================================*/
-
-/* Header Font */
-h1, h2, h3, h4, h5, h6,
-.button,
-#error li,
-#site_footer ul,
-#site_footer #search input,
-#main_nav li,
-#cart_items li dt,
-#cart_items li dd,
-#cart_options #cart_discount p,
-#cart_summary li span
-{ font-family: "Varela Round", "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
-
-
-/* Text - Light grey text color not handled by simple controls  */
-
-#site_footer footer p,
-.alert-noproducts, 
-#cart_page #cart_empty p,
-#success_page #content .canvas p,
-#maintenance_page .canvas p,
-#product_description h3,
-#product_inventory h3,
-#cart_items li .item_quantity,
-#cart_items li .item_option,
-#social_links li h4  
-{ color: #999999; }
-
-#product_inventory .bar span 
-{ background-color: #999999; }
-
-
-/* Text - Medium grey text color not handled by simple controls */
-
-.page_header.product_header h5,
-.custom #page_body p:first-child,
-#contact_page #page_body p:first-child,
-#site_footer #search input
-{ color: #666666; }
-
-
-/* Border color - light grey border color not handled by simple controls */
-
+/* Border color */
 #main_nav,
 .category_nav,
 #more_products,
@@ -2627,7 +2548,15 @@ h1, h2, h3, h4, h5, h6,
 #cart_items li,
 #cart_options,
 #cart_page #cart_empty,
-#lookbook_page #lookbook_body,
 #contact_links.no_intro {
-  border-color: #e5e5e5; 
+  border-color: {{ theme.borders }}; 
   }
+
+
+/*============================================================
+  Colors + Custom Styles - add and override styles below
+============================================================*/
+
+
+
+

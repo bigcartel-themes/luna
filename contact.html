@@ -1,41 +1,3 @@
-<!-- =========================================================
-  Page Settings
-========================================================== --> 
-
-<!-- Add an intro paragraph (that sets up the page) 
-     between the single quotes below 
-     ie: 'Get in touch with us...' -->
-
-     {% assign intro_paragraph = '' %}
-
-
-<!-- Edit the settings below to add additional ways 
-     for your customers to contact you -->
-     
-
-<!-- To add a Twitter link, add your Twitter URL 
-     between the single quotes below 
-     ie: 'http://twitter.com/mytwitterurl' -->     
-     
-     {% assign twitter_link = '' %}
-
-<!-- To add a Facebook link add your facebook URL 
-     between the single quotes below 
-     ie: 'http://facebook.com/myfacebookurl' -->  
-
-     {% assign facebook_link = '' %}
-
-<!-- To add an email link add your email address 
-     between the single quotes below 
-     ie: 'myemail@gmail.com,' --> 
-     
-     {% assign email_link = '' %}
-
-
-<!-- =========================================================
-  End Page Settings
-========================================================== --> 
-
 <header class="product_header page_header">
   <h2>Contact</h2>
   <span class="dash"></span>            
@@ -45,20 +7,13 @@
   <p id="thank_you">Your message has been sent and we will try to respond within 24 business hours.</p>      
   {% else %}      
   
-  {% if intro_paragraph != blank %}
-  <p>{{ intro_paragraph }}</p>   
-  {% endif %}   
-  
-  {% if twitter_link != blank or facebook_link != blank or email_link != blank %}
+  {% if twitter_username != blank or facebook_username != blank %}
   <ul id="contact_links" class="{% if intro_paragraph == blank %}no_intro{% endif %}">
-    {% if twitter_link != blank %}
-      <li><a href="{{ twitter_link }}" title="Follow us on Twitter">Twitter</a></li>
+    {% if theme.twitter_username != blank %}
+      <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
     {% endif %}
-    {% if facebook_link != blank %}
-      <li><a href="{{ facebook_link }}" title="Friend us on Facebook">Facebook</a></li>
-    {% endif %}
-    {% if email_link != blank %}
-      <li><a href="mailto:{{ email_link }}" title="Email us">Email</a></li>
+    {% if theme.facebook_username != blank %}
+      <li><a href="http://facebook.com/{{ theme.facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
     {% endif %}
   </ul>
   {% endif %}

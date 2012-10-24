@@ -1,32 +1,6 @@
 <!doctype html>
 <!--[if lte IE 9 ]><html class="ie" lang="en"><![endif]--><!--[if !IE ]> --><html lang="en"><!-- <![endif]-->
 <head>
-
-  <!-- =========================================================
-    Page Settings
-  ========================================================== -->  
-  
-  <!-- Edit the settings below to add a Twitter or Facebook
-       link to the footer of your store -->
-       
-       
-  <!-- To add a Twitter link to your footer, 
-       add your Twitter URL between the single quotes below 
-       ie: 'http://twitter.com/mytwitterurl' -->     
-       
-       {% assign twitter_link = '' %}
-  
-  <!-- To add a Facebook link to your footer, 
-       add your facebook URL between the single quotes below 
-       ie: 'http://facebook.com/myfacebookurl' -->  
-  
-       {% assign facebook_link = '' %}
-  
-  
-  <!-- =========================================================
-    End Page Settings
-  ========================================================== -->
-
   <title>{{ page.name }} / {{ store.name }}</title>
   
   <meta charset="UTF-8">
@@ -75,15 +49,6 @@
           };
         });
       });
-      
-      // Set the slideshow for the Lookbook
-      {% if page.name contains 'Lookbook' %}
-        $('#lookbook_slides').flexslider({
-          animation: 'slide',
-          animationLoop: false, 
-          controlsContainer: 'canvas'
-        });   
-      {% endif %}
       
       // Set the slideshow for Products if viewport is less than 768
       {% if page.full_url contains '/product/' %}
@@ -152,7 +117,7 @@
   
   {{ head_content }}  
 </head>
-<body id="{{ page.permalink }}_page" class="{% unless page.url contains '/lookbook' %}{{ page.category }}{% endunless %}">
+<body id="{{ page.permalink }}_page" class="{{ page.category }}">
   <div id="site_header" class="strip">
     <div class="canvas">
       <nav id="main_nav">
@@ -275,11 +240,11 @@
         {% endfor %}      
         <li><a href="/contact">Contact</a></li>
         <li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>        
-        {% if twitter_link != blank %}
-        <li><a href="{{ twitter_link }}" title="Follow us on Twitter">Twitter</a></li>
+        {% if theme.twitter_username != blank %}
+        <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
         {% endif %}
-        {% if facebook_link != blank %}
-        <li><a href="{{ facebook_link }}" title="Friend us on Facebook">Facebook</a></li>
+        {% if theme.facebook_username != blank %}
+        <li><a href="http://facebook.com/{{ theme.facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
         {% endif %}
         {% if theme.show_search %}
         <li id="search">
@@ -295,6 +260,8 @@
       {% if store.website != blank %}
       <a href="{{ store.website }}" id="website" class="button">Back to site</a>
       {% endif %}
+      
+      <div id="badge"><a href="http://bigcartel.com" title="Check out Big Cartel"><span>Powered by Big Cartel</span></a></div>      
     </footer>
   </div>    
 </body>
