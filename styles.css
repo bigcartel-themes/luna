@@ -76,7 +76,6 @@ html[xmlns] .slides {display: block;}
 }
 
 
-
 /* -------------------------------------------------------------- 
 
    Luna
@@ -1437,37 +1436,6 @@ label {
   }
 
 
-/* -------------------------------------------------------------- 
-  Lookbook
--------------------------------------------------------------- */   
-
-#lookbook_page #content {
-  padding-bottom: 0;
-  }
-  
-#lookbook_page #page_body {
-  width: 100%;
-  margin: 0 auto;
-  }    
-
-#lookbook_page .slides li {
-  line-height: 0;
-  text-align: center;  
-  } 
-  
-#lookbook_page #lookbook_slides {
-  position: relative;
-  }
-
-#lookbook_page #lookbook_body  {
-  width: 530px;
-  padding: 20px 0 4px;
-  margin: 80px auto 0;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
-  }
-
-
 /*============================================================
   Success Page
 ============================================================*/ 
@@ -1545,7 +1513,6 @@ p, blockquote, ul, ol, dl {
 #product_page #site_header h1 a,
 #product_page #site_footer h3,
 #products_page #site_footer h3, 
-#lookbook_page #site_footer footer h3,
 #cart_page #site_footer h3 {
   color: #151515;
   }
@@ -1554,8 +1521,6 @@ p, blockquote, ul, ol, dl {
 #product_page #site_footer li,
 #products_page #site_footer ul,
 #products_page #site_footer li,
-#lookbook_page #site_footer ul,
-#lookbook_page #site_footer li,
 #cart_page #site_footer ul,
 #cart_page #site_footer li {
   border-color: #e5e5e5;
@@ -2082,37 +2047,6 @@ p, blockquote, ul, ol, dl {
   width: 90%;
   margin: 0 auto 2px;
   }  
-  
-  
-/* Lookbook
-------------------------------------------------------------*/
-
-#lookbook_slides {
-  float: none;
-  width: 90%;
-  margin: 0 auto;
-  }
-
-#lookbook_page .slides li {
-  line-height: 0;
-  text-align: center;
-  }  
-
-#lookbook_page #lookbook_body {
-  width: 90%;
-  padding: 0 0 4px;
-  margin: 40px auto 30px;
-  border: none;  
-  } 
-
-#lookbook_page .flex-control-nav {
-  bottom: -30px;
-  }    
-  
-#lookbook_page .flex-direction-nav {
-  display: none;
-  }
-  
 }
 
 
@@ -2451,38 +2385,9 @@ p, blockquote, ul, ol, dl {
 #cart_summary button {
   width: 95%;
   margin: 0 auto 10px;
-  } 
-  
-    
-/* Lookbook Page
-------------------------------------------------------------*/  
-  
-#lookbook_page #lookbook_slides {
-  width: 92%; 
-  margin: 0 auto;
-  }  
-  
-#lookbook_page #lookbook_body {
-  margin-top: 60px;
-  }  
-  
-#lookbook_page .slides li { 
-  min-height: 40%;
-  }  
-  
-#lookbook_page .flex-direction-nav {
-  display: none;
-  }
-        
+  }     
 }
 
-@media screen and (min-width: 480px) and (max-width: 575px) { 
-
-#lookbook_page #lookbook_body  {
-  width: 90% !important;
-  }
-
-}
 
 /*============================================================
   IE Hacks
@@ -2501,6 +2406,7 @@ p, blockquote, ul, ol, dl {
 .ie #social_links #social_pinterest {
   padding-bottom: 6px;
   } 
+  
   
 /*============================================================
   Basic Styles - used for the simple controls
@@ -2533,8 +2439,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Background */
 body,
-#cart_page #content,
-#lookbook_page #content {
+#cart_page #content {
   background-color: {{ theme.background }};
 {% if theme.background_image != blank %}
   background-image: url({{ theme.background_image.url }});
@@ -2545,7 +2450,6 @@ body,
 
 /* Header background */
 #content,
-#lookbook_page #site_header,
 #product_page #content,
 .custom #content,
 #contact_page #content,
@@ -2559,6 +2463,7 @@ body,
 p, blockquote, ul, ol, dl,
 #error li
 { color: {{ theme.text }}; }  
+
 
 /* Text - Secondary  */
 #site_footer footer p,
@@ -2643,7 +2548,6 @@ a:active
 #cart_items li,
 #cart_options,
 #cart_page #cart_empty,
-#lookbook_page #lookbook_body,
 #contact_links.no_intro {
   border-color: {{ theme.borders }}; 
   }

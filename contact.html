@@ -9,11 +9,11 @@
   
   {% if twitter_username != blank or facebook_username != blank %}
   <ul id="contact_links" class="{% if intro_paragraph == blank %}no_intro{% endif %}">
-    {% if twitter_username != blank %}
-      <li><a href="http://twitter.com/{{ twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
+    {% if theme.twitter_username != blank %}
+      <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
     {% endif %}
-    {% if facebook_username != blank %}
-      <li><a href="http://facebook.com/{{ facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
+    {% if theme.facebook_username != blank %}
+      <li><a href="http://facebook.com/{{ theme.facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
     {% endif %}
   </ul>
   {% endif %}

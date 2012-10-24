@@ -50,15 +50,6 @@
         });
       });
       
-      // Set the slideshow for the Lookbook
-      {% if page.name contains 'Lookbook' %}
-        $('#lookbook_slides').flexslider({
-          animation: 'slide',
-          animationLoop: false, 
-          controlsContainer: 'canvas'
-        });   
-      {% endif %}
-      
       // Set the slideshow for Products if viewport is less than 768
       {% if page.full_url contains '/product/' %}
         if( $(document).width() <= 768 ) {
@@ -126,7 +117,7 @@
   
   {{ head_content }}  
 </head>
-<body id="{{ page.permalink }}_page" class="{% unless page.url contains '/lookbook' %}{{ page.category }}{% endunless %}">
+<body id="{{ page.permalink }}_page" class="{{ page.category }}">
   <div id="site_header" class="strip">
     <div class="canvas">
       <nav id="main_nav">
@@ -249,11 +240,11 @@
         {% endfor %}      
         <li><a href="/contact">Contact</a></li>
         <li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>        
-        {% if twitter_username != blank %}
-        <li><a href="http://twitter.com/{{ twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
+        {% if theme.twitter_username != blank %}
+        <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
         {% endif %}
-        {% if facebook_username != blank %}
-        <li><a href="http://facebook.com/{{ facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
+        {% if theme.facebook_username != blank %}
+        <li><a href="http://facebook.com/{{ theme.facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
         {% endif %}
         {% if theme.show_search %}
         <li id="search">
