@@ -1,5 +1,6 @@
 {
   "name": "Luna",
+  "version": "0.5.0",
   "javascripts": [
     "jquery.flexslider-min",
     "jquery.quickfit"
