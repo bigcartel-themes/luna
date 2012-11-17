@@ -320,12 +320,10 @@ label {
   width: 79px;
   height: 23px;
   border: none;
-  background: url({{ 'badge.png' | theme_image_url }}) no-repeat !important;
-  background: url({{ 'badge.gif' | theme_image_url }}) no-repeat;
-  }
-
-#badge span {
-  display: none;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: url({{ 'bc_badge.png' | theme_image_url }}) no-repeat;
   }
 
 
