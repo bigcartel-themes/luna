@@ -1639,7 +1639,7 @@ p, blockquote, ul, ol, dl {
   letter-spacing: 2px;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  font-family: {{ theme.font | font_family_for_group }};    
+  font-family: {{ theme.font | font_family }};    
   }
 
 #site_footer li a {
@@ -2418,7 +2418,7 @@ body,
 #cart_items li .item_option,
 #cart_summary li h3,
 #social_links li h4
-{ font-family: {{ theme.body_font | font_family_for_group }}, Times, serif; }
+{ font-family: {{ theme.body_font | font_family }}; }
 
 
 /* Header Font */
@@ -2432,7 +2432,7 @@ h1, h2, h3, h4, h5, h6,
 #cart_items li dd,
 #cart_options #cart_discount p,
 #cart_summary li span
-{ font-family: {{ theme.header_font | font_family_for_group }}, "Helvetica Neue", Helvetica, Lucida Grande, sans-serif; }
+{ font-family: {{ theme.header_font | font_family }}; }
 
 
 /* Background */
