@@ -1639,7 +1639,7 @@ p, blockquote, ul, ol, dl {
   letter-spacing: 2px;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  font-family: {{ theme.font | font_family }};    
+  font-family: {{ theme.body_font | font_family }};  
   }
 
 #site_footer li a {
