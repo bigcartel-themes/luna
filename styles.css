@@ -362,7 +362,8 @@ label {
   margin: 0;
   }
   
-#site_header header h1 {
+#site_header header #store_name {
+  width: 90%;
   margin: 60px auto 78px;
   font-size: 42px;
   text-transform: uppercase;
@@ -372,11 +373,7 @@ label {
   white-space: normal;
   }
   
-#site_header header h1 a { border: none; }
-  
-#site_header h1#store_name {
-  width: 90%;
-  }  
+#site_header header #store_name a { border: none; } 
   
 #site_header #branding {
   text-align: center;
@@ -387,7 +384,7 @@ label {
   margin: 0 auto;
   } 
   
-#site_header #branding a h1 {
+#site_header #branding a h2 {
   display: none;
   }
   
@@ -573,6 +570,7 @@ label {
   margin: 45% auto 0; 
   }
 
+.product_header h1,
 .product_header h2,
 .product_header h3 {
   margin: 0;
@@ -583,6 +581,7 @@ label {
   text-shadow: 0 1px 2px rgba(0,0,0,.7);
   }
 
+.product_header h1,
 .product_header h2 {
   width: 95%;
   margin: 0 auto;
@@ -767,12 +766,12 @@ label {
   position: fixed !important;
   }
 
-.page_header.product_header h2,
+.page_header.product_header h1,
 .page_header.product_header h3 {
   text-shadow: none;
   }
   
-.page_header.product_header h2 {
+.page_header.product_header h1 {
   font-size: 24px;
   text-transform: uppercase;
   }
@@ -2501,7 +2500,7 @@ a:active
 /* Header text */
 #site_header header h1 a,
 #site_header header h1 a:hover,
-.product_header.page_header h2,
+.product_header.page_header h1,
 .product_header.page_header h3
 { color: {{ theme.header_text }}; }
 
