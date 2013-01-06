@@ -132,12 +132,14 @@
         {% if theme.image != blank %}
         <div id="branding">
           <a href="/">
-            <h1>{{ page.name }}</h1>
+            <h2>{{ page.name }}</h2>
             <img src="{{ theme.image.url }}" alt="{{ store.name }}" />
           </a>
         </div>
-        {% else %}
+        {% elsif page.name == 'Home' %}
           <h1 id="store_name"><a href="/">{{ store.name }}</a></h1>      
+        {% else %}
+          <h2 id="store_name"><a href="/">{{ store.name }}</a></h2>  
         {% endif %}
       </header>
       
@@ -161,7 +163,7 @@
     
     {% if page.category == 'custom' %}
       <header class="product_header page_header">
-        <h2>{{ page.name }}</h2>
+        <h1>{{ page.name }}</h1>
         <span class="dash"></span>            
       </header>
       <section id="page_body">
