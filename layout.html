@@ -5,17 +5,17 @@
   
     <meta charset="UTF-8">
     <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->  
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width" />  
-    <meta name="author" content="{{ store.name }}" />
-    <meta name="description" content="{{ page.meta_description }}" />
-    <meta name="keywords" content="{{ page.meta_keywords }}" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width">  
+    <meta name="author" content="{{ store.name }}">
+    <meta name="description" content="{{ page.meta_description }}">
+    <meta name="keywords" content="{{ page.meta_keywords }}">
     
     {% if product != blank and page.full_url contains '/product/' %}
-    <meta property="og:title" content="{{ product.name | escape }}" />
-    <meta property="og:type" content="product" />
-    <meta property="og:url" content="{{ page.full_url }}" />
-    <meta property="og:image" content="{{ product.image.url }}" />
-    <meta property="og:site_name" content="{{ store.name | escape }}" />
+    <meta property="og:title" content="{{ product.name | escape }}">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="{{ page.full_url }}">
+    <meta property="og:image" content="{{ product.image.url }}">
+    <meta property="og:site_name" content="{{ store.name | escape }}">
     {% endif %}  
   
     <link rel="stylesheet" href="{{ theme | theme_css_url }}">  
@@ -132,7 +132,7 @@
           <div id="branding">
             <a href="/">
               <h2>{{ page.name }}</h2>
-              <img src="{{ theme.image.url }}" alt="{{ store.name }}" />
+              <img src="{{ theme.image.url }}" alt="{{ store.name }}">
             </a>
           </div>
           {% elsif page.name == 'Home' %}
@@ -200,7 +200,7 @@
               {% endcase %}
             </div>
             <div class="product_thumb">
-              <img src="{{ product.image | product_image_url size:"large" }}" class="fade_in" alt="Image of {{ product.name | escape }}" />
+              <img src="{{ product.image | product_image_url size:"large" }}" class="fade_in" alt="Image of {{ product.name | escape }}">
             </div>
           </a>
         </li>
@@ -249,7 +249,7 @@
           <li id="search">
             <form id="search-form" name="search" action="/products" method="get">
               <a href="#search-form">Search</a>
-              <input id="search-input" name="search" type="text" />
+              <input id="search-input" name="search" type="text">
             </form>
           </li>
           {% endif %}         

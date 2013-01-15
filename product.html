@@ -13,7 +13,7 @@
     {% endif %}
     {{ image_height }}
     <li id="image_{{ forloop.index }}">
-      <img src="{{ image | product_image_url size:"fullsize" }}" class="fade_in" alt="Image of {{ product.name | escape }}" />
+      <img src="{{ image | product_image_url size:"fullsize" }}" class="fade_in" alt="Image of {{ product.name | escape }}">
     </li>
     {% endfor %}
   </ul>
@@ -82,7 +82,7 @@
     <li id="social_pinterest">
       <h4>Pin it</h4>
       <div class="social_action">
-        <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+        <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
         <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
       </div>
     </li>
