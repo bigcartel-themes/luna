@@ -2557,7 +2557,7 @@ a:active
 #cart_items li,
 #cart_options,
 #cart_page #cart_empty,
-#contact_links.no_intro, {
+#contact_links.no_intro {
   border-color: {{ theme.borders }}; 
   }
 
