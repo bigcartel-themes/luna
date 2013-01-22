@@ -1888,12 +1888,6 @@ p, blockquote, ul, ol, dl {
   padding-top: 16px;
   }   
 
-#social_links #social_facebook:hover,
-#social_links #social_pinterest:hover,
-#social_links #social_tweet:hover {
-  padding-bottom: inherit;
-  } 
-
 #more_products {
   margin-top: 0;
   padding-bottom: 0;
