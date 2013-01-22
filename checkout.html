@@ -8,39 +8,7 @@
     <meta name="description" content="{{ page.meta_description }}">
     <meta name="keywords" content="{{ page.meta_keywords }}">
 
-    <style type="text/css">
-      body {
-        font-weight: normal;
-        font-size: 100%;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility; 
-        background: {{ theme.background }};
-        }
-
-      .canvas {
-        width: 40%;
-        max-width: 450px;
-        padding: 25px 30px 20px;
-        margin: 20% auto 0;
-        border: 3px solid {{ theme.header_text }};
-        text-align: center;
-        }
-  
-      .canvas h1 {
-        font-size: 20px;
-        font-weight: normal;
-        line-height: 1.3em;
-        font-family: {{ theme.header_font | font_family }};
-        color: {{ theme.header_text }};
-        }
-  
-      .canvas p {
-        margin-top: 10px;
-        font-style: italic;
-        font-family: {{ theme.body_font | font_family }};
-        color: {{ theme.text }};
-        }  
-    </style>
+    <link rel="stylesheet" href="{{ theme | theme_css_url }}">  
 
     <!-- IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -60,7 +28,7 @@
     {{ head_content }}
   </head>
 
-  <body id="{{ page.permalink }}_page" onload="checkout();">
+  <body id="{{ page.permalink }}_page" class="standalone" onload="checkout();">
     <div class="canvas">      
       <h1>One moment...</h1>
       {% checkoutform %}

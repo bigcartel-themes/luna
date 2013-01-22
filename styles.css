@@ -79,15 +79,10 @@ html[xmlns] .slides {display: block;}
 /* -------------------------------------------------------------- 
 
    Luna
-   A premium Big Cartel theme by Singlenaut
-     
-   Version: 1.0
-   
+   by Singlenaut
+        
    http://singlenaut.com
    office@singlenaut.com
-   
-   Big Cartel - Simple shopping cart for artists
-   http://bigcartel.com
 
 /* -------------------------------------------------------------- 
   CSS Reset [ Resets default browser styles ]
@@ -465,9 +460,7 @@ label {
 
 #main_nav {
   overflow: hidden;
-  width: 52%;
   margin: 0 auto;
-  border-bottom: 1px solid #e5e5e5;
   text-align: center; 
   }   
   
@@ -481,12 +474,12 @@ label {
   text-transform: uppercase;
   letter-spacing: 2px;
   -webkit-font-smoothing: subpixel-antialiased;
+  border-bottom: 1px solid #e5e5e5;  
   }  
   
 #main_nav li a {
   display: block;
-  padding: 20px 15px 13px;
-  color: #858585;
+  padding: 20px 17px 13px;  
   border: 0;
   }
   
@@ -936,6 +929,10 @@ label {
   display: none;
   }
 
+#social_links li .social_action a {
+  border: none !important;
+  }
+
 #social_links li:hover h4 {
   display: none;
   }
@@ -946,7 +943,7 @@ label {
 
 #social_links #social_facebook:hover {
   padding-bottom: 6px;
-  }
+  } 
   
 #social_links #social_facebook iframe {
   margin: 0 auto 0 30px;
@@ -1459,28 +1456,32 @@ label {
 
 
 /*============================================================
-  Maintenance Page
+  Standalone Pages (Maintenance / Checkout)
 ============================================================*/ 
 
-#maintenance_page .canvas {
+.standalone .canvas {
   width: 45%;
   max-width: 450px;
   padding: 33px 30px 15px;
   margin: 20% auto 0;
-  border: 3px solid #151515;
   text-align: center;
+  border: 3px solid {{ theme.header_text }};
   }
+  
+#checkout_page .canvas {
+  padding: 25px 30px 20px;
+  }  
 
-#maintenance_page .canvas h1 {
-  font-size: 20px;
+.standalone .canvas h1 {
+  font-size: 18px;
+  font-weight: normal;
   line-height: 1.3em;
   }
 
-#maintenance_page .canvas p {
+.standalone .canvas p {
   margin-top: 10px;
   font-style: italic;
-/*   color: #999; */
-  }
+  } 
 
 
 /*============================================================
@@ -1550,6 +1551,10 @@ p, blockquote, ul, ol, dl {
   margin: 0 auto;
   clear: both;  
   }
+   
+.standalone .canvas {
+  width: 65%;
+  }
   
 #content {
   margin-top: 0;
@@ -1595,7 +1600,7 @@ p, blockquote, ul, ol, dl {
   border: 0;  
   }
   
-#site_header header h1 {
+#site_header header #store_name {
   margin: 30px auto 0;
   font-size: 36px;
   letter-spacing: 3px;
@@ -2079,6 +2084,10 @@ p, blockquote, ul, ol, dl {
   clear: both;  
   }
   
+.standalone .canvas {
+  width: 95%;
+  }    
+  
 #content {
   margin-top: 0;
   padding: 40px 0;
@@ -2096,9 +2105,8 @@ p, blockquote, ul, ol, dl {
 
 #main_nav {
   overflow: hidden;
-  width: 475px;
+  width: 100%;
   margin: 0 auto;
-  border-bottom: 1px solid #e5e5e5;
   text-align: center; 
   }      
     
@@ -2416,7 +2424,8 @@ body,
 #product_inventory li h5,
 #cart_items li .item_option,
 #cart_summary li h3,
-#social_links li h4
+#social_links li h4,
+.standalone .canvas p
 { font-family: {{ theme.body_font | font_family }}; }
 
 
@@ -2430,7 +2439,8 @@ h1, h2, h3, h4, h5, h6,
 #cart_items li dt,
 #cart_items li dd,
 #cart_options #cart_discount p,
-#cart_summary li span
+#cart_summary li span,
+.standalone .canvas h1
 { font-family: {{ theme.header_font | font_family }}; }
 
 
@@ -2467,12 +2477,13 @@ p, blockquote, ul, ol, dl,
 .alert-noproducts, 
 #cart_page #cart_empty p,
 #success_page #content .canvas p,
-#maintenance_page .canvas p,
+.standalone .canvas p,
 #product_description h3,
 #product_inventory h3,
 #cart_items li .item_quantity,
 #cart_items li .item_option,
-#social_links li h4  
+#social_links li h4,
+#main_nav li a
 { color: {{ theme.text_secondary }} }
 
 
@@ -2501,7 +2512,8 @@ a:active
 #site_header header h1 a,
 #site_header header h1 a:hover,
 .product_header.page_header h1,
-.product_header.page_header h3
+.product_header.page_header h3,
+.standalone .canvas h1
 { color: {{ theme.header_text }}; }
 
 
@@ -2536,7 +2548,7 @@ a:active
 
 
 /* Border color */
-#main_nav,
+#main_nav li,
 .category_nav,
 #more_products,
 #contact_page #page_body p:first-child,
