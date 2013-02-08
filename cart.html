@@ -13,11 +13,11 @@
         <dl>
           <dt><a href="{{ item.product.url }}">{{ item.product.name }}</a></dt>
           <dd class="item_price">{{ item.unit_price | money_with_sign }}{% if item.quantity > 1 %}<span class="item_quantity">(x{{ item.quantity }})</span>{% endif %}</dd>
-          <dd class="quantity_input" style="display: none;">{{ item | item_quantity_input }}</dd>
+          <dd class="quantity_input" style="display:none">{{ item | item_quantity_input }}</dd>
           {% unless item.product.has_default_option %}<dd class="item_option">{{ item.option.name }}</dd>{% endunless %}
         </dl>
         
-        <a href="#" onclick="Store.removeItem({{ item.id }}); return false" class="remove_item" title="Remove item from cart">Remove item</a>
+        <a href="#" class="remove_item" title="Remove item from cart">Remove item</a>
       </li>
       {% endfor %}         
     </ul>
@@ -100,7 +100,7 @@
       </li>                              
     </ul>
     
-    <button class="button" type="submit" title="Checkout" onclick="Store.checkout(); return false">Checkout</button>
+    <button id="checkout-btn" class="button" type="submit" title="Checkout">Checkout</button>
   </section>
 </form>
 {% else %}

@@ -60,6 +60,19 @@ var Store = {
         };    
       }).trigger('resize');
       
+      var cartForm = $('#cart-form');
+      
+      $('#checkout-btn').click(function(event) {
+        event.preventDefault();
+        cartForm.append('<input type="hidden" name="checkout" value="1">').submit();
+      });
+      
+      $('.remove_item').click(function(event) {
+        event.preventDefault();
+        $(this).closest('li').find('.quantity_input input').val(0);
+        cartForm.submit();
+      });
+      
       $('#country, #cart_discount_code').change(function(event) {
         $('#update-btn-footer').removeClass('disabled');
       });
@@ -68,16 +81,16 @@ var Store = {
     // Set up search toggle on click
     
     if(options.showSearch) {
-      $('#search a').click(function() {
+      $('#search a').click(function(event) {
+        event.preventDefault();
         $('#search input').show().focus();
         $(this).hide();
-        return false;
       });
 
-      $('#search input').blur(function() {
+      $('#search input').blur(function(event) {
+        event.preventDefault();
         $(this).hide();
         $('#search a').show();
-        return false;
       });
     }
   }
