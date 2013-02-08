@@ -1447,7 +1447,6 @@ label {
   width: 400px;
   margin: 15px auto 1.5em;
   font-style: italic;
-/*   color: #999; */
   }
 
 #success_page #content .canvas a {
@@ -2456,12 +2455,14 @@ body,
   
 
 /* Header background */
-#content,
-#product_page #content,
-.custom #content,
-#contact_page #content,
-#cart_summary,
 #cart_page #site_header 
+#checkout_page #content,
+#contact_page #content,
+#maintenance_page #content,
+#product_page #content,
+#success_page #content,
+.custom #content,
+#cart_summary
 { background-color: {{ theme.header_background }}; }  
 
 
