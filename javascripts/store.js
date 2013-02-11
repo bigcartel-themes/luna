@@ -8,6 +8,8 @@ var Store = {
     var inPreview = (/\/admin\/design/.test(top.location.pathname));
     var win = $(window);
     var width = $(document).width();
+
+    width = inPreview && width == 0 ? $(window.parent.document).find('.design_preview_frame').width() : width;
     
     options = $.extend(this.defaults, options);
 
@@ -38,7 +40,7 @@ var Store = {
 
     // Set the slideshow for Products if viewport is less than cutoffWidth
 
-    if(page == 'product' && width <= options.cutoffWidth) {
+    if(page == 'product' && width <= options.cutoffWidth && !inPreview) {
       $('#product_images').flexslider({
         animation: 'slide',
         animationLoop: false, 
