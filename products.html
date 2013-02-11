@@ -24,8 +24,11 @@
 
 {% if products != blank %}
 
-<ul id="products">
-  {% for product in products %}
+
+{% for product in products %}
+  {% if forloop.first %}
+    <ul id="products" class="{% if forloop.length == 1 %}single_product{% endif %}{% if forloop.length == 2 %}double_product{% endif %}">
+  {% endif %}
   <li id="product_{{ product.id }}" class="product">
     <a href="{{ product.url }}" title="View {{ product.name | escape }}">
       <div class="product_header">
@@ -46,8 +49,10 @@
       </div>
     </a>
   </li>
-  {% endfor %}
-</ul>
+  {% if forloop.last %}
+    </ul>
+  {% endif %}
+{% endfor %}
 
 {% if paginate.previous.is_link or paginate.next.is_link %}
 {{ paginate | default_pagination }}

@@ -518,6 +518,36 @@ label {
   margin: 0 0 0 -30px;
   line-height: 0;
   }
+
+#products.single_product,
+#products.double_product {
+  float:  none;
+  margin: 0 auto;
+  }
+
+#products.single_product {  
+  width: 280px;
+  }
+
+#products.single_product .product {
+  margin-left: 0;
+  }
+
+#products.double_product {
+  left: -15px;
+  position: relative;
+  width: 620px;
+  }
+
+#products.single_product {
+  float:  none;
+  margin: 0 auto;
+  width: 280px;
+  }
+
+#products.single_product .product {
+  margin-left: 0;
+  }
   
 .product,
 .product_header {
