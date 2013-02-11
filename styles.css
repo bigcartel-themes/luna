@@ -1195,6 +1195,11 @@ label {
   margin-bottom: 80px;
   }  
 
+#cart_description {
+  float: left;
+  width: 580px;
+}
+
 #cart_items {
   float: left;
   width: 580px;
@@ -2311,6 +2316,11 @@ p, blockquote, ul, ol, dl {
 #cart-form {
   padding: 0;
   }    
+
+#cart_description {
+  width: auto;
+  float: none;
+  }
 
 #cart_items {
   float: none;

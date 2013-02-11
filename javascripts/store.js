@@ -46,19 +46,9 @@ var Store = {
       });
     }
 
-    // Position the cart sidebar to top of container
     // Set up the update cart button to activate after cart-option selection is made
     
     if(page == 'cart') {
-      win.on('resize', function() {
-        var topOffset = $('#cart_items').height();
-
-        if(width <= options.cutoffWidth) {
-          $('#cart_summary').css({ position: 'relative', top: '0' });  
-        } else if(options.shippingEnabled || options.discountEnabled) {    
-          $('#cart_summary').css({ position: 'relative', top: -(topOffset + 1) });
-        };    
-      }).trigger('resize');
       
       var cartForm = $('#cart-form');
       
