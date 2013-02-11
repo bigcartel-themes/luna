@@ -558,6 +558,15 @@ label {
   transition:  all .45s ease-out; 
   }
 
+.no_transition .product,
+.no_transition .product_header {
+  -webkit-transition: none;       
+  -moz-transition: none; 
+  -ms-transition: none; 
+  -o-transition: none; 
+  transition:  none; 
+  }
+
 .product {
   position: relative;
   float: left;

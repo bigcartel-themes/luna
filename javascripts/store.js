@@ -83,5 +83,9 @@ var Store = {
         $('#search a').show();
       });
     }
+
+    setTimeout(function() {
+      $('body').removeClass('no_transition');
+    }, 500);
   }
 };
