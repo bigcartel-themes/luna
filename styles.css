@@ -1971,6 +1971,11 @@ p, blockquote, ul, ol, dl {
   padding: 0;
   }  
 
+#cart_description {
+  width: auto;
+  float: none;
+  }
+
 #cart_items {
   float: left;
   width: 100%;
@@ -1981,6 +1986,10 @@ p, blockquote, ul, ol, dl {
 #cart_items li {
   float: none;
   }  
+
+#cart_items li dl {
+  margin-top: 21px;
+  }
   
 #cart_items .item_image {
   float: left;
