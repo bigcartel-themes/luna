@@ -5,6 +5,7 @@ var Store = {
   },
   
   init: function(page, options) {
+    var inPreview = (/\/admin\/design/.test(top.location.pathname));
     var win = $(window);
     var width = $(document).width();
     
@@ -84,8 +85,7 @@ var Store = {
       });
     }
 
-    setTimeout(function() {
-      $('body').removeClass('no_transition');
-    }, 500);
+    !inPreview && $('body').removeClass('no_transition');
+    
   }
 };
