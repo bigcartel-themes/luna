@@ -25,15 +25,17 @@ var Store = {
 
     // Vertically center product thumbnails
 
-    $('.product_thumb img').each(function() {
-      width = inPreview ? $(window.parent.document).width() : width
-      $(this).imagesLoaded(function() {
-        var imgHeight = $(this).outerHeight();
-        var imgHeightDiff = (280 - imgHeight) / 2;
-        if(imgHeight < 280 && width > 480) {
-          $(this).css({ position: 'relative', top: imgHeightDiff });  
-        }  
-      });
+    $('#content').imagesLoaded(function() {
+      setTimeout(function() {
+        $('.product_thumb img').each(function() {
+          width = inPreview ? $(window.parent.document).width() : width
+          var imgHeight = $(this).height();
+          var imgHeightDiff = (280 - imgHeight) / 2;
+          if(imgHeight < 280 && width > 480) {
+            $(this).css({ position: 'relative', top: imgHeightDiff });  
+          }  
+        });
+      }, inPreview ? 50 : 0)  
     });
 
     // Set the slideshow for Products if viewport is less than cutoffWidth
