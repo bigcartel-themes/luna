@@ -148,7 +148,7 @@
       "variable": "twitter_username",
       "label": "Twitter username",
       "type": "text",
-      "description": "Ex: @bigcartel"
+      "description": "Ex: bigcartel"
     },
     {
       "variable": "facebook_username",
