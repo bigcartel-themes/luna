@@ -4,6 +4,7 @@
   "javascripts": [
     "jquery.flexslider-min",
     "jquery.quickfit",
+    "jquery.imagesLoaded",
     "store"
   ],
   "images": [

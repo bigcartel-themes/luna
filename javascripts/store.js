@@ -27,15 +27,20 @@ var Store = {
 
     // Vertically center product thumbnails
 
-    $('.product_thumb').each(function() {
-      $(this).children('img').load(function() {
+    var verticallyCenterImage = function() {
+      $(this).imagesLoaded(function() {
         var imgHeight = $(this).height();
-        var imgHeightDiff = (280 - imgHeight) / 2;
-
-        if(imgHeight < 280 && width > 480) {
-          $(this).css({ position: 'relative', top: imgHeightDiff });  
+        if(imgHeight) {
+          var imgHeightDiff = (280 - imgHeight) / 2;
+          if(imgHeight < 280 && width > 480) {
+            $(this).css({ position: 'relative', top: imgHeightDiff });  
+          }  
         }
       });
+    }
+
+    $('.product_thumb img').each(function() {
+      setTimeout($.proxy(verticallyCenterImage, this), inPreview ? 100 : 0);
     });
 
     // Set the slideshow for Products if viewport is less than cutoffWidth
