@@ -8,8 +8,6 @@ var Store = {
     var inPreview = (/\/admin\/design/.test(top.location.pathname));
     var win = $(window);
     var width = $(document).width();
-
-    width = inPreview && width == 0 ? $(window.parent.document).find('.design_preview_frame').width() : width;
     
     options = $.extend(this.defaults, options);
 
@@ -27,20 +25,15 @@ var Store = {
 
     // Vertically center product thumbnails
 
-    var verticallyCenterImage = function() {
-      $(this).imagesLoaded(function() {
-        var imgHeight = $(this).height();
-        if(imgHeight) {
-          var imgHeightDiff = (280 - imgHeight) / 2;
-          if(imgHeight < 280 && width > 480) {
-            $(this).css({ position: 'relative', top: imgHeightDiff });  
-          }  
-        }
-      });
-    }
-
     $('.product_thumb img').each(function() {
-      setTimeout($.proxy(verticallyCenterImage, this), inPreview ? 100 : 0);
+      width = inPreview ? $(window.parent.document).width() : width
+      $(this).imagesLoaded(function() {
+        var imgHeight = $(this).outerHeight();
+        var imgHeightDiff = (280 - imgHeight) / 2;
+        if(imgHeight < 280 && width > 480) {
+          $(this).css({ position: 'relative', top: imgHeightDiff });  
+        }  
+      });
     });
 
     // Set the slideshow for Products if viewport is less than cutoffWidth
