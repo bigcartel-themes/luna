@@ -38,8 +38,8 @@
       "default": "#ffffff"
     },
     {
-      "variable": "header_background",
-      "label": "Header background",
+      "variable": "background_secondary",
+      "label": "Background secondary",
       "default": "#f0f0f0"
     },    
     {
@@ -74,13 +74,28 @@
     },
     {
       "variable": "products_background",
-      "label": "Products background",
+      "label": "Products background hover",
       "default": "#000000"
     },    
     {
       "variable": "borders",
       "label": "Borders",
       "default": "#e5e5e5"
+    },    
+    {
+      "variable": "button_border",
+      "label": "Button Borders",
+      "default": "#000000"
+    },    
+    {
+      "variable": "buttton_border_hover",
+      "label": "Borders",
+      "default": "#777777"
+    },    
+    {
+      "variable": "inventory_bars",
+      "label": "Inventory Bars",
+      "default": "#dedede"
     }
   ],
   "options": [

@@ -120,8 +120,8 @@ p, blockquote, ul, ol, dl {
   line-height: 1.3em;
   }
 
-strong { font-weight: bold; }
-em { font-style: italic; }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
 
 a,
 a:link,
@@ -199,18 +199,13 @@ video {
   transition: all 0 ease-in;     		  
   }
   
-.button.disabled {
+.button.disabled,
+.button.disabled:hover {
   text-align: center;
   color: #b5b5b5;  
   border-color: #b5b5b5;
   cursor: default;
-  }
-  
-.button.disabled:hover {
-  color: #b5b5b5;  
-  border-color: #b5b5b5;
-  cursor: default;
-  }   
+  }  
   
 input,
 textarea {
@@ -482,12 +477,7 @@ label {
   display: block;
   padding: 20px 17px 13px;  
   border: 0;
-  }
-  
-#main_nav li a:hover,
-#main_nav li.selected a {
-  color: #000;
-  }  
+  } 
 
 #mobile_nav {
   display: none;
@@ -822,7 +812,6 @@ label {
 
 .page_header.product_header .dash {
   height: 2px;
-  background: #000;
   -webkit-box-shadow: none;
   box-shadow: none;  
   }
@@ -918,7 +907,6 @@ label {
 #product_inventory .bar {
   width: 100%;
   height: 2px;  
-  background: #dedede;
   }
 
 #product_inventory .bar span {
@@ -1091,12 +1079,17 @@ label {
   box-shadow: 0 2px 8px rgba(0,0,0,.4);    
   }  
   
+.custom #page_body h1,  
 .custom #page_body h2 { 
   font-size: 16px; 
   font-weight: normal; 
   margin: 1.5em 0 .7em;
   line-height: 1.2em;
   }   
+  
+.custom #page_body h1 {
+  font-size: 20px;
+  }    
   
 .custom #page_body h3,
 .custom #page_body h4 {
@@ -1111,6 +1104,12 @@ label {
 
 .custom #page_body ul {
   list-style-type: circle;
+  list-style-position: inside;
+  width: 100%;
+  }  
+  
+.custom #page_body ol {
+  list-style-type: decimal;
   list-style-position: inside;
   width: 100%;
   }  
@@ -1549,7 +1548,7 @@ p, blockquote, ul, ol, dl {
 #site_header,
 #site_footer,
 #cart_page #site_header {
-  background: {{ theme.header_background }};
+  background: {{ theme.background_secondary }};
   }  
   
 #product_page #site_header h1 a,
@@ -1926,9 +1925,12 @@ p, blockquote, ul, ol, dl {
 
 #social_links #social_facebook,
 #social_links #social_tweet,  
-#social_links #social_pinterest {
-  padding-top: 16px;
-  }   
+#social_links #social_pinterest, 
+#social_links #social_facebook:hover,
+#social_links #social_tweet:hover,  
+#social_links #social_pinterest:hover {
+  padding: 16px 0 12px;
+  }  
 
 #more_products {
   margin-top: 0;
@@ -2279,6 +2281,15 @@ p, blockquote, ul, ol, dl {
   margin-left: 32% !important;
   }   
 
+#social_links #social_facebook,
+#social_links #social_tweet,  
+#social_links #social_pinterest, 
+#social_links #social_facebook:hover,
+#social_links #social_tweet:hover,  
+#social_links #social_pinterest:hover {
+  padding: 16px 0 12px;
+  } 
+
 #more_products {
   padding-bottom: 0;
   }
@@ -2522,7 +2533,7 @@ body,
 #success_page #content,
 .custom #content,
 #cart_summary
-{ background-color: {{ theme.header_background }}; }  
+{ background-color: {{ theme.background_secondary }}; }  
 
 
 /* Text */
@@ -2564,7 +2575,10 @@ a:visited
 
 /* Links rollover */
 a:hover,
-a:active
+a:active,
+#site_header header #store_name a:hover,
+#main_nav li a:hover,
+#main_nav li.selected a
 { color: {{ theme.links_rollover }}; }
 
 
@@ -2573,8 +2587,13 @@ a:active
 #site_header header h1 a:hover,
 .product_header.page_header h1,
 .product_header.page_header h3,
-.standalone .canvas h1
+.standalone .canvas h1,
+#site_header header #store_name a
 { color: {{ theme.header_text }}; }
+
+.page_header.product_header .dash {
+  background: {{ theme.header_text }};
+  }
 
 
 /* Products background */
@@ -2610,6 +2629,9 @@ a:active
 /* Border color */
 #main_nav li,
 .category_nav,
+#product_inventory,
+#social_links,
+#social_links li,
 #more_products,
 #contact_page #page_body p:first-child,
 #contact_links,
@@ -2620,6 +2642,17 @@ a:active
 #contact_links.no_intro {
   border-color: {{ theme.borders }}; 
   }
+  
+  
+/* Button Border */  
+.button { border-color: {{ theme.button_border }}; }
+.button:hover { border-color: {{ theme.button_border_hover }}; }  
+  
+
+/* Inventory Bars */
+
+#product_inventory .bar { background: {{ theme.borders }}; }
+#product_inventory .bar span { background: {{ theme.inventory_bars }} }
 
 
 /*============================================================
