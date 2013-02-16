@@ -1937,9 +1937,12 @@ p, blockquote, ul, ol, dl {
 
 #social_links #social_facebook,
 #social_links #social_tweet,  
-#social_links #social_pinterest {
-  padding-top: 16px;
-  }   
+#social_links #social_pinterest, 
+#social_links #social_facebook:hover,
+#social_links #social_tweet:hover,  
+#social_links #social_pinterest:hover {
+  padding: 16px 0 12px;
+  }  
 
 #more_products {
   margin-top: 0;
@@ -2290,6 +2293,15 @@ p, blockquote, ul, ol, dl {
   margin-left: 32% !important;
   }   
 
+#social_links #social_facebook,
+#social_links #social_tweet,  
+#social_links #social_pinterest, 
+#social_links #social_facebook:hover,
+#social_links #social_tweet:hover,  
+#social_links #social_pinterest:hover {
+  padding: 16px 0 12px;
+  } 
+
 #more_products {
   padding-bottom: 0;
   }
@@ -2575,7 +2587,8 @@ a:visited
 
 /* Links rollover */
 a:hover,
-a:active
+a:active,
+#site_header header #store_name a:hover
 { color: {{ theme.links_rollover }}; }
 
 
@@ -2584,7 +2597,8 @@ a:active
 #site_header header h1 a:hover,
 .product_header.page_header h1,
 .product_header.page_header h3,
-.standalone .canvas h1
+.standalone .canvas h1,
+#site_header header #store_name a
 { color: {{ theme.header_text }}; }
 
 
