@@ -120,8 +120,8 @@ p, blockquote, ul, ol, dl {
   line-height: 1.3em;
   }
 
-strong { font-weight: bold; }
-em { font-style: italic; }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
 
 a,
 a:link,
@@ -1116,6 +1116,12 @@ label {
 
 .custom #page_body ul {
   list-style-type: circle;
+  list-style-position: inside;
+  width: 100%;
+  }  
+  
+.custom #page_body ol {
+  list-style-type: decimal;
   list-style-position: inside;
   width: 100%;
   }  
