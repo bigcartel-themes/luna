@@ -189,8 +189,6 @@ video {
   }
   
 .button:hover {
-  border-color: #777;
-  color: #777;
   -webkit-transition: all 0 ease-in;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-transition: all 0 ease-in;
@@ -514,6 +512,7 @@ label {
 #products.double_product {
   float:  none;
   margin: 0 auto;
+  overflow: hidden;
   }
 
 #products.single_product {  
@@ -675,6 +674,10 @@ label {
 .product a:hover .product_thumb {
   opacity: .4;
   filter: alpha(opacity=40); /* IE6-IE8 */
+  }
+  
+.product a:hover .product_thumb img {
+  border-radius: 0;
   }
 
 #pagination {
@@ -1536,36 +1539,13 @@ label {
 p, blockquote, ul, ol, dl {
   font-size: 17px;
   line-height: 1.4em;
-	color: #222;
 	}
 	
 .button {
   display: block;
   width: 100%;
   padding: 17px 0 !important;
-  }  
-  
-#site_header,
-#site_footer,
-#cart_page #site_header {
-  background: {{ theme.background_secondary }};
-  }  
-  
-#product_page #site_header h1 a,
-#product_page #site_footer h3,
-#products_page #site_footer h3, 
-#cart_page #site_footer h3 {
-  color: #151515;
-  }
-
-#product_page #site_footer ul,
-#product_page #site_footer li,
-#products_page #site_footer ul,
-#products_page #site_footer li,
-#cart_page #site_footer ul,
-#cart_page #site_footer li {
-  border-color: #e5e5e5;
-  }  
+  }    
     	
 #error {
   width: 90%;
@@ -1602,7 +1582,6 @@ p, blockquote, ul, ol, dl {
 #content {
   margin-top: 0;
   padding: 40px 0;
-  background: #ffffff !important;
   }  
 
 #page_body {
@@ -1639,7 +1618,6 @@ p, blockquote, ul, ol, dl {
 #mobile_nav li a {
   display: block;
   padding: 20px 15px 13px;
-  color: #858585;
   border: 0;  
   }
   
@@ -1676,7 +1654,7 @@ p, blockquote, ul, ol, dl {
 #site_footer ul {
   width: 90%;
   margin: 0 auto;
-  border-top: 1px solid #e5e5e5;  
+  border-top: 1px solid {{ theme.borders }};  
   }  
   
 #site_footer li {
@@ -1685,7 +1663,7 @@ p, blockquote, ul, ol, dl {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid {{ theme.borders }};
   font-family: {{ theme.body_font | font_family }};  
   }
 
@@ -1693,7 +1671,6 @@ p, blockquote, ul, ol, dl {
   display: block;
   padding: 8px 0;
   border: none;
-  color: #666;
   }
 
 #site_footer footer p {
@@ -1713,8 +1690,17 @@ p, blockquote, ul, ol, dl {
   
 #products {
   width: 100%;
-  margin: 0;
+  margin: 0 !important;
   }
+  
+  
+#products.single_product,
+#products.double_product {
+  float:  none;
+  margin: 0;
+  width: 100%;
+  left: 0;
+  }  
   
 .product,
 .product_header,
@@ -1724,7 +1710,8 @@ p, blockquote, ul, ol, dl {
   -moz-transition: none;
   -ms-transition: none;
   -o-transition: none;
-  transition: none;          
+  transition: none;    
+  border-radius: 0 !important;      
   }    
  
 .product {
@@ -1733,11 +1720,21 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   height: 150px;
   margin: 0;      
-  border-radius: 0;  
+  border-radius: 0 !important;  
   background: #000;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
   }
+
+.product a:hover,
+.product:hover {
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4);  
+  }    
+  
+.product a {
+  border-radius: 0;
+  }  
   
 .product:first-child {
   -webkit-box-shadow: none;
@@ -1758,7 +1755,7 @@ p, blockquote, ul, ol, dl {
 
 .product_thumb {
   position: relative;
-  top: -70%;
+/*   top: -70%; */
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1766,37 +1763,29 @@ p, blockquote, ul, ol, dl {
   filter: alpha(opacity=40); /* IE6-IE8 */
   border-radius: 0;
   }
+    
   
 .product .product_thumb img {
   min-width: 100%;
+  width: 100%;  
   height: auto;
   }  
 
+/*
 .product_thumb img {
-  width: 100%;
   border-radius: 4px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-  }  
+  } 
+*/ 
   
   
 /* Products Page
 ------------------------------------------------------------*/  
 
-#products_page #site_header,
-#products_page #site_footer,
-#home_page #site_header,
-#home_page #site_footer {
-  background-color: #ffffff;
-  }
-
 .category_nav:first-child {
   margin-top: 10px;
   margin-bottom: 0;
   }  
-  
-.category_nav {
-  margin-top: 28px;
-  }
   
 .category_nav.double nav.categories,
 .category_nav.double nav.artists {
@@ -1819,7 +1808,8 @@ p, blockquote, ul, ol, dl {
   }  
   
 #pagination {
-  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 28px;
   }
   
 #pagination span,
@@ -1874,7 +1864,6 @@ p, blockquote, ul, ol, dl {
 #product_inventory {
   margin: 35px 0 0 0;
   padding: 15px 15px 2px;
-  border: 1px solid #e5e5e5;
   }  
   
 #product_inventory h3 {
@@ -1940,12 +1929,11 @@ p, blockquote, ul, ol, dl {
 #more_products h3:first-child {
   padding-top: 35px;
   text-align: center;
-  border-top: 1px solid #e5e5e5;  
   }
   
 #more_products ul#products {
   overflow: hidden;
-  margin-top: 30px;
+  margin-top: 30px !important;
   } 
 
 #more_products nav {
@@ -2009,6 +1997,10 @@ p, blockquote, ul, ol, dl {
   margin-top: 30px;
   }
   
+#cart_page #content {
+  padding-bottom: 0px;
+  }  
+  
 #cart-form {
   padding: 0;
   }  
@@ -2035,7 +2027,7 @@ p, blockquote, ul, ol, dl {
   
 #cart_items .item_image {
   float: left;
-  margin: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 8px;
   }  
   
 #cart_items li .remove_item {
@@ -2084,12 +2076,13 @@ p, blockquote, ul, ol, dl {
   }
 
 #cart_summary {
-  float: none;;
+  float: none;
+  clear: both;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 20px;
   padding-top: 10px;
-  background: #ffffff !important;
-  border-top: 1px solid #e5e5e5;  
+  border-top: none;  
   }
 
 #cart_summary ul {
@@ -2146,7 +2139,6 @@ p, blockquote, ul, ol, dl {
 #content {
   margin-top: 0;
   padding: 40px 0;
-  background: #f0f0f0;
   }  
 
 #page_body {
@@ -2233,7 +2225,6 @@ p, blockquote, ul, ol, dl {
 #product_inventory {
   margin: 35px 0 0 0;
   padding: 15px 15px 2px;
-  border: 1px solid #ddd;
   }  
   
 #product_inventory h3 {
@@ -2453,7 +2444,6 @@ p, blockquote, ul, ol, dl {
 #cart_summary ul {
   padding: 15px;
   border-top: 0;
-  background: #f0f0f0;  
   }
   
 #cart_summary button {
@@ -2588,7 +2578,8 @@ a:active,
 .product_header.page_header h1,
 .product_header.page_header h3,
 .standalone .canvas h1,
-#site_header header #store_name a
+#site_header header #store_name a,
+#site_footer footer h3 
 { color: {{ theme.header_text }}; }
 
 .page_header.product_header .dash {
@@ -2633,24 +2624,35 @@ a:active,
 #social_links,
 #social_links li,
 #more_products,
+#more_products nav,
 #contact_page #page_body p:first-child,
 #contact_links,
 #cart_items,
 #cart_items li,
 #cart_options,
+#cart_summary,
 #cart_page #cart_empty,
-#contact_links.no_intro {
+#cart_page #site_footer,
+#contact_links.no_intro,
+#site_footer ul,
+#site_footer ul li {
   border-color: {{ theme.borders }}; 
   }
   
   
-/* Button Border */  
-.button { border-color: {{ theme.button_border }}; }
-.button:hover { border-color: {{ theme.button_border_hover }}; }  
+/* Button Border/Color */  
+.button { 
+  border-color: {{ theme.button_border }}; 
+  color: {{ theme.button_border }};
+  }
+  
+.button:hover { 
+  border-color: {{ theme.button_border_hover }}; 
+  color: {{ theme.button_border_hover }};
+  }  
   
 
 /* Inventory Bars */
-
 #product_inventory .bar { background: {{ theme.borders }}; }
 #product_inventory .bar span { background: {{ theme.inventory_bars }} }
 
