@@ -648,6 +648,7 @@ label {
 
 .product_thumb img {
   width: 280px;
+  border-radius: 4px;
   }
 
 .product:hover {
@@ -672,6 +673,10 @@ label {
 .product a:hover .product_thumb {
   opacity: .4;
   filter: alpha(opacity=40); /* IE6-IE8 */
+  }
+  
+.product a:hover .product_thumb img {
+  border-radius: 0;
   }
 
 #pagination {
@@ -1684,8 +1689,9 @@ p, blockquote, ul, ol, dl {
   
 #products {
   width: 100%;
-  margin: 0;
+  margin: 0 !important;
   }
+  
   
 .product,
 .product_header,
@@ -1695,7 +1701,8 @@ p, blockquote, ul, ol, dl {
   -moz-transition: none;
   -ms-transition: none;
   -o-transition: none;
-  transition: none;          
+  transition: none;    
+  border-radius: 0 !important;      
   }    
  
 .product {
@@ -1704,11 +1711,17 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   height: 150px;
   margin: 0;      
-  border-radius: 0;  
+  border-radius: 0 !important;  
   background: #000;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
   }
+
+.product a:hover,
+.product:hover {
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4);  
+  }  
   
 .product:first-child {
   -webkit-box-shadow: none;
@@ -1758,10 +1771,6 @@ p, blockquote, ul, ol, dl {
   margin-bottom: 0;
   }  
   
-.category_nav {
-  margin-top: 28px;
-  }
-  
 .category_nav.double nav.categories,
 .category_nav.double nav.artists {
   width: 100%;
@@ -1783,7 +1792,8 @@ p, blockquote, ul, ol, dl {
   }  
   
 #pagination {
-  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 28px;
   }
   
 #pagination span,
@@ -1971,6 +1981,10 @@ p, blockquote, ul, ol, dl {
   margin-top: 30px;
   }
   
+#cart_page #content {
+  padding-bottom: 0px;
+  }  
+  
 #cart-form {
   padding: 0;
   }  
@@ -1997,7 +2011,7 @@ p, blockquote, ul, ol, dl {
   
 #cart_items .item_image {
   float: left;
-  margin: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 8px;
   }  
   
 #cart_items li .remove_item {
@@ -2046,11 +2060,13 @@ p, blockquote, ul, ol, dl {
   }
 
 #cart_summary {
-  float: none;;
+  float: none;
+  clear: both;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 20px;
   padding-top: 10px;
-  border-top: 1px solid #e5e5e5;  
+  border-top: none;  
   }
 
 #cart_summary ul {
@@ -2107,7 +2123,6 @@ p, blockquote, ul, ol, dl {
 #content {
   margin-top: 0;
   padding: 40px 0;
-  background: #f0f0f0;
   }  
 
 #page_body {
@@ -2194,7 +2209,6 @@ p, blockquote, ul, ol, dl {
 #product_inventory {
   margin: 35px 0 0 0;
   padding: 15px 15px 2px;
-  border: 1px solid #ddd;
   }  
   
 #product_inventory h3 {
@@ -2414,7 +2428,6 @@ p, blockquote, ul, ol, dl {
 #cart_summary ul {
   padding: 15px;
   border-top: 0;
-  background: #f0f0f0;  
   }
   
 #cart_summary button {
@@ -2549,7 +2562,8 @@ a:active,
 .product_header.page_header h1,
 .product_header.page_header h3,
 .standalone .canvas h1,
-#site_header header #store_name a
+#site_header header #store_name a,
+#site_footer footer h3 
 { color: {{ theme.header_text }}; }
 
 .page_header.product_header .dash {
@@ -2602,6 +2616,7 @@ a:active,
 #cart_options,
 #cart_summary,
 #cart_page #cart_empty,
+#cart_page #site_footer,
 #contact_links.no_intro,
 #site_footer ul,
 #site_footer ul li {
