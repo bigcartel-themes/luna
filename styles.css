@@ -1693,6 +1693,14 @@ p, blockquote, ul, ol, dl {
   }
   
   
+#products.single_product,
+#products.double_product {
+  float:  none;
+  margin: 0;
+  width: 100%;
+  left: 0;
+  }  
+  
 .product,
 .product_header,
 .product_thumb, 
@@ -1721,6 +1729,10 @@ p, blockquote, ul, ol, dl {
 .product:hover {
   border-radius: 0;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.4);  
+  }    
+  
+.product a {
+  border-radius: 0;
   }  
   
 .product:first-child {
@@ -1753,14 +1765,16 @@ p, blockquote, ul, ol, dl {
   
 .product .product_thumb img {
   min-width: 100%;
+  width: 100%;  
   height: auto;
   }  
 
+/*
 .product_thumb img {
-  width: 100%;
   border-radius: 4px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-  }  
+  } 
+*/ 
   
   
 /* Products Page
@@ -1917,7 +1931,7 @@ p, blockquote, ul, ol, dl {
   
 #more_products ul#products {
   overflow: hidden;
-  margin-top: 30px;
+  margin-top: 30px !important;
   } 
 
 #more_products nav {
