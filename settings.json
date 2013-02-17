@@ -74,7 +74,7 @@
     },
     {
       "variable": "products_background",
-      "label": "Products background hover",
+      "label": "Products background rollovers",
       "default": "#000000"
     },    
     {
@@ -89,7 +89,7 @@
     },    
     {
       "variable": "buttton_border_hover",
-      "label": "Borders",
+      "label": "Button borders rollovers",
       "default": "#777777"
     },    
     {

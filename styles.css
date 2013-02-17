@@ -189,8 +189,6 @@ video {
   }
   
 .button:hover {
-  border-color: #777;
-  color: #777;
   -webkit-transition: all 0 ease-in;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-transition: all 0 ease-in;
@@ -650,7 +648,6 @@ label {
 
 .product_thumb img {
   width: 280px;
-  border-radius: 4px;
   }
 
 .product:hover {
@@ -1536,36 +1533,13 @@ label {
 p, blockquote, ul, ol, dl {
   font-size: 17px;
   line-height: 1.4em;
-	color: #222;
 	}
 	
 .button {
   display: block;
   width: 100%;
   padding: 17px 0 !important;
-  }  
-  
-#site_header,
-#site_footer,
-#cart_page #site_header {
-  background: {{ theme.background_secondary }};
-  }  
-  
-#product_page #site_header h1 a,
-#product_page #site_footer h3,
-#products_page #site_footer h3, 
-#cart_page #site_footer h3 {
-  color: #151515;
-  }
-
-#product_page #site_footer ul,
-#product_page #site_footer li,
-#products_page #site_footer ul,
-#products_page #site_footer li,
-#cart_page #site_footer ul,
-#cart_page #site_footer li {
-  border-color: #e5e5e5;
-  }  
+  }    
     	
 #error {
   width: 90%;
@@ -1602,7 +1576,6 @@ p, blockquote, ul, ol, dl {
 #content {
   margin-top: 0;
   padding: 40px 0;
-  background: #ffffff !important;
   }  
 
 #page_body {
@@ -1639,7 +1612,6 @@ p, blockquote, ul, ol, dl {
 #mobile_nav li a {
   display: block;
   padding: 20px 15px 13px;
-  color: #858585;
   border: 0;  
   }
   
@@ -1676,7 +1648,7 @@ p, blockquote, ul, ol, dl {
 #site_footer ul {
   width: 90%;
   margin: 0 auto;
-  border-top: 1px solid #e5e5e5;  
+  border-top: 1px solid {{ theme.borders }};  
   }  
   
 #site_footer li {
@@ -1685,7 +1657,7 @@ p, blockquote, ul, ol, dl {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid {{ theme.borders }};
   font-family: {{ theme.body_font | font_family }};  
   }
 
@@ -1693,7 +1665,6 @@ p, blockquote, ul, ol, dl {
   display: block;
   padding: 8px 0;
   border: none;
-  color: #666;
   }
 
 #site_footer footer p {
@@ -1782,13 +1753,6 @@ p, blockquote, ul, ol, dl {
 /* Products Page
 ------------------------------------------------------------*/  
 
-#products_page #site_header,
-#products_page #site_footer,
-#home_page #site_header,
-#home_page #site_footer {
-  background-color: #ffffff;
-  }
-
 .category_nav:first-child {
   margin-top: 10px;
   margin-bottom: 0;
@@ -1874,7 +1838,6 @@ p, blockquote, ul, ol, dl {
 #product_inventory {
   margin: 35px 0 0 0;
   padding: 15px 15px 2px;
-  border: 1px solid #e5e5e5;
   }  
   
 #product_inventory h3 {
@@ -1940,7 +1903,6 @@ p, blockquote, ul, ol, dl {
 #more_products h3:first-child {
   padding-top: 35px;
   text-align: center;
-  border-top: 1px solid #e5e5e5;  
   }
   
 #more_products ul#products {
@@ -2088,7 +2050,6 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   margin: 0 auto;
   padding-top: 10px;
-  background: #ffffff !important;
   border-top: 1px solid #e5e5e5;  
   }
 
@@ -2633,24 +2594,34 @@ a:active,
 #social_links,
 #social_links li,
 #more_products,
+#more_products nav,
 #contact_page #page_body p:first-child,
 #contact_links,
 #cart_items,
 #cart_items li,
 #cart_options,
+#cart_summary,
 #cart_page #cart_empty,
-#contact_links.no_intro {
+#contact_links.no_intro,
+#site_footer ul,
+#site_footer ul li {
   border-color: {{ theme.borders }}; 
   }
   
   
-/* Button Border */  
-.button { border-color: {{ theme.button_border }}; }
-.button:hover { border-color: {{ theme.button_border_hover }}; }  
+/* Button Border/Color */  
+.button { 
+  border-color: {{ theme.button_border }}; 
+  color: {{ theme.button_border }};
+  }
+  
+.button:hover { 
+  border-color: {{ theme.buttton_border_hover }}; 
+  color: {{ theme.buttton_border_hover }};
+  }  
   
 
 /* Inventory Bars */
-
 #product_inventory .bar { background: {{ theme.borders }}; }
 #product_inventory .bar span { background: {{ theme.inventory_bars }} }
 
