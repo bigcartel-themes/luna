@@ -11,7 +11,7 @@
     {
       "variable": "image",
       "label": "Header image",
-      "description": "A transparent background is recommended"
+      "description": "Transparent background recommended"
     },
     {
       "variable": "background_image",
@@ -74,7 +74,7 @@
     },
     {
       "variable": "products_background",
-      "label": "Products background hover",
+      "label": "Products background rollovers",
       "default": "#000000"
     },    
     {
@@ -84,12 +84,12 @@
     },    
     {
       "variable": "button_border",
-      "label": "Button Borders",
+      "label": "Button",
       "default": "#000000"
     },    
     {
-      "variable": "buttton_border_hover",
-      "label": "Borders",
+      "variable": "button_border_hover",
+      "label": "Button rollover",
       "default": "#777777"
     },    
     {
