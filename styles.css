@@ -1384,6 +1384,14 @@ label {
   width: 215px;
   }
   
+#cart_options .no_shipping {
+  display: block;
+  margin-left: 227px;
+  font-size: 13px;
+  margin-top: 5px;
+  color: red;  
+  }
+  
 #cart_options #cart_discount p {
   font-size: 12px;
   padding: 13px 0;
@@ -2063,6 +2071,11 @@ p, blockquote, ul, ol, dl {
   width: 94%;
   } 
   
+#cart_options .no_shipping {
+  margin-top: 0;
+  margin-left: 0;
+  }  
+
 #cart_options #cart_discount p {
   padding: 3px 0 0;
   }
@@ -2418,6 +2431,11 @@ p, blockquote, ul, ol, dl {
 #cart_options input {
   width: 96%;
   } 
+
+#cart_options .no_shipping {
+  margin-top: 0;
+  margin-left: 0;
+  }   
 
 #cart_options #cart_discount p {
   padding: 3px 0 0;

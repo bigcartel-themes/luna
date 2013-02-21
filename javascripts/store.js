@@ -31,10 +31,12 @@ var Store = {
           width = inPreview ? $(window.parent.document).width() : width;
           var imgHeight = $(this).height();
           var imgHeightDiff = (280 - imgHeight) / 2;
+          var imgHeightDiffMobile = (150 - imgHeight) /2;
+          
           if(imgHeight < 280 && width > 480) {
             $(this).css({ position: 'relative', top: imgHeightDiff });  
-          } else if( imgHeight > 150 && width < 480 ) {
-            $(this).css({position:'relative', top: imgHeightDiff });  
+          }else if(imgHeight > 150 && width < 480) {
+            $(this).css({ position: 'relative', top: imgHeightDiffMobile });  
           };
         });
       }, inPreview ? 50 : 0);
