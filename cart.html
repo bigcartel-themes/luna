@@ -32,6 +32,12 @@
         <li id="shipping_option">
           <label for="country">Shipping</label>
           {{ store.country | country_select }}
+          
+          {% if cart.shipping.pending %}
+            {% if cart.country %}
+            <span class="no_shipping">We don't ship to {{ cart.country.name }}</span>
+            {% endif %}
+          {% endif %}
         </li>
         {% endif %}
         {% endif %}
@@ -69,9 +75,13 @@
       <li id="cart-shipping-tax">
         <h3>Shipping</h3>
         {% if cart.shipping.pending %}
-        <span class="shipping-amount">Select country</span>
+          {% if cart.country %}
+          <span class="shipping-amount">Select another country</span>
+          {% else %}
+          <span class="shipping-amount">Select country</span>
+          {% endif %}
         {% else %}
-        <span class="shipping-amount">{{ cart.shipping.amount | money_with_sign }}</span>
+          <span class="shipping-amount">{{ cart.shipping.amount | money_with_sign }}</span>
         {% endif %}
       </li>
       {% else %}
