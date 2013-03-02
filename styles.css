@@ -1049,12 +1049,12 @@ label {
   margin-bottom: 0;
   }
 
-#more_products nav li:after {
+#more_products nav li:before {
   content:"/";
-  padding: 0 0 0 4px;
+  padding: 0 4px 0 0;
   }
   
-#more_products nav li:last-child:after {
+#more_products nav li:first-child:before {
   content:"";
   }    
 
