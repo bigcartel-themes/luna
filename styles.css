@@ -107,16 +107,16 @@ body {
   font-weight: normal;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;	
+  text-rendering: optimizeLegibility; 
   background: #fff;
   }
-	
+  
 ::-moz-selection{ background: yellow; color:#333; }
-::selection { background: yellow; color:#333; }	
+::selection { background: yellow; color:#333; } 
 
 p, blockquote, ul, ol, dl {
   font-size: 15px;
-  margin-bottom: 1.2em;	
+  margin-bottom: 1.2em; 
   line-height: 1.3em;
   }
 
@@ -131,21 +131,21 @@ a:visited {
   outline: none;
   cursor: pointer;
   border-bottom: 1px solid #ccc;
-  border-bottom-color: rgba(0,0,0,.2);	
+  border-bottom-color: rgba(0,0,0,.2);  
   -webkit-transition: color .6s ease-in;
   -moz-transition: color .6s ease-in;
   -ms-transition: color .6s ease-in;
   -o-transition: color .6s ease-in;
-  transition: color .6s ease-in;  	  
+  transition: color .6s ease-in;      
   }
 
 a:hover,
 a:active {
-  -webkit-transition: color 0 ease-in;	
+  -webkit-transition: color 0 ease-in;  
   -moz-transition: color 0 ease-in;
   -ms-transition: color 0 ease-in;
   -o-transition: color 0 ease-in;
-  transition: color 0 ease-in;     	
+  transition: color 0 ease-in;      
   }
 
 a img {
@@ -157,14 +157,14 @@ a img {
 img {
   border: none;
   -ms-interpolation-mode: bicubic;
-  }	
-	
+  } 
+  
 img,
 embed,
 object,
 video {
   max-width: 100%;
-  }	
+  } 
   
   
 /* -------------------------------------------------------------- 
@@ -185,7 +185,7 @@ video {
   -moz-transition: all .6s ease-in;
   -ms-transition: all .6s ease-in;
   -o-transition: all .6s ease-in;
-  transition: all .6s ease-in;   	    
+  transition: all .6s ease-in;        
   }
   
 .button:hover {
@@ -194,7 +194,7 @@ video {
   -moz-transition: all 0 ease-in;
   -ms-transition: all 0 ease-in;
   -o-transition: all 0 ease-in;
-  transition: all 0 ease-in;     		  
+  transition: all 0 ease-in;          
   }
   
 .button.disabled,
@@ -408,9 +408,10 @@ label {
   }
 
 #site_footer li a {
-  display: block;
+  display: inline-block;
   padding: 0 8px;
   border: none;
+  zoom: 1;
   }
 
 #site_footer footer p {
@@ -432,6 +433,11 @@ label {
 
 #site_footer #website:hover {
   border-color: #777;
+  }
+
+#site_footer #search form {
+  display: inline-block;
+  zoom: 1;
   }
 
 #site_footer #search input {
@@ -1548,14 +1554,14 @@ label {
 p, blockquote, ul, ol, dl {
   font-size: 17px;
   line-height: 1.4em;
-	}
-	
+  }
+  
 .button {
   display: block;
   width: 100%;
   padding: 17px 0 !important;
   }    
-    	
+      
 #error {
   width: 90%;
   margin: 0 auto;
@@ -1567,7 +1573,7 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   padding: 6px 0 3px;
   }  
-      	
+        
 
 /* Structure
 ------------------------------------------------------------*/
