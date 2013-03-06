@@ -70,7 +70,7 @@ var Store = {
         cartForm.submit();
       });
       
-      $('#country, #cart_discount_code').change(function(event) {
+      cartForm.on('change mouseup', '#country, #cart_discount_code', function() {
         $('#update-btn-footer').removeClass('disabled');
       });
     }
