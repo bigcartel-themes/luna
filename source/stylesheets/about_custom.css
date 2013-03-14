@@ -1,0 +1,52 @@
+/* -------------------------------------------------------------- 
+  About / Custom Page
+-------------------------------------------------------------- */  
+
+.custom #page_body p:first-child,
+#contact_page #page_body p:first-child {
+  font-size: 20px;
+  line-height: 28px;
+  font-style: italic;
+  }
+  
+#about_page #page_body img {
+  margin-bottom: 1.5em;
+  -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,.4);    
+  }  
+  
+.custom #page_body h1,  
+.custom #page_body h2 { 
+  font-size: 16px; 
+  font-weight: normal; 
+  margin: 1.5em 0 .7em;
+  line-height: 1.2em;
+  }   
+  
+.custom #page_body h1 {
+  font-size: 20px;
+  }    
+  
+.custom #page_body h3,
+.custom #page_body h4 {
+  font-size: 14px;
+  line-height: 1.1em;
+  margin: 1.8em 0 .7em;
+  }
+
+.custom #page_body h4 {
+  font-size: 12px;
+  }
+
+.custom #page_body ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  width: 100%;
+  }  
+  
+.custom #page_body ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  width: 100%;
+  }  
+  
