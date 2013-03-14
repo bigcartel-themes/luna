@@ -3,6 +3,7 @@
 build
 tmp
 log
+.bundle
 
 *.tmproj
 *.esproj
