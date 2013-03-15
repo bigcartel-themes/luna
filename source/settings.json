@@ -1,12 +1,6 @@
 {
   "name": "Luna",
   "version": "1.0.0",
-  "javascripts": [
-    "jquery.flexslider-min",
-    "jquery.quickfit",
-    "jquery.imagesLoaded",
-    "store"
-  ],
   "images": [
     {
       "variable": "image",
@@ -29,7 +23,7 @@
       "variable": "body_font",
       "label": "Body Font",
       "default": "Times New Roman"
-    }    
+    }
   ],
   "colors": [
     {
@@ -41,7 +35,7 @@
       "variable": "background_secondary",
       "label": "Background secondary",
       "default": "#f0f0f0"
-    },    
+    },
     {
       "variable": "text",
       "label": "Text",
@@ -56,7 +50,7 @@
       "variable": "text_tertiary",
       "label": "Text tertiary",
       "default": "#666666"
-    },        
+    },
     {
       "variable": "links",
       "label": "Links",
@@ -76,22 +70,22 @@
       "variable": "products_background",
       "label": "Products background rollovers",
       "default": "#000000"
-    },    
+    },
     {
       "variable": "borders",
       "label": "Borders",
       "default": "#e5e5e5"
-    },    
+    },
     {
       "variable": "button_border",
       "label": "Button",
       "default": "#000000"
-    },    
+    },
     {
       "variable": "button_border_hover",
       "label": "Button rollover",
       "default": "#777777"
-    },    
+    },
     {
       "variable": "inventory_bars",
       "label": "Inventory Bars",
@@ -171,5 +165,5 @@
       "type": "text",
       "description": "Ex: bigcartel"
     }
-  ]  
+  ]
 }
