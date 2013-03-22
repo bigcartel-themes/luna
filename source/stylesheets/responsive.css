@@ -931,6 +931,16 @@ p, blockquote, ul, ol, dl {
 }
 
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  #social_links li h4 {
+    display: none;
+    }
+
+  #social_links .social_action {
+    display: block;
+    }
+}
+
 /*============================================================
   IE Hacks
 ============================================================*/
