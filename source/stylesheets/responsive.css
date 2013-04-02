@@ -2,7 +2,8 @@
   Responsive styles
 ============================================================*/
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 480px),
+  screen and (max-device-width: 560px) and (orientation: landscape) {
 
 p, blockquote, ul, ol, dl {
   font-size: 17px;
