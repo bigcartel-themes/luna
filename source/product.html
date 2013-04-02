@@ -1,6 +1,6 @@
 <header class="product_header page_header">
   <h1>{{ product.name }}</h1>
-  <span class="dash"></span>            
+  <span class="dash"></span>
   <h3>{{ product.default_price | money_with_sign }}</h3>
   {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
 </header>
@@ -23,7 +23,7 @@
   {% endif %}
 
   {% case product.status %}
-  {% when 'active' %}  
+  {% when 'active' %}
     {% if theme.show_inventory_bars %}
     <section id="product_inventory">
     	<h3>Availability</h3>
@@ -35,7 +35,7 @@
     			  <span style="width:{{ option.inventory }}%;"><em>{{ option.inventory }} in stock</em></span>
     			</div>
     		</li>
-    		{% endfor %}  				
+    		{% endfor %}
     	</ul>
     </section>
     {% endif %}
@@ -54,7 +54,7 @@
   {% when 'coming-soon' %}
 		<h4 class="button disabled">Coming Soon</h4>
   {% endcase %}
-  
+
   {% if theme.show_facebook or theme.show_twitter or theme.show_pinterest %}
   <ul id="social_links">
     {% if theme.show_facebook %}
@@ -65,7 +65,7 @@
       </div>
     </li>
     {% endif %}
-    {% if theme.show_twitter %}    
+    {% if theme.show_twitter %}
     <li id="social_tweet">
       <h4>Tweet it</h4>
       <div class="social_action">
@@ -74,11 +74,11 @@
       </div>
     </li>
     {% endif %}
-    {% if theme.show_pinterest %}    
+    {% if theme.show_pinterest %}
     <li id="social_pinterest">
       <h4>Pin it</h4>
       <div class="social_action">
-        <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
+        <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description | escape | truncate: 490 }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
         <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
       </div>
     </li>
