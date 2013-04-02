@@ -1,7 +1,7 @@
-/* -------------------------------------------------------------- 
-  Product Page 
--------------------------------------------------------------- */ 
-  
+/* --------------------------------------------------------------
+  Product Page
+-------------------------------------------------------------- */
+
 .page_header.product_header.fixed {
   position: fixed !important;
   }
@@ -10,7 +10,7 @@
 .page_header.product_header h3 {
   text-shadow: none;
   }
-  
+
 .page_header.product_header h1 {
   font-size: 24px;
   text-transform: uppercase;
@@ -24,26 +24,26 @@
 .page_header.product_header h3 span {
   position: relative;
   top: -5px;
-  font-size: .6em;  
+  font-size: .6em;
   }
 
 .page_header.product_header .dash {
   height: 2px;
   -webkit-box-shadow: none;
-  box-shadow: none;  
+  box-shadow: none;
   }
-  
+
 .page_header.product_header h5 {
   top: -19px;
   text-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  }     
-  
+  }
+
 .page_header {
   margin-bottom: 30px;
-  }  
-    
+  }
+
 #product_page #content .product_header {
   position: relative;
   float: left;
@@ -75,7 +75,7 @@
   list-style-position: outside;
   width: 100%;
   }
-  
+
 #product_images {
   float: right;
   position: relative;
@@ -85,32 +85,52 @@
 
 #product_images li {
   margin-bottom: 15px;
-  line-height: 0; 
+  line-height: 0;
   }
-  
-#product_images li:last-child { margin: 0; }  
-  
-#product_images li img {  
+
+#product_images li:last-child { margin: 0; }
+
+#product_images li img {
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 8px rgba(0,0,0,.4); 
-  box-shadow: 0 1px 8px rgba(0,0,0,.4); 
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+  -webkit-box-shadow: 0 1px 8px rgba(0,0,0,.4);
+  box-shadow: 0 1px 8px rgba(0,0,0,.4);
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
   }
-  
+
+/* adjust flex-slider paging according to foreground color */
+
+.flex-control-paging li a {
+  background: {{ theme.text }};
+  opacity:0.5;
+  filter:alpha(opacity=50);
+}
+
+.flex-control-paging li a:hover {
+  background: {{ theme.text }};
+  opacity:0.7;
+  filter:alpha(opacity=70);
+}
+
+.flex-control-paging li a.flex-active {
+  background: {{ theme.text }};
+  opacity:0.3;
+  filter:alpha(opacity=30);
+}
+
 #product_inventory {
   margin: 35px 0 0px 0;
   padding: 18px 10px 8px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  }  
-  
+  }
+
 #product_inventory h3 {
   margin-bottom: 13px;
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: .3em;
   text-align: center;
-  }  
+  }
 
 #product_inventory li {
   width: 200px;
@@ -123,12 +143,12 @@
 
 #product_inventory .bar {
   width: 100%;
-  height: 2px;  
+  height: 2px;
   }
 
 #product_inventory .bar span {
   display: block;
-  height: 2px;  
+  height: 2px;
   }
 
 #product_inventory .bar span em {
@@ -138,12 +158,12 @@
 #product_form {
   margin-top: 40px;
   }
-  
+
 #product_form select {
   width: 220px;
   margin-bottom: 15px;
-  } 
-  
+  }
+
 #product_info .button.disabled {
   margin-top: 40px;
   }
@@ -158,7 +178,7 @@
   padding: 12px 0;
   text-align: center;
   border-top: 1px solid #ccc;
-  }  
+  }
 
 #social_links li:first-child {
   border: none;
@@ -190,8 +210,8 @@
 #social_links #social_pinterest:hover,
 #social_links #social_tweet:hover  {
   padding-bottom: 8px;
-  } 
-  
+  }
+
 #social_links #social_facebook iframe {
   margin: 0 auto 0 30px;
   }
@@ -216,7 +236,7 @@
   padding-bottom: 31px;
   border-bottom: 1px solid #e5e5e5;
   }
-  
+
 #more_products h3:first-child {
   font-size: 22px;
   text-transform: uppercase;
@@ -232,17 +252,17 @@
   top: 0;
   right: 0;
   }
- 
+
 #more_products nav li {
   margin-top: 3px;
   display: inline-block;
   font-size: 13px;
-  }   
+  }
 
 #more_products ul#products li:nth-child(4) {
   display: none;
-  } 
-  
+  }
+
 #more_products.no_products {
   margin-top: 0;
   padding: 20px 0;
@@ -261,14 +281,14 @@
   content:"/";
   padding: 0 4px 0 0;
   }
-  
+
 #more_products nav li:first-child:before {
   content:"";
-  }    
+  }
 
 #more_products nav li a {
   padding: 5px 3px 3px;
   border: none;
   text-decoration: underline;
-  } 
+  }
 
