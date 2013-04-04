@@ -941,23 +941,3 @@ p, blockquote, ul, ol, dl {
     display: block;
     }
 }
-
-/*============================================================
-  IE Hacks
-============================================================*/
-
-.ie #social_links li h4 {
-  display: none;
-  }
-
-.ie #social_links .social_action {
-  display: block;
-  }
-
-.ie #social_links #social_facebook,
-.ie #social_links #social_tweet,
-.ie #social_links #social_pinterest {
-  padding-bottom: 6px;
-  }
-
-
