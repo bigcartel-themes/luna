@@ -430,7 +430,8 @@ h1, h2, h3, h4, h5, h6,
 #cart_items li dd,
 #cart_options #cart_discount p,
 #cart_summary li span,
-.standalone .canvas h1
+.standalone .canvas h1, input,
+#cart_items li .quantity_input input
 { font-family: {{ theme.header_font | font_family }}; }
 
 
