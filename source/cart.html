@@ -14,10 +14,9 @@
           <dl>
             <dt><a href="{{ item.product.url }}">{{ item.product.name }}</a></dt>
             <dd class="item_price">{{ item.unit_price | money_with_sign }}{% if item.quantity > 1 %}<span class="item_quantity">(x{{ item.quantity }})</span>{% endif %}</dd>
-            <dd class="quantity_input" style="display:none">{{ item | item_quantity_input }}</dd>
+            <dd class="quantity_input">{{ item | item_quantity_input }}</dd>
             {% unless item.product.has_default_option %}<dd class="item_option">{{ item.option.name }}</dd>{% endunless %}
           </dl>
-          
           <a href="#" class="remove_item" title="Remove item from cart">Remove item</a>
         </li>
         {% endfor %}         
@@ -60,7 +59,13 @@
       
       <div class="cart-update">
         <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
-      </div>    
+      </div>      
+    </section>
+    {% else %}    
+    <section id="cart_options" class="solo_update">
+      <div class="cart-update">
+        <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
+      </div>
     </section>
     {% endif %}
   </div>
