@@ -135,6 +135,7 @@ textarea {
 input:focus,
 textarea:focus {
   border: 2px solid #333;
+  background: #ffffff;
   -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
   box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
   outline: none;
@@ -277,7 +278,9 @@ label {
   white-space: normal;
   }
   
-#site_header header #store_name a { border: none; } 
+#site_header header #store_name a { 
+  border: none; 
+  } 
   
 #site_header #branding {
   text-align: center;
@@ -461,7 +464,8 @@ body,
 /* Text */
 body,
 p, blockquote, ul, ol, dl,
-#error li
+#error li,
+#cart_items li .quantity_input input
 { color: {{ theme.text }}; }  
 
 
@@ -594,6 +598,10 @@ a:active,
   border-color: {{ theme.button_border }}; 
   color: {{ theme.button_border }};
   }
+  
+#cart_items li .quantity_input input { 
+  border-color: {{ theme.button_border }}; 
+	}  
   
 .button:hover { 
   border-color: {{ theme.button_border_hover }}; 

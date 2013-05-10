@@ -910,8 +910,7 @@ p, blockquote, ul, ol, dl {
 #cart_items li .remove_item {
   opacity: 1;
   filter: alpha(opacity=1); /* IE6-IE8 */
-  right: 0;
-  left: 93%;
+  left: 92%;
   }
 
 #cart_options {

@@ -261,7 +261,7 @@
   
 #more_products nav li:first-child {
   min-width: 103px;		
-  }    
+  }  
 
 #more_products ul#products li:nth-child(4) {
   display: none;

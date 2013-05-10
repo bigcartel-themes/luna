@@ -102,7 +102,6 @@
   }
 
 #cart_items li .item_quantity  {
-  display: none;
   position: relative;
   top: -1px;
   left: 2px;
@@ -112,7 +111,7 @@
 #cart_items li .quantity_input {
   position: absolute;
   top: 50%;
-  left: 33px;
+  right: 33px;
   margin-top: -20px;
   }  
 
@@ -122,12 +121,10 @@
   padding-top: 0;
   padding-bottom: 0;
   font-size: 13px;
-  color: black /* replace */;  
   text-align: center; 
   background: transparent;  
-  border: 2px solid #000 /* replace */;   
-  border-radius: 100px;  
-  box-shadow: none;  
+  border: 2px solid #000;   
+  border-radius: 0;  
   opacity: .4;
   filter: alpha(opacity=40); /* IE6-IE8 */  
   }
@@ -135,14 +132,12 @@
 #cart_items li .quantity_input input:hover {
   opacity: .5;
   filter: alpha(opacity=50); /* IE6-IE8 */
-  
   }   
 
 #cart_items li .quantity_input input:focus {
   opacity: 1;
   filter: alpha(opacity=100); /* IE6-IE8 */  
   color: black;
-  border-color: black /* replace */;
   }   
   
 #cart_items li .remove_item {
@@ -150,7 +145,7 @@
   filter: alpha(opacity=50); /* IE6-IE8 */
   position: absolute;
   z-index: 5;
-  right: 33px;
+  left: 40px;
   top: 50%;
   margin-top: -12px;
   width: 26px;
@@ -162,7 +157,8 @@
   -ms-transition: opacity .6s ease-in;
   -o-transition: opacity .6s ease-in;
   transition: opacity .6s ease-in;
-  background: url({{ 'remove_item.png' | theme_image_url }}) no-repeat;
+  background: url({{ 'remove_item_2x.png' | theme_image_url }}) no-repeat;
+  background-size: 26px;
   }
 
 #cart_items li .remove_item:hover {
