@@ -16,3 +16,10 @@
   padding-bottom: 6px;
   } 
   
+.ie #cart_items li .quantity_input input {
+  line-height: 1em;
+  height: auto;
+  padding: 12px 8px 8px;
+  }  
+  
+ 
