@@ -361,33 +361,23 @@ p, blockquote, ul, ol, dl {
   margin-bottom: 0;
   }
 
+#social_links li {
+	height: 50px;
+	}
+
 #social_links li h4 {
   display: none;
   }
 
 #social_links .social_action {
   display: block;
+  top: 16px;
   }
 
-#social_links #social_facebook iframe {
-  margin-left: 60px !important;
-  }
-
-#social_links #social_tweet iframe {
-  margin-left: 60px !important;
-  }
-
+#social_links #social_facebook iframe,
+#social_links #social_tweet iframe,
 #social_links #social_pinterest iframe {
-  margin-left: 95px !important;
-  }
-
-#social_links #social_facebook,
-#social_links #social_tweet,
-#social_links #social_pinterest,
-#social_links #social_facebook:hover,
-#social_links #social_tweet:hover,
-#social_links #social_pinterest:hover {
-  padding: 16px 0 12px;
+  margin-left: 32% !important;
   }
 
 #more_products {
@@ -769,27 +759,23 @@ p, blockquote, ul, ol, dl {
   margin-top: 30px;
   }
 
+#social_links li {
+	height: 50px;
+	}
+
 #social_links li h4 {
   display: none;
   }
 
 #social_links .social_action {
   display: block;
+  top: 16px;
   }
 
 #social_links #social_facebook iframe,
 #social_links #social_pinterest iframe,
 #social_links #social_tweet iframe {
   margin-left: 32% !important;
-  }
-
-#social_links #social_facebook,
-#social_links #social_tweet,
-#social_links #social_pinterest,
-#social_links #social_facebook:hover,
-#social_links #social_tweet:hover,
-#social_links #social_pinterest:hover {
-  padding: 16px 0 12px;
   }
 
 #more_products {
