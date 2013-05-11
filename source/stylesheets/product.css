@@ -175,7 +175,8 @@
   }
 
 #social_links li {
-  padding: 12px 0;
+  padding: 0;
+  height: 40px;
   text-align: center;
   border-top: 1px solid #ccc;
   }
@@ -188,10 +189,13 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  line-height: 40px;
   }
 
 #social_links .social_action {
   display: none;
+  position: relative;
+  top: 10px;
   }
 
 #social_links li .social_action a {
@@ -209,7 +213,7 @@
 #social_links #social_facebook:hover,
 #social_links #social_pinterest:hover,
 #social_links #social_tweet:hover  {
-  padding-bottom: 8px;
+  padding-bottom: 0;
   }
 
 #social_links #social_facebook iframe {
@@ -218,13 +222,11 @@
 
 #social_links #social_tweet iframe {
   width: 50% !important;
-  height: 20px;
   margin-left: 30px !important;
   }
 
 #social_links #social_pinterest iframe {
   width: 50% !important;
-  height: 20px;
   margin-left: 60px !important;
   }
 
