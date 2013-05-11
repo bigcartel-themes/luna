@@ -10,12 +10,6 @@
   display: block;
   }
 
-.ie #social_links #social_facebook,
-.ie #social_links #social_tweet,  
-.ie #social_links #social_pinterest {
-  padding-bottom: 6px;
-  } 
-  
 .ie #cart_items li .quantity_input input {
   line-height: 1em;
   height: auto;
