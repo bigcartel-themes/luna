@@ -249,7 +249,6 @@ label {
   }
 
 #content {
-  margin-top: -10px;
   padding: 70px 0;
   }
 
@@ -269,7 +268,7 @@ label {
 
 #site_header header #store_name {
   width: 90%;
-  margin: 60px auto 78px;
+  margin: 60px auto 64px;
   font-size: 42px;
   text-transform: uppercase;
   letter-spacing: 6px;
@@ -301,9 +300,11 @@ label {
 -------------------------------------------------------------- */
 
 #site_footer footer {
-  width: 100%;
+	width: 100%;
+  min-width: 900px;
   clear: both;
   float: left;
+  margin: 0 auto;
   margin-top: 65px;
   padding-bottom: 10px;
   text-align: center;
@@ -502,9 +503,7 @@ a:visited
 /* Links rollover */
 a:hover,
 a:active,
-#site_header header #store_name a:hover,
-#main_nav li a:hover,
-#main_nav li.selected a
+#site_header header #store_name a:hover
 { color: {{ theme.links_rollover }}; }
 
 
@@ -524,8 +523,8 @@ a:active,
 
 
 /* Products background */
-.product a:hover
-{ background-color: {{ theme.products_background }}; }
+.product a:hover { 
+	background-color: {{ theme.products_background }}; }
 
 {% if theme.products_background == 'transparent' %}
 .product a:hover,
@@ -573,7 +572,11 @@ a:active,
 #contact_links.no_intro,
 #site_footer ul,
 #site_footer ul li {
+<<<<<<< HEAD
   border-color: {{ theme.borders }};
+=======
+  border-color: {{ theme.borders }} !important; 
+>>>>>>> addressed issues #72 and #71 + a few responsive updates
   }
 
 {% capture same_background %}{{ theme.background_secondary }}{% endcapture %}
@@ -599,12 +602,17 @@ a:active,
   color: {{ theme.button_border }};
   }
 
+<<<<<<< HEAD
 #cart_items li .quantity_input input {
   border-color: {{ theme.button_border }};
 	}
 
 .button:hover {
   border-color: {{ theme.button_border_hover }};
+=======
+.button:hover { 
+  border-color: {{ theme.button_border_hover }}; 
+>>>>>>> addressed issues #72 and #71 + a few responsive updates
   color: {{ theme.button_border_hover }};
   }
 

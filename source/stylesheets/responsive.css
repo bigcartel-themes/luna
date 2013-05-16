@@ -2,7 +2,7 @@
   Responsive styles
 ============================================================*/
 
-@media screen and (max-width: 480px),
+@media screen and (max-width: 560px),
   screen and (max-device-width: 560px) and (orientation: landscape) {
 
 p, blockquote, ul, ol, dl {
@@ -109,6 +109,7 @@ p, blockquote, ul, ol, dl {
 ------------------------------------------------------------*/
 
 #site_footer footer {
+  min-width: 0;
   margin-top: 30px;
   }
 
@@ -239,14 +240,7 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   height: auto;
   }
-
-/*
-.product_thumb img {
-  border-radius: 4px;
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-  }
-*/
-
+  
 
 /* Products Page
 ------------------------------------------------------------*/
@@ -438,7 +432,7 @@ p, blockquote, ul, ol, dl {
 
 #captcha_img input {
   float: left;
-  width: 48%;
+  width: 53%;
   padding: 17px 8px;
   margin-right: 0;
   }
@@ -580,7 +574,7 @@ p, blockquote, ul, ol, dl {
 }
 
 
-@media screen and (min-width: 480px) and (max-width: 768px) {
+@media screen and (min-width: 560px) and (max-width: 768px) {
 
 
 .button {
@@ -607,7 +601,7 @@ p, blockquote, ul, ol, dl {
 
 .canvas {
   position: relative;
-  width: 100%;
+	width: 640px !important;
   margin: 0 auto;
   clear: both;
   }
@@ -622,10 +616,24 @@ p, blockquote, ul, ol, dl {
   }
 
 #page_body {
-  width: 70%;
+	width: 640px;
   margin: 0 auto;
   }
+  
+.custom #page_body,
+#contact_page #page_body {
+	width: 550px;	
+	}  
 
+#site_header {
+	margin: 0 auto;	
+	}
+	
+#site_footer footer {
+  min-width: 0;
+	float: none;
+	}	
+	
 
 /* Main Nav
 ------------------------------------------------------------*/
@@ -636,7 +644,14 @@ p, blockquote, ul, ol, dl {
   margin: 0 auto;
   text-align: center;
   }
-
+	
+	
+/* Home Page
+------------------------------------------------------------*/	
+	
+#home_page #site_footer footer {
+	margin-top: 0;	
+	}	
 
 /* Products Page
 ------------------------------------------------------------*/
@@ -645,17 +660,16 @@ p, blockquote, ul, ol, dl {
   float: none;
   overflow: hidden;
   clear: both;
-  width: 589px;
+  width: 640px;
   margin: 0 auto 30px ;
   }
 
 #products li {
-  margin: 1%;
+/*   margin:; */
   }
   
 .category_nav:first-child {
   margin-top: 10px;
-  margin-bottom: 0;
   }
 
 .category_nav.double nav.categories,
@@ -675,7 +689,8 @@ p, blockquote, ul, ol, dl {
   }    
 
 #products_page #pagination {
-  margin-top: 30px;
+  margin-top: 0;
+  margin-bottom: 50px;
   }
 
 #pagination span,
@@ -839,7 +854,7 @@ p, blockquote, ul, ol, dl {
 
 #captcha_img input {
   float: left;
-  width: 48%;
+  width: 70%;
   padding: 17px 8px;
   margin-right: 0;
   }

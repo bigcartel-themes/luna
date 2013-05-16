@@ -122,21 +122,11 @@
   padding-bottom: 0;
   font-size: 13px;
   text-align: center; 
-  background: transparent;  
-  border: 2px solid #000;   
   border-radius: 0;  
-  opacity: .4;
   filter: alpha(opacity=40); /* IE6-IE8 */  
   }
-  
-#cart_items li .quantity_input input:hover {
-  opacity: .5;
-  filter: alpha(opacity=50); /* IE6-IE8 */
-  }   
 
-#cart_items li .quantity_input input:focus {
-  opacity: 1;
-  filter: alpha(opacity=100); /* IE6-IE8 */  
+#cart_items li .quantity_input input:focus { 
   color: black;
   }   
   
