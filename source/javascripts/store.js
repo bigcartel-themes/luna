@@ -35,7 +35,7 @@ var Store = {
           
           if(imgHeight < 280 && width > 480) {
             $(this).css({ position: 'relative', top: imgHeightDiff });  
-          }else if(imgHeight > 150 && width < 480) {
+          }else if(imgHeight > 150 && width < 560) {
             $(this).css({ position: 'relative', top: imgHeightDiffMobile });  
           };
         });
