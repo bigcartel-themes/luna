@@ -32,7 +32,7 @@
     		<li>
     		  {% unless product.has_default_option %}<h5>{{ option.name }}</h5>{% endunless %}
     			<div class="bar">
-    			  <span style="width:{{ option.inventory }}%;"><em>{{ option.inventory }} in stock</em></span>
+    			  <span style="width:{{ option.inventory }}%;"><em>{{ option.quantity }} in stock</em></span>
     			</div>
     		</li>
     		{% endfor %}
