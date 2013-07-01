@@ -48,10 +48,10 @@
       <div class="canvas">
         <nav id="main_nav">
           <ul>
-            <li {% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' %}class="selected"{% endif %}><a href="/products">Products</a></li>{% for page in pages.all limit:2 %}<li {% if page.full_url contains page.url %}class="selected"{% endif %}>{{ page | link_to }}</li>{% endfor %}<li {% if page.full_url contains '/contact' %}class="selected"{% endif %}><a href="/contact">Contact</a></li><li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>
+            <li {% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %}class="selected"{% endif %}><a href="/products">Products</a></li>{% for page in pages.all limit:2 %}<li {% if page.full_url contains page.url %}class="selected"{% endif %}>{{ page | link_to }}</li>{% endfor %}<li {% if page.full_url contains '/contact' %}class="selected"{% endif %}><a href="/contact">Contact</a></li><li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>
           </ul>
         </nav>
-      
+        
         <header>
           {% if theme.image != blank %}
           <div id="branding">
