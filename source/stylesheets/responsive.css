@@ -491,6 +491,10 @@ p, blockquote, ul, ol, dl {
   display: inline;
   }  
 
+#cart_items li .quantity_input {
+  display: none;
+  }    
+
 #cart_items li .remove_item {
   opacity: 1;
   left: 89%;
@@ -531,6 +535,10 @@ p, blockquote, ul, ol, dl {
 
 #cart_options #cart_discount p {
   padding: 3px 0 0;
+  }
+
+.solo_update {
+  display: none;
   }
 
 .cart-update {
@@ -895,7 +903,11 @@ p, blockquote, ul, ol, dl {
   
 #cart_items li .item_quantity {
   display: inline;
-  }   
+  }
+  
+#cart_items li .quantity_input {
+  display: none;
+  }      
 
 #cart_items li .remove_item {
   opacity: 1;
@@ -934,6 +946,10 @@ p, blockquote, ul, ol, dl {
 
 #cart_options #cart_discount p {
   padding: 3px 0 0;
+  }
+
+.solo_update {
+  display: none;
   }
   
 .cart-update {
