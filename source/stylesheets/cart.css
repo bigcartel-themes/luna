@@ -125,7 +125,7 @@
   -ms-transition: opacity .6s ease-in;
   -o-transition: opacity .6s ease-in;
   transition: opacity .6s ease-in;
-  background: url({{ 'remove_item.png' | theme_image_url }}) no-repeat;
+  background: url("{{ 'remove_item.png' | theme_image_url }}") no-repeat;
   }
 
 #cart_items li .remove_item:hover {
