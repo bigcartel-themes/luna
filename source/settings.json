@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "images": [
     {
       "variable": "image",
@@ -89,7 +89,7 @@
     {
       "variable": "inventory_bars",
       "label": "Inventory Bars",
-      "default": "#dedede"
+      "default": "#999999"
     }
   ],
   "options": [
@@ -136,21 +136,21 @@
       "variable": "show_facebook",
       "label": "Show Facebook's Like button",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Adds a Like button to the Product page"
     },
     {
       "variable": "show_twitter",
       "label": "Show Twitter's Tweet button",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Adds a Tweet button to the Product page"
     },
     {
       "variable": "show_pinterest",
       "label": "Show Pinterest's Pin It button",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Adds a Pin It button to the Product page"
     },
     {
