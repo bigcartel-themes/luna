@@ -240,7 +240,7 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   height: auto;
   }
-  
+
 
 /* Products Page
 ------------------------------------------------------------*/
@@ -457,10 +457,10 @@ p, blockquote, ul, ol, dl {
 #cart-form {
   padding: 0;
   }
-  
+
 #cart-form.no_options {
   margin-bottom: 0;
-  }  
+  }
 
 #cart_description {
   width: auto;
@@ -486,10 +486,14 @@ p, blockquote, ul, ol, dl {
   float: left;
   margin: 20px 20px 20px 8px;
   }
-  
+
 #cart_items li .item_quantity {
   display: inline;
-  }  
+  }
+
+#cart_items li .quantity_input {
+  display: none;
+  }
 
 #cart_items li .remove_item {
   opacity: 1;
@@ -531,6 +535,10 @@ p, blockquote, ul, ol, dl {
 
 #cart_options #cart_discount p {
   padding: 3px 0 0;
+  }
+
+.solo_update {
+  display: none;
   }
 
 .cart-update {
@@ -611,21 +619,21 @@ p, blockquote, ul, ol, dl {
 	width: 640px;
   margin: 0 auto;
   }
-  
+
 .custom #page_body,
 #contact_page #page_body {
-	width: 550px;	
-	}  
+	width: 550px;
+	}
 
 #site_header {
-	margin: 0 auto;	
+	margin: 0 auto;
 	}
-	
+
 #site_footer footer {
   min-width: 0;
 	float: none;
-	}	
-	
+	}
+
 
 /* Main Nav
 ------------------------------------------------------------*/
@@ -636,14 +644,14 @@ p, blockquote, ul, ol, dl {
   margin: 0 auto;
   text-align: center;
   }
-	
-	
+
+
 /* Home Page
-------------------------------------------------------------*/	
-	
+------------------------------------------------------------*/
+
 #home_page #site_footer footer {
-	margin-top: 0;	
-	}	
+	margin-top: 0;
+	}
 
 /* Products Page
 ------------------------------------------------------------*/
@@ -660,7 +668,7 @@ p, blockquote, ul, ol, dl {
 #products li {
 /*   margin:; */
   }
-  
+
 .category_nav:first-child {
   margin-top: 10px;
   }
@@ -676,10 +684,10 @@ p, blockquote, ul, ol, dl {
   text-align: center;
   margin: 0;
   }
-  
+
 .category_nav li a {
   padding: 10px 4px;
-  }    
+  }
 
 #products_page #pagination {
   margin-top: 0;
@@ -892,10 +900,14 @@ p, blockquote, ul, ol, dl {
   float: left;
   margin: 20px 10px 20px 20px;
   }
-  
+
 #cart_items li .item_quantity {
   display: inline;
-  }   
+  }
+
+#cart_items li .quantity_input {
+  display: none;
+  }
 
 #cart_items li .remove_item {
   opacity: 1;
@@ -935,7 +947,11 @@ p, blockquote, ul, ol, dl {
 #cart_options #cart_discount p {
   padding: 3px 0 0;
   }
-  
+
+.solo_update {
+  display: none;
+  }
+
 .cart-update {
   margin-left: 0;
   }
