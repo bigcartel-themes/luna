@@ -1,14 +1,14 @@
- /* -------------------------------------------------------------- 
+ /* --------------------------------------------------------------
 
    Luna
    by Singlenaut
-        
+
    http://singlenaut.com
    office@singlenaut.com
 
 -------------------------------------------------------------- */
-   
-/* -------------------------------------------------------------- 
+
+/* --------------------------------------------------------------
   Base styles
 -------------------------------------------------------------- */
 
@@ -22,16 +22,16 @@ body {
   font-weight: normal;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility; 
+  text-rendering: optimizeLegibility;
   background: #fff;
   }
-  
+
 ::-moz-selection{ background: yellow; color:#333; }
-::selection { background: yellow; color:#333; } 
+::selection { background: yellow; color:#333; }
 
 p, blockquote, ul, ol, dl {
   font-size: 15px;
-  margin-bottom: 1.2em; 
+  margin-bottom: 1.2em;
   line-height: 1.3em;
   }
 
@@ -46,21 +46,21 @@ a:visited {
   outline: none;
   cursor: pointer;
   border-bottom: 1px solid #ccc;
-  border-bottom-color: rgba(0,0,0,.2);  
+  border-bottom-color: rgba(0,0,0,.2);
   -webkit-transition: color .6s ease-in;
   -moz-transition: color .6s ease-in;
   -ms-transition: color .6s ease-in;
   -o-transition: color .6s ease-in;
-  transition: color .6s ease-in;      
+  transition: color .6s ease-in;
   }
 
 a:hover,
 a:active {
-  -webkit-transition: color 0 ease-in;  
+  -webkit-transition: color 0 ease-in;
   -moz-transition: color 0 ease-in;
   -ms-transition: color 0 ease-in;
   -o-transition: color 0 ease-in;
-  transition: color 0 ease-in;      
+  transition: color 0 ease-in;
   }
 
 a img {
@@ -72,19 +72,19 @@ a img {
 img {
   border: none;
   -ms-interpolation-mode: bicubic;
-  } 
-  
+  }
+
 img,
 embed,
 object,
 video {
   max-width: 100%;
-  } 
-  
-  
-/* -------------------------------------------------------------- 
+  }
+
+
+/* --------------------------------------------------------------
   Elements / Shared
--------------------------------------------------------------- */  
+-------------------------------------------------------------- */
 
 .button {
   padding: 15px 0;
@@ -92,46 +92,46 @@ video {
   cursor: pointer;
   font-size: 14px;
   letter-spacing: 2px;
-  text-transform: uppercase;  
+  text-transform: uppercase;
   background: transparent;
   border: 2px solid #000;
-  -webkit-font-smoothing: subpixel-antialiased;  
+  -webkit-font-smoothing: subpixel-antialiased;
   -webkit-transition: all .6s ease-in;
   -moz-transition: all .6s ease-in;
   -ms-transition: all .6s ease-in;
   -o-transition: all .6s ease-in;
-  transition: all .6s ease-in;        
+  transition: all .6s ease-in;
   }
-  
+
 .button:hover {
   -webkit-transition: all 0 ease-in;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-transition: all 0 ease-in;
   -ms-transition: all 0 ease-in;
   -o-transition: all 0 ease-in;
-  transition: all 0 ease-in;          
+  transition: all 0 ease-in;
   }
-  
+
 .button.disabled,
 .button.disabled:hover {
   text-align: center;
-  color: #b5b5b5;  
+  color: #b5b5b5;
   border-color: #b5b5b5;
   cursor: default;
-  }  
-  
+  }
+
 input,
 textarea {
   padding: 10px 8px;
   width: 194px;
   border: none;
-  border: 2px solid transparent;  
+  border: 2px solid transparent;
   background: #ebebeb;
   outline: none;
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2); 
-  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);  
-  }  
-  
+  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
+  }
+
 input:focus,
 textarea:focus {
   border: 2px solid #333;
@@ -140,17 +140,17 @@ textarea:focus {
   box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
   outline: none;
   }
-  
+
 label {
   display: block;
   float: left;
   width: 170px;
   padding-right: 30px;
   margin-top: 10px;
-  text-align: right;  
+  text-align: right;
   font-size: 13px;
   }
-  
+
 @-webkit-keyframes reset { from { opacity: 0; } to { opacity: 0; } }
 @-webkit-keyframes fade-in { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes reset { from { opacity: 0; } to { opacity: 0; } }
@@ -173,8 +173,8 @@ label {
   -moz-animation-iteration-count: 1;
   -o-animation-name: reset, fade-in;
   -o-animation-duration: .7s;
-  -o-animation-timing-function: ease-in; 
-  -o-animation-iteration-count: 1; 
+  -o-animation-timing-function: ease-in;
+  -o-animation-iteration-count: 1;
   -ms-animation-name: reset, fade-in;
   -ms-animation-duration: .7s;
   -ms-animation-timing-function: ease-in;
@@ -183,13 +183,13 @@ label {
   animation-duration: .7s;
   animation-timing-function: ease-in;
   animation-iteration-count: 1;
-  }        
-  
+  }
+
 #error {
-  margin-top: -30px;  
+  margin-top: -30px;
   margin-bottom: 40px;
-  }  
-  
+  }
+
 #error li {
   opacity: .5;
   filter: alpha(opacity=50); /* IE6-IE8 */
@@ -212,7 +212,7 @@ label {
 
 #badge {
   width: 100%;
-  margin-top: 20px;  
+  margin-top: 20px;
   }
 
 #website + #badge {
@@ -228,11 +228,11 @@ label {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-  background: url({{ 'bc_badge.png' | theme_image_url }}) no-repeat;
+  background: url("{{ 'bc_badge.png' | theme_image_url }}") no-repeat;
   }
 
 
-/* -------------------------------------------------------------- 
+/* --------------------------------------------------------------
   Structure
 -------------------------------------------------------------- */
 
@@ -245,27 +245,27 @@ label {
   position: relative;
   width: 900px;
   margin: 0 auto;
-  clear: both;  
+  clear: both;
   }
-  
+
 #content {
   padding: 70px 0;
-  }  
+  }
 
 #page_body {
   width: 530px;
   margin: 0 auto;
   }
-    
-    
-/* -------------------------------------------------------------- 
+
+
+/* --------------------------------------------------------------
   Site Header
--------------------------------------------------------------- */  
+-------------------------------------------------------------- */
 
 #site_header header {
   margin: 0;
   }
-  
+
 #site_header header #store_name {
   width: 90%;
   margin: 60px auto 64px;
@@ -276,28 +276,36 @@ label {
   text-align: center;
   white-space: normal;
   }
+<<<<<<< HEAD
   
 #site_header header #store_name a { 
   border: none; 
   } 
   
+=======
+
+#site_header header #store_name a {
+  border: none;
+  }
+
+>>>>>>> upstream/master
 #site_header #branding {
   text-align: center;
   padding: 40px 0 55px;
-  }  
-  
+  }
+
 #site_header #branding a img {
   margin: 0 auto;
-  } 
-  
+  }
+
 #site_header #branding a h2 {
   display: none;
   }
-  
-  
-/* -------------------------------------------------------------- 
+
+
+/* --------------------------------------------------------------
   Site Footer
--------------------------------------------------------------- */  
+-------------------------------------------------------------- */
 
 #site_footer footer {
 	width: 100%;
@@ -309,20 +317,20 @@ label {
   padding-bottom: 10px;
   text-align: center;
   }
-  
+
 #site_footer footer h3 {
   display: none;
-  }  
-  
+  }
+
 #site_footer ul {
-  text-decoration: none;  
-  border: none;  
-  }  
-  
+  text-decoration: none;
+  border: none;
+  }
+
 #site_footer li {
   display: inline-block;
   font-size: 12px;
-  -webkit-font-smoothing: subpixel-antialiased;   
+  -webkit-font-smoothing: subpixel-antialiased;
   zoom: 1;
   }
 
@@ -335,8 +343,8 @@ label {
 
 #site_footer footer p {
   font-size: 11px;
-  color: #999;  
-  font-style: italic;  
+  color: #999;
+  font-style: italic;
   }
 
 #site_footer #website {
@@ -374,16 +382,16 @@ label {
   }
 
 
-/* -------------------------------------------------------------- 
+/* --------------------------------------------------------------
   Main Nav
 -------------------------------------------------------------- */
 
 #main_nav {
   overflow: hidden;
   margin: 0 auto;
-  text-align: center; 
-  }   
-  
+  text-align: center;
+  }
+
 #main_nav ul {
   margin: 0;
   }
@@ -394,19 +402,19 @@ label {
   text-transform: uppercase;
   letter-spacing: 2px;
   -webkit-font-smoothing: subpixel-antialiased;
-  border-bottom: 1px solid #e5e5e5;  
-  }  
-  
+  border-bottom: 1px solid #e5e5e5;
+  }
+
 #main_nav li a {
   display: block;
-  padding: 20px 17px 13px;  
+  padding: 20px 17px 13px;
   border: 0;
-  } 
+  }
 
 #mobile_nav {
   display: none;
-  }  
-  
+  }
+
 /*============================================================
   Basic Styles - used for the simple controls
 ============================================================*/
@@ -444,11 +452,11 @@ body,
 #cart_page #content {
   background-color: {{ theme.background }};
 {% if theme.background_image != blank %}
-  background-image: url({{ theme.background_image.url }});
+  background-image: url("{{ theme.background_image.url }}");
   background-repeat: repeat;
 {% endif %}
   }
-  
+
 
 /* Secondary background */
 #cart_page #site_header,
@@ -459,7 +467,7 @@ body,
 #success_page #content,
 .custom #content,
 #cart_summary
-{ background-color: {{ theme.background_secondary }}; }  
+{ background-color: {{ theme.background_secondary }}; }
 
 
 /* Text */
@@ -474,7 +482,7 @@ p, blockquote, ul, ol, dl,
 
 /* Text - Secondary  */
 #site_footer footer p,
-.alert-noproducts, 
+.alert-noproducts,
 #cart_page #cart_empty p,
 #success_page #content .canvas p,
 .standalone .canvas p,
@@ -498,7 +506,7 @@ p, blockquote, ul, ol, dl,
 /* Links */
 a,
 a:link,
-a:visited 
+a:visited
 { color: {{ theme.links }}; }
 
 
@@ -516,7 +524,7 @@ a:active,
 .product_header.page_header h3,
 .standalone .canvas h1,
 #site_header header #store_name a,
-#site_footer footer h3 
+#site_footer footer h3
 { color: {{ theme.header_text }}; }
 
 .page_header.product_header .dash {
@@ -537,17 +545,17 @@ a:active,
   -ms-transition: none;
   -o-transition: none;
   transition: none;
-  }    
-  
+  }
+
 .product a:hover .product_header * {
   color: {{ theme.header_text }} !important;
   text-shadow: none !important;
-  }    
-  
+  }
+
 .product a:hover .product_header .dash {
   background: {{ theme.header_text }};
-  }  
-  
+  }
+
 .product a:hover .product_thumb img {
   opacity: .6 !important;
   }
@@ -576,35 +584,35 @@ a:active,
 #site_footer ul li {
   border-color: {{ theme.borders }} !important; 
   }
-  
+
 {% capture same_background %}{{ theme.background_secondary }}{% endcapture %}
-  
-{% if theme.background == same_background %}  
+
+{% if theme.background == same_background %}
 #product_page #content,
 #contact_page #content,
-.custom #content {  
+.custom #content {
   border-top: 1px solid {{ theme.borders }};
   border-bottom: 1px solid {{ theme.borders }};
   }
-  
+
 #cart_summary,
 #cart_page #content {
   border-top: 1px solid {{ theme.borders }};
   }
 {% endif %}
-  
 
-/* Button Border/Color */  
-.button { 
-  border-color: {{ theme.button_border }}; 
+
+/* Button Border/Color */
+.button {
+  border-color: {{ theme.button_border }};
   color: {{ theme.button_border }};
   }
 
 .button:hover { 
   border-color: {{ theme.button_border_hover }}; 
   color: {{ theme.button_border_hover }};
-  }  
-  
+  }
+
 
 /* Inventory Bars */
 #product_inventory .bar { background: {{ theme.borders }}; }

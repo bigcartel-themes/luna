@@ -240,7 +240,11 @@ p, blockquote, ul, ol, dl {
   width: 100%;
   height: auto;
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> upstream/master
 
 /* Products Page
 ------------------------------------------------------------*/
@@ -462,6 +466,10 @@ p, blockquote, ul, ol, dl {
   margin-bottom: 0;
   }  
 
+#cart-form.no_options {
+  margin-bottom: 0;
+  }
+
 #cart_description {
   width: auto;
   float: none;
@@ -494,6 +502,14 @@ p, blockquote, ul, ol, dl {
 #cart_items li .quantity_input {
   display: none;
   }    
+
+#cart_items li .item_quantity {
+  display: inline;
+  }
+
+#cart_items li .quantity_input {
+  display: none;
+  }
 
 #cart_items li .remove_item {
   opacity: 1;
@@ -625,6 +641,7 @@ p, blockquote, ul, ol, dl {
 	width: 550px;	
 	}  
 
+<<<<<<< HEAD
 #site_header {
 	margin: 0 auto;	
 	}
@@ -634,6 +651,22 @@ p, blockquote, ul, ol, dl {
 	float: none;
 	}	
 	
+=======
+.custom #page_body,
+#contact_page #page_body {
+	width: 550px;
+	}
+
+#site_header {
+	margin: 0 auto;
+	}
+
+#site_footer footer {
+  min-width: 0;
+	float: none;
+	}
+
+>>>>>>> upstream/master
 
 /* Main Nav
 ------------------------------------------------------------*/
@@ -653,6 +686,13 @@ p, blockquote, ul, ol, dl {
 	margin-top: 0;	
 	}	
 
+/* Home Page
+------------------------------------------------------------*/
+
+#home_page #site_footer footer {
+	margin-top: 0;
+	}
+
 /* Products Page
 ------------------------------------------------------------*/
 
@@ -668,9 +708,31 @@ p, blockquote, ul, ol, dl {
 #products li {
 /*   margin:; */
   }
+<<<<<<< HEAD
   
 .category_nav:first-child {
   margin-top: 10px;
+=======
+
+.category_nav:first-child {
+  margin-top: 10px;
+  }
+
+.category_nav.double nav.categories,
+.category_nav.double nav.artists {
+  width: 100%;
+  display: inline-block;
+  }
+
+.category_nav.double nav.categories,
+.category_nav.double nav.artists {
+  text-align: center;
+  margin: 0;
+  }
+
+.category_nav li a {
+  padding: 10px 4px;
+>>>>>>> upstream/master
   }
 
 .category_nav.double nav.categories,
@@ -909,6 +971,14 @@ p, blockquote, ul, ol, dl {
   display: none;
   }      
 
+#cart_items li .item_quantity {
+  display: inline;
+  }
+
+#cart_items li .quantity_input {
+  display: none;
+  }
+
 #cart_items li .remove_item {
   opacity: 1;
   filter: alpha(opacity=1); /* IE6-IE8 */
@@ -951,7 +1021,11 @@ p, blockquote, ul, ol, dl {
 .solo_update {
   display: none;
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> upstream/master
 .cart-update {
   margin-left: 0;
   }

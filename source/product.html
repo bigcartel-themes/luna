@@ -9,7 +9,7 @@
   <ul class="slides">
     {% for image in product.images %}
     <li id="image_{{ forloop.index }}">
-      <img src="{{ image | product_image_url size:"fullsize" }}" class="fade_in" alt="Image of {{ product.name | escape }}">
+      <img src="{{ image | product_image_url: "fullsize" }}" class="fade_in" alt="Image of {{ product.name | escape }}">
     </li>
     {% endfor %}
   </ul>
