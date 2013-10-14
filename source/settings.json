@@ -175,7 +175,7 @@
     "gutter_width": "28px",
     "title_font": "{{ header_font }}",
     "title_vertical_padding": "60px",
-    "title_background_color": "{{ background_color }}",
+    "title_background_color": "{{ background }}",
     "title_position": "center",
     "title_font_size": "42px",
     "title_color": "{{ text }}",
