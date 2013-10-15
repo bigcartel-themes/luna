@@ -276,19 +276,15 @@ label {
   text-align: center;
   white-space: normal;
   }
-<<<<<<< HEAD
   
 #site_header header #store_name a { 
   border: none; 
   } 
   
-=======
-
 #site_header header #store_name a {
   border: none;
   }
 
->>>>>>> upstream/master
 #site_header #branding {
   text-align: center;
   padding: 40px 0 55px;
