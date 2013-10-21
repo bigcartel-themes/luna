@@ -178,7 +178,7 @@
     "title_background_color": "transparent",
     "title_position": "center",
     "title_font_size": "42px",
-    "title_color": "{{ text }}",
+    "title_color": "{{ header_text }}",
     "body_font": "Times New Roman",
     "body_font_size": "15px",
     "content_border_radius": "0",
