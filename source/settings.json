@@ -180,7 +180,7 @@
     "title_font_size": "42px",
     "title_font_weight": "normal",
     "title_color": "{{ header_text }}",
-    "body_font": "Times New Roman",
+    "body_font": "{{ body_font }}",
     "body_font_size": "15px",
     "content_border_radius": "0",
     "content_width": "530px",
