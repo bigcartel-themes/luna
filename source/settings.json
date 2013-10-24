@@ -179,6 +179,7 @@
     "title_position": "center",
     "title_font_size": "42px",
     "title_font_weight": "normal",
+    "title_text_transform": "uppercase",
     "title_color": "{{ header_text }}",
     "body_font": "{{ body_font }}",
     "body_font_size": "15px",
