@@ -276,7 +276,11 @@ label {
   text-align: center;
   white-space: normal;
   }
-
+  
+#site_header header #store_name a { 
+  border: none; 
+  } 
+  
 #site_header header #store_name a {
   border: none;
   }

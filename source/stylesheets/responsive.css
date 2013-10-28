@@ -457,6 +457,10 @@ p, blockquote, ul, ol, dl {
 #cart-form {
   padding: 0;
   }
+  
+#cart-form.no_options {
+  margin-bottom: 0;
+  }  
 
 #cart-form.no_options {
   margin-bottom: 0;
@@ -486,6 +490,14 @@ p, blockquote, ul, ol, dl {
   float: left;
   margin: 20px 20px 20px 8px;
   }
+  
+#cart_items li .item_quantity {
+  display: inline;
+  }  
+
+#cart_items li .quantity_input {
+  display: none;
+  }    
 
 #cart_items li .item_quantity {
   display: inline;
@@ -619,11 +631,20 @@ p, blockquote, ul, ol, dl {
 	width: 640px;
   margin: 0 auto;
   }
-
+  
 .custom #page_body,
 #contact_page #page_body {
-	width: 550px;
+	width: 550px;	
+	}  
+
+#site_header {
+	margin: 0 auto;	
 	}
+	
+#site_footer footer {
+  min-width: 0;
+	float: none;
+	}	
 
 #site_header {
 	margin: 0 auto;
@@ -635,6 +656,7 @@ p, blockquote, ul, ol, dl {
 	}
 
 
+
 /* Main Nav
 ------------------------------------------------------------*/
 
@@ -644,7 +666,14 @@ p, blockquote, ul, ol, dl {
   margin: 0 auto;
   text-align: center;
   }
-
+	
+	
+/* Home Page
+------------------------------------------------------------*/	
+	
+#home_page #site_footer footer {
+	margin-top: 0;	
+	}	
 
 /* Home Page
 ------------------------------------------------------------*/
@@ -665,13 +694,9 @@ p, blockquote, ul, ol, dl {
   margin-left: -5px;
   }
 
-#products li {
-/*   margin:; */
-  }
-
 .category_nav:first-child {
   margin-top: 10px;
-  }
+	}
 
 .category_nav.double nav.categories,
 .category_nav.double nav.artists {
@@ -684,10 +709,10 @@ p, blockquote, ul, ol, dl {
   text-align: center;
   margin: 0;
   }
-
+  
 .category_nav li a {
   padding: 10px 4px;
-  }
+  }    
 
 #products_page #pagination {
   margin-top: 0;
@@ -900,6 +925,14 @@ p, blockquote, ul, ol, dl {
   float: left;
   margin: 20px 10px 20px 20px;
   }
+  
+#cart_items li .item_quantity {
+  display: inline;
+  }
+  
+#cart_items li .quantity_input {
+  display: none;
+  }      
 
 #cart_items li .item_quantity {
   display: inline;
@@ -951,7 +984,7 @@ p, blockquote, ul, ol, dl {
 .solo_update {
   display: none;
   }
-
+  
 .cart-update {
   margin-left: 0;
   }
