@@ -70,7 +70,7 @@
 #cart_items li dl {
   margin: 0;
   line-height: 0;
-  margin: 31px 0 0;
+  margin: 31px 0 18px;
   }
 
 #cart_items li.with_option dl {
@@ -88,6 +88,7 @@
   }
 
 #cart_items li dt {
+  width: 83%;
   margin: 0 0 3px 0;
   }
 
