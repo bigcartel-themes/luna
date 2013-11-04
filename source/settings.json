@@ -170,6 +170,7 @@
     "optimize_legibility": "optimizeLegibility",
     "antialias_text": "antialiased",
     "header_image": "{{ image }}",
+    "header_width": "900px",
     "background_image": "{{ background_image }}",
     "background_color": "{{ background_secondary }}",
     "gutter_width": "28px",
