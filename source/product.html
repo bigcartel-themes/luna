@@ -40,7 +40,8 @@
     </section>
     {% endif %}
     <section id="product_form">
-      <form method="post" action="/cart">
+      <form method="post" action="/cart" accept-charset="utf8">
+        <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}

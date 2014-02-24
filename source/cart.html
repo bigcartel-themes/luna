@@ -4,7 +4,8 @@
 </header>
 
 {% if cart.items != blank %}
-<form id="cart-form" {% unless cart.shipping.enabled or cart.discount.enabled %}class="no_options"{% endunless %} method="post" action="/cart">
+<form id="cart-form" {% unless cart.shipping.enabled or cart.discount.enabled %}class="no_options"{% endunless %} method="post" action="/cart" accept-charset="utf8">
+  <input type="hidden" name="utf8" value='✓'>
   <div id="cart_description">
     <section id="cart_items">
       <ul>
