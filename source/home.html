@@ -1,3 +1,15 @@
+{% if theme.toggle_slideshow %}
+	{% if theme.image_sets.slideshow_images.size > 0 %}
+	<div class="flexslider">
+		<ul class="slides">
+		{% for image in theme.image_sets.slideshow_images %}
+		<li><img src="{{ image.url }}"></li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+{% endif %}
+
 {% get products from products.all limit:theme.featured_products order:theme.featured_order %}
 
 {% if products != blank %}

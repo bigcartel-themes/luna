@@ -52,6 +52,12 @@ var Store = {
         directionNav: false
       });
     }
+    
+    // Initiate theme slideshow 
+    
+    $('.flexslider').flexslider({
+		animation: "slide"
+	});
 
     // Set up the update cart button to activate after cart-option selection is made
     
