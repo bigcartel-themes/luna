@@ -9,12 +9,11 @@
 	background-color:rgba(255,255,255,.8);
 	background-size:79px auto;
 	border:none;
-	height: 39px;
-	margin: -20px 0 0;
-	padding:12px;
+	height: 63px;
+	margin: -31px 0 0;
 	position: absolute;
 	text-indent: 9999px;
-	width: 24px;
+	width: 48px;
 }
 .flex-direction-nav li a:hover { 
 	background-color:rgba(255,255,255,1);
@@ -57,6 +56,7 @@
   screen and (max-device-width: 560px) and (orientation: landscape) {
   .flex-direction-nav .flex-prev { display:none;}
   .flex-direction-nav .flex-next { display:none;}
+  .flexslider .slides img { border-radius:0;}
 }
 
 /* Fixes display issues on custom pages */
