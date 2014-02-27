@@ -13,6 +13,13 @@
       "description": "Adds a repeating background image"
     }
   ],
+  "image_sets": [
+    {
+      "variable": "slideshow_images",
+      "label": "Slideshow",
+      "description": "Everyone loves a good slideshow"
+    }
+  ],
   "fonts": [
     {
       "variable": "header_font",
@@ -131,6 +138,13 @@
       "type": "boolean",
       "default": false,
       "description": "Shows the product search area"
+    },
+    {
+      "variable": "toggle_slideshow",
+      "label": "Show Slideshow",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a slideshow on the Home page"
     },
     {
       "variable": "show_facebook",
