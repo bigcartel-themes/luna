@@ -2,7 +2,6 @@
 	margin:0 auto 80px;
 }
 .flexslider .slides img { 
-	border-radius: 4px;
 	width:auto;
 	margin:0 auto;
 }
@@ -17,6 +16,11 @@
 	position: absolute;
 	text-indent: 9999px;
 	width: 48px;
+	-webkit-transition: all .1s ease-in;
+	-moz-transition: all .1s ease-in;
+	-ms-transition: all .1s ease-in;
+	-o-transition: all .1s ease-in;
+	transition: all .1s ease-in;
 }
 .flex-direction-nav li a:hover { 
 	background-color:rgba(255,255,255,1);
