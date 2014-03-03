@@ -1,8 +1,11 @@
-/* Basic flexslider styles */
+.flexslider { 
+	margin:0 auto 80px;
+}
 .flexslider .slides img { 
 	border-radius: 4px;
+	width:auto;
+	margin:0 auto;
 }
-
 .flex-direction-nav li a { 
 	background-image: url({{ 'slideshow_arrows.png' | theme_image_url }});
 	background-repeat: no-repeat;
@@ -18,49 +21,37 @@
 .flex-direction-nav li a:hover { 
 	background-color:rgba(255,255,255,1);
 }
-
 .flex-direction-nav .flex-next {
-    background-position:4px -46px;
+    background-position:-42px 15px;
     border-radius:3px 0px 0px 3px;
     right:0px;
 }
 .flex-direction-nav .flex-prev {
-    background-position: 4px 9px;
+    background-position: 12px 15px;
     border-radius:0px 3px 3px 0px;
     left:0px;
 }
-
-/* adjust flex-slider paging according to foreground color */
-
 .flex-control-paging li a {
   background: {{ theme.text }};
   opacity:0.5;
   filter:alpha(opacity=50);
 }
-
 .flex-control-paging li a:hover {
   background: {{ theme.text }};
   opacity:0.7;
   filter:alpha(opacity=70);
 }
-
 .flex-control-paging li a.flex-active {
   background: {{ theme.text }};
   opacity:0.3;
   filter:alpha(opacity=30);
 }
-
-/* Fixes a few issues with responsive design */
-
 @media screen and (max-width: 560px),
   screen and (max-device-width: 560px) and (orientation: landscape) {
   .flex-direction-nav .flex-prev { display:none;}
   .flex-direction-nav .flex-next { display:none;}
   .flexslider .slides img { border-radius:0;}
 }
-
-/* Fixes display issues on custom pages */
-
 .custom #page_body .flexslider ul {
     list-style: none;
 }
