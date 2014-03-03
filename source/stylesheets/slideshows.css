@@ -55,6 +55,8 @@
   .flex-direction-nav .flex-prev { display:none;}
   .flex-direction-nav .flex-next { display:none;}
   .flexslider .slides img { border-radius:0;}
+  .flexslider { margin-bottom:50px }
+  .flexslider .flex-control-nav { bottom:-35px }
 }
 .custom #page_body .flexslider ul {
     list-style: none;
