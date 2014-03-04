@@ -1,21 +1,21 @@
 .flexslider { 
 	margin:0 auto 80px;
 }
-.flexslider .slides img { 
-	width:auto;
-	margin:0 auto;
+.flexslider .slides img {
+    margin: 0 auto;
+    width: 100%;
 }
 .flex-direction-nav li a { 
 	background-image: url({{ 'slideshow_arrows.png' | theme_image_url }});
 	background-repeat: no-repeat;
 	background-color:rgba(0,0,0,.7);
-	background-size:79px auto;
+	background-size:65px auto;
 	border:none;
-	height: 73px;
-	margin: -36px 0 0;
+	height: 64px;
+	margin: -39px 0 0;
 	position: absolute;
 	text-indent: 9999px;
-	width: 41px;
+	width: 33px;
 	-webkit-transition: all .1s ease-in;
 	-moz-transition: all .1s ease-in;
 	-ms-transition: all .1s ease-in;
@@ -27,12 +27,12 @@
 }
 
 .flex-direction-nav .flex-prev {
-    background-position: 7px 15px;
+    background-position: 6px 15px;
     border-radius: 3px;
     left: 18px;
 }
 .flex-direction-nav .flex-next {
-    background-position:-47px 15px;
+    background-position:-38px 15px;
     border-radius:3px;
     right:18px;
 }
