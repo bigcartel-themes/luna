@@ -8,14 +8,14 @@
 .flex-direction-nav li a { 
 	background-image: url({{ 'slideshow_arrows.png' | theme_image_url }});
 	background-repeat: no-repeat;
-	background-color:rgba(255,255,255,.8);
+	background-color:rgba(0,0,0,.7);
 	background-size:79px auto;
 	border:none;
-	height: 63px;
-	margin: -31px 0 0;
+	height: 73px;
+	margin: -36px 0 0;
 	position: absolute;
 	text-indent: 9999px;
-	width: 48px;
+	width: 41px;
 	-webkit-transition: all .1s ease-in;
 	-moz-transition: all .1s ease-in;
 	-ms-transition: all .1s ease-in;
@@ -23,17 +23,18 @@
 	transition: all .1s ease-in;
 }
 .flex-direction-nav li a:hover { 
-	background-color:rgba(255,255,255,1);
+	background-color:rgba(0,0,0,1);
+}
+
+.flex-direction-nav .flex-prev {
+    background-position: 7px 15px;
+    border-radius: 3px;
+    left: 18px;
 }
 .flex-direction-nav .flex-next {
-    background-position:-42px 15px;
-    border-radius:3px 0px 0px 3px;
-    right:0px;
-}
-.flex-direction-nav .flex-prev {
-    background-position: 12px 15px;
-    border-radius:0px 3px 3px 0px;
-    left:0px;
+    background-position:-47px 15px;
+    border-radius:3px;
+    right:18px;
 }
 .flex-control-paging li a {
   background: {{ theme.text }};
