@@ -88,7 +88,7 @@
   line-height: 0;
   }
 
-#product_images li:last-child { margin: 0; }
+#product_images .slides li:last-child { margin-bottom: 0; }
 
 #product_images li img {
   border-radius: 4px;

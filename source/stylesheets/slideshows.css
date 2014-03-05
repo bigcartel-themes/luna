@@ -11,8 +11,8 @@
 	background-color:rgba(0,0,0,.7);
 	background-size:65px auto;
 	border:none;
-	height: 64px;
-	margin: -39px 0 0;
+	height: 66px;
+	margin: -33px 0 0;
 	position: absolute;
 	text-indent: 9999px;
 	width: 33px;
@@ -25,7 +25,6 @@
 .flex-direction-nav li a:hover { 
 	background-color:rgba(0,0,0,1);
 }
-
 .flex-direction-nav .flex-prev {
     background-position: 6px 15px;
     border-radius: 3px;
@@ -38,6 +37,7 @@
 }
 .flex-control-paging li a {
   background: {{ theme.text }};
+  border-radius:50%;
   opacity:0.5;
   filter:alpha(opacity=50);
 }
@@ -51,14 +51,23 @@
   opacity:0.3;
   filter:alpha(opacity=30);
 }
-@media screen and (max-width: 560px),
-  screen and (max-device-width: 560px) and (orientation: landscape) {
+.flex-control-nav li { 
+	border-radius:50%;
+	height:11px;
+	margin:6px;
+	width:11px;
+}
+@media screen and (max-width: 768px) {
   .flex-direction-nav .flex-prev { display:none;}
   .flex-direction-nav .flex-next { display:none;}
   .flexslider .slides img { border-radius:0;}
   .flexslider { margin-bottom:50px }
   .flexslider .flex-control-nav { bottom:-35px }
 }
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+	.flex-direction-nav .flex-prev { display:none;}
+	.flex-direction-nav .flex-next { display:none;}
+ }
 .custom #page_body .flexslider ul {
     list-style: none;
 }
