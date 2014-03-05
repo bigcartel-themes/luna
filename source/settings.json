@@ -17,7 +17,7 @@
     {
       "variable": "slideshow_images",
       "label": "Slideshow",
-      "description": "Everyone loves a good slideshow"
+      "description": "900px by 500px images recommended"
     }
   ],
   "fonts": [
