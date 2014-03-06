@@ -35,9 +35,17 @@
     border-radius:3px;
     right:18px;
 }
+.flex-control-paging li { 
+	border-radius:50%;
+	height:11px;
+	margin:6px;
+	width:11px;
+	-webkit-backface-visibility: hidden;
+}
 .flex-control-paging li a {
   background: {{ theme.text }};
   border-radius:50%;
+  border:none;
   opacity:0.5;
   filter:alpha(opacity=50);
 }
@@ -50,12 +58,6 @@
   background: {{ theme.text }};
   opacity:0.3;
   filter:alpha(opacity=30);
-}
-.flex-control-nav li { 
-	border-radius:50%;
-	height:11px;
-	margin:6px;
-	width:11px;
 }
 @media screen and (max-width: 768px) {
   .flex-direction-nav .flex-prev { display:none;}
