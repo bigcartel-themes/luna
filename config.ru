@@ -9,14 +9,14 @@ options = {}
 # Simulate the customization done by store owners by passing values to different variables.
 # Default values are based on the "default" for each setting in your settings.json.
 # options[:customization] = {
-# :logo => {
-# :url => 'http://placehold.it/200x50/000000/ffffff&text=My+Logo',
-# :width => 200,
-# :height => 50
-# },
-# :background_color => '#CCCCCC',
-# :show_search => true,
-# :twitter_username => 'mytwitter'
+#   :logo => {
+#     :url => 'http://placehold.it/200x50/000000/ffffff&text=My+Logo',
+#     :width => 200,
+#     :height => 50
+#   },
+#   :background_color => '#CCCCCC',
+#   :show_search => true,
+#   :twitter_username => 'mytwitter'
 # }
 
 run Dugway.application(options)

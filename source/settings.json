@@ -140,13 +140,6 @@
       "description": "Shows the product search area"
     },
     {
-      "variable": "show_slideshow",
-      "label": "Show slideshow",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays a slideshow on the Home page"
-    },
-    {
       "variable": "show_facebook",
       "label": "Show Facebook's Like button",
       "type": "boolean",
