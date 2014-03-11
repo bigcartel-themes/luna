@@ -53,11 +53,11 @@
         </nav>
         
         <header>
-          {% if theme.image != blank %}
+          {% if theme.images.header != blank %}
           <div id="branding">
             <a href="/">
               <h2>{{ page.name }}</h2>
-              <img src="{{ theme.image.url }}" alt="{{ store.name }}">
+              <img src="{{ theme.images.header.url }}" alt="{{ store.name }}">
             </a>
           </div>
           {% elsif page.name == 'Home' %}
