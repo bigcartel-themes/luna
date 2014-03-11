@@ -27,6 +27,7 @@
  *= require stylesheets/standalone_maintenance
  *= require stylesheets/ie
  *= require stylesheets/responsive
+ *= require stylesheets/slideshows
  */
 
  /*============================================================

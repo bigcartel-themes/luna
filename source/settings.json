@@ -1,16 +1,23 @@
 {
   "name": "Luna",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "images": [
     {
-      "variable": "image",
+      "variable": "header",
       "label": "Header image",
       "description": "Transparent background recommended"
     },
     {
-      "variable": "background_image",
+      "variable": "background",
       "label": "Background Image",
       "description": "Adds a repeating background image"
+    }
+  ],
+  "image_sets": [
+    {
+      "variable": "slideshow",
+      "label": "Slideshow",
+      "description": "900px by 500px images recommended"
     }
   ],
   "fonts": [

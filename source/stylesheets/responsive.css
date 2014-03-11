@@ -313,7 +313,7 @@ p, blockquote, ul, ol, dl {
   margin-bottom: 5px;
   }
 
-.flex-control-nav {
+#product_images .flex-control-nav {
   bottom: -25px;
   }
 
@@ -728,7 +728,7 @@ p, blockquote, ul, ol, dl {
   margin-bottom: 5px;
   }
 
-.flex-control-nav {
+#product_images .flex-control-nav {
   bottom: -25px !important;
   }
 
