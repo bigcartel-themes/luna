@@ -442,7 +442,7 @@ h1, h2, h3, h4, h5, h6,
 /* Background */
 body,
 #cart_page #content {
-  background-color: {{ theme.background }};
+  background-color: {{ theme.background_color }};
 {% if theme.images.background != blank %}
   background-image: url("{{ theme.images.background.url }}");
   background-repeat: repeat;
@@ -579,7 +579,7 @@ a:active,
 
 {% capture same_background %}{{ theme.background_secondary }}{% endcapture %}
 
-{% if theme.background == same_background %}
+{% if theme.background_color == same_background %}
 #product_page #content,
 #contact_page #content,
 .custom #content {
