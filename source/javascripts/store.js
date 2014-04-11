@@ -22,24 +22,30 @@ var Store = {
     if(width == options.cutoffWidth) {
       $('meta[name=viewport]').attr({ content: 'width=720' });  
     }
+    
+    // Adjust meta viewport properties when rotating on iOS 
+    
+	if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+	    var viewportmeta = document.querySelector('meta[name="viewport"]');
+	    if (viewportmeta) {
+	        viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0';
+	        document.body.addEventListener('gesturestart', function () {
+	            viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1.6';
+	        }, false);
+	    }
+	}
 
     // Vertically center product thumbnails
 
-    $('#content').imagesLoaded(function() {
-      setTimeout(function() {
-        $('.product_thumb img').each(function() {
-          width = inPreview ? $(window.parent.document).width() : width;
-          var imgHeight = $(this).height();
-          var imgHeightDiff = (280 - imgHeight) / 2;
-          var imgHeightDiffMobile = (150 - imgHeight) /2;
-          
-          if(imgHeight < 280 && width > 480) {
-            $(this).css({ position: 'relative', top: imgHeightDiff });  
-          }else if(imgHeight > 150 && width < 560) {
-            $(this).css({ position: 'relative', top: imgHeightDiffMobile });  
-          };
-        });
-      }, inPreview ? 50 : 0);
+	$('.product_thumb').each(function() {
+        var image = $(this).find('img');
+        var img = new Image();
+        img.src = image.attr('src') ;
+		img.onload = function() {
+			if (img.height > 560) { 
+				$(image).addClass('no_transform');
+			}
+		};
     });
 
     // Set the slideshow for Products if viewport is less than cutoffWidth

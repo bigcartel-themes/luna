@@ -79,7 +79,7 @@
         if (this.text = this.element.attr('data-quickfit')) {
           this.previously_truncated = true;
         } else {
-          this.text = this.element.html();
+          this.text = this.element.text();
         }
         this.calculate_font_size();
         if (this.options.truncate) this.truncate();
