@@ -5,6 +5,21 @@
   margin: 0 auto;
   width: 100%;
 }
+.slides {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.flex-viewport {
+  border-radius: 4px;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.flexslider .slides > li {
+  transform: translateZ(0px);
+  -moz-transform: translateZ(0px);
+  -webkit-transform: translateZ(0px);
+}
 .flex-direction-nav li a { 
   background-image: url({{ 'slideshow_arrows.png' | theme_image_url }});
   background-repeat: no-repeat;

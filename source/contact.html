@@ -8,7 +8,7 @@
   <p id="thank_you">Your message has been sent and we will try to respond within 24 business hours.</p>
   {% else %}
 
-  {% if twitter_username != blank or facebook_username != blank %}
+  {% if theme.twitter_username != blank or theme.facebook_username != blank %}
   <ul id="contact_links" class="{% if intro_paragraph == blank %}no_intro{% endif %}">
     {% if theme.twitter_username != blank %}
       <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>

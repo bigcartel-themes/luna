@@ -214,17 +214,19 @@ p, blockquote, ul, ol, dl {
 .product .product_header {
   opacity: 1;
   filter: alpha(opacity=10); /* IE6-IE8 */
-  margin-top: 47px;
+  width:100%;
   }
 
 .product a:hover .product_header {
   opacity: 1;
   filter: alpha(opacity=1); /* IE6-IE8 */
-  margin-top: 47px;
+  width:100%;
+  margin:0 auto;
+  top:60%;
   }
 
 .product_thumb {
-  position: relative;
+  position: absolute;
 /*   top: -70%; */
   width: 100%;
   height: 100%;
@@ -234,13 +236,25 @@ p, blockquote, ul, ol, dl {
   border-radius: 0;
   }
 
-
 .product .product_thumb img {
   min-width: 100%;
   width: 100%;
   height: auto;
+  -webkit-transform:none;
+  -moz-transform:none;
+  -ms-transform:none;
+  -o-transform:none;
+  transform:none;
+  top:0;
   }
-
+.product a:hover .product_thumb img { 
+  -webkit-transform:none;
+  -moz-transform:none;
+  -ms-transform:none;
+  -o-transform:none;
+  transform:none;
+  top:0;
+}
 
 /* Products Page
 ------------------------------------------------------------*/
