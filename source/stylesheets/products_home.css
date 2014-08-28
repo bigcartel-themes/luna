@@ -100,7 +100,7 @@
   }
 
 .product .product_header {
-  position: absolute;
+  position: relative;
   z-index: 1;
   opacity: 0;
   filter: alpha(opacity=0); /* IE6-IE8 */
