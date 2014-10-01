@@ -446,7 +446,7 @@ p, blockquote, ul, ol, dl {
 
 #captcha_img input {
   float: left;
-  width: 53%;
+  width: 45%;
   padding: 17px 8px;
   margin-right: 0;
   }
@@ -495,7 +495,7 @@ p, blockquote, ul, ol, dl {
 #cart_items li dl {
   float:left;
   margin-top: 21px;
-  width: 63%;
+  width: 56%;
   }
   
 #cart_items li dt {
@@ -504,7 +504,7 @@ p, blockquote, ul, ol, dl {
 
 #cart_items .item_image {
   float: left;
-  margin: 20px 15px 20px 8px;
+  margin: 20px 7px 20px 8px;
   }
 
 #cart_items li .item_quantity {
@@ -513,12 +513,12 @@ p, blockquote, ul, ol, dl {
 
 #cart_items li .quantity_input {
   display: inline-block;
-  left:76%;
+  left:72%;
   }
 
 #cart_items li .remove_item {
   opacity: 1;
-  left: 90%;
+  left: 88%;
   }
 
 #cart_options {
