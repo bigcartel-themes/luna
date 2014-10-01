@@ -10,8 +10,8 @@
     <section id="cart_items">
       <ul>
         {% for item in cart.items %}
-        <li class="cart_item {% unless item.product.has_default_option %}with_option{% endunless %}" id="item-{{ item.id }}">
-          <div class="item_image"><img src="{{ item.product.image | product_image_url: "thumb" }}" alt="Photo of {{ item.name }}"></div>
+        <li class="cart_item{% unless item.product.has_default_option %} with_option{% endunless %}" id="item-{{ item.id }}">
+          <div class="item_image"><img src="{{ item.product.image | product_image_url: "medium" }}" alt="Photo of {{ item.name }}"></div>
           <dl>
             <dt><a href="{{ item.product.url }}">{{ item.product.name }}</a></dt>
             <dd class="item_price">{{ item.unit_price | money_with_sign }}{% if item.quantity > 1 %}<span class="item_quantity">(x{{ item.quantity }})</span>{% endif %}</dd>

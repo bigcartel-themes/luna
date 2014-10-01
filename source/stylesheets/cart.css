@@ -68,9 +68,11 @@
   }
 
 #cart_items li dl {
+  float: left;
   margin: 0;
   line-height: 0;
   margin: 31px 0 18px;
+  width: 60%;
   }
 
 #cart_items li.with_option dl {
