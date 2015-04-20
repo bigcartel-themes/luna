@@ -102,8 +102,8 @@
 #product_inventory {
   margin: 35px 0 0px 0;
   padding: 18px 10px 8px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-style: solid;
+  border-width: 1px 0;
   }
 
 #product_inventory h3 {
@@ -153,14 +153,16 @@
 #social_links {
   width: 100%;
   margin-top: 40px;
-  border: 1px solid #ccc;
+  border-style: solid;
+  border-width: 1px;
   }
 
 #social_links li {
   padding: 0;
   height: 40px;
   text-align: center;
-  border-top: 1px solid #ccc;
+  border-style: solid;
+  border-width: 1px 0 0 0;
   }
 
 #social_links li:first-child {
@@ -213,6 +215,8 @@
   }
 
 #more_products {
+  border-style: solid;
+  border-width: 0 0 1px 0;
   position: relative;
   overflow: hidden;
   clear: both;
