@@ -103,7 +103,7 @@ video {
   transition: all .6s ease-in;
   }
 
-.button:hover {
+.button:hover, .button:active {
   -webkit-transition: all 0 ease-in;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-transition: all 0 ease-in;
@@ -267,13 +267,16 @@ label {
   }
 
 #site_header header #store_name {
-  width: 90%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
   margin: 60px auto 64px;
   font-size: 42px;
   text-transform: uppercase;
   letter-spacing: 6px;
-  padding-right: 6px;
   text-align: center;
+  padding: 0 15px;
   white-space: normal;
   }
 
@@ -335,11 +338,12 @@ label {
 
 #site_footer footer p {
   font-size: 11px;
-  color: #999;
   font-style: italic;
   }
 
 #site_footer #website {
+  border: 2px solid {{ theme.button_border }};
+  color: {{ theme.button_border }};
   display: block;
   margin: 35px auto 20px;
   width: 140px;
@@ -347,11 +351,11 @@ label {
   text-transform: uppercase;
   letter-spacing: 2px;
   -webkit-font-smoothing: subpixel-antialiased;
-  border: 1px solid #000;
   }
 
-#site_footer #website:hover {
-  border-color: #777;
+#site_footer #website:hover { 
+  border-color: {{ theme.button_border_hover }}; 
+  color: {{ theme.button_border_hover }};
   }
 
 #site_footer #search form {
@@ -394,7 +398,6 @@ label {
   text-transform: uppercase;
   letter-spacing: 2px;
   -webkit-font-smoothing: subpixel-antialiased;
-  border-bottom: 1px solid #e5e5e5;
   }
 
 #main_nav li a {

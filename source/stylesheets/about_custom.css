@@ -9,12 +9,6 @@
   font-style: italic;
   }
   
-#about_page #page_body img {
-  margin-bottom: 1.5em;
-  -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.4);
-  box-shadow: 0 2px 8px rgba(0,0,0,.4);    
-  }  
-  
 .custom #page_body h1,  
 .custom #page_body h2 { 
   font-size: 16px; 

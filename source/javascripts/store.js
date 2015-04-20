@@ -11,12 +11,6 @@ var Store = {
     
     options = $.extend(this.defaults, options);
 
-    // Resize store name on resize
-
-    win.on('resize', function() {
-      $('#store_name').quickfit({ max: 42, min: 26, truncate: false });
-    }).trigger('resize');
-
     // Set the viewport content width to 720 for iPad
 
     if(width == options.cutoffWidth) {

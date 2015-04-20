@@ -2,8 +2,8 @@
   Responsive styles
 ============================================================*/
 
-@media screen and (max-width: 560px),
-  screen and (max-device-width: 560px) and (orientation: landscape) {
+@media screen and (max-width: 569px),
+  screen and (max-device-width: 569px) and (orientation: landscape) {
 
 p, blockquote, ul, ol, dl {
   font-size: 17px;
@@ -94,7 +94,7 @@ p, blockquote, ul, ol, dl {
   margin: 30px auto 0;
   font-size: 36px;
   letter-spacing: 3px;
-  padding-right: 3px;
+  word-wrap: break-word;
   }
 
 #site_header #branding {
@@ -155,7 +155,7 @@ p, blockquote, ul, ol, dl {
   }
 
 
-/* Producs List
+/* Products List
 ------------------------------------------------------------*/
 
 #products {
@@ -163,6 +163,13 @@ p, blockquote, ul, ol, dl {
   margin: 0 !important;
   }
 
+.product_header h2 { 
+  font-size: 16px
+}
+
+.product_header h5 { 
+  font-size: 14px
+}
 
 #products.single_product,
 #products.double_product {
@@ -595,8 +602,11 @@ p, blockquote, ul, ol, dl {
 }
 
 
-@media screen and (min-width: 560px) and (max-width: 768px) {
+@media screen and (min-width: 569px) and (max-width: 800px) {
 
+#site_header header #store_name {
+  word-wrap: break-word
+}
 
 .button {
   display: block;
@@ -684,10 +694,6 @@ p, blockquote, ul, ol, dl {
   width: 640px;
   margin: 0 auto 30px ;
   margin-left: -5px;
-  }
-
-#products li {
-/*   margin:; */
   }
 
 .category_nav:first-child {
@@ -993,7 +999,6 @@ p, blockquote, ul, ol, dl {
   margin: 0 auto;
   padding-top: 0;
   padding-bottom: 10px;
-  background: #fff;
   border: none;
   }
 
@@ -1009,7 +1014,7 @@ p, blockquote, ul, ol, dl {
 }
 
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen and (min-device-width : 800px) and (max-device-width : 1280px) and (orientation : landscape) {
   #social_links li h4 {
     display: none;
     }
