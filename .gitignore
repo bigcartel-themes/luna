@@ -1,9 +1,11 @@
+.bundle
 .DS_Store
+.sass-cache
+.dugway.json
 
 build
 tmp
 log
-.bundle
 
 *.tmproj
 *.esproj
