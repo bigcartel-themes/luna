@@ -2,7 +2,6 @@
   About / Custom Page
 -------------------------------------------------------------- */  
 
-.custom #page_body p:first-child,
 #contact_page #page_body p:first-child {
   font-size: 20px;
   line-height: 28px;

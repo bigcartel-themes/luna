@@ -113,18 +113,10 @@ p, blockquote, ul, ol, dl {
   margin-top: 30px;
   }
 
-#site_footer footer h3 {
-  display: block;
-  margin-bottom: 15px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  }
-
 #site_footer ul {
   width: 90%;
   margin: 0 auto;
-  border-top: 1px solid {{ theme.borders }};
+  border-top: none;
   }
 
 #site_footer li {
@@ -136,12 +128,17 @@ p, blockquote, ul, ol, dl {
   border-bottom: 1px solid {{ theme.borders }};
   font-family: {{ theme.body_font | font_family }};
   }
-
+  
+#site_footer li:last-child {
+  border-bottom: none
+}
+  
 #site_footer li a {
   display: block;
   padding: 8px 0;
   border: none;
   }
+
 
 #site_footer footer p {
   margin-top: 30px;

@@ -46,7 +46,7 @@
           <div id="branding">
             <a href="/">
               <h2>{{ page.name }}</h2>
-              <img src="{{ theme.images.header.url }}" alt="{{ store.name }}">
+              <img src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }}">
             </a>
           </div>
           {% elsif page.name == 'Home' %}
