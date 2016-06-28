@@ -382,15 +382,11 @@ p, blockquote, ul, ol, dl {
   }
 
 #social_links .social_action {
-  display: block;
+  opacity: 1;
   top: 16px;
+  visibility: visible;
   }
 
-#social_links #social_facebook iframe,
-#social_links #social_tweet iframe,
-#social_links #social_pinterest iframe {
-  margin-left: 32% !important;
-  }
 
 #more_products {
   margin-top: 0;
@@ -808,15 +804,11 @@ p, blockquote, ul, ol, dl {
   }
 
 #social_links .social_action {
-  display: block;
+  opacity: 1;
   top: 16px;
+  visibility: visible;
   }
 
-#social_links #social_facebook iframe,
-#social_links #social_pinterest iframe,
-#social_links #social_tweet iframe {
-  margin-left: 32% !important;
-  }
 
 #more_products {
   padding-bottom: 0;

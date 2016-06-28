@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.3.8",
+  "version": "1.4.0",
   "images": [
     {
       "variable": "header",
@@ -161,16 +161,34 @@
       "description": "Adds a Pin It button to the Product page"
     },
     {
-      "variable": "twitter_username",
-      "label": "Twitter username",
+      "variable": "twitter_url",
+      "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
-      "variable": "facebook_username",
-      "label": "Facebook username",
+      "variable": "facebook_url",
+      "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
     }
   ],
   "checkout": {

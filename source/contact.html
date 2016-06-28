@@ -8,43 +8,32 @@
   <p id="thank_you">Your message has been sent and we will try to respond within 24 business hours.</p>
   {% else %}
 
-  {% if theme.twitter_username != blank or theme.facebook_username != blank %}
-  <ul id="contact_links" class="{% if intro_paragraph == blank %}no_intro{% endif %}">
-    {% if theme.twitter_username != blank %}
-      <li><a href="http://twitter.com/{{ theme.twitter_username }}" title="Follow us on Twitter">Twitter</a></li>
-    {% endif %}
-    {% if theme.facebook_username != blank %}
-      <li><a href="http://facebook.com/{{ theme.facebook_username }}" title="Friend us on Facebook">Facebook</a></li>
-    {% endif %}
-  </ul>
-  {% endif %}
-
   <form id="contact_form" method="post" action="/contact" accept-charset="utf8">
     <input type="hidden" name="utf8" value='✓'>
     <ul>
       <li>
         <label>Your name</label>
-        {{ contact | contact_input: 'name' }}
+        {{ contact | contact_input: 'name', tabindex: 1 }}
       </li>
       <li>
         <label>Your email</label>
-        {{ contact | contact_input: 'email' }}
+        {{ contact | contact_input: 'email', tabindex: 2 }}
       </li>
       <li>
         <label>Subject</label>
-        {{ contact | contact_input: 'subject' }}
+        {{ contact | contact_input: 'subject', tabindex: 3 }}
       </li>
       <li>
         <label>Message</label>
-        {{ contact | contact_input: 'message' }}
+        {{ contact | contact_input: 'message', tabindex: 4 }}
       </li>
       <li id="captcha_img">
         <label>Are you human? Enter the characters from the image</label>
         <div id="captcha_phrase">{{ contact.captcha }}</div>
-        {{ contact | contact_input: 'captcha' }}
+        {{ contact | contact_input: 'captcha', tabindex: 5 }}
       </li>
     </ul>
-    <button id="contact_button" type="submit" name="submit" class="button">Send Message</button>
+    <button id="contact_button" type="submit" name="submit" class="button" tabindex="6">Send Message</button>
   </form>
   {% endif %}
 </section>
