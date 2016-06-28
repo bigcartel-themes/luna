@@ -177,9 +177,10 @@
   }
 
 #social_links .social_action {
-  display: none;
+  opacity: 0;
   position: relative;
   top: 10px;
+  visibility: hidden;
   }
 
 #social_links li .social_action a {
@@ -191,8 +192,13 @@
   }
 
 #social_links li:hover .social_action {
-  display: block;
+  opacity: 1;
+  visibility: visible;
   }
+  
+#social_links li iframe { 
+  margin: 0 auto;
+}
 
 #social_links #social_facebook:hover,
 #social_links #social_pinterest:hover,
@@ -200,19 +206,6 @@
   padding-bottom: 0;
   }
 
-#social_links #social_facebook iframe {
-  margin: 0 auto 0 30px;
-  }
-
-#social_links #social_tweet iframe {
-  width: 50% !important;
-  margin-left: 30px !important;
-  }
-
-#social_links #social_pinterest iframe {
-  width: 50% !important;
-  margin-left: 60px !important;
-  }
 
 #more_products {
   border-style: solid;
