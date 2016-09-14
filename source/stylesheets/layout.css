@@ -115,9 +115,8 @@ video {
 .button.disabled,
 .button.disabled:hover {
   text-align: center;
-  color: #b5b5b5;
-  border-color: #b5b5b5;
   cursor: default;
+  opacity: .4;
   }
 
 input,
