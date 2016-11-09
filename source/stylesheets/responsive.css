@@ -1010,5 +1010,7 @@ p, blockquote, ul, ol, dl {
 
   #social_links .social_action {
     display: block;
+    opacity: 1;
+    visibility: visible;
     }
 }
