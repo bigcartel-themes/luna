@@ -304,3 +304,14 @@
   text-align: center;
   }
 
+a.continue_shopping {
+  border: none;
+  display: block;
+  font-family: {{ theme.header_font | font_family }};
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin: 10px 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+

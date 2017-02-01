@@ -7,40 +7,41 @@
     </ul>
   </div>
 {% endif %}
-{% get products from products.all limit:theme.featured_products order:theme.featured_order %}
-
-{% if products != blank %}
-  {% for product in products %}
-    {% if forloop.first %}
-      <ul id="products" class="{% if forloop.length == 1 %}single_product{% endif %}{% if forloop.length == 2 %}double_product{% endif %}">
-    {% endif %}
-    <li id="product_{{ product.id }}" class="product">
-      <a href="{{ product.url }}" title="View {{ product.name | escape }}">
-        <div class="product_header">
-          <h2>{{ product.name }}</h2>
-          <span class="dash"></span>            
-          <h3>{{ product.default_price | money_with_sign }}</h3>
-          {% case product.status %}
-          {% when 'active' %}
-            {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
-          {% when 'sold-out' %}
-        		<h5>Sold Out</h5>
-          {% when 'coming-soon' %}
-        		<h5>Coming Soon</h5>
-          {% endcase %}
-        </div>
-        <div class="product_thumb">
-          <img src="{{ product.image | product_image_url | constrain: '560' }}" class="fade_in" alt="Image of {{ product.name | escape }}">
-        </div>
-      </a>
-    </li>
-    {% if forloop.last %}
-      </ul>
-    {% endif %}
-  {% endfor %}
-
-{% else %}
-<p class="alert-noproducts">No products found.</p>
+{% if theme.featured_products > 0 %}
+  {% get products from products.all limit:theme.featured_products order:theme.featured_order %}
+  {% if products != blank %}
+    {% for product in products %}
+      {% if forloop.first %}
+        <ul id="products" class="{% if forloop.length == 1 %}single_product{% endif %}{% if forloop.length == 2 %}double_product{% endif %}">
+      {% endif %}
+      <li id="product_{{ product.id }}" class="product">
+        <a href="{{ product.url }}" title="View {{ product.name | escape }}">
+          <div class="product_header">
+            <h2>{{ product.name }}</h2>
+            <span class="dash"></span>            
+            <h3>{{ product.default_price | money_with_sign }}</h3>
+            {% case product.status %}
+            {% when 'active' %}
+              {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
+            {% when 'sold-out' %}
+          		<h5>Sold Out</h5>
+            {% when 'coming-soon' %}
+          		<h5>Coming Soon</h5>
+            {% endcase %}
+          </div>
+          <div class="product_thumb">
+            <img src="{{ product.image | product_image_url | constrain: '560' }}" class="fade_in" alt="Image of {{ product.name | escape }}">
+          </div>
+        </a>
+      </li>
+      {% if forloop.last %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  
+  {% else %}
+  <p class="alert-noproducts">No products found.</p>
+  {% endif %}
+  
+  {% endget %}
 {% endif %}
-
-{% endget %}

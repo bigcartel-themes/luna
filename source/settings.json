@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "images": [
     {
       "variable": "header",
@@ -101,10 +101,18 @@
   ],
   "options": [
     {
+      "variable": "nav_items",
+      "label": "Navigation items",
+      "type": "select",
+      "options": "0..6",
+      "default": 2,
+      "description": "The number of custom page links show in the main navigation."
+    },
+    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
-      "options": "1..100",
+      "options": "0..100",
       "default": 6,
       "description": "The number of products shown on the Home page"
     },
