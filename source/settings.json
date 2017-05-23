@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "images": [
     {
       "variable": "header",
@@ -9,8 +9,8 @@
     },
     {
       "variable": "background",
-      "label": "Background Image",
-      "description": "Adds a repeating background image"
+      "label": "Repeating Background Image",
+      "description": "200px by 200px image recommended"
     }
   ],
   "image_sets": [
