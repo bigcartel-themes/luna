@@ -210,6 +210,7 @@ p, blockquote, ul, ol, dl {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  background: {{ theme.products_background }};
   }
 
 .product:first-child {
