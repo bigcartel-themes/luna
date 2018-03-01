@@ -552,15 +552,6 @@ p, blockquote, ul, ol, dl {
   width: 94%;
   }
 
-#cart_options .no_shipping {
-  margin-top: 0;
-  margin-left: 0;
-  }
-
-#cart_options #cart_discount p {
-  padding: 3px 0 0;
-  }
-
 .solo_update {
   display: none;
   }
@@ -968,16 +959,7 @@ a.continue_shopping {
 #cart_options input {
   width: 96%;
   }
-
-#cart_options .no_shipping {
-  margin-top: 0;
-  margin-left: 0;
-  }
-
-#cart_options #cart_discount p {
-  padding: 3px 0 0;
-  }
-
+  
 .solo_update {
   display: none;
   }
