@@ -4,7 +4,7 @@
 </header>
 
 {% if cart.items != blank %}
-<form id="cart-form" {% unless cart.shipping.enabled or cart.discount.enabled %}class="no_options"{% endunless %} method="post" action="/cart" accept-charset="utf8">
+<form id="cart-form" class="no_options" method="post" action="/cart" accept-charset="utf8">
   <input type="hidden" name="utf8" value='✓'>
   <div id="cart_description">
     <section id="cart_items">
@@ -24,51 +24,11 @@
       </ul>
     </section>
 
-    {% if cart.shipping.enabled or cart.discount.enabled %}
-    <section id="cart_options">
-      <ul>
-        {% if cart.shipping.enabled %}
-        {% if cart.shipping.strict %}
-        <li id="shipping_option">
-          <label for="country">Shipping</label>
-          {{ store.country | country_select }}
-
-          {% if cart.shipping.pending %}
-            {% if cart.country %}
-            <span class="no_shipping">We don't ship to {{ cart.country.name }}</span>
-            {% endif %}
-          {% endif %}
-        </li>
-        {% endif %}
-        {% endif %}
-
-        {% if cart.discount.enabled %}
-        <li id="cart_discount" class="cart_item">
-          {% if cart.discount.pending %}
-            <label id="cart_discount_label" for="cart_discount_code">Discount</label>
-            {{ cart.discount | discount_code_input }}
-          {% elsif cart.discount.free_shipping %}
-             <label for="cart_discount_code">Discount</label>
-            <p>{{ cart.discount.name }}</p>
-          {% else %}
-            <label for="cart_discount_code">Discount</label>
-            <p>{{ cart.discount.name }}</p>
-          {% endif %}
-        </li>
-        {% endif %}
-      </ul>
-
-      <div class="cart-update">
-        <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
-      </div>
-    </section>
-    {% else %}
     <section id="cart_options" class="solo_update">
       <div class="cart-update">
         <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
       </div>
     </section>
-    {% endif %}
   </div>
 
   <section id="cart_summary">
@@ -77,43 +37,8 @@
         <h3>Items</h3>
         <span>{{ cart.subtotal | money_with_sign }}</span>
       </li>
-      {% if cart.shipping.enabled %}
-      <li id="cart-shipping-tax">
-        <h3>Shipping</h3>
-        {% if cart.shipping.pending %}
-          {% if cart.country %}
-          <span class="shipping-amount">Select another country</span>
-          {% else %}
-          <span class="shipping-amount">Select country</span>
-          {% endif %}
-        {% else %}
-          <span class="shipping-amount">{{ cart.shipping.amount | money_with_sign }}</span>
-        {% endif %}
-      </li>
-      {% else %}
-      <li id="cart-shipping-tax" class="not_set">
-        <h3>Shipping</h3>
-        <span>Applicable fees apply</span>
-      </li>
-      {% endif %}
-
-      {% if cart.discount.enabled %}
-        {% if cart.discount.pending %}
-
-        {% elsif cart.discount.free_shipping %}
-        <li>
-          <h3>Discount</h3>
-          <span>Free shipping!</span>
-        </li>
-        {% else %}
-        <li>
-          <h3>Discount</h3>
-          <span>-{{ cart.discount.amount | money_with_sign }}</span>
-        </li>
-        {% endif %}
-      {% endif %}
       <li id="cart_total">
-        <h3>Total</h3>
+        <h3>Subtotal</h3>
         <h2>{{ cart.total | money_with_sign }}</h2>
       </li>
     </ul>
