@@ -74,10 +74,12 @@ img {
   -ms-interpolation-mode: bicubic;
   }
 
+iframe,
 img,
 embed,
 object,
 video {
+  display: block;
   max-width: 100%;
   }
 
