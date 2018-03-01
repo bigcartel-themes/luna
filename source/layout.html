@@ -103,7 +103,7 @@
             <div class="product_header">
               <h2>{{ product.name }}</h2>
               <span class="dash"></span>
-              <h3>{{ product.default_price | money_with_sign }}</h3>
+              <h3>{{ product.default_price | money: theme.money_format }}</h3>
               {% case product.status %}
               {% when 'active' %}
                 {% if product.on_sale %}<h5>On Sale</h5>{% endif %}

@@ -1,7 +1,7 @@
 <header class="product_header page_header">
   <h1>{{ product.name }}</h1>
   <span class="dash"></span>
-  <h3>{{ product.default_price | money_with_sign }}</h3>
+  <h3>{{ product.default_price | money: theme.money_format }}</h3>
   {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
 </header>
 

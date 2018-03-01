@@ -175,6 +175,17 @@
       "description": "Ex: http://twitter.com/bigcartel"
     },
     {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign_and_code",
+      "description": "Sets the display of prices in your shop"
+    },
+    {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
