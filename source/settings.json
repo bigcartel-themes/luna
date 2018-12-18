@@ -22,13 +22,13 @@
   ],
   "fonts": [
     {
-      "variable": "header_font",
-      "label": "Header Font",
+      "variable": "primary_font",
+      "label": "Primary Font",
       "default": "Varela Round"
     },
     {
-      "variable": "body_font",
-      "label": "Body Font",
+      "variable": "secondary_font",
+      "label": "Secondary Font",
       "default": "Times New Roman"
     }
   ],
@@ -39,62 +39,62 @@
       "default": "#ffffff"
     },
     {
-      "variable": "background_secondary",
-      "label": "Background secondary",
+      "variable": "secondary_background_color",
+      "label": "Secondary background",
       "default": "#f0f0f0"
     },
     {
-      "variable": "text",
-      "label": "Text",
+      "variable": "primary_text_color",
+      "label": "Primary tet",
       "default": "#333333"
     },
     {
-      "variable": "text_secondary",
-      "label": "Text secondary",
+      "variable": "secondary_text_color",
+      "label": "Secondary text",
       "default": "#999999"
     },
     {
-      "variable": "text_tertiary",
-      "label": "Text tertiary",
+      "variable": "tertiary_text_color",
+      "label": "Tertiary text",
       "default": "#666666"
     },
     {
-      "variable": "links",
+      "variable": "link_color",
       "label": "Links",
       "default": "#333333"
     },
     {
-      "variable": "links_rollover",
-      "label": "Link rollovers",
+      "variable": "link_rollover_color",
+      "label": "Link rollover",
       "default": "#888888"
     },
     {
-      "variable": "header_text",
+      "variable": "header_text_color",
       "label": "Header text",
       "default": "#333333"
     },
     {
-      "variable": "products_background",
-      "label": "Products background rollovers",
+      "variable": "products_background_color",
+      "label": "Product background rollover",
       "default": "#000000"
     },
     {
-      "variable": "borders",
+      "variable": "border_color",
       "label": "Borders",
       "default": "#e5e5e5"
     },
     {
-      "variable": "button_border",
-      "label": "Button",
+      "variable": "button_border_color",
+      "label": "Buttons",
       "default": "#000000"
     },
     {
-      "variable": "button_border_hover",
+      "variable": "button_rollover_color",
       "label": "Button rollover",
       "default": "#777777"
     },
     {
-      "variable": "inventory_bars",
+      "variable": "inventory_bar_color",
       "label": "Inventory Bars",
       "default": "#999999"
     }

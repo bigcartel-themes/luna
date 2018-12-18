@@ -1,0 +1,63 @@
+@import 'flexbox'
+
+$background-color: #{"{{ theme.background_color }}"}
+$secondary-background-color: #{"{{ theme.secondary_background_color }}"}
+
+$text-color: #{"{{ theme.primary_text_color }}"}
+$secondary-text-color: #{"{{ theme.secondary_text_color }}"}
+$tertiary-text-color: #{"{{ theme.tertiary_text_color }}"}
+
+$links-color: #{"{{ theme.link_color }}"}
+$links-rollover-color: #{"{{ theme.link_rollover_color }}"}
+
+$header-text-color: #{"{{ theme.header_text_color }}"}
+
+$products-background-color: #{"{{ theme.products_background_color }}"}
+
+$border-color: #{"{{ theme.border_color }}"}
+
+$button-border-color: #{"{{ theme.button_border_color }}"}
+
+$button-rollover-color: #{"{{ theme.button_rollover_color }}"}
+
+$inventory-bar-color: #{"{{ theme.inventory_bar_color }}"}
+
+$primary-font: #{"{{ theme.primary_font }}"}
+$secondary-font: #{"{{ theme.secondary_font }}"}
+
+$break-extra-large: 1500px
+$break-large: 1200px
+$break-medium: 1023px
+$break-small: 767px
+$break-extra-small: 640px
+
+@mixin all-transitions
+  +transition(.2s linear)
+
+@mixin transition($transition...)
+  -webkit-transition: #{$transition}
+  transition: #{$transition}
+
+@mixin transform($str...)
+  -webkit-transform: $str
+  transform: $str
+
+@mixin transform-origin($str...)
+  -webkit-transform-origin: $str
+  transform-origin: $str
+
+@mixin appearance($str...)
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+
+@mixin keyframes($animation...)
+  @-webkit-keyframes #{$animation}
+    @content
+
+  @keyframes #{$animation}
+    @content
+
+@mixin animation($str...)
+  -webkit-animation: $str
+  animation: $str
