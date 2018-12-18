@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.7.0",
+  "version": "1.9.0",
   "images": [
     {
       "variable": "header",
@@ -9,7 +9,7 @@
     },
     {
       "variable": "background",
-      "label": "Repeating Background Image",
+      "label": "Repeating background image",
       "description": "200px by 200px image recommended"
     }
   ],
@@ -145,7 +145,7 @@
       "label": "Show search",
       "type": "boolean",
       "default": false,
-      "description": "Shows the product search area"
+      "description": "Shows the product search area in the footer"
     },
     {
       "variable": "show_facebook",
@@ -169,12 +169,6 @@
       "description": "Adds a Pin It button to the Product page"
     },
     {
-      "variable": "twitter_url",
-      "label": "Twitter URL",
-      "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel"
-    },
-    {
       "variable": "money_format",
       "label": "Price display",
       "type": "select",
@@ -184,6 +178,12 @@
       ],
       "default": "sign",
       "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "Twitter URL",
+      "type": "text",
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
