@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="standalone-page">
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width">  
-
-    <link rel="stylesheet" href="{{ theme | theme_css_url }}">    
-  
-    <!-- IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
-  
-  <body id="{{ page.permalink }}_page" class="standalone">
-    <div class="canvas">      
-      <h1>We&#8217;re working on our site at the moment</h1>
-      <p>Please check back soon</p>
+  <body class="maintenance-page">
+    <div class="maintenance-content">
+      <h1>{{ store.name }}</h1>
+      <p>We're working on our shop at the moment.</p>
     </div>
   </body>
 </html>
