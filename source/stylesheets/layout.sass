@@ -41,17 +41,26 @@ h1, h2, h3, h4, h5
   text-transform: uppercase
 
   &.has-dash
-    margin-bottom: $luna-base * 3
+    margin-bottom: $luna-base * 6
 
     &:after
       bottom: -$luna-base
       content: ""
-      background-color: #000000
+      background-color: $primary-text-color
       height: 2px
       left: 50%
       position: absolute
       transform: translateX(-50%)
       width: $luna-base * 3
+
+.store-header
+  font-size: 42px
+  letter-spacing: 6px
+
+.page-title
+  font-size: 24px
+  letter-spacing: 3px
+  text-align: center
 
 header
   padding: 20px
@@ -73,7 +82,7 @@ header
       padding: 0
 
       a
-        border-bottom: 1px solid #CCCCCC
+        border-bottom: 1px solid $border-color
         display: block
         font-size: 12px
         letter-spacing: 1px
@@ -101,6 +110,10 @@ header
 .main
   padding: 0 20px 60px
 
+#cart_page, #contact_page, #maintenance_page, #product_page, .custom
+  .main
+    background-color: $secondary-background-color
+    padding-top: $luna-base * 8
 
 button, a.button
   +all-transitions
@@ -195,10 +208,16 @@ button, a.button
 
 .custom-page-content
   font-family: $secondary-font
-  font-size: 14px
+  font-size: 16px
   line-height: 1.43em
   margin: 0 auto
   max-width: 640px
+
+  a
+    text-decoration: underline
+
+  ol, ul
+    padding-left: 1em
 
   img, iframe
     max-width: 100%
@@ -211,7 +230,6 @@ button, a.button
   list-style: none
   margin: 0
   padding: 24px 0
-  text-transform: uppercase
 
   ul
     display: flex
