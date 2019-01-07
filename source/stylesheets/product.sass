@@ -1,1 +1,110 @@
 @import 'variables'
+
+.product-page
+  column-count: 2
+
+  @media screen and (max-width: $break-small)
+    +flexbox
+    +flex-direction(column)
+
+  > div
+    page-break-inside: avoid
+    break-inside: avoid-column
+
+  .product-title
+    text-align: center
+
+  .product-price
+    font-family: $secondary-font
+    margin-bottom: $luna-base * 4
+    text-align: center
+
+    .product-status
+      font-size: 15px
+      margin-left: 8px
+      opacity: .7
+      vertical-align: top
+
+  .product-details
+    max-width: 360px
+    width: 100%
+
+    @media screen and (max-width: $break-small)
+      order: 3
+      padding: 0
+
+    &:last-child
+      margin-bottom: 0
+
+  .add-to-cart-button
+    display: block
+    margin-bottom: $luna-base * 4
+    width: 100%
+
+  .product-description
+    font-family: $secondary-font
+    line-height: 1.4em
+    margin-bottom: $luna-base * 4
+
+    a
+      text-decoration: underline
+
+    ol, ul
+      padding-left: 1em
+
+    img, iframe
+      max-width: 100%
+
+.product-page-headings
+  max-width: 360px
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+    order: 1
+
+.product-images
+  padding-left: 40px
+
+  @media screen and (max-width: $break-small)
+    order: 2
+    padding: 0
+
+.product-image
+  display: block
+  margin-bottom: 32px
+  max-width: 100%
+  width: 100%
+
+.social-buttons
+  border: 1px solid $border-color
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    border-bottom: 1px solid $border-color
+    height: 60px
+    text-align: center
+
+    .social-action
+      display: none
+      opacity: 0
+      visibility: hidden
+
+    &:hover
+      .social-title
+        display: none
+        opacity: 0
+        visibility: hidden
+
+      .social-action
+        display: block
+        opacity: 1
+        visibility: visible
+
+    &:last-child
+      border-bottom: 0
