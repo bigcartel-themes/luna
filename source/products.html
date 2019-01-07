@@ -22,7 +22,7 @@
 
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
-    <ul class="product-list">
+    <div class="product-list">
       {% for product in products %}
         {% assign product_status = '' %}
         {% case product.status %}
@@ -33,22 +33,20 @@
         	{% when 'coming-soon' %}
         		{% assign product_status = 'Coming soon' %}
         {% endcase %}
-        <li class="product-card {{ product.css_class }}">
-          <a class="product-link" href="{{ product.url }}">
-            <div class="product-image-container">
-              <img class="product-image" alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: '1000' }}">
-            </div>
-            <div class="product-info">
-              {% if product_status != blank %}
-                <div class="product-status">{{ product_status }}</div>
-              {% endif %}
-              <div class="product-price">{{ product.default_price | money: theme.money_format }}</div>
-              <div class="product-name">{{ product.name }}</div>
-            </div>
-          </a>
-        </li>
+        <a class="product-list-item" href="{{ product.url }}" title="View {{ product.name | escape }}">
+          <div class="product-list-item-container">
+            <figure class="product-list-image-container">
+              <img alt="Image of {{ product.name | escape }}" class="product-list-image {% if product.image.height > product.image.width %}image-tall{% elsif product.image.height < product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ product.image | product_image_url | constrain: 1000, 1000 }}">
+            </figure>
+          </div>
+          <div class="product-list-item-info">
+            {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+            <div class="product-list-item-name">{{ product.name }}</div>
+            <div class="product-list-item-price">{{ product.default_price | money: theme.money_format }}</div>
+          </div>
+        </a>
       {% endfor %}
-    </ul>
+    </div>
     {% if paginate.pages > 1 %}
       {{ paginate | default_pagination, 'pagination', 'pagination', '<svg class="prev-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 10"><path fill-rule="evenodd" d="M4.465 9.85c.19.2.496.2.684 0l.682-.716c.19-.197.19-.518 0-.715L2.537 5.014 5.86 1.58c.188-.198.188-.52 0-.716L5.175.147c-.188-.197-.494-.197-.684 0L.142 4.655c-.188.2-.188.52 0 .717l4.323 4.48z"/></svg>', '<svg class="next-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 10"><path fill-rule="evenodd" d="M1.536 9.85c-.19.2-.496.2-.684 0L.17 9.135c-.19-.197-.19-.518 0-.715l3.294-3.405L.142 1.58c-.19-.198-.19-.52 0-.716L.825.147c.188-.197.494-.197.684 0l4.35 4.508c.187.2.187.52 0 .717l-4.324 4.48z"/></svg>' }}
       <span class="paginate-info">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
@@ -58,3 +56,24 @@
   {% endif %}
 {% endpaginate %}
 
+<div class="artist-category-nav">
+  <nav class="category-nav">
+    <h3>Products</h3>
+    <ul>
+      <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+      {% for category in categories.active %}
+      <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% if artists.active != blank %}
+  <nav class="artist-nav">
+    <h3>Artists</h3>
+    <ul>
+      {% for artist in artists.active %}
+      <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
