@@ -1,1 +1,45 @@
 @import 'variables'
+
+.contact-label
+  display: block
+  font-family: $secondary-font
+  font-size: 15px
+  margin-bottom: $luna-base
+
+.contact-form
+  margin: 0 auto
+  max-width: 640px
+  width: 100%
+
+  input, textarea
+    appearance: none
+    background-color: $secondary-background-color
+    border: none
+    border: 1px solid $border-color
+    color: $primary-text-color
+    font-size: 15px
+    padding: $luna-base
+    width: 100%
+
+    &:active, &:focus
+      border: 1px solid $border-color
+      outline: none
+
+.input-holder
+  position: relative
+
+#captcha_image
+  height: 41px
+  position: absolute
+  right: 0
+  top: 0
+
+.contact-form-block
+  margin-bottom: 56px
+
+.captcha-instructions
+  color: $primary-text-color
+  font-size: 10px
+
+.contact-sent
+  text-align: center
