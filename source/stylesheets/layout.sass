@@ -22,6 +22,37 @@ body
   padding: 0
   width: 100%
 
+
+  &.maintenance-page
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    padding: 0 20px
+
+    .maintenance-content
+      border: 3px solid $header-text-color
+      display: inline-block
+      padding: $luna-base * 4 $luna-base * 3
+      margin: -20% auto 0
+      text-align: center
+      width: auto
+
+      @media screen and (max-width: $break-small)
+        margin-top: -40%
+
+      h1
+        font-size: 18px
+        font-weight: normal
+        line-height: 1.3em
+        text-transform: none
+
+      p
+        color: $secondary-text-color
+        font-family: $secondary-font
+        font-style: italic
+        margin: 10px auto
+
+
 .wrapper
   margin: 0 auto
   max-width: 1024px
@@ -74,6 +105,9 @@ header
     font-family: $primary-font
     text-transform: uppercase
 
+    @media screen and (max-width: $break-small)
+      display: none
+
     ul
       display: flex
       justify-content: center
@@ -99,6 +133,12 @@ header
         .more-link
           display: block
 
+    &.mobile-nav
+      display: none
+
+      @media screen and (max-width: $break-small)
+        display: block
+
   .branding
     font-size: 20px
     margin: 60px auto
@@ -123,11 +163,12 @@ button, a.button
   display: block
   font-family: $primary-font
   font-size: 14px
+  height: 56px
   letter-spacing: 1px
-  line-height: 1
+  line-height: 56px
   max-width: 100%
   outline: none
-  padding: $luna-base * 3
+  padding: 0 $luna-base * 3
   text-align: center
   text-transform: uppercase
   width: 100%
@@ -145,7 +186,7 @@ button, a.button
   border: 2px solid $button-border-color
   color: $primary-text-color
   font-family: $primary-font
-  height: 64px
+  height: 56px
   margin-bottom: $luna-base * 3
   max-width: 100%
   padding: 0
@@ -164,7 +205,7 @@ button, a.button
     font-size: 14px
     height: 100%
     letter-spacing: 1px
-    line-height: 2em
+    line-height: 56px
     padding: 0 66px 0 16px
     position: relative
     text-transform: uppercase
@@ -223,26 +264,127 @@ button, a.button
     max-width: 100%
 
 .footer-nav
+  border-top: 1px solid $border-color
   +flexbox
   +flex-direction(column)
   +align-items(center)
   font-family: $primary-font
   list-style: none
   margin: 0
-  padding: 24px 0
+  padding: $luna-base * 5 0
 
   ul
-    display: flex
-    justify-content: center
+    +flexbox
+    +justify-content(center)
     list-style: none
-    margin: 0
+    margin: 0 0 $luna-base * 3 0
     padding: 0
+
+    &.footer-links
+      @media screen and (max-width: $break-small)
+        +flex-direction(column)
+        padding: 0 $luna-base * 2
+        width: 100%
+
+        a
+          border-bottom: 1px solid $border-color
+          padding: $luna-base * 2 0
+          text-align: center
 
     a
       display: block
       font-size: 12px
       letter-spacing: 1px
-      padding: $luna-base $luna-base * 2 $luna-base * 2
+      padding: $luna-base $luna-base * 2
       text-decoration: none
 
+.social-links a
+  +all-transitions
+  fill: $links-color
+
+  &:hover
+    fill: $links-rollover-color
+
+.search-input
+  display: none
+
+.errors
+  border-radius: $border-radius
+  background-color: #EA4859
+  color: #FAFAFA
+  font-size: 14px
+  line-height: 20px
+  list-style: none
+  margin-bottom: 20px
+  padding: 10px 20px
+
+  @media only screen and (max-width: $break-medium)
+    text-align: center
+
+input, textarea
+  +all-transitions
+  border: 2px solid $border-color
+  background: $secondary-background-color
+  font-size: 15px
+  padding: $luna-base
+  outline: none
+  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
+
+  &:focus, &:active
+    background: $primary-background-color
+    border: 2px solid $primary-text-color
+
+.back-to-site + .badge
+  margin-top: $luna-base * 3
+
+.badge
+  padding: $luna-base $luna-base * 2
+
+  a
+    background: url("{{ 'bc_badge.png' | theme_image_url }}") no-repeat
+    border: none
+    display: block
+    height: 23px
+    overflow: hidden
+    text-indent: 100%
+    white-space: nowrap
+    width: 79px
+
+.announcement-message
+  display: none
+
+.has-announcement-message .announcement-message
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background-color: $secondary-background-color
+  color: $primary-text-color
+  font-size: 15px
+  left: 0
+  line-height: 26px
+  padding: 14px 20px
+  position: relative
+  top: 0
+  width: 100%
+  z-index: 9
+
+  .announcement-message-text
+    text-align: center
+    width: calc(100% - 100px)
+
+    @media screen and (max-width: $break-small)
+      width: calc(100% - 50px)
+
+  .announcement-message-close
+    +transform(translateY(-50%))
+    cursor: pointer
+    position: absolute
+    right: 20px
+    top: 50%
+
+    svg
+      fill: $primary-text-color
+      height: 11px
+      width: 11px
 
