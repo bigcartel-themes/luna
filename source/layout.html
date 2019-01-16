@@ -17,17 +17,24 @@
       js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=1504448526533606&autoLogAppEvents=1';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+    {% if theme.announcement_message_text != blank %}
+      <div class="announcement-message">
+        <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
+        <div class="announcement-message-close" title="Close announcement message">
+          <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M10.11 1.596l-8.484 8.485-.707-.707L9.404.89z"/><path d="M1.626.89l8.485 8.484-.707.707L.919 1.596z"/></g></svg>
+        </div>
+      </div>
+    {% endif %}
     <header>
       <div class="wrapper">
         <nav class="header-nav">
           <ul>
-            <li><a href="/products">Products</a></li>
+            <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">Products</a></li>
             {% for page in pages.all limit:theme.nav_items %}
-              <li>{{ page | link_to }}</li>
+              <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
             {% endfor %}
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/cart">Cart</a></li>
-            <li class="more-link"><a href="#footer" title="See more">More</a></li>
+            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact">Contact</a></li>
+            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
           </ul>
         </nav>
 
@@ -41,19 +48,19 @@
           </a>
         </div>
       </div>
+      <nav class="header-nav mobile-nav">
+        <ul>
+          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">Products</a></li>
+          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
+          <li class="more-link"><a href="#footer" title="See more">More</a></li>
+        </ul>
+      </nav>
     </header>
+
+
 
     <div class="main">
       <div class="wrapper">
-        {% if errors != blank %}
-          <ul class="errors">
-            {% for error in errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-
         {% if page.category == 'custom' %}
           <div class="custom-page">
             <h1 class="custom-page-header page-title has-dash">{{ page.name }}</h1>
@@ -63,17 +70,92 @@
           {{ page_content }}
         {% endif %}
       </div>
+
     </div>
+
+    {% if page.full_url contains '/product/' %}
+      {% if theme.show_similar_products %}
+        {% if product.categories != blank %}
+          {% for category in product.categories %}
+            {% capture product_divs %}
+              {% for category_product in category.products %}
+                {% assign product_status = '' %}
+                {% case category_product.status %}
+                	{% when 'active' %}
+                		{% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                	{% when 'sold-out' %}
+                		{% assign product_status = 'Sold out' %}
+                	{% when 'coming-soon' %}
+                		{% assign product_status = 'Coming soon' %}
+                {% endcase %}
+                {% if product.id != category_product.id %}
+                  <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
+                    <div class="product-list-item-container">
+                      <figure class="product-list-image-container">
+                        <img alt="Image of {{ category_product.name | escape }}" class="product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
+                      </figure>
+                    </div>
+                    <div class="product-list-item-info">
+                      <div class="product-list-item-background"></div>
+                      {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                      <div class="product-list-item-name">{{ category_product.name }}</div>
+                      <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            {% endcapture %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+
+      <div class="wrapper">
+        {% if product_divs != blank %}
+          <div class="all-similar-products">{{ product_divs }}</div>
+          <div class="similar-products">
+            <div class="similar-products-header">
+              <div class="similar-products-title">Related products</div>
+              {% if product.previous_product != blank or product.next_product != blank %}
+                <ul class="prev-next-products">
+                  {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+                  {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+                </ul>
+              {% endif %}
+            </div>
+            <div class="product-list similar-product-list"></div>
+          </div>
+
+          {% if product.previous_product != blank or product.next_product != blank %}
+            <ul class="prev-next-products">
+              {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+              {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+            </ul>
+          {% endif %}
+
+      </div>
+
+
+    {% endif %}
+
+
 
     <footer>
       <div class="wrapper">
-        <nav class="footer-nav">
-          <ul>
+        <nav class="footer-nav" id="footer">
+          <ul class="footer-links">
             <li><a href="/">Home</a></li>
             <li><a href="/products">Products</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/cart">Cart</a></li>
-            <li><a href="#">Search</a></li>
+            {% if theme.show_search %}
+              <li>
+                <a class="open-search" href="#">Search</a>
+                <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
+                  <input type="hidden" name="utf8" value='✓'>
+                  <input class="search-input" name="search" placeholder="Search..." type="text" autocomplete="off" />
+                </form>
+              </li>
+            {% endif %}
           </ul>
 
           {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
@@ -101,7 +183,7 @@
           {% endif %}
 
           {% if store.website != blank %}
-            <a href="{{ store.website }}" id="website" class="button">Back to site</a>
+            <a href="{{ store.website }}" class="back-to-site" class="button">Back to site</a>
           {% endif %}
 
           <div class="badge">{{ bigcartel_credit }}</div>
