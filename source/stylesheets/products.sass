@@ -2,33 +2,49 @@
 
 .artist-category-nav
   +flexbox
-  border-bottom: 1px solid #000000
-  border-top: 1px solid #000000
+  border-bottom: 1px solid $border-color
+  border-top: 1px solid $border-color
   font-size: 14px
   margin-bottom: 60px
-  padding: 20px
+  padding: $luna-base * 4 $luna-base * 3
 
-  h3
+  @media screen and (max-width: $break-small)
+    +flex-direction(column)
+
+  &.artist-category-nav-footer
+    margin-top: 60px
+
+  .nav-title
     font-size: 14px
-    margin-right: 8px
+    margin-right: $luna-base
     padding: 3px
 
   nav
     +flexbox
     +flex-basis(50%)
     +align-items(center)
+    +justify-content(center)
+
+    @media screen and (max-width: $break-small)
+      +flex-direction(column)
 
   ul
-    display: flex
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    font-family: $secondary-font
     list-style: none
     margin: 0
     padding: 0
+
+    @media screen and (max-width: $break-small)
+      +flex-wrap(wrap)
 
     li
       padding: 3px 0
 
       &.selected a
-        color: #000000
+        text-decoration: underline
 
       &:not(:last-child):after
         content: "/"
@@ -45,16 +61,62 @@
     +justify-content(flex-start)
     width: auto
 
+@media screen and (max-width: 1280px)
+  #home .product-list
+    padding: 0 20px
+
 .product-list-item
   display: inline-block
-  padding-bottom: 20px
+  font-size: 0
+  padding-bottom: 40px
   position: relative
-  text-align: center
   vertical-align: middle
-  width: 33%
+  text-align: center
+  width: #{"{% if theme.max_products_per_row == 4 %} 25% {% elsif theme.max_products_per_row == 3 %} 33.33% {% elsif theme.max_products_per_row == 2 %} 50% {% else %} 100% {% endif %}"}
+
+  &.rollover
+    margin-bottom: 0px
+    padding-bottom: 0
+
+    .product-list-item-background
+      background-color: $products-background-color
+      border-radius: $border-radius
+      height: 100%
+      left: 0
+      opacity: .6
+      position: absolute
+      top: 0
+      width: 100%
+
+    @media screen and (max-width: $break-small)
+      margin-bottom: 20px
+      padding-bottom: 0
+
+    .product-list-item-info
+      +all-transitions
+      +flexbox
+      +align-items(center)
+      +flex-direction(column)
+      +justify-content(center)
+      border-radius: $border-radius
+      position: absolute
+      left: 10px
+      top: 10px
+      width: calc(100% - 20px)
+      height: calc(100% - 20px)
+      opacity: 0
+
+      .product-list-item-name:after
+        background-color: $primary-background-color
+
+      *
+        color: $primary-background-color
+
+    &:hover .product-list-item-info
+      opacity: 1
 
   @media screen and (max-width: $break-small)
-    padding: 0 10px 50px 10px
+    padding: 0 10px 20px 10px
     width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
 
 .product-list-item-container
@@ -68,29 +130,109 @@
   font-size: 0
   width: 100%
 
+@media (hover: hover), (-moz-touch-enabled: 0)
+  .show-secondary:hover
+    .product-list-image:first-child
+      opacity: 0
+
+    .product-list-image:last-child
+      opacity: 1
+
 .product-list-image
   +transition(all 0.2s cubic-bezier(0.5, 0, 0, 1.25))
   +transform(translate3d(-50%,-50%,0))
   border-radius: $border-radius
   cursor: pointer
-  height: 100%
   left: 50%
-  object-fit: cover
   position: absolute
   top: 50%
   max-width: 100%
-  width: 100%
+
+  &.image-tall
+    height: calc(100% - 20px)
+    width: auto
+
+    @media screen and (max-width: $break-small)
+      height: calc(100% - 10px)
+
+  &.image-wide
+    height: auto
+    width: calc(100% - 20px)
+
+    @media screen and (max-width: $break-small)
+      width: calc(100% - 10px)
+
+  &.image-square
+    height: calc(100% - 20px)
+    width: calc(100% - 20px)
+
+    @media screen and (max-width: $break-small)
+      height: calc(100% - 10px)
+      width: calc(100% - 10px)
+
+  &:last-child
+    opacity: 0
+
+  &:only-child
+    opacity: 1
 
 .product-list-item-name
   font-size: 20px
+  letter-spacing: 3px
   line-height: 30px
-  margin-bottom: 5px
+  margin-bottom: 20px
   padding: 0 20px
+  position: relative
+  text-transform: uppercase
+  z-index: 1
+
+  &:after
+    bottom: -$luna-base
+    content: ""
+    background-color: $primary-text-color
+    height: 1px
+    left: 50%
+    position: absolute
+    transform: translateX(-50%)
+    width: $luna-base * 3
+    z-index: 1
 
   @media screen and (max-width: $break-small)
-    font-size: #{"{% if theme.max_products_per_row_mobile == 2 %} 18px {% else %} 20px {% endif %}"}
-    line-height: #{"{% if theme.max_products_per_row_mobile == 2 %} 26px {% else %} 30px {% endif %}"}
+    font-size: 16px
+    line-height: 22px
     padding: 0 8px
 
 .product-list-item-price
+  font-family: $secondary-font
+  font-size: 16px
+  z-index: 1
+
+.product-list-item-status
+  color: $tertiary-text-color
+  font-family: $secondary-font
+  font-size: 13px
+  font-style: italic
+  margin-bottom: 2px
+  z-index: 1
+
+  @media screen and (max-width: $break-small)
+    font-size: 12px
+
+.pagination
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  font-family: $secondary-font
   font-size: 15px
+  margin: 60px auto 0
+  padding: 0 20px
+  width: 100%
+
+  a, span
+    padding: 2px 6px
+
+    &.disabled
+      display: none
+
+    &.current
+      text-decoration: underline
