@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.9.0",
+  "version": "1.9.25",
   "images": [
     {
       "variable": "header",
@@ -101,6 +101,12 @@
   ],
   "options": [
     {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
+    {
       "variable": "nav_items",
       "label": "Navigation items",
       "type": "select",
@@ -109,43 +115,80 @@
       "description": "The number of custom page links show in the main navigation."
     },
     {
-      "variable": "featured_products",
-      "label": "Featured products",
+      "variable": "featured_items",
+      "label": "Featured items",
       "type": "select",
       "options": "0..100",
-      "default": 6,
-      "description": "The number of products shown on the Home page"
+      "default": 12,
+      "description": "The number of items featured on the Home page"
     },
     {
-      "variable": "featured_order",
-      "label": "Featured products order",
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
       "type": "select",
-      "options": "product_orders",
-      "default": "position",
-      "description": "The order of products on the Home page"
+      "options": "1..4",
+      "default": 4,
+      "description": "The number of products displayed per row"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
     },
     {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 9,
-      "description": "The number of products shown at a time on the Products page"
+      "default": 2,
+      "description": "The number of products displayed per page"
     },
     {
-      "variable": "show_inventory_bars",
-      "label": "Show inventory bars",
+      "variable": "show_overlay",
+      "label": "Product list info",
+      "type": "select",
+      "options": [
+        ["On rollover", "rollover"],
+        ["Under image", "under_image"]
+      ],
+      "default": "rollover",
+      "description": "Shows a product's name & price on hover, or under the image"
+    },
+    {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign",
+      "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "show_similar_products",
+      "label": "Show related products",
       "type": "boolean",
-      "default": false,
-      "description": "Shows a product's inventory amounts (when using inventory tracking)",
-      "requires": "inventory"
+      "default": true,
+      "description": "Displays related products on the Product page"
     },
     {
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
-      "description": "Shows the product search area in the footer"
+      "default": true,
+      "description": "Displays a search field in the footer"
+    },
+    {
+      "variable": "show_inventory_bars",
+      "label": "Show inventory bars",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": "inventory"
     },
     {
       "variable": "show_facebook",
@@ -183,31 +226,36 @@
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel",
+      "default": "http://instagram.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel",
+      "default": "http://instagram.com/bigcartel"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com"
+      "description": "Ex: http://bigcartel.tumblr.com",
+      "default": "http://instagram.com/bigcartel"
     },
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel",
+      "default": "http://instagram.com/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
+      "description": "Ex: http://pinterest.com/bigcartel",
+      "default": "http://instagram.com/bigcartel"
     }
   ],
   "checkout": {
