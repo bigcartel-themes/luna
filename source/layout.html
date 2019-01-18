@@ -61,6 +61,14 @@
 
     <div class="main">
       <div class="wrapper">
+        {% if errors != blank %}
+          <ul class="errors {{ page.permalink }}-errors">
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
         {% if page.category == 'custom' %}
           <div class="custom-page">
             <h1 class="custom-page-header page-title has-dash">{{ page.name }}</h1>
@@ -97,9 +105,11 @@
                     </div>
                     <div class="product-list-item-info">
                       <div class="product-list-item-background"></div>
-                      {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
-                      <div class="product-list-item-name">{{ category_product.name }}</div>
-                      <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                      <div class="product-list-item-info-headers">
+                        {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                        <div class="product-list-item-name">{{ category_product.name }}</div>
+                        <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                      </div>
                     </div>
                   </a>
                 {% endif %}
@@ -183,7 +193,7 @@
           {% endif %}
 
           {% if store.website != blank %}
-            <a href="{{ store.website }}" class="back-to-site" class="button">Back to site</a>
+            <a href="{{ store.website }}" class="button back-to-site" class="button">Back to site</a>
           {% endif %}
 
           <div class="badge">{{ bigcartel_credit }}</div>
