@@ -2,31 +2,49 @@
 
 .artist-category-nav
   +flexbox
+  +flex-wrap(wrap)
+  +align-items(center)
+  +justify-content(center)
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
   font-size: 14px
   margin-bottom: 60px
-  padding: $luna-base * 4 $luna-base * 3
+  padding: $luna-base * 2 $luna-base / 2
 
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: $break-medium)
     +flex-direction(column)
 
   &.artist-category-nav-footer
+    margin-bottom: 0
     margin-top: 60px
+
+    @media screen and (max-width: $break-medium)
+      margin-top: 0
 
   .nav-title
     font-size: 14px
     margin-right: $luna-base
     padding: 3px
 
+    @media screen and (max-width: $break-medium)
+      margin-bottom: $luna-base
+
   nav
     +flexbox
     +flex-basis(50%)
     +align-items(center)
     +justify-content(center)
+    padding: $luna-base * 2 $luna-base / 2
 
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-medium)
       +flex-direction(column)
+
+    &:not(:last-child)
+      @media screen and (max-width: $break-medium)
+        margin-bottom: 30px
+
+      @media screen and (max-width: $break-small)
+        margin-bottom: 0
 
   ul
     +flexbox
@@ -37,28 +55,32 @@
     margin: 0
     padding: 0
 
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-medium)
       +flex-wrap(wrap)
 
     li
       padding: 3px 0
+
+      a
+        display: inline
+        padding: 6px 8px
+        white-space: nowrap
 
       &.selected a
         text-decoration: underline
 
       &:not(:last-child):after
         content: "/"
-        padding: 0 8px
+        padding: 0 2px
 
 .product-list
   +flexbox
   +flex-wrap(wrap)
-  +justify-content(center)
+  +justify-content(flex-start)
   font-size: 20px
   margin: 0 -10px
 
   @media screen and (max-width: $break-small)
-    +justify-content(flex-start)
     width: auto
 
 @media screen and (max-width: 1280px)
@@ -74,46 +96,53 @@
   text-align: center
   width: #{"{% if theme.max_products_per_row == 4 %} 25% {% elsif theme.max_products_per_row == 3 %} 33.33% {% elsif theme.max_products_per_row == 2 %} 50% {% else %} 100% {% endif %}"}
 
-  &.rollover
-    margin-bottom: 0px
-    padding-bottom: 0
-
-    .product-list-item-background
-      background-color: $products-background-color
-      border-radius: $border-radius
-      height: 100%
-      left: 0
-      opacity: .6
-      position: absolute
-      top: 0
-      width: 100%
-
-    @media screen and (max-width: $break-small)
-      margin-bottom: 20px
+  @media (hover: hover), (-moz-touch-enabled: 0)
+    &.rollover
+      margin-bottom: 0px
       padding-bottom: 0
 
-    .product-list-item-info
-      +all-transitions
-      +flexbox
-      +align-items(center)
-      +flex-direction(column)
-      +justify-content(center)
-      border-radius: $border-radius
-      position: absolute
-      left: 10px
-      top: 10px
-      width: calc(100% - 20px)
-      height: calc(100% - 20px)
-      opacity: 0
+      .product-list-item-background
+        background-color: $products-background-color
+        border-radius: $border-radius
+        height: 100%
+        left: 0
+        opacity: .6
+        position: absolute
+        top: 0
+        width: 100%
 
-      .product-list-item-name:after
-        background-color: $primary-background-color
+      @media screen and (max-width: $break-small)
+        margin-bottom: 20px
+        padding-bottom: 0
 
-      *
-        color: $primary-background-color
+      .product-list-item-info
+        +all-transitions
+        +flexbox
+        +align-items(center)
+        +flex-direction(column)
+        +justify-content(center)
+        border-radius: $border-radius
+        position: absolute
+        left: 10px
+        top: 10px
+        width: calc(100% - 20px)
+        height: calc(100% - 20px)
+        opacity: 0
 
-    &:hover .product-list-item-info
-      opacity: 1
+        .product-list-item-name:after
+          background-color: $primary-background-color
+
+        *
+          color: $primary-background-color
+
+        .product-list-item-info-headers
+          top: 5%
+
+      &:hover .product-list-item-info, &:focus .product-list-item-info
+        opacity: 1
+
+        .product-list-item-info-headers
+          top: 0%
 
   @media screen and (max-width: $break-small)
     padding: 0 10px 20px 10px
@@ -176,6 +205,17 @@
   &:only-child
     opacity: 1
 
+.product-list-item-info
+  @media screen and (max-width: $break-small)
+    margin-top: 20px
+
+.product-list-item-info-headers
+  +all-transitions
+  +transition(all .3s ease-out)
+  padding-top: $luna-base
+  position: relative
+  z-index: 1
+
 .product-list-item-name
   font-size: 20px
   letter-spacing: 3px
@@ -184,7 +224,6 @@
   padding: 0 20px
   position: relative
   text-transform: uppercase
-  z-index: 1
 
   &:after
     bottom: -$luna-base
@@ -195,7 +234,6 @@
     position: absolute
     transform: translateX(-50%)
     width: $luna-base * 3
-    z-index: 1
 
   @media screen and (max-width: $break-small)
     font-size: 16px
@@ -205,15 +243,13 @@
 .product-list-item-price
   font-family: $secondary-font
   font-size: 16px
-  z-index: 1
 
 .product-list-item-status
-  color: $tertiary-text-color
+  color: $secondary-text-color
   font-family: $secondary-font
   font-size: 13px
   font-style: italic
-  margin-bottom: 2px
-  z-index: 1
+  margin-bottom: 10px
 
   @media screen and (max-width: $break-small)
     font-size: 12px
@@ -228,11 +264,27 @@
   padding: 0 20px
   width: 100%
 
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+
   a, span
     padding: 2px 6px
+
+    @media screen and (max-width: $break-small)
+      padding: 4px 8px
 
     &.disabled
       display: none
 
     &.current
       text-decoration: underline
+
+#products_page .footer-nav
+  border-top: 0px
+
+.empty-products
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-size: 20px
+  font-style: italic
+  text-align: center

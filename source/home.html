@@ -1,5 +1,5 @@
 {% if theme.image_sets.slideshow.size > 0 %}
-  <div class="flexslider">
+  <div class="flexslider home-slideshow">
     <ul class="slides">
       {% for image in theme.image_sets.slideshow %}
         <li><img src="{{ image.url | constrain: 1800 }}"></li>
@@ -30,9 +30,11 @@
             </div>
             <div class="product-list-item-info">
               <div class="product-list-item-background"></div>
-              {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
-              <div class="product-list-item-name">{{ product.name }}</div>
-              <div class="product-list-item-price">{{ product.default_price | money: theme.money_format }}</div>
+              <div class="product-list-item-info-headers">
+                {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                <div class="product-list-item-name">{{ product.name }}</div>
+                <div class="product-list-item-price">{{ product.default_price | money: theme.money_format }}</div>
+              </div>
             </div>
           </a>
         {% endfor %}
