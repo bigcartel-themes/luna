@@ -2,21 +2,11 @@
 
 {% if contact.sent %}
   <div class="contact-form-block contact-send">
-    <p>Your message has been sent and we'll get back to you soon!</p>
-    <a class="back-to-shop-button button" href="/">Back to Shop</a>
+    <p class="contact-sent">Your message has been sent and we'll get back to you soon!</p>
   </div>
 {% else %}
   <div class="page-content {{ page.category }}-content">
     <form method="post" action="/contact" class="contact-form">
-      {% if errors != blank %}
-        <div class="contact-form-block">
-          <ul class="errors {{ page.permalink }}-errors">
-            {% for error in errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
       <div class="contact-form-block contact-name">
         <label class="contact-label" for="name-input">Name</label>
         <div class="input-holder">

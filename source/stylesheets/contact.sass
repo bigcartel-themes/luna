@@ -9,27 +9,26 @@
 .contact-form
   margin: 0 auto
   max-width: 640px
+  padding-bottom: 20px
   width: 100%
 
   input, textarea
-    appearance: none
-    background-color: $secondary-background-color
-    border: none
-    border: 1px solid $border-color
-    color: $primary-text-color
-    font-size: 15px
-    padding: $luna-base
+    font-size: 14px
+    min-height: 44px
     width: 100%
 
-    &:active, &:focus
-      border: 1px solid $border-color
-      outline: none
+  textarea
+    height: 180px
+
+  #captcha
+    max-width: calc(100% - 135px)
 
 .input-holder
   position: relative
 
 #captcha_image
-  height: 41px
+  border-radius: $border-radius
+  height: 44px
   position: absolute
   right: 0
   top: 0
@@ -38,8 +37,28 @@
   margin-bottom: 56px
 
 .captcha-instructions
-  color: $primary-text-color
-  font-size: 10px
+  font-family: $secondary-font
+  font-size: 12px
+  font-style: italic
+  opacity: .8
+  position: relative
+  top: 10px
 
 .contact-sent
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-size: 20px
+  font-style: italic
   text-align: center
+
+button.send-message-button
+  max-width: 300px
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+#contact_page .footer-nav
+  border-top: none
+
+#contact_page .errors
+  max-width: 640px
