@@ -135,14 +135,15 @@
             <div class="product-list similar-product-list"></div>
           </div>
 
-          {% if product.previous_product != blank or product.next_product != blank %}
-            <ul class="prev-next-products">
-              {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-              {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-            </ul>
-          {% endif %}
+
         {% endif %}
       </div>
+      {% if product.previous_product != blank or product.next_product != blank %}
+        <ul class="prev-next-products">
+          {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+          {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+        </ul>
+      {% endif %}
 
 
     {% endif %}
@@ -155,6 +156,9 @@
           <ul class="footer-links">
             <li><a href="/">Home</a></li>
             <li><a href="/products">Products</a></li>
+            {% for page in pages.all %}
+              <li>{{ page | link_to }}</li>
+            {% endfor %}
             <li><a href="/contact">Contact</a></li>
             <li><a href="/cart">Cart</a></li>
             {% if theme.show_search %}
