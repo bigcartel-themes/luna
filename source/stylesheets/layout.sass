@@ -289,6 +289,9 @@ button, a.button
   img, iframe
     max-width: 100%
 
+.custom .footer-nav
+  border: none
+
 .footer-nav
   border-top: 1px solid $border-color
   +flexbox
@@ -323,9 +326,11 @@ button, a.button
     a
       display: block
       font-size: 12px
-      letter-spacing: 1px
       padding: $luna-base $luna-base * 2
       text-decoration: none
+
+      &:hover
+        color: $secondary-text-color
 
 .social-links a
   +all-transitions
@@ -432,3 +437,13 @@ a.back-to-site
       height: 11px
       width: 11px
 
+.centered-message
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-size: 20px
+  font-style: italic
+  padding: 0 20px
+  text-align: center
+
+  a
+    text-decoration: underline

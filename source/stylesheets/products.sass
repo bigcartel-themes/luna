@@ -8,7 +8,7 @@
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
   font-size: 14px
-  margin-bottom: 60px
+  margin-bottom: $luna-base * 8
   padding: $luna-base * 2 $luna-base / 2
 
   @media screen and (max-width: $break-medium)
@@ -16,10 +16,10 @@
 
   &.artist-category-nav-footer
     margin-bottom: 0
-    margin-top: 60px
+    margin-top: $luna-base * 5
 
     @media screen and (max-width: $break-medium)
-      margin-top: 0
+      margin-top: $luna-base * 3
 
   .nav-title
     font-size: 14px
@@ -41,7 +41,7 @@
 
     &:not(:last-child)
       @media screen and (max-width: $break-medium)
-        margin-bottom: 30px
+        margin-bottom: $luna-base * 4
 
       @media screen and (max-width: $break-small)
         margin-bottom: 0
@@ -260,12 +260,13 @@
   +justify-content(center)
   font-family: $secondary-font
   font-size: 15px
-  margin: 60px auto 0
-  padding: 0 20px
+  margin: $luna-base * 5 auto 0
+  padding: $luna-base * 3
   width: 100%
 
   @media screen and (max-width: $break-small)
     font-size: 16px
+    margin-top: $luna-base * 3
 
   a, span
     padding: 2px 6px
@@ -281,10 +282,3 @@
 
 #products_page .footer-nav
   border-top: 0px
-
-.empty-products
-  color: $secondary-text-color
-  font-family: $secondary-font
-  font-size: 20px
-  font-style: italic
-  text-align: center
