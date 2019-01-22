@@ -1,5 +1,9 @@
 @import 'variables'
 
+#product_page
+  .footer-nav
+    border: none
+
 .product-page
   padding-bottom: 30px
   position: relative
@@ -177,15 +181,11 @@
   border-bottom: 1px solid $border-color
   +flexbox
   +justify-content(center)
-  display: none
   font-family: $secondary-font
   list-style: none
   margin: 0
   margin-left: auto
   padding: $luna-base * 3
-
-  @media screen and (max-width: $break-small)
-    +flexbox
 
   li:not(:last-child):after
     content: "/"
@@ -194,6 +194,13 @@
   a
     text-decoration: underline
     padding: $luna-base $luna-base
+
+  &.with-related
+    display: none
+
+    @media screen and (max-width: $break-small)
+      border-top: 1px solid $border-color
+      +flexbox
 
 .product-inventory
   border-top: 1px solid $border-color

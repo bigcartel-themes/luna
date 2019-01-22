@@ -134,18 +134,14 @@
             </div>
             <div class="product-list similar-product-list"></div>
           </div>
-
-
+        {% endif %}
+        {% if product.previous_product != blank or product.next_product != blank %}
+          <ul class="prev-next-products {% if product_divs != blank %}with-related{% endif %}">
+            {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+            {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+          </ul>
         {% endif %}
       </div>
-      {% if product.previous_product != blank or product.next_product != blank %}
-        <ul class="prev-next-products">
-          {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-          {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-        </ul>
-      {% endif %}
-
-
     {% endif %}
 
 
