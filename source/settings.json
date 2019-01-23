@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "1.9.25",
+  "version": "1.9.57",
   "images": [
     {
       "variable": "header",
@@ -45,18 +45,13 @@
     },
     {
       "variable": "primary_text_color",
-      "label": "Primary tet",
+      "label": "Primary text",
       "default": "#333333"
     },
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
       "default": "#999999"
-    },
-    {
-      "variable": "tertiary_text_color",
-      "label": "Tertiary text",
-      "default": "#666666"
     },
     {
       "variable": "link_color",
@@ -112,22 +107,22 @@
       "type": "select",
       "options": "0..6",
       "default": 2,
-      "description": "The number of custom page links show in the main navigation."
+      "description": "The number of custom page links to display in the main navigation."
     },
     {
       "variable": "featured_items",
-      "label": "Featured items",
+      "label": "Featured products",
       "type": "select",
       "options": "0..100",
       "default": 12,
-      "description": "The number of items featured on the Home page"
+      "description": "The number of products featured on the Home page"
     },
     {
       "variable": "max_products_per_row",
       "label": "Maximum products per row",
       "type": "select",
       "options": "1..4",
-      "default": 4,
+      "default": 3,
       "description": "The number of products displayed per row"
     },
     {
@@ -136,14 +131,14 @@
       "type": "select",
       "options": "1..2",
       "default": 2,
-      "description": "The number of products displayed per row on smaller screens"
+      "description": "The number of products displayed per row on small screens"
     },
     {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 2,
+      "default": 12,
       "description": "The number of products displayed per page"
     },
     {
@@ -169,6 +164,17 @@
       "description": "Sets the display of prices in your shop"
     },
     {
+      "variable": "product_page_layout",
+      "label": "Product page layout",
+      "type": "select",
+      "options": [
+        ["Images on left", "images_left_details_right"],
+        ["Images on right", "images_right_details_left"]
+      ],
+      "default": "images_right_details_left",
+      "description": "Sets the display of the Product page"
+    },
+    {
       "variable": "show_similar_products",
       "label": "Show related products",
       "type": "boolean",
@@ -186,16 +192,16 @@
       "variable": "show_inventory_bars",
       "label": "Show inventory bars",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Shows a product's inventory amounts (when using inventory tracking)",
       "requires": "inventory"
     },
     {
       "variable": "show_facebook",
-      "label": "Show Facebook's Like button",
+      "label": "Show Facebook's Share button",
       "type": "boolean",
       "default": true,
-      "description": "Adds a Like button to the Product page"
+      "description": "Adds a Share button to the Product page"
     },
     {
       "variable": "show_twitter",
@@ -212,50 +218,34 @@
       "description": "Adds a Pin It button to the Product page"
     },
     {
-      "variable": "money_format",
-      "label": "Price display",
-      "type": "select",
-      "options": [
-        ["Currency sign", "sign"],
-        ["Currency code with sign", "sign_and_code"]
-      ],
-      "default": "sign",
-      "description": "Sets the display of prices in your shop"
-    },
-    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel",
-      "default": "http://instagram.com/bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel",
-      "default": "http://instagram.com/bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com",
-      "default": "http://instagram.com/bigcartel"
+      "description": "Ex: http://bigcartel.tumblr.com"
     },
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel",
-      "default": "http://instagram.com/bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel",
-      "default": "http://instagram.com/bigcartel"
+      "description": "Ex: http://pinterest.com/bigcartel"
     }
   ],
   "checkout": {
@@ -264,18 +254,18 @@
     "header_image": "{{ header }}",
     "header_width": "900px",
     "background_image": "{{ background }}",
-    "background_color": "{{ background_secondary }}",
+    "background_color": "{{ secondary_background_color }}",
     "gutter_width": "28px",
-    "title_font": "{{ header_font }}",
+    "title_font": "{{ primary_font }}",
     "title_vertical_padding": "60px",
     "title_background_color": "transparent",
     "title_position": "center",
     "title_font_size": "42px",
     "title_font_weight": "normal",
     "title_text_transform": "uppercase",
-    "title_color": "{{ header_text }}",
-    "body_font": "{{ body_font }}",
-    "body_font_size": "15px",
+    "title_color": "{{ header_text_color }}",
+    "secondary_font": "{{ secondary_font }}",
+    "secondary_font_size": "15px",
     "content_border_radius": "0",
     "content_width": "530px",
     "content_header_vertical_padding": "28px",
@@ -286,12 +276,12 @@
     "content_header_background_color": "{{ background_color }}",
     "content_border_color": "transparent",
     "content_border_width": "0",
-    "content_header_font_size": "24px",
-    "content_header_color": "{{ text }}",
-    "content_color": "{{ text }}",
+    "content_primary_font_size": "24px",
+    "content_header_color": "{{ primary_text_color }}",
+    "content_color": "{{ primary_text_color }}",
     "link_font_size": "13px",
-    "link_color": "{{ links }}",
-    "link_hover_color": "{{ link_rollovers }}",
+    "link_color": "{{ link_color }}",
+    "link_hover_color": "{{ link_rollover_color }}",
     "error_border_width": "0",
     "error_font_size": "13px",
     "error_background_color": "#ea4859",
@@ -308,7 +298,7 @@
     "input_error_color": "#000000",
     "input_border_color": "#bfbfbf",
     "input_font_size": "13px",
-    "input_font": "{{ body_font }}",
+    "input_font": "{{ secondary_font }}",
     "input_horizontal_padding": "8px",
     "input_border_width": "2px",
     "input_height": "37px",
@@ -319,46 +309,46 @@
     "label_font_weight": "normal",
     "label_font_size": "13px",
     "in_field_labels": false,
-    "button_border_color": "{{ button_border }}",
+    "button_border_color": "{{ button_border_color }}",
     "button_border_radius": "0",
-    "button_hover_border_color": "{{ button_border_hover }}",
+    "button_hover_border_color": "{{ button_rollover_color }}",
     "button_height": "47px",
     "button_border_width": "2px",
     "button_font_size": "14px",
     "button_font_weight": "normal",
     "button_text_transform": "uppercase",
     "button_background_color": "{{ background_color }}",
-    "button_color": "{{ button_border }}",
-    "button_hover_color": "{{ button_border_hover }}",
+    "button_color": "{{ button_border_color }}",
+    "button_hover_color": "{{ button_rollover_color }}",
     "button_position": "center",
     "button_hover_background_color": "{{ background_color }}",
-    "step_inactive_header_color": "opacify({{ text_secondary }}, .25)",
-    "step_border_color": "{{ borders }}",
+    "step_inactive_header_color": "opacify({{ secondary_text_color }}, .25)",
+    "step_border_color": "{{ border_color }}",
     "step_border_width": "1px",
     "step_header_text_transform": "uppercase",
     "step_background_color": "{{ background_color }}",
-    "step_inactive_border_color": "opacify({{ borders }}, .25)",
-    "step_header_font_weight": "normal",
-    "step_header_color": "{{ text }}",
+    "step_inactive_border_color": "opacify({{ border_color }}, .25)",
+    "step_primary_font_weight": "normal",
+    "step_header_color": "{{ primary_text_color }}",
     "step_header_position": "center",
     "step_inactive_background_color": "{{ background_color }}",
     "step_vertical_padding": "30px",
-    "step_header_font_size": "24px",
+    "step_primary_font_size": "24px",
     "step_border_style": "solid",
-    "step_header_font": "{{ header_font }}",
-    "summary_inactive_item_border_color": "opacify({{ text_secondary }}, .25)",
+    "step_primary_font": "{{ primary_font }}",
+    "summary_inactive_item_border_color": "opacify({{ border_color }}, .25)",
     "summary_font_size": "13px",
     "summary_submit_background_color": "{{ background_color }}",
-    "summary_inactive_color": "opacify({{ text_secondary }}, .25)",
-    "summary_submit_border_color": "opacify({{ text_secondary }}, .25)",
+    "summary_inactive_color": "opacify({{ secondary_text_color }}, .25)",
+    "summary_submit_border_color": "opacify({{ border_color }}, .25)",
     "summary_item_border_width": "1px",
-    "summary_item_border_color": "{{ borders }}",
-    "summary_secondary_color": "{{ text }}",
+    "summary_item_border_color": "{{ border_color }}",
+    "summary_secondary_color": "{{ primary_text_color }}",
     "summary_submit_border_width": "1px",
-    "summary_item_list_border_color": "{{ borders }}",
-    "summary_inactive_secondary_color": "opacify({{ text_secondary }}, .25)",
+    "summary_item_list_border_color": "{{ border_color }}",
+    "summary_inactive_secondary_color": "opacify({{ secondary_text_color }}, .25)",
     "summary_item_list_border_width": "2px",
-    "summary_color": "{{ text }}",
-    "summary_inactive_item_list_border_color": "opacify({{ text_secondary }}, .25)"
+    "summary_color": "{{ primary_text_color }}",
+    "summary_inactive_item_list_border_color": "opacify({{ border_color }}, .25)"
   }
 }
