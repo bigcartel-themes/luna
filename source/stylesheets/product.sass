@@ -109,41 +109,42 @@
 
     li
       +flexbox
-      +align-items(center)
       +justify-content(center)
+      +align-items(center)
       border-bottom: 1px solid $border-color
       height: 60px
+      overflow: hidden
+      position: relative
       text-align: center
 
       .social-title
-        display: none
+        display: block
+        position: absolute
+        width: 100%
+
+      .social-action
         opacity: 0
+        position: relative
         visibility: hidden
-
-      @media (hover: hover), (-moz-touch-enabled: 0)
-        .social-action
-          display: none
-          opacity: 0
-          visibility: hidden
-
-        .social-title
-          display: block
-          opacity: 1
-          visibility: visible
 
       &:hover
         .social-title
           display: none
-          opacity: 0
-          visibility: hidden
 
         .social-action
-          display: block
+          opacity: 1
+          visibility: visible
+
+      @media screen and (max-width: $break-small)
+        .social-title
+          display: none
+
+        .social-action
           opacity: 1
           visibility: visible
 
       &:last-child
-        border-bottom: 0
+        border-bottom: 0px
 
 .similar-products
   padding: 0 20px $luna-base * 6
