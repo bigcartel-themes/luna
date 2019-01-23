@@ -120,8 +120,13 @@ header
       margin: 0
       padding: 0
 
+      li.selected a
+        color: $primary-text-color
+
       a
+        +all-transitions
         border-bottom: 1px solid $border-color
+        color: $secondary-text-color
         display: block
         font-size: 12px
         letter-spacing: 1px
@@ -133,7 +138,7 @@ header
           text-decoration: underline
 
         &:hover
-          color: $secondary-text-color
+          color: $primary-text-color
 
       .more-link
         display: none
@@ -324,6 +329,7 @@ button, a.button
           text-transform: uppercase
 
     a
+      +all-transitions
       display: block
       font-size: 12px
       padding: $luna-base $luna-base * 2
@@ -347,7 +353,6 @@ button, a.button
   position: relative
   top: -3px
 
-
 .errors
   border-radius: $border-radius
   background-color: #EA4859
@@ -357,9 +362,7 @@ button, a.button
   list-style: none
   margin: 0 auto $luna-base * 4
   padding: 10px 20px
-
-  @media only screen and (max-width: $break-medium)
-    text-align: center
+  text-align: center
 
 input, textarea
   +all-transitions
@@ -367,7 +370,7 @@ input, textarea
   border: 2px solid $border-color
   background: $secondary-background-color
   color: $primary-text-color
-  font-size: 15px
+  font-size: 1em
   padding: $luna-base
   outline: none
   -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
@@ -447,3 +450,25 @@ a.back-to-site
 
   a
     text-decoration: underline
+
+@keyframes reset
+  from
+    opacity: 0
+  to
+    opacity: 0
+
+@keyframes fade-in
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.fade-in
+  animation-name: reset, fade-in
+  -webkit-animation-name: reset, fade-in
+  animation-duration: .7s
+  -webkit-animation-duration: .7s
+  animation-timing-function: ease-in
+  -webkit-animation-timing-function: ease-in
+  animation-iteration-count: 1
+  -webkit-animation-iteration-count: 1

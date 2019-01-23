@@ -62,9 +62,13 @@
       padding: 3px 0
 
       a
+        +all-transitions
         display: inline
         padding: 6px 8px
         white-space: nowrap
+
+        &:hover
+          text-decoration: underline
 
       &.selected a
         text-decoration: underline
