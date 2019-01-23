@@ -29,17 +29,17 @@
       <div class="wrapper">
         <nav class="header-nav">
           <ul>
-            <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">Products</a></li>
+            <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products" title="Products">Products</a></li>
             {% for page in pages.all limit:theme.nav_items %}
               <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
             {% endfor %}
-            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact">Contact</a></li>
-            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
+            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact" title="Contact">Contact</a></li>
+            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart" title="Cart">Cart</a></li>
           </ul>
         </nav>
 
         <div class="branding">
-          <a href="/">
+          <a href="/" title="Home">
             {% if theme.images.header != blank %}
               <img class="store-logo" src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }}">
             {% else %}
@@ -50,8 +50,8 @@
       </div>
       <nav class="header-nav mobile-nav">
         <ul>
-          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">Products</a></li>
-          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
+          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products" title="Products">Products</a></li>
+          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart" title="Cart">Cart</a></li>
           <li class="more-link"><a href="#footer" title="See more">More</a></li>
         </ul>
       </nav>
@@ -150,16 +150,16 @@
       <div class="wrapper">
         <nav class="footer-nav" id="footer">
           <ul class="footer-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/products">Products</a></li>
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/products" title="Products">Products</a></li>
             {% for page in pages.all %}
               <li>{{ page | link_to }}</li>
             {% endfor %}
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/cart">Cart</a></li>
+            <li><a href="/contact" title="Contact">Contact</a></li>
+            <li><a href="/cart" title="Cart">Cart</a></li>
             {% if theme.show_search %}
               <li>
-                <a class="open-search" href="#">Search</a>
+                <a class="open-search" href="#" title="Open search">Search</a>
                 <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
                   <input type="hidden" name="utf8" value='✓'>
                   <input class="search-input" name="search" placeholder="Search..." type="text" autocomplete="off" />

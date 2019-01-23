@@ -2,7 +2,7 @@
   <div class="flexslider home-slideshow">
     <ul class="slides">
       {% for image in theme.image_sets.slideshow %}
-        <li><img src="{{ image.url | constrain: 1800 }}"></li>
+        <li><img alt="Slideshow image" src="{{ image.url | constrain: 1800 }}"></li>
       {% endfor %}
     </ul>
   </div>
