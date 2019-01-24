@@ -5,14 +5,12 @@
   +flex-wrap(wrap)
   +align-items(center)
   +justify-content(center)
+  +flex-direction(column)
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
   font-size: 14px
   margin-bottom: $luna-base * 8
   padding: $luna-base * 2 $luna-base / 2
-
-  @media screen and (max-width: $break-medium)
-    +flex-direction(column)
 
   &.artist-category-nav-footer
     margin-bottom: 0
@@ -22,27 +20,20 @@
       margin-top: $luna-base * 3
 
   .nav-title
-    font-size: 14px
+    font-size: 15px
+    margin: 0 $luna-base $luna-base 0
     margin-right: $luna-base
     padding: 3px
-
-    @media screen and (max-width: $break-medium)
-      margin-bottom: $luna-base
 
   nav
     +flexbox
     +flex-basis(50%)
     +align-items(center)
     +justify-content(center)
+    +flex-direction(column)
     padding: $luna-base * 2 $luna-base / 2
 
-    @media screen and (max-width: $break-medium)
-      +flex-direction(column)
-
     &:not(:last-child)
-      @media screen and (max-width: $break-medium)
-        margin-bottom: $luna-base * 4
-
       @media screen and (max-width: $break-small)
         margin-bottom: 0
 
@@ -50,6 +41,7 @@
     +flexbox
     +align-items(center)
     +justify-content(center)
+    +flex-wrap(wrap)
     font-family: $secondary-font
     list-style: none
     margin: 0
@@ -100,7 +92,7 @@
   text-align: center
   width: #{"{% if theme.max_products_per_row == 4 %} 25% {% elsif theme.max_products_per_row == 3 %} 33.33% {% elsif theme.max_products_per_row == 2 %} 50% {% else %} 100% {% endif %}"}
 
-  @media (hover: hover), (-moz-touch-enabled: 0)
+  @media only screen and (min-width: 768px) and (hover: hover), (-moz-touch-enabled: 0)
     &.rollover
       margin-bottom: 0px
       padding-bottom: 0
@@ -163,14 +155,6 @@
   font-size: 0
   width: 100%
 
-@media (hover: hover), (-moz-touch-enabled: 0)
-  .show-secondary:hover
-    .product-list-image:first-child
-      opacity: 0
-
-    .product-list-image:last-child
-      opacity: 1
-
 .product-list-image
   +transition(all 0.2s cubic-bezier(0.5, 0, 0, 1.25))
   +transform(translate3d(-50%,-50%,0))
@@ -203,15 +187,9 @@
       height: calc(100% - 10px)
       width: calc(100% - 10px)
 
-  &:last-child
-    opacity: 0
-
-  &:only-child
-    opacity: 1
-
 .product-list-item-info
   @media screen and (max-width: $break-small)
-    margin-top: 20px
+    margin-top: $luna-base
 
 .product-list-item-info-headers
   +all-transitions
