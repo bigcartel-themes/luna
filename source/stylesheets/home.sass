@@ -1,0 +1,68 @@
+@import 'variables'
+
+.flex-viewport
+  border-radius: 4px
+
+.flexslider
+  background: none
+  border: none
+  margin: 0 auto $luna-base * 10
+
+  .slides
+
+    img
+      margin: 0 auto
+      width: 100%
+
+    > li
+      +transform(translateZ(0px))
+
+.flex-direction-nav li a
+  +transition(all .1s ease-in)
+  background-image: url("{{ 'slideshow_arrows.png' | theme_image_url }}")
+  background-repeat: no-repeat
+  background-color: rgba(0,0,0,.7)
+  background-size: 65px auto
+  border-radius: $border-radius
+  border: none
+  height: 66px
+  margin: -33px 0 0
+  position: absolute
+  text-indent: -9999px
+  text-align: initial !important
+  width: 33px
+
+  @media screen and (max-width: $break-small)
+    display: none !important
+
+  &:hover
+    background-color: rgba(0,0,0,1)
+
+  &.flex-prev
+    background-position: 6px 15px
+    border-radius: $border-radius
+    left: 18px
+
+  &.flex-next
+    background-position: -38px 15px
+    right: 18px
+
+.flex-control-paging li
+  border-radius: 50%
+  height: 11px
+  margin: 6px
+  width: 11px
+  -webkit-backface-visibility: hidden
+
+  a
+    +all-transitions
+    background: $primary-text-color
+    border-radius: 50%
+    border: none
+    opacity: 0.5
+
+    &.flex-active
+      opacity: 0.3
+
+    &:hover
+      opacity: 0.7

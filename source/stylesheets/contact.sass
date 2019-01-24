@@ -1,0 +1,56 @@
+@import 'variables'
+
+.contact-label
+  display: block
+  font-family: $secondary-font
+  font-size: 15px
+  margin-bottom: $luna-base
+
+.contact-form
+  margin: 0 auto
+  max-width: 640px
+  padding-bottom: 20px
+  width: 100%
+
+  input, textarea
+    min-height: 44px
+    width: 100%
+
+  textarea
+    height: 180px
+
+  #captcha
+    max-width: calc(100% - 135px)
+
+.input-holder
+  position: relative
+
+#captcha_image
+  border-radius: $border-radius
+  height: 44px
+  position: absolute
+  right: 0
+  top: 0
+
+.contact-form-block
+  margin-bottom: 56px
+
+.captcha-instructions
+  font-family: $secondary-font
+  font-size: 12px
+  font-style: italic
+  opacity: .8
+  position: relative
+  top: 10px
+
+button.send-message-button
+  max-width: 300px
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+#contact_page .footer-nav
+  border-top: none
+
+#contact_page .errors
+  max-width: 640px

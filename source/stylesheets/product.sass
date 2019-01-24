@@ -1,0 +1,244 @@
+@import 'variables'
+
+#product_page
+  .footer-nav
+    border: none
+
+.product-page
+  padding-bottom: 30px
+  position: relative
+
+  &:before, &:after
+    content: ''
+    display: table
+    clear: both
+
+  .product-page-headings
+    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
+    max-width: 33.33%
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}40px{% endif %}"}
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}40px{% else %}0{% endif %}"}
+    width: 100%
+
+    @media screen and (max-width: $break-small)
+      float: none
+      max-width: 100%
+      padding: 0
+
+  .product-title
+    margin-bottom: $luna-base * 3
+    text-align: center
+
+  .product-price
+    font-family: $secondary-font
+    margin-bottom: $luna-base * 4
+    text-align: center
+
+  .product-status
+    color: $secondary-text-color
+    display: block
+    font-family: $secondary-font
+    font-size: 13px
+    font-style: italic
+    margin-bottom: $luna-base * 2
+    text-align: center
+    vertical-align: top
+
+  .product-details
+    clear: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
+    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
+    max-width: 33.33%
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}40px{% endif %}"}
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}40px{% else %}0{% endif %}"}
+    width: 100%
+
+    @media screen and (max-width: $break-small)
+      float: none
+      max-width: 100%
+      padding: 0
+
+    &:last-child
+      margin-bottom: 0
+
+  .add-to-cart-button
+    display: block
+    margin-bottom: $luna-base * 4
+    width: 100%
+
+  .product-description
+    font-family: $secondary-font
+    line-height: 1.4em
+    margin-bottom: $luna-base * 4
+
+    a
+      text-decoration: underline
+
+    ol, ul
+      padding-left: 1em
+
+    img, iframe
+      max-width: 100%
+
+  .product-images
+    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}left{% else %}right{% endif %}"}
+    max-width: 66.66%
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}40px{% endif %}"}
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}40px{% else %}0{% endif %}"}
+    position: relative
+    width: 100%
+
+    @media screen and (max-width: $break-small)
+      float: none
+      max-width: 100%
+      padding: 0
+
+  .product-image
+    border-radius: $border-radius
+    display: block
+    margin-bottom: 32px
+    max-width: 100%
+    width: 100%
+
+  .social-buttons
+    border: 1px solid $border-color
+    font-family: $secondary-font
+    list-style: none
+    margin: 0
+    padding: 0
+    text-transform: uppercase
+
+    li
+      +flexbox
+      +justify-content(center)
+      +align-items(center)
+      border-bottom: 1px solid $border-color
+      height: 60px
+      overflow: hidden
+      position: relative
+      text-align: center
+
+      .social-title
+        display: block
+        position: absolute
+        width: 100%
+
+      .social-action
+        opacity: 0
+        position: relative
+        visibility: hidden
+
+      &:hover
+        .social-title
+          display: none
+
+        .social-action
+          opacity: 1
+          visibility: visible
+
+      @media screen and (max-width: $break-small)
+        .social-title
+          display: none
+
+        .social-action
+          opacity: 1
+          visibility: visible
+
+      &:last-child
+        border-bottom: 0px
+
+.similar-products
+  padding: 0 20px $luna-base * 6
+
+  @media screen and (max-width: $break-small)
+    padding-bottom: $luna-base
+
+.similar-product-list
+  +justify-content(flex-start)
+
+  .product-list-item
+    width: 33.33%
+
+    @media screen and (max-width: $break-small)
+      width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
+
+.similar-products-header
+  +flexbox
+  padding: $luna-base * 4 0
+
+  .similar-products-title
+    font-size: 22px
+    letter-spacing: 3px
+    text-transform: uppercase
+
+  .prev-next-products
+    +flexbox
+    border: none
+    padding: 0
+
+    @media screen and (max-width: $break-small)
+      display: none
+
+.prev-next-products
+  border-bottom: 1px solid $border-color
+  +flexbox
+  +justify-content(center)
+  font-family: $secondary-font
+  list-style: none
+  margin: 0
+  margin-left: auto
+  padding: $luna-base * 3
+
+  li:not(:last-child):after
+    content: "/"
+    padding: 0 8px
+
+  a
+    text-decoration: underline
+    padding: $luna-base $luna-base
+
+  &.with-related
+    display: none
+
+    @media screen and (max-width: $break-small)
+      border-top: 1px solid $border-color
+      +flexbox
+
+.product-inventory
+  border-top: 1px solid $border-color
+  margin: $luna-base * 4 0 $luna-base * 2
+  padding: $luna-base * 2 $luna-base
+
+  .product-inventory-header
+    color: $secondary-font
+    margin-bottom: $luna-base * 3
+    text-transform: uppercase
+    font-size: 12px
+    letter-spacing: 1px
+    text-align: center
+
+.inventory-bars
+  font-family: $secondary-font
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    margin-bottom: $luna-base * 2
+
+  .option-name
+    margin-bottom: 1px
+    font-size: 13px
+    text-transform: none
+
+  .bar
+    background-color: $border-color
+    height: 2px
+    width: 100%
+
+    span
+      background-color: $inventory-bar-color
+      display: block
+      height: 2px
+
+      em
+        display: none

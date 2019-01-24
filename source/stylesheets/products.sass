@@ -1,0 +1,266 @@
+@import 'variables'
+
+.artist-category-nav
+  +flexbox
+  +flex-wrap(wrap)
+  +align-items(center)
+  +justify-content(center)
+  +flex-direction(column)
+  border-bottom: 1px solid $border-color
+  border-top: 1px solid $border-color
+  font-size: 14px
+  margin-bottom: $luna-base * 8
+  padding: $luna-base * 2 $luna-base / 2
+
+  &.artist-category-nav-footer
+    margin-bottom: 0
+    margin-top: $luna-base * 5
+
+    @media screen and (max-width: $break-medium)
+      margin-top: $luna-base * 3
+
+  .nav-title
+    font-size: 15px
+    margin: 0 $luna-base $luna-base 0
+    margin-right: $luna-base
+    padding: 3px
+
+  nav
+    +flexbox
+    +flex-basis(50%)
+    +align-items(center)
+    +justify-content(center)
+    +flex-direction(column)
+    padding: $luna-base * 2 $luna-base / 2
+
+    &:not(:last-child)
+      @media screen and (max-width: $break-small)
+        margin-bottom: 0
+
+  ul
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    +flex-wrap(wrap)
+    font-family: $secondary-font
+    list-style: none
+    margin: 0
+    padding: 0
+
+    @media screen and (max-width: $break-medium)
+      +flex-wrap(wrap)
+
+    li
+      padding: 3px 0
+
+      a
+        +all-transitions
+        display: inline
+        padding: 6px 8px
+        white-space: nowrap
+
+        &:hover
+          text-decoration: underline
+
+      &.selected a
+        text-decoration: underline
+
+      &:not(:last-child):after
+        content: "/"
+        padding: 0 2px
+
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  font-size: 20px
+  margin: 0 -10px
+
+  @media screen and (max-width: $break-small)
+    width: auto
+
+@media screen and (max-width: 1280px)
+  #home .product-list
+    padding: 0 20px
+
+.product-list-item
+  display: inline-block
+  font-size: 0
+  padding-bottom: 40px
+  position: relative
+  vertical-align: middle
+  text-align: center
+  width: #{"{% if theme.max_products_per_row == 4 %} 25% {% elsif theme.max_products_per_row == 3 %} 33.33% {% elsif theme.max_products_per_row == 2 %} 50% {% else %} 100% {% endif %}"}
+
+  @media only screen and (min-width: 768px) and (hover: hover), (-moz-touch-enabled: 0)
+    &.rollover
+      margin-bottom: 0px
+      padding-bottom: 0
+
+      .product-list-item-background
+        background-color: $products-background-color
+        border-radius: $border-radius
+        height: 100%
+        left: 0
+        opacity: .6
+        position: absolute
+        top: 0
+        width: 100%
+
+      @media screen and (max-width: $break-small)
+        margin-bottom: 20px
+        padding-bottom: 0
+
+      .product-list-item-info
+        +all-transitions
+        +flexbox
+        +align-items(center)
+        +flex-direction(column)
+        +justify-content(center)
+        border-radius: $border-radius
+        position: absolute
+        left: 10px
+        top: 10px
+        width: calc(100% - 20px)
+        height: calc(100% - 20px)
+        opacity: 0
+
+        .product-list-item-name:after
+          background-color: $primary-background-color
+
+        *
+          color: $primary-background-color
+
+        .product-list-item-info-headers
+          top: 5%
+
+      &:hover .product-list-item-info, &:focus .product-list-item-info
+        opacity: 1
+
+        .product-list-item-info-headers
+          top: 0%
+
+  @media screen and (max-width: $break-small)
+    padding: 0 10px 50px 10px
+    width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
+
+.product-list-item-container
+  cursor: default
+  display: inline-block
+  padding-bottom: 100%
+  position: relative
+  width: 100%
+
+.product-list-image-container
+  font-size: 0
+  width: 100%
+
+.product-list-image
+  +transition(all 0.2s cubic-bezier(0.5, 0, 0, 1.25))
+  +transform(translate3d(-50%,-50%,0))
+  border-radius: $border-radius
+  cursor: pointer
+  left: 50%
+  position: absolute
+  top: 50%
+  max-width: 100%
+
+  &.image-tall
+    height: calc(100% - 20px)
+    width: auto
+
+    @media screen and (max-width: $break-small)
+      height: calc(100% - 10px)
+
+  &.image-wide
+    height: auto
+    width: calc(100% - 20px)
+
+    @media screen and (max-width: $break-small)
+      width: calc(100% - 10px)
+
+  &.image-square
+    height: calc(100% - 20px)
+    width: calc(100% - 20px)
+
+    @media screen and (max-width: $break-small)
+      height: calc(100% - 10px)
+      width: calc(100% - 10px)
+
+.product-list-item-info
+  @media screen and (max-width: $break-small)
+    margin-top: $luna-base
+
+.product-list-item-info-headers
+  +all-transitions
+  +transition(all .3s ease-out)
+  padding-top: $luna-base
+  position: relative
+  z-index: 1
+
+.product-list-item-name
+  font-size: 20px
+  letter-spacing: 3px
+  line-height: 30px
+  margin-bottom: 20px
+  padding: 0 20px
+  position: relative
+  text-transform: uppercase
+
+  &:after
+    bottom: -$luna-base
+    content: ""
+    background-color: $primary-text-color
+    height: 1px
+    left: 50%
+    position: absolute
+    transform: translateX(-50%)
+    width: $luna-base * 3
+
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+    line-height: 22px
+    padding: 0 8px
+
+.product-list-item-price
+  font-family: $secondary-font
+  font-size: 16px
+
+.product-list-item-status
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-size: 13px
+  font-style: italic
+  margin-bottom: 10px
+
+  @media screen and (max-width: $break-small)
+    font-size: 12px
+
+.pagination
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  font-family: $secondary-font
+  font-size: 15px
+  margin: $luna-base * 5 auto 0
+  padding: $luna-base * 3
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+    margin-top: $luna-base * 3
+
+  a, span
+    padding: 2px 6px
+
+    @media screen and (max-width: $break-small)
+      padding: 4px 8px
+
+    &.disabled
+      display: none
+
+    &.current
+      text-decoration: underline
+
+#products_page .footer-nav
+  border-top: 0px

@@ -1,0 +1,164 @@
+@import 'variables'
+
+#cart_page
+  header
+    background-color: $secondary-background-color
+
+  .main
+    background-color: $primary-background-color
+    padding-left: 0
+    padding-right: 0
+
+  .footer-nav
+    border: none
+
+  .errors
+    max-width: 960px
+
+    @media screen and (max-width: $break-small)
+      margin-left: 20px
+      margin-right: 20px
+
+.cart-form
+  +flexbox
+  +flex-direction(row)
+  +align-items(flex-start)
+
+  @media screen and (max-width: $break-small)
+    +flex-direction(column)
+
+.cart-items
+  border-top: 1px solid $border-color
+  list-style: none
+  margin: 0
+  max-width: 65%
+  padding: 0
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+.cart-item
+  +flexbox
+  +align-items(center)
+  border-bottom: 1px solid $border-color
+  font-size: 15px
+  padding: $luna-base * 4 $luna-base * 2
+
+  @media screen and (max-width: $break-small)
+    padding: $luna-base * 2 20px
+
+.cart-item-remove
+  +all-transitions
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  border: 2px solid $secondary-text-color
+  border-radius: 50%
+  padding: $luna-base
+  cursor: pointer
+
+  .cart-remove-icon
+    +all-transitions
+    display: block
+    fill: $secondary-text-color
+
+  &:hover, &:active, &:focus
+    border: 2px solid $primary-text-color
+
+    .cart-remove-icon
+      fill: $primary-text-color
+
+
+.cart-item-details-option
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-style: italic
+  margin-top: 10px
+
+.cart-item-image
+  background-position: 50% 50%
+  background-size: cover
+  display: block
+  height: 90px
+  margin-right: 20px
+  max-width: 90px
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    height: $luna-base * 8
+    margin-right: $luna-base * 2
+    max-width: $luna-base * 8
+
+.cart-item-details
+  max-width: 300px
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: none
+    width: auto
+
+.cart-item-details-price
+  font-size: 14px
+  margin-top: $luna-base
+
+.cart-item-quantity-holder
+  margin-left: auto
+  padding: 0 $luna-base * 4
+  width: 116px
+
+  input
+    text-align: center
+    width: 48px
+
+.cart-footer
+  background-color: $secondary-background-color
+  font-size: 14px
+  margin-left: auto
+  max-width: 30%
+  padding: $luna-base * 2
+  padding-bottom: 0
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+.cart-subtotal
+  +flexbox
+  font-family: $secondary-font
+  line-height: 20px
+  padding: $luna-base 0
+
+  &.cart-total
+    margin-top: $luna-base * 2
+
+    .cart-subtotal-amount
+      font-size: 20px
+
+  &:first-child
+    border-bottom: 1px solid $border-color
+
+.cart-subtotal-amount
+  font-family: $primary-font
+  margin-left: auto
+
+.checkout-btn
+  display: block
+  margin: $luna-base * 3 auto 0
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+a.continue-shopping
+  +all-transitions
+  background-color: transparent
+  border-color: transparent
+  color: $primary-text-color
+  display: block
+  font-size: 12px
+  margin: 0
+  padding: 0
+
+  &:active, &:focus, &:hover
+    border-color: transparent
+    color: $primary-text-color

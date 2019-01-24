@@ -1,199 +1,192 @@
-<!doctype html>
-<!--[if lte IE 9 ]><html class="ie" lang="en"><![endif]-->
-<!--[if gt IE 9 ]><html lang="en"><![endif]-->
-<!--[if !IE ]><html lang="en"><![endif]-->
+<!DOCTYPE html>
+<html>
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
-
-    <meta charset="UTF-8">
-    <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width">
-
-    <link rel="stylesheet" href="{{ theme | theme_css_url }}">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
-    <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        Store.init('{{ page.permalink }}', {
-          shippingEnabled: {{ cart.shipping.enabled }},
-          discountEnabled: {{ cart.discount.enabled }},
-          showSearch: {{ theme.show_search }}
-        });
-      });
-    </script>
-
-    <!-- IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
 
-  <body id="{{ page.permalink }}_page" class="{{ page.category }} no_transition">
-    <div id="site_header" class="strip">
-      <div class="canvas">
-        <nav id="main_nav">
-          <ul>
-            <li {% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %}class="selected"{% endif %}><a href="/products">Products</a></li>{% for page in pages.all limit:theme.nav_items %}<li {% if page.full_url contains page.url %}class="selected"{% endif %}>{{ page | link_to }}</li>{% endfor %}<li {% if page.full_url contains '/contact' %}class="selected"{% endif %}><a href="/contact">Contact</a></li><li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>
-          </ul>
-        </nav>
-
-        <header>
-          {% if theme.images.header != blank %}
-          <div id="branding">
-            <a href="/">
-              <h2>{{ page.name }}</h2>
-              <img src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }}">
-            </a>
-          </div>
-          {% elsif page.name == 'Home' %}
-            <h1 id="store_name"><a href="/">{{ store.name }}</a></h1>
-          {% else %}
-            <h2 id="store_name"><a href="/">{{ store.name }}</a></h2>
-          {% endif %}
-        </header>
-
-        <nav id="mobile_nav">
-          <ul>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/cart">Cart</a></li>
-            <li><a href="#site_footer" title="See more options">More</a></li>
-          </ul>
-        </nav>
+  <body id="{{ page.permalink }}_page" class="{{ page.category }}">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=1504448526533606&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    {% if theme.announcement_message_text != blank %}
+      <div class="announcement-message">
+        <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
+        <div class="announcement-message-close" title="Close announcement message">
+          <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M10.11 1.596l-8.484 8.485-.707-.707L9.404.89z"/><path d="M1.626.89l8.485 8.484-.707.707L.919 1.596z"/></g></svg>
+        </div>
       </div>
-    </div>
-
-    <div id="content" class="strip">
-      <div class="canvas fade_in">
-
-      {% if errors != blank %}
-        <ul id="error" class="fade-in">
-          {% for error in errors %}<li>{{ error }}</li>{% endfor %}
-        </ul>
-      {% endif %}
-
-      {% if page.category == 'custom' %}
-        <header class="product_header page_header">
-          <h1>{{ page.name }}</h1>
-          <span class="dash"></span>
-        </header>
-        <section id="page_body">
-        {{ page_content | paragraphs }}
-        </section>
-      {% else %}
-        {{ page_content }}
-      {% endif %}
-      </div>
-    </div>
-
-    {% if product.categories != blank and page.full_url contains '/product/' %}
-    {% for category in product.categories limit:1 %}
-    <aside id="more_products" class="canvas {% if category.products.size == 1 %}no_products{% endif %}">
-      {% if category.products.size > 1 %}
-      <h3>Related products</h3>
-
-      <ul id="products">
-        {% for product in category.products limit:4 %}
-        {% unless product.url == page.full_path %}
-        <li id="product_{{ product.id }}" class="product">
-          <a href="{{ product.url }}" title="View {{ product.name | escape }}">
-            <div class="product_header">
-              <h2>{{ product.name }}</h2>
-              <span class="dash"></span>
-              <h3>{{ product.default_price | money: theme.money_format }}</h3>
-              {% case product.status %}
-              {% when 'active' %}
-                {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
-              {% when 'sold-out' %}
-                <h5>Sold Out</h5>
-              {% when 'coming-soon' %}
-               <h5>Coming Soon</h5>
-              {% endcase %}
-            </div>
-            <div class="product_thumb">
-              <img src="{{ product.image | product_image_url | constrain: '560' }}" class="fade_in" alt="Image of {{ product.name | escape }}">
-            </div>
-          </a>
-        </li>
-        {% endunless %}
-        {% endfor %}
-      </ul>
-      {% endif %}
-      <nav>
-       <ul>
-          {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-          {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-        </ul>
-      </nav>
-    </aside>
-    {% endfor %}
-    {% elsif page.full_url contains '/product/' %}
-    <aside id="more_products" class="canvas no_products">
-      <nav>
-       <ul>
-          {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-          {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-        </ul>
-      </nav>
-    </aside>
     {% endif %}
+    <header>
+      <div class="wrapper">
+        <nav class="header-nav">
+          <ul>
+            <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products" title="Products">Products</a></li>
+            {% for page in pages.all limit:theme.nav_items %}
+              <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
+            {% endfor %}
+            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact" title="Contact">Contact</a></li>
+            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart" title="Cart">Cart</a></li>
+          </ul>
+        </nav>
 
-    <div id="site_footer" class="strip">
-      <footer class="canvas">
-        <h3>More</h3>
+        <div class="branding">
+          <a href="/" title="Home">
+            {% if theme.images.header != blank %}
+              <img class="store-logo" src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }}">
+            {% else %}
+              <div class="store-header">{{ store.name }}</div>
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      <nav class="header-nav mobile-nav">
         <ul>
-          <li><a href="/" title="Home">Home</a></li>
-          <li {% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' %}class="selected"{% endif %}><a href="/products">Products</a></li>
-
-          {% for page in pages.all %}
-          <li>{{ page | link_to }}</li>
-          {% endfor %}
-          <li><a href="/contact">Contact</a></li>
-          <li {% if page.full_url contains '/cart' %}class="selected"{% endif %}><a href="/cart">Cart</a></li>
-          {% if theme.show_search %}
-          <li id="search">
-            <form id="search-form" name="search" action="/products" method="get" accept-charset="utf8">
-              <input type="hidden" name="utf8" value='✓'>
-              <a href="#search-form">Search</a>
-              <input id="search-input" name="search" type="text">
-            </form>
-          </li>
-          {% endif %}
+          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products" title="Products">Products</a></li>
+          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart" title="Cart">Cart</a></li>
+          <li class="more-link"><a href="#footer" title="See more">More</a></li>
         </ul>
-        
-        {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
-          <ul class="social_icons">
-            {% if theme.twitter_url != blank %}
-              <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
-            {% endif %}
-
-            {% if theme.facebook_url != blank %}
-              <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a></li>
-            {% endif %}
-
-            {% if theme.instagram_url != blank %}
-              <li><a title="Instagram" href="{{ theme.instagram_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
-            {% endif %}
-
-            {% if theme.tumblr_url != blank %}
-              <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
-            {% endif %}
-
-            {% if theme.pinterest_url != blank %}
-              <li><a title="Pinterest" href="{{ theme.pinterest_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg></a></li>
-            {% endif %}
+      </nav>
+    </header>
+    <div class="main">
+      <div class="fade-in wrapper">
+        {% if errors != blank %}
+          <ul class="errors {{ page.permalink }}-errors">
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
           </ul>
         {% endif %}
 
-        {% if store.website != blank %}
-          <a href="{{ store.website }}" id="website" class="button">Back to site</a>
+        {% if page.category == 'custom' %}
+          <div class="custom-page">
+            <h1 class="custom-page-header page-title has-dash">{{ page.name }}</h1>
+            <div class="custom-page-content">{{ page_content | paragraphs }}</div>
+          </div>
+        {% else %}
+          {{ page_content }}
         {% endif %}
-
-        <div id="badge">{{ bigcartel_credit }}</div>
-      </footer>
+      </div>
     </div>
+    {% if page.full_url contains '/product/' %}
+      {% if theme.show_similar_products %}
+        {% if product.categories != blank %}
+          {% for category in product.categories %}
+            {% capture product_divs %}
+              {% for category_product in category.products %}
+                {% assign product_status = '' %}
+                {% case category_product.status %}
+                	{% when 'active' %}
+                		{% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                	{% when 'sold-out' %}
+                		{% assign product_status = 'Sold out' %}
+                	{% when 'coming-soon' %}
+                		{% assign product_status = 'Coming soon' %}
+                {% endcase %}
+                {% if product.id != category_product.id %}
+                  <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
+                    <div class="product-list-item-container">
+                      <figure class="product-list-image-container">
+                        <img alt="Image of {{ category_product.name | escape }}" class="fade-in product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
+                      </figure>
+                    </div>
+                    <div class="product-list-item-info">
+                      <div class="product-list-item-background"></div>
+                      <div class="product-list-item-info-headers">
+                        {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                        <div class="product-list-item-name">{{ category_product.name }}</div>
+                        <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            {% endcapture %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+
+      <div class="wrapper">
+        {% if product_divs != blank %}
+          <div class="all-similar-products">{{ product_divs }}</div>
+          <div class="similar-products">
+            <div class="similar-products-header">
+              <div class="similar-products-title">Related products</div>
+              {% if product.previous_product != blank or product.next_product != blank %}
+                <ul class="prev-next-products">
+                  {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+                  {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+                </ul>
+              {% endif %}
+            </div>
+            <div class="product-list similar-product-list"></div>
+          </div>
+        {% endif %}
+        {% if product.previous_product != blank or product.next_product != blank %}
+          <ul class="prev-next-products {% if product_divs != blank %}with-related{% endif %}">
+            {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+            {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+    <footer>
+      <div class="wrapper">
+        <nav class="footer-nav" id="footer">
+          <ul class="footer-links">
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/products" title="Products">Products</a></li>
+            {% for page in pages.all %}
+              <li>{{ page | link_to }}</li>
+            {% endfor %}
+            <li><a href="/contact" title="Contact">Contact</a></li>
+            <li><a href="/cart" title="Cart">Cart</a></li>
+            {% if theme.show_search %}
+              <li>
+                <a class="open-search" href="#" title="Open search">Search</a>
+                <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
+                  <input type="hidden" name="utf8" value='✓'>
+                  <input class="search-input" name="search" placeholder="Search..." type="text" autocomplete="off" />
+                </form>
+              </li>
+            {% endif %}
+          </ul>
+          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
+            <ul class="social-links">
+              {% if theme.twitter_url != blank %}
+                <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
+              {% endif %}
+              {% if theme.facebook_url != blank %}
+                <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a></li>
+              {% endif %}
+              {% if theme.instagram_url != blank %}
+                <li><a title="Instagram" href="{{ theme.instagram_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
+              {% endif %}
+              {% if theme.tumblr_url != blank %}
+                <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
+              {% endif %}
+              {% if theme.pinterest_url != blank %}
+                <li><a title="Pinterest" href="{{ theme.pinterest_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg></a></li>
+              {% endif %}
+            </ul>
+          {% endif %}
+          {% if store.website != blank %}
+            <a href="{{ store.website }}" class="button back-to-site" class="button">Back to site</a>
+          {% endif %}
+          <div class="badge">{{ bigcartel_credit }}</div>
+        </nav>
+      </div>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ 'api' | theme_js_url }}"></script>
+    <script src="{{ theme | theme_js_url }}"></script>
   </body>
 </html>

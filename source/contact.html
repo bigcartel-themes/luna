@@ -1,39 +1,47 @@
-<header class="product_header page_header">
-  <h1>Contact</h1>
-  <span class="dash"></span>
-</header>
+<h1 class="page-title has-dash">{{ page.name }}</h1>
 
-<section id="page_body">
-  {% if contact.sent %}
-  <p id="thank_you">Your message has been sent and we will try to respond within 24 business hours.</p>
-  {% else %}
+{% if contact.sent %}
+  <div class="contact-form-block contact-send">
+    <p class="contact-sent centered-message">Your message has been sent and we'll get back to you soon!</p>
+  </div>
+{% else %}
+  <div class="page-content {{ page.category }}-content">
+    <form method="post" action="/contact" class="contact-form">
+      <div class="contact-form-block contact-name">
+        <label class="contact-label" for="name-input">Name</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'name', tabindex: 1 }}
+        </div>
+      </div>
+      <div class="contact-form-block contact-email">
+        <label class="contact-label" for="email-input">Email</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'email', tabindex: 2 }}
+        </div>
+      </div>
+      <div class="contact-form-block contact-subject">
+        <label class="contact-label" for="subject-input">Subject</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'subject', tabindex: 3 }}
+        </div>
+      </div>
+      <div class="contact-form-block contact-message">
+        <label class="contact-label" for="message-textarea">Message</label>
+        <div class="input-holder">
+          {{ contact | contact_input: 'message', tabindex: 4 }}
+        </div>
+      </div>
+      <div class="contact-form-block contact-captcha">
+        <label class="contact-label" for="captcha-input">Spam check</label>
+        <div class="input-holder captcha-holder">
+          {{ contact | contact_input: 'captcha', tabindex: 5 }} {{ contact.captcha }}
+          <div class="captcha-instructions">Enter the characters from the image</div>
+        </div>
+      </div>
+      <div class="contact-form-block contact-send">
+        <button class="send-message-button button" type="submit" name="submit" title="Send message" tabindex="6">Send message</button>
+      </div>
+    </form>
+  </div>
+{% endif %}
 
-  <form id="contact_form" method="post" action="/contact" accept-charset="utf8">
-    <input type="hidden" name="utf8" value='✓'>
-    <ul>
-      <li>
-        <label>Your name</label>
-        {{ contact | contact_input: 'name', tabindex: 1 }}
-      </li>
-      <li>
-        <label>Your email</label>
-        {{ contact | contact_input: 'email', tabindex: 2 }}
-      </li>
-      <li>
-        <label>Subject</label>
-        {{ contact | contact_input: 'subject', tabindex: 3 }}
-      </li>
-      <li>
-        <label>Message</label>
-        {{ contact | contact_input: 'message', tabindex: 4 }}
-      </li>
-      <li id="captcha_img">
-        <label>Are you human? Enter the characters from the image</label>
-        <div id="captcha_phrase">{{ contact.captcha }}</div>
-        {{ contact | contact_input: 'captcha', tabindex: 5 }}
-      </li>
-    </ul>
-    <button id="contact_button" type="submit" name="submit" class="button" tabindex="6">Send Message</button>
-  </form>
-  {% endif %}
-</section>

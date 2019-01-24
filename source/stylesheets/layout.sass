@@ -1,0 +1,474 @@
+@import 'variables'
+
+*
+  box-sizing: border-box
+
+html
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  height: 100%
+  min-height: 100%
+  position: relative
+  width: 100%
+
+body
+  background-color: $primary-background-color
+  background-image: #{"{% if theme.images.background != blank %}url(\'{{ theme.images.background.url | constrain: 200, 200 }}\'){% else %}none{% endif %}"}
+  background-repeat: repeat
+  background-size: 200px 200px
+  color: $primary-text-color
+  cursor: default
+  font-family: $primary-font
+  font-size: 14px
+  height: 100%
+  line-height: 1
+  margin: 0
+  padding: 0
+  width: 100%
+
+
+  &.maintenance-page
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    padding: 0 20px
+
+    .maintenance-content
+      border: 3px solid $header-text-color
+      display: inline-block
+      padding: $luna-base * 4 $luna-base * 3
+      margin: -20% auto 0
+      text-align: center
+      width: auto
+
+      @media screen and (max-width: $break-small)
+        margin-top: -40%
+
+      h1
+        font-size: 18px
+        font-weight: normal
+        line-height: 1.3em
+        text-transform: none
+
+      p
+        color: $secondary-text-color
+        font-family: $secondary-font
+        font-style: italic
+        margin: 10px auto
+
+
+.wrapper
+  margin: 0 auto
+  max-width: 1024px
+  width: 100%
+
+a
+  color: $primary-text-color
+  text-decoration: none
+
+h1, h2, h3, h4, h5
+  color: $header-text-color
+  font-weight: normal
+  letter-spacing: 1px
+  line-height: 1.4em
+  margin: 0
+  padding: 0
+  position: relative
+  text-transform: uppercase
+
+  &.has-dash
+    margin-bottom: $luna-base * 6
+
+    &:after
+      bottom: -$luna-base
+      content: ""
+      background-color: $header-text-color
+      height: 2px
+      left: 50%
+      position: absolute
+      transform: translateX(-50%)
+      width: $luna-base * 3
+
+.store-header
+  color: $header-text-color
+  font-size: 42px
+  letter-spacing: 6px
+
+.page-title
+  font-size: 24px
+  letter-spacing: 3px
+  text-align: center
+
+header
+  padding: 20px
+  text-align: center
+
+  &.has-background
+    background-color: $secondary-background-color
+    padding-bottom: 60px
+
+  .header-nav
+    font-family: $primary-font
+    text-transform: uppercase
+
+    @media screen and (max-width: $break-small)
+      display: none
+
+    ul
+      display: flex
+      justify-content: center
+      list-style: none
+      margin: 0
+      padding: 0
+
+      li.selected a
+        color: $primary-text-color
+
+      a
+        +all-transitions
+        border-bottom: 1px solid $border-color
+        color: $secondary-text-color
+        display: block
+        font-size: 12px
+        letter-spacing: 1px
+        padding: $luna-base $luna-base * 2 $luna-base * 2
+        text-decoration: none
+
+        @media screen and (max-width: $break-small)
+          border-bottom: none
+          text-decoration: underline
+
+        &:hover
+          color: $primary-text-color
+
+      .more-link
+        display: none
+
+      @media screen and (max-width: $break-small)
+        .more-link
+          display: block
+
+    &.mobile-nav
+      display: none
+
+      @media screen and (max-width: $break-small)
+        display: block
+        font-family: $secondary-font
+
+  .branding
+    font-size: 20px
+    margin: 60px auto
+    text-transform: uppercase
+
+    @media screen and (max-width: $break-small)
+      margin: 30px auto
+
+      .store-header
+        font-size: 36px
+        letter-spacing: 3px
+
+    > a
+      display: block
+
+.store-logo
+  display: block
+  margin: 0 auto
+  max-width: 100%
+  max-height: 400px
+
+.main
+  padding: 0 20px 60px
+
+  @media screen and (max-width: $break-small)
+    padding-bottom: 0
+
+#cart_page, #contact_page, #maintenance_page, #product_page, .custom
+  .main
+    background-color: $secondary-background-color
+    padding-top: $luna-base * 8
+
+button, a.button
+  +all-transitions
+  background: none
+  border: 2px solid $button-border-color
+  cursor: pointer
+  display: block
+  font-family: $primary-font
+  font-size: 14px
+  height: 58px
+  letter-spacing: 1px
+  line-height: 58px
+  max-width: 100%
+  outline: none
+  padding: 0 $luna-base * 3
+  text-align: center
+  text-transform: uppercase
+  width: 100%
+
+  &.no-border
+    border: none
+
+  &:hover, &:active, &:focus
+    border: 2px solid $button-rollover-color
+    color: $button-rollover-color
+    opacity: .8
+
+.select
+  +all-transitions
+  border: 2px solid $button-border-color
+  color: $primary-text-color
+  font-family: $primary-font
+  height: 58px
+  margin-bottom: $luna-base * 3
+  max-width: 100%
+  padding: 0
+  position: relative
+  text-transform: uppercase
+  width: 100%
+
+  select
+    +all-transitions
+    appearance: none
+    -webkit-appearance: none
+    background: none
+    border: 0
+    color: $primary-text-color
+    font-family: $primary-font
+    font-size: 14px
+    height: 100%
+    letter-spacing: 1px
+    line-height: 58px
+    padding: 0 66px 0 16px
+    position: relative
+    text-transform: uppercase
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFF
+      color: #000
+
+    &:focus
+      box-shadow: none
+      outline: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    +all-transitions
+    fill: $primary-text-color
+    height: 8px
+    margin-top: -2px
+    position: absolute
+    right: 20px
+    top: 50%
+    width: 13px
+    z-index: 1
+
+  &:hover, &:active, &:focus, &:focus-within
+    color: $secondary-text-color
+    border-color: $secondary-text-color
+
+    select
+      color: $secondary-text-color
+
+    svg
+      fill: $secondary-text-color
+
+.custom-page-header
+  text-align: center
+
+.custom-page-content
+  font-family: $secondary-font
+  font-size: 16px
+  line-height: 1.43em
+  margin: 0 auto
+  max-width: 640px
+
+  a
+    text-decoration: underline
+
+  ol, ul
+    padding-left: 1em
+
+  img, iframe
+    max-width: 100%
+
+.custom .footer-nav
+  border: none
+
+.footer-nav
+  border-top: 1px solid $border-color
+  +flexbox
+  +flex-direction(column)
+  +align-items(center)
+  font-family: $primary-font
+  list-style: none
+  margin: 0
+  padding: $luna-base * 5 0
+
+  ul
+    +flexbox
+    +justify-content(center)
+    list-style: none
+    margin: 0 0 $luna-base * 3 0
+    padding: 0
+
+    &.footer-links
+      @media screen and (max-width: $break-small)
+        +flex-direction(column)
+        padding: 0 $luna-base * 2
+        width: 100%
+
+        a
+          border-bottom: 1px solid $border-color
+          font-family: $secondary-font
+          font-size: 13px
+          padding: $luna-base * 2 0
+          text-align: center
+          text-transform: uppercase
+
+    a
+      +all-transitions
+      display: block
+      font-size: 12px
+      padding: $luna-base $luna-base * 2
+      text-decoration: none
+
+      &:hover
+        color: $secondary-text-color
+
+.social-links a
+  +all-transitions
+  fill: $links-color
+
+  &:hover
+    fill: $links-rollover-color
+
+.search-input
+  background: none
+  border: 1px solid #e5e5e5 !important
+  display: none
+  font-size: 13px
+  position: relative
+  top: -3px
+
+.errors
+  border-radius: $border-radius
+  background-color: #EA4859
+  color: #FAFAFA
+  font-size: 14px
+  line-height: 20px
+  list-style: none
+  margin: 0 auto $luna-base * 4
+  padding: 10px 20px
+  text-align: center
+
+input, textarea
+  +all-transitions
+  appearance: none
+  border: 2px solid $border-color
+  background: $secondary-background-color
+  color: $primary-text-color
+  font-size: 1em
+  padding: $luna-base
+  outline: none
+  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
+
+  &:focus, &:active
+    background: $primary-background-color
+    border: 2px solid $primary-text-color
+
+a.back-to-site
+  font-size: 11px
+  height: auto
+  line-height: 1em
+  padding: $luna-base * 2 $luna-base * 4
+  width: auto
+
+.back-to-site + .badge
+  margin-top: $luna-base * 3
+
+.badge
+  padding: $luna-base $luna-base * 2
+
+  a
+    background: url("{{ 'bc_badge.png' | theme_image_url }}") no-repeat
+    border: none
+    display: block
+    height: 23px
+    overflow: hidden
+    text-indent: 100%
+    white-space: nowrap
+    width: 79px
+
+.announcement-message
+  display: none
+
+.has-announcement-message .announcement-message
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background-color: $secondary-background-color
+  color: $primary-text-color
+  font-size: 15px
+  left: 0
+  line-height: 26px
+  padding: 14px 20px
+  position: relative
+  top: 0
+  width: 100%
+  z-index: 9
+
+  .announcement-message-text
+    text-align: center
+    width: calc(100% - 100px)
+
+    @media screen and (max-width: $break-small)
+      width: calc(100% - 50px)
+
+  .announcement-message-close
+    +transform(translateY(-50%))
+    cursor: pointer
+    position: absolute
+    right: 20px
+    top: 50%
+
+    svg
+      fill: $primary-text-color
+      height: 11px
+      width: 11px
+
+.centered-message
+  color: $secondary-text-color
+  font-family: $secondary-font
+  font-size: 20px
+  font-style: italic
+  padding: 0 20px
+  text-align: center
+
+  a
+    text-decoration: underline
+
+@keyframes reset
+  from
+    opacity: 0
+  to
+    opacity: 0
+
+@keyframes fade-in
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.fade-in
+  animation-name: reset, fade-in
+  -webkit-animation-name: reset, fade-in
+  animation-duration: .7s
+  -webkit-animation-duration: .7s
+  animation-timing-function: ease-in
+  -webkit-animation-timing-function: ease-in
+  animation-iteration-count: 1
+  -webkit-animation-iteration-count: 1

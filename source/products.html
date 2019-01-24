@@ -1,87 +1,80 @@
+<div class="artist-category-nav artist-category-nav-header">
+  <nav class="category-nav">
+    <div class="nav-title">Products</div>
+    <ul>
+      <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+      {% for category in categories.active %}
+      <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% if artists.active != blank %}
+  <nav class="artist-nav">
+    <div class="nav-title">Artists</div>
+    <ul>
+      {% for artist in artists.active %}
+      <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
 {% paginate products from products.current by theme.products_per_page %}
-
-<aside class="category_nav {% if artists.active != blank && categories.active != blank %}double{% endif %}">
-  <nav class="categories">
-    <h3>Products</h3>
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>    
-      {% for category in categories.active %}
-      <li class="page {% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>     
-  {% if artists.active != blank %}
-  <nav class="artists">
-    <h3>Artists</h3>
-    <ul>
-      {% for artist in artists.active %}
-      <li class="page {% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>       
-  {% endif %} 
-</aside>  
-
-{% if products != blank %}
-
-
-{% for product in products %}
-  {% if forloop.first %}
-    <ul id="products" class="{% if forloop.length == 1 %}single_product{% endif %}{% if forloop.length == 2 %}double_product{% endif %}">
-  {% endif %}
-  <li id="product_{{ product.id }}" class="product">
-    <a href="{{ product.url }}" title="View {{ product.name | escape }}">
-      <div class="product_header">
-        <h2>{{ product.name }}</h2>
-        <span class="dash"></span>            
-        <h3>{{ product.default_price | money: theme.money_format }}</h3>
+  {% if products != blank %}
+    <div class="product-list">
+      {% for product in products %}
+        {% assign product_status = '' %}
         {% case product.status %}
-        {% when 'active' %}
-          {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
-        {% when 'sold-out' %}
-      		<h5>Sold Out</h5>
-        {% when 'coming-soon' %}
-      		<h5>Coming Soon</h5>
+        	{% when 'active' %}
+        		{% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+        	{% when 'sold-out' %}
+        		{% assign product_status = 'Sold out' %}
+        	{% when 'coming-soon' %}
+        		{% assign product_status = 'Coming soon' %}
         {% endcase %}
-      </div>
-      <div class="product_thumb">
-        <img src="{{ product.image | product_image_url | constrain: '560' }}" class="fade_in" alt="Image of {{ product.name | escape }}">
-      </div>
-    </a>
-  </li>
-  {% if forloop.last %}
-    </ul>
+        <a class="product-list-item {{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+          <div class="product-list-item-container">
+            <figure class="product-list-image-container">
+              <img alt="Image of {{ product.name | escape }}" class="fade-in product-list-image {% if product.image.height > product.image.width %}image-tall{% elsif product.image.height < product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ product.image | product_image_url | constrain: 1000, 1000 }}">
+            </figure>
+          </div>
+          <div class="product-list-item-info">
+            <div class="product-list-item-background"></div>
+            <div class="product-list-item-info-headers">
+              {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+              <div class="product-list-item-name">{{ product.name }}</div>
+              <div class="product-list-item-price">{{ product.default_price | money: theme.money_format }}</div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    {% if paginate.pages > 1 %}
+      {{ paginate | default_pagination }}
+    {% endif %}
+
+    <div class="artist-category-nav artist-category-nav-footer">
+      <nav class="category-nav">
+        <div class="nav-title">Products</div>
+        <ul>
+          <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+          {% for category in categories.active %}
+          <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% if artists.active != blank %}
+      <nav class="artist-nav">
+        <div class="nav-title">Artists</div>
+        <ul>
+          {% for artist in artists.active %}
+          <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="empty-products centered-message">No products found.</div>
   {% endif %}
-{% endfor %}
-
-{% if paginate.previous.is_link or paginate.next.is_link %}
-{{ paginate | default_pagination }}
-{% endif %}
-
-<aside class="category_nav {% if artists.active != blank && categories.active != blank %}double{% endif %}">
-  <nav class="categories">
-    <h3>Products</h3>
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>    
-      {% for category in categories.active %}
-      <li class="page {% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>     
-  {% if artists.active != blank %}
-  <nav class="artists">
-    <h3>Artists</h3>
-    <ul>
-      {% for artist in artists.active %}
-      <li class="page {% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>       
-  {% endif %} 
-</aside>
-
-{% else %}
-<p class="alert-noproducts">No products found.</p>
-{% endif %}
-
 {% endpaginate %}

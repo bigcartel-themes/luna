@@ -1,54 +1,43 @@
-<header class="product_header page_header">
-  <h1>Cart</h1>
-  <span class="dash"></span>
-</header>
+<h1 class="page-title has-dash">{{ page.name }}</h1>
 
 {% if cart.items != blank %}
-<form id="cart-form" class="no_options" method="post" action="/cart" accept-charset="utf8">
-  <input type="hidden" name="utf8" value='✓'>
-  <div id="cart_description">
-    <section id="cart_items">
-      <ul>
+  <div class="cart-holder">
+    <form method="post" action="/cart" id="cart-form" class="cart-form">
+      <ul class="cart-items">
         {% for item in cart.items %}
-        <li class="cart_item{% unless item.product.has_default_option %} with_option{% endunless %}" id="item-{{ item.id }}">
-          <div class="item_image"><img src="{{ item.product.image | product_image_url: "medium" }}" alt="Photo of {{ item.name }}"></div>
-          <dl>
-            <dt><a href="{{ item.product.url }}">{{ item.product.name }}</a></dt>
-            <dd class="item_price">{{ item.unit_price | money: theme.money_format }}{% if item.quantity > 1 %}<span class="item_quantity">(x{{ item.quantity }})</span>{% endif %}</dd>
-            <dd class="quantity_input">{{ item | item_quantity_input }}</dd>
-            {% unless item.product.has_default_option %}<dd class="item_option">{{ item.option.name }}</dd>{% endunless %}
-          </dl>
-          <a href="#" class="remove_item" title="Remove item from cart">Remove item</a>
-        </li>
+          <li class="cart-item" data-item-id="{{ item.id }}">
+            <a class="cart-item-image" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}" style="background-image:url('{{ item.product.image | product_image_url | constrain: 576, 576 }}');"></a>
+            <div class="cart-item-details">
+              <div class="cart-item-details-name">{{ item.product.name }}</div>
+              <div class="cart-item-details-price">{{ item.unit_price | money: theme.money_format }}</div>
+              {% unless item.product.has_default_option %}
+                <div class="cart-item-details-option">{{ item.option.name }}</div>
+              {% endunless %}
+            </div>
+            <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
+              {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
+            </div>
+            <a class="cart-item-remove" title="Remove item" href="#"><svg class="cart-remove-icon" width="11" height="11" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M10.11 1.596l-8.484 8.485-.707-.707L9.404.89z"/><path d="M1.626.89l8.485 8.484-.707.707L.919 1.596z"/></g></svg></a>
+          </li>
         {% endfor %}
       </ul>
-    </section>
-
-    <section id="cart_options" class="solo_update">
-      <div class="cart-update">
-        <button id="update-btn-footer" class="update-btn button disabled" name="update" type="submit" title="Update your cart total"><span>Update total</span></button>
+      <div class="cart-footer">
+        <div class="cart-totals">
+          <div class="cart-subtotal">
+            Items <span class="cart-subtotal-amount">{{ cart.subtotal | money: theme.money_format }}</span>
+          </div>
+          <div class="cart-subtotal cart-total">
+            Subtotal <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
+          </div>
+        </div>
+        <button type="submit" name="checkout" title="Checkout" class="button checkout-btn">Checkout</button>
+        <a class="button continue-shopping" href="/products" title="Continue shopping">Continue Shopping</a>
       </div>
-    </section>
+    </form>
   </div>
 
-  <section id="cart_summary">
-    <ul>
-      <li>
-        <h3>Items</h3>
-        <span>{{ cart.subtotal | money: theme.money_format }}</span>
-      </li>
-      <li id="cart_total">
-        <h3>Subtotal</h3>
-        <h2>{{ cart.total | money: theme.money_format }}</h2>
-      </li>
-    </ul>
-
-    <button id="checkout-btn" class="button" type="submit" title="Checkout">Checkout</button>
-    <a class="continue_shopping" href="/products" title="Continue shopping">Continue shopping</a>
-  </section>
-</form>
 {% else %}
-<div id="cart_empty">
-  <p>Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</p>
-</div>
+  <p class="empty-cart-message centered-message">
+    Your cart is empty! Sounds like a good time to <a href="/products" title="Start shopping">start shopping</a>.
+  </p>
 {% endif %}

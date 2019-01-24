@@ -1,33 +1,10 @@
-/* ------------------------------------------------------------------------------------------------
- *
- * This is where all of the CSS code is handled for your theme.
- *
- * We recommend you break your CSS into multiple files and put them in a separate
- * directory. We've used a "stylesheets" directory in our example below. After that we'll use
- * Sprockets (getsprockets.org) to package them into one file. Sprockets also allows you to
- * use Sass/SCSS (sass-lang.com) by ending your file name with .sass or .scss, and you can also
- * use LESS (lesscss.org) by ending your file with .less.
- *
- * However, if you don't have much CSS, or you're just a glutton for punishment,
- * you could simply put all of your CSS in this file. It's up to you.
- *
- * ------------------------------------------------------------------------------------------------
- */
-
-
-/* 
- *= require_directory ./stylesheets/vendor
- *= require stylesheets/layout
- *= require stylesheets/products_home
- *= require stylesheets/product
- *= require stylesheets/about_custom
- *= require stylesheets/contact
- *= require stylesheets/cart
- *= require stylesheets/standalone_maintenance
- *= require stylesheets/ie
- *= require stylesheets/responsive
- *= require stylesheets/slideshows
- */
+//= require_directory ./stylesheets/vendor
+//= require stylesheets/layout
+//= require stylesheets/home
+//= require stylesheets/products
+//= require stylesheets/product
+//= require stylesheets/contact
+//= require stylesheets/cart
 
  /*============================================================
   Colors + Custom Styles - add and override styles below
