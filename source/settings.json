@@ -51,7 +51,7 @@
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
-      "default": "#999999"
+      "default": "#666666"
     },
     {
       "variable": "link_color",
