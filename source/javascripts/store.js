@@ -80,12 +80,12 @@ function getRandomIndex(elements) {
 $('.home-slideshow').flexslider({
 	animation: "slide"
 });
-
+$('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
 var width = $(window).width();
 
-if ($('.product-page').length && width <= 768 && !inPreview) {
-  $('.product-images').addClass('flexslider');
-	$('.product-images').flexslider({
+if ($('.product-images-slideshow').length && width <= 768 && !inPreview) {
+  $('.product-images-slideshow').addClass('flexslider');
+	$('.product-images-slideshow').flexslider({
 		animation: 'slide',
 		animationLoop: false,
 		controlsContainer: 'canvas',
