@@ -185,7 +185,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Displays a search field in the footer"
     },
     {
@@ -200,21 +200,21 @@
       "variable": "show_facebook",
       "label": "Show Facebook's Share button",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Adds a Share button to the Product page"
     },
     {
       "variable": "show_twitter",
       "label": "Show Twitter's Tweet button",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Adds a Tweet button to the Product page"
     },
     {
       "variable": "show_pinterest",
       "label": "Show Pinterest's Pin It button",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Adds a Pin It button to the Product page"
     },
     {
