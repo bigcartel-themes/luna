@@ -9,7 +9,7 @@
 {% endif %}
 
 {% if theme.featured_items > 0 %}
-  {% get products from products.all limit:theme.featured_items %}
+  {% get products from products.all limit:theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
       <div class="product-list">
         {% for product in products %}

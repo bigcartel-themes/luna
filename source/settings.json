@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "images": [
     {
       "variable": "header",
@@ -116,6 +116,14 @@
       "options": "0..100",
       "default": 12,
       "description": "The number of products featured on the Home page"
+    },
+    {
+      "variable": "featured_order",
+      "label": "Featured products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "position",
+      "description": "The order of products on the Home page"
     },
     {
       "variable": "max_products_per_row",
