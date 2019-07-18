@@ -58,18 +58,20 @@
           {{ product.option | hidden_option_input }}
         {% else %}
           {% if product.has_option_groups %}
-            <input id="option" name="cart[add][id]" type="hidden" value="0">
-            {% for option_group in product.option_groups %}
-              <div class="select">
-                <select data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
-                  <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
-                  {% for value in option_group.values %}
-                    <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
-                  {% endfor %}
-                </select>
-                <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
-              </div>
-            {% endfor %}
+            <div class="product_option_groups">
+              <input id="option" name="cart[add][id]" type="hidden" value="0">
+              {% for option_group in product.option_groups %}
+                <div class="select">
+                  <select data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                    <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    {% for value in option_group.values %}
+                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                    {% endfor %}
+                  </select>
+                  <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+                </div>
+              {% endfor %}
+            </div>
           {% else %}
             <div class="select">
               <select class="product_option_select" id="option" name="[cart][add][id]" aria-label="Select option">
@@ -82,7 +84,7 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-out-of-stock-title="Out of Stock">Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
       </form>
 
     {% endif %}
