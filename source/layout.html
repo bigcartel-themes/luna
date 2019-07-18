@@ -189,9 +189,7 @@
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
-      <script>
-        loadProductOptionGroups('{{ product.permalink }}');
-      </script>
+      <script>Product.find('{{ product.permalink }}', processProduct)</script>
     {% endif %}
   </body>
 </html>
