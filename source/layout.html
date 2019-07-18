@@ -185,8 +185,13 @@
         </nav>
       </div>
     </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script src="{{ theme | theme_js_url }}"></script>
+    {% if page.full_url contains '/product/' %}
+      <script>
+        loadProductOptionGroups('{{ product.permalink }}');
+      </script>
+    {% endif %}
   </body>
 </html>
