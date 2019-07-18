@@ -7,13 +7,13 @@
         {% for item in cart.items %}
           <li class="cart-item" data-item-id="{{ item.id }}">
             <a class="cart-item-image" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}" style="background-image:url('{{ item.product.image | product_image_url | constrain: 576, 576 }}');"></a>
-            <div class="cart-item-details">
+            <a class="cart-item-details" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">
               <div class="cart-item-details-name">{{ item.product.name }}</div>
               <div class="cart-item-details-price">{{ item.unit_price | money: theme.money_format }}</div>
               {% unless item.product.has_default_option %}
                 <div class="cart-item-details-option">{{ item.option.name }}</div>
               {% endunless %}
-            </div>
+            </a>
             <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
               {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
             </div>
