@@ -177,9 +177,9 @@ var enableAddButton = function(updated_price) {
 
 var disableAddButton = function(type) {
   var addButton = $('.add-to-cart-button');
-  var addButtonTitle = addButton.attr('data-title');
+  var addButtonTitle = addButton.attr('data-add-title');
   if (type == "sold-out") {
-    var addButtonTitle = addButton.attr('data-out-of-stock-title');
+    var addButtonTitle = addButton.attr('data-sold-title');
   }
   if (!addButton.is(":disabled")) {
     addButton.attr("disabled","disabled");
