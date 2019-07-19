@@ -186,3 +186,16 @@ var disableAddButton = function(type) {
   }
   addButton.html(addButtonTitle);
 }
+
+var enableSelectOption = function(select_option, option_price) {
+  select_option.removeAttr("disabled");
+  select_option.text(select_option.attr("data-name"));
+}
+var disableSelectOption = function(select_option) {
+  var sold_text = select_option.parent().attr("data-sold-text");
+  if (select_option.val() > 0) {
+    var name = select_option.attr("data-name");
+    select_option.attr("disabled",true);
+    select_option.text(name + ' ' + sold_text);
+  }
+}
