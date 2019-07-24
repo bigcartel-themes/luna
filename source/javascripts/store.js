@@ -187,7 +187,7 @@ var disableAddButton = function(type) {
   addButton.html(addButtonTitle);
 }
 
-var enableSelectOption = function(select_option, option_price) {
+var enableSelectOption = function(select_option) {
   select_option.removeAttr("disabled");
   select_option.text(select_option.attr("data-name"));
 }

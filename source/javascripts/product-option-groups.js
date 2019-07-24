@@ -12,19 +12,97 @@ function processProduct(product) {
     $('.product_option_group').on('change',function() {
       disableAddButton();
       $('#option').val(0);
-      processAvailableDropdownOptions(product);
+      processAvailableDropdownOptions(product, $(this));
     });
   }
 }
 
-function processAvailableDropdownOptions(product) {
+function processAvailableDropdownOptions(product, changed_dropdown) {
   selected_values = getSelectedValues();
   num_selected = selected_values.count(item => item > 0);
   allSelected = selected_values.every(isGreaterThanZero);
   num_option_groups = product.option_groups.length;
+  selected_value = [];
+  selected_value.push(parseInt(changed_dropdown.val()));
+  this_group_id = changed_dropdown.attr("data-group-id");
+  $('.product_option_group').not(changed_dropdown).find('option').each(function(index,element) {
+    if (element.value > 0) {
+      enableSelectOption($(element));
+    }
+  });
+  if ((num_selected === 2 && num_option_groups === 3) || num_selected === 1 && num_option_groups === 2) {
+    matching_product_options = buildProductOptionGroupValueArrays(product.options, selected_values);
+    for (var POIndex = 0; POIndex < matching_product_options.length; POIndex ++) {
+      option_group_values = matching_product_options[POIndex].option_group_values;
+      for (var GVIndex = 0; GVIndex < option_group_values.length; GVIndex ++) {
+        if (option_group_values[GVIndex].name != this_group_id) {
+          dropdown_option = $('.product_option_group').find('option[value="' + option_group_values[GVIndex].id + '"]');
+          is_selected = dropdown_option.is(":selected");
+          if (!is_selected) {
+            if (matching_product_options[POIndex].sold_out) {
+              disableSelectOption(dropdown_option);
+            }
+            else {
+              enableSelectOption(dropdown_option);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (num_selected === 2 && num_option_groups === 2) {
+    new_options = buildProductOptionGroupValueArrays(product.options, selected_value);
+    for (var NOIndex = 0; NOIndex < new_options.length; NOIndex ++) {
+      product_option = new_options[NOIndex];
+      if (product_option.sold_out) {
+        for (var POIndex = 0; POIndex < product_option.option_group_values.length; POIndex ++) {
+          group_value = product_option.option_group_values[POIndex];
+          if (group_value.option_group_id != this_group_id) {
+            disableSelectOption($('.product_option_group').find('option[value="' + group_value.id + '"]'));
+          }
+        }
+      }
+    }
+  }
   if (allSelected) {
     processAddToCartButton(product.options, selected_values);
   }
+}
+
+function findOptionGroupName(option_groups, group_id) {
+  for (var OGIndex = 0; OGIndex < option_groups.length; OGIndex ++) {
+    if (option_groups[OGIndex].id === group_id) {
+      return option_groups[OGIndex].name;
+    }
+  }
+}
+
+function arrayContainsArray(superset, subset) {
+  if (0 === subset.length) {
+    return false;
+  }
+  return subset.every(function (value) {
+    return (superset.indexOf(value) >= 0);
+  });
+}
+
+function buildProductOptionGroupValueArrays(product_options, selected_values) {
+  matching_options = [];
+  for (var POIndex = 0; POIndex < product_options.length; POIndex ++) {
+    group_values = product_options[POIndex].option_group_values;
+    match_values = [];
+    for (var GVIndex = 0; GVIndex < group_values.length; GVIndex ++) {
+      match_values.push(parseInt(group_values[GVIndex].id));
+    }
+    selected_values = selected_values.filter(function(val) {
+      return val !== 0;
+    });
+    if (arrayContainsArray(match_values, selected_values)) {
+      matching_options.push(product_options[POIndex]);
+    }
+  }
+  return matching_options;
 }
 
 
@@ -127,7 +205,7 @@ function findProductOptionBySelectedValues(product_options, selected_values) {
 function getSelectedValues() {
   selected_values = [];
   $('.product_option_group').each(function(i, object) {
-    selected_values.push(object.value);
+    selected_values.push(parseInt(object.value));
   });
   return selected_values;
 };
