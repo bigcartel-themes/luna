@@ -49,7 +49,26 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         }
       }
     }
-    //
+
+    $('.product_option_group').each(function(index,element) {
+      if (element.value == 0) {
+        $(element).find('option').each(function(index2,element2) {
+          if (element2.value > 0) {
+            available_values = [];
+            for (i = 0; i < selected_values.length; i++) {
+              if (selected_values[i] > 0) {
+                available_values[i] = selected_values[i];
+              }
+            }
+            available_values.push(parseInt(element2.value));
+            found_options = buildProductOptionGroupValueArrays(product.options, available_values);
+            if (found_options.length === 0) {
+              disableSelectOption($(element2), false);
+            }
+          }
+        });
+      }
+    });
   }
 
   if (num_selected === 2 && num_option_groups === 2) {
