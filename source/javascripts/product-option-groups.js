@@ -84,6 +84,24 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         }
       }
     }
+
+    $('.product_option_group').not(changed_dropdown).find('option').each(function(index,element) {
+      // Loop through the options in this dropdown and pair it with the selected value to see if there's an available option
+      if (element.value > 0) {
+        available_values = [];
+        for (i = 0; i < selected_value.length; i++) {
+          if (selected_value[i] > 0) {
+            available_values[i] = selected_value[i];
+          }
+        }
+        available_values.push(parseInt(element.value));
+        found_options = buildProductOptionGroupValueArrays(product.options, available_values);
+        if (found_options.length === 0) {
+          disableSelectOption($(element), false);
+        }
+      }
+    });
+
   }
 
   if (num_selected === 3 && num_option_groups === 3) {
@@ -112,6 +130,8 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         }
       }
     }
+
+
   }
   if (allSelected) {
     processAddToCartButton(product.options, selected_values);
