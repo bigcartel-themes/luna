@@ -191,11 +191,16 @@ var enableSelectOption = function(select_option) {
   select_option.removeAttr("disabled");
   select_option.text(select_option.attr("data-name"));
 }
-var disableSelectOption = function(select_option) {
-  var sold_text = select_option.parent().attr("data-sold-text");
+var disableSelectOption = function(select_option, sold_out = true) {
+  if (sold_out === true) {
+    disabled_text = select_option.parent().attr("data-sold-text");
+  }
+  else {
+    disabled_text = select_option.parent().attr("data-unavailable-text");
+  }
   if (select_option.val() > 0) {
     var name = select_option.attr("data-name");
     select_option.attr("disabled",true);
-    select_option.text(name + ' ' + sold_text);
+    select_option.text(name + ' ' + disabled_text);
   }
 }

@@ -49,6 +49,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         }
       }
     }
+    //
   }
 
   if (num_selected === 2 && num_option_groups === 2) {
@@ -61,6 +62,34 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
           if (group_value.option_group_id != this_group_id) {
             disableSelectOption($('.product_option_group').find('option[value="' + group_value.id + '"]'));
           }
+        }
+      }
+    }
+  }
+
+  if (num_selected === 3 && num_option_groups === 3) {
+    new_options = buildProductOptionGroupValueArrays(product.options, selected_value);
+    has_sold_out = false;
+    sold_values = [];
+    for (var NOIndex = 0; NOIndex < new_options.length; NOIndex ++) {
+      product_option = new_options[NOIndex];
+      match_values = [];
+      for (var POIndex = 0; POIndex < product_option.option_group_values.length; POIndex ++) {
+        match_values.push(parseInt(product_option.option_group_values[POIndex].id));
+      }
+      if (product_option.sold_out) {
+        has_sold_out = true;
+        sold_values.push(match_values);
+      }
+    }
+
+    if (has_sold_out) {
+      loop_values = sold_values[0];
+      for (var MVIndex = 0; MVIndex < loop_values.length; MVIndex ++) {
+        dropdown_option = $('.product_option_group').not(changed_dropdown).find('option[value="' + loop_values[MVIndex] + '"]');
+        is_selected = dropdown_option.is(":selected");
+        if (!is_selected) {
+          disableSelectOption(dropdown_option);
         }
       }
     }

@@ -62,7 +62,7 @@
               <input id="option" name="cart[add][id]" type="hidden" value="0">
               {% for option_group in product.option_groups %}
                 <div class="select">
-                  <select data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
                     <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
                     {% for value in option_group.values %}
                       <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
