@@ -20,6 +20,9 @@
     padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}40px{% else %}0{% endif %}"}
     width: 100%
 
+    @media screen and (max-width: $break-medium)
+      max-width: 40%
+
     @media screen and (max-width: $break-small)
       float: none
       max-width: 100%
@@ -51,6 +54,9 @@
     padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}32px{% endif %}"}
     padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}32px{% else %}0{% endif %}"}
     width: 100%
+
+    @media screen and (max-width: $break-medium)
+      max-width: 40%
 
     @media screen and (max-width: $break-small)
       float: none
@@ -87,6 +93,9 @@
     padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}32px{% else %}0{% endif %}"}
     position: relative
     width: 100%
+
+    @media screen and (max-width: $break-medium)
+      max-width: 60%
 
     @media screen and (max-width: $break-small)
       float: none
