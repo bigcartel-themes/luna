@@ -238,7 +238,7 @@ function disableSingleSoldOptions(product) {
           }
         }
         else {
-          $(select_option).remove();
+          disableSelectOption($(select_option), false);
         }
       }
     });
