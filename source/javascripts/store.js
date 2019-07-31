@@ -166,7 +166,13 @@ var enableAddButton = function(updated_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
-  addButton.html(addButtonTitle + ' - ' + Format.money(updated_price, true, true));
+  if (updated_price) {
+    priceTitle = ' - ' + Format.money(updated_price, true, true);
+  }
+  else {
+    priceTitle = '';
+  }
+  addButton.html(addButtonTitle + priceTitle);
 }
 
 var disableAddButton = function(type) {
