@@ -5,13 +5,13 @@ var isGreaterThanZero = function(currentValue) {
   return currentValue > 0;
 }
 
-function array_includes(k) {
-  for(var i=0; i < this.length; i++){
-    if( this[i] === k || ( this[i] !== this[i] && k !== k ) ){
-      return true;
-    }
+function arrayContainsArray(superset, subset) {
+  if (0 === subset.length) {
+    return false;
   }
-  return false;
+  return subset.every(function (value) {
+    return (superset.indexOf(value) >= 0);
+  });
 }
 
 function unique(item, index, array) {
@@ -37,12 +37,6 @@ Array.prototype.equals = function (array) {
 
 Array.prototype.count = function(filterMethod) {
   return this.reduce((count, item) => filterMethod(item)? count + 1 : count, 0);
-}
-
-function stripHtml(html) {
-  var tmp = document.createElement("DIV");
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || "";
 }
 
 String.prototype.hashCode = function() {
