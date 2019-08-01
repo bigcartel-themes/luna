@@ -1,6 +1,6 @@
 function processProduct(product) {
   if (product.has_option_groups) {
-    disableAddButton();
+    disableAddButton("add-to-cart");
 
     if (product.option_groups.length === 1) {
       disableSingleSoldOptions(product);
@@ -9,11 +9,15 @@ function processProduct(product) {
       findSoldOutOptionGroupValues(product);
     }
 
-    $('.product_option_group').on('change',function() {
-      disableAddButton();
+    $(".product_option_group").on('change',function() {
+      disableAddButton("add-to-cart");
       $('#option').val(0);
       processAvailableDropdownOptions(product, $(this));
     });
+
+    if ($('#option').val() > 0) {
+      enableAddButton();
+    }
   }
 }
 
@@ -25,7 +29,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
   selected_value = [];
   selected_value.push(parseInt(changed_dropdown.val()));
   this_group_id = changed_dropdown.attr("data-group-id");
-  $('.product_option_group').not(changed_dropdown).find('option').each(function(index,element) {
+  $(".product_option_group").not(changed_dropdown).find('option').each(function(index,element) {
     if (element.value > 0) {
       enableSelectOption($(element));
     }
@@ -36,7 +40,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
       option_group_values = matching_product_options[POIndex].option_group_values;
       for (var GVIndex = 0; GVIndex < option_group_values.length; GVIndex ++) {
         if (option_group_values[GVIndex].name != this_group_id) {
-          dropdown_option = $('.product_option_group').find('option[value="' + option_group_values[GVIndex].id + '"]');
+          dropdown_option = $(".product_option_group").find('option[value="' + option_group_values[GVIndex].id + '"]');
           is_selected = dropdown_option.is(":selected");
           if (!is_selected) {
             if (matching_product_options[POIndex].sold_out) {
@@ -50,7 +54,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
       }
     }
 
-    $('.product_option_group').each(function(index,element) {
+    $(".product_option_group").each(function(index,element) {
       if (element.value == 0) {
         $(element).find('option').each(function(index2,element2) {
           if (element2.value > 0) {
@@ -79,14 +83,13 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         for (var POIndex = 0; POIndex < product_option.option_group_values.length; POIndex ++) {
           group_value = product_option.option_group_values[POIndex];
           if (group_value.option_group_id != this_group_id) {
-            disableSelectOption($('.product_option_group').find('option[value="' + group_value.id + '"]'));
+            disableSelectOption($(".product_option_group").find('option[value="' + group_value.id + '"]'));
           }
         }
       }
     }
 
-    $('.product_option_group').not(changed_dropdown).find('option').each(function(index,element) {
-      // Loop through the options in this dropdown and pair it with the selected value to see if there's an available option
+    $(".product_option_group").not(changed_dropdown).find('option').each(function(index,element) {
       if (element.value > 0) {
         available_values = [];
         for (i = 0; i < selected_value.length; i++) {
@@ -101,37 +104,59 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         }
       }
     });
-
   }
 
   if (num_selected === 3 && num_option_groups === 3) {
-    new_options = buildProductOptionGroupValueArrays(product.options, selected_value);
-    has_sold_out = false;
-    sold_values = [];
-    for (var NOIndex = 0; NOIndex < new_options.length; NOIndex ++) {
-      product_option = new_options[NOIndex];
-      match_values = [];
-      for (var POIndex = 0; POIndex < product_option.option_group_values.length; POIndex ++) {
-        match_values.push(parseInt(product_option.option_group_values[POIndex].id));
-      }
-      if (product_option.sold_out) {
-        has_sold_out = true;
-        sold_values.push(match_values);
-      }
-    }
-
-    if (has_sold_out) {
-      loop_values = sold_values[0];
-      for (var MVIndex = 0; MVIndex < loop_values.length; MVIndex ++) {
-        dropdown_option = $('.product_option_group').not(changed_dropdown).find('option[value="' + loop_values[MVIndex] + '"]');
-        is_selected = dropdown_option.is(":selected");
+    $(".product_option_group").not(changed_dropdown).each(function(index, dropdown) {
+      dropdown = $(dropdown);
+      dropdown.find('option').each(function(idx, option) {
+        is_selected = $(option).is(":selected");
         if (!is_selected) {
-          disableSelectOption(dropdown_option);
+          if (option.value > 0) {
+            option_group_value_array = [];
+            option_group_value_array.push(parseInt(option.value));
+            $(".product_option_group").not(dropdown).each(function(index, secondary_dropdown) {
+              option_group_value_array.push(parseInt(secondary_dropdown.value));
+            });
+
+            product_option = findProductOptionByValueArray(product.options, option_group_value_array);
+            if (product_option) {
+              if (product_option.sold_out) {
+                for (i = 0; i < option_group_value_array.length; i++) {
+                  if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
+                    newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
+                    if (newname) {
+                      disableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"));
+                    }
+                  }
+                }
+              }
+              else {
+                for (i = 0; i < option_group_value_array.length; i++) {
+                  if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
+                    newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
+                    if (newname) {
+                      enableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"));
+                    }
+                  }
+                }
+              }
+            }
+            else {
+              for (i = 0; i < option_group_value_array.length; i++) {
+                if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
+                  newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
+                  if (newname) {
+                    disableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"), false);
+                  }
+                }
+              }
+            }
+
+          }
         }
-      }
-    }
-
-
+      });
+    });
   }
   if (allSelected) {
     processAddToCartButton(product.options, selected_values);
@@ -144,15 +169,6 @@ function findOptionGroupName(option_groups, group_id) {
       return option_groups[OGIndex].name;
     }
   }
-}
-
-function arrayContainsArray(superset, subset) {
-  if (0 === subset.length) {
-    return false;
-  }
-  return subset.every(function (value) {
-    return (superset.indexOf(value) >= 0);
-  });
 }
 
 function buildProductOptionGroupValueArrays(product_options, selected_values) {
@@ -183,7 +199,7 @@ function findSoldOutOptionGroupValues(product) {
       product_option_group_value_id = product_option_group_value.id
       is_sold_out = checkIfAllValuesAreSoldOut(product.options,product_option_group_value_id);
       if (is_sold_out) {
-        disableSelectOption($('.product_option_group').find('option[value="' + product_option_group_value_id + '"]'));
+        disableSelectOption($(".product_option_group").find('option[value="' + product_option_group_value_id + '"]'));
       }
     }
   };
@@ -205,10 +221,9 @@ function checkIfAllValuesAreSoldOut(product_options, product_option_group_value_
   return all_sold_out;
 }
 
-function processAddToCartButton(product_options, selected_values) {
-  product_option = findProductOptionBySelectedValues(product_options, selected_values);
+function processAddToCartButton(product_options, option_group_values) {
+  product_option = findProductOptionByValueArray(product_options, option_group_values);
   if (product_option) {
-    matching_price = product_option.price;
     sold_out = product_option.sold_out;
     if (!sold_out && product_option.id > 0) {
       $('#option').val(product_option.id);
@@ -257,14 +272,14 @@ function findProductOptionBySingleValue(product_options, value) {
   };
 }
 
-function findProductOptionBySelectedValues(product_options, selected_values) {
+function findProductOptionByValueArray(product_options, value_array) {
   for (var productOptionsIndex = 0; productOptionsIndex < product_options.length; productOptionsIndex ++) {
     option_group_values = product_options[productOptionsIndex].option_group_values;
     option_ids = [];
     option_group_values.forEach(function(option_group_value) {
       option_ids.push(option_group_value.id);
     });
-    if (option_ids.equals(selected_values)) {
+    if (arrayContainsArray(option_ids, value_array)) {
       return product_options[productOptionsIndex];
     }
   };
@@ -272,7 +287,7 @@ function findProductOptionBySelectedValues(product_options, selected_values) {
 
 function getSelectedValues() {
   selected_values = [];
-  $('.product_option_group').each(function(i, object) {
+  $(".product_option_group").each(function(i, object) {
     selected_values.push(parseInt(object.value));
   });
   return selected_values;
