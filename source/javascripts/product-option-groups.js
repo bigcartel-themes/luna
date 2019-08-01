@@ -120,39 +120,23 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
             });
 
             product_option = findProductOptionByValueArray(product.options, option_group_value_array);
-            if (product_option) {
-              if (product_option.sold_out) {
-                for (i = 0; i < option_group_value_array.length; i++) {
-                  if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
-                    newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
-                    if (newname) {
-                      disableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"));
-                    }
-                  }
-                }
-              }
-              else {
-                for (i = 0; i < option_group_value_array.length; i++) {
-                  if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
-                    newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
-                    if (newname) {
-                      enableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"));
-                    }
-                  }
-                }
-              }
-            }
-            else {
-              for (i = 0; i < option_group_value_array.length; i++) {
-                if ($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected")) {
-                  newname = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected").text();
-                  if (newname) {
-                    disableSelectOption($(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected"), false);
-                  }
-                }
-              }
-            }
 
+            for (i = 0; i < option_group_value_array.length; i++) {
+              dropdown_select = $(".product_option_group").find("option[value='" + option_group_value_array[i] + "']").not(":selected");
+              if (dropdown_select) {
+                if (product_option) {
+                  if (product_option.sold_out) {
+                    disableSelectOption(dropdown_select);
+                  }
+                  else {
+                    enableSelectOption(dropdown_select);
+                  }
+                }
+                else {
+                  disableSelectOption(dropdown_select, false);
+                }
+              }
+            }
           }
         }
       });
