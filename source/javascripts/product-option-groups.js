@@ -44,7 +44,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
           is_selected = dropdown_option.is(":selected");
           if (!is_selected) {
             if (matching_product_options[POIndex].sold_out) {
-              disableSelectOption(dropdown_option);
+              disableSelectOption(dropdown_option,"sold-out");
             }
             else {
               enableSelectOption(dropdown_option);
@@ -67,7 +67,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
             available_values.push(parseInt(element2.value));
             found_options = buildProductOptionGroupValueArrays(product.options, available_values);
             if (found_options.length === 0) {
-              disableSelectOption($(element2), false);
+              disableSelectOption($(element2), "unavailable");
             }
           }
         });
@@ -75,38 +75,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
     });
   }
 
-  if (num_selected === 2 && num_option_groups === 2) {
-    new_options = buildProductOptionGroupValueArrays(product.options, selected_value);
-    for (var NOIndex = 0; NOIndex < new_options.length; NOIndex ++) {
-      product_option = new_options[NOIndex];
-      if (product_option.sold_out) {
-        for (var POIndex = 0; POIndex < product_option.option_group_values.length; POIndex ++) {
-          group_value = product_option.option_group_values[POIndex];
-          if (group_value.option_group_id != this_group_id) {
-            disableSelectOption($(".product_option_group option[value='" + group_value.id + "']"));
-          }
-        }
-      }
-    }
-
-    $(".product_option_group").not(changed_dropdown).find('option').each(function(index,element) {
-      if (element.value > 0) {
-        available_values = [];
-        for (i = 0; i < selected_value.length; i++) {
-          if (selected_value[i] > 0) {
-            available_values[i] = selected_value[i];
-          }
-        }
-        available_values.push(parseInt(element.value));
-        found_options = buildProductOptionGroupValueArrays(product.options, available_values);
-        if (found_options.length === 0) {
-          disableSelectOption($(element), false);
-        }
-      }
-    });
-  }
-
-  if (num_selected === 3 && num_option_groups === 3) {
+  if (num_selected > 1 && allSelected) {
     $(".product_option_group").not(changed_dropdown).each(function(index, dropdown) {
       dropdown = $(dropdown);
       dropdown.find('option').each(function(idx, option) {
@@ -126,14 +95,14 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
               if (dropdown_select) {
                 if (product_option) {
                   if (product_option.sold_out) {
-                    disableSelectOption(dropdown_select);
+                    disableSelectOption(dropdown_select,"sold-out");
                   }
                   else {
                     enableSelectOption(dropdown_select);
                   }
                 }
                 else {
-                  disableSelectOption(dropdown_select, false);
+                  disableSelectOption(dropdown_select,"unavailable");
                 }
               }
             }
@@ -183,7 +152,7 @@ function findSoldOutOptionGroupValues(product) {
       product_option_group_value_id = product_option_group_value.id
       is_sold_out = checkIfAllValuesAreSoldOut(product.options,product_option_group_value_id);
       if (is_sold_out) {
-        disableSelectOption($(".product_option_group option[value='" + product_option_group_value_id + "']"));
+        disableSelectOption($(".product_option_group option[value='" + product_option_group_value_id + "']"),"sold-out");
       }
     }
   };
@@ -233,11 +202,11 @@ function disableSingleSoldOptions(product) {
         matching_option = findProductOptionBySingleValue(product_options, select_option.value);
         if (matching_option) {
           if (matching_option.sold_out) {
-            disableSelectOption($(select_option));
+            disableSelectOption($(select_option),"sold-out");
           }
         }
         else {
-          disableSelectOption($(select_option), false);
+          disableSelectOption($(select_option),"unavailable");
         }
       }
     });
