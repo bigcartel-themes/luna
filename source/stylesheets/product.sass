@@ -213,6 +213,18 @@
       border-top: 1px solid $border-color
       +flexbox
 
+option[disabled-type="unavailable"]
+  display: none
+
+.product-form
+  &.show-sold-out
+    option[disabled-type="sold-out"]
+      display: block
+
+  &.hide-sold-out
+    option[disabled-type="sold-out"]
+      display: none
+
 .product-inventory
   border-top: 1px solid $border-color
   margin: $luna-base * 4 0 $luna-base * 2

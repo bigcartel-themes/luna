@@ -52,7 +52,7 @@
         </div>
       {% endif %}
 
-      <form method="post" class="product-form" action="/cart" accept-charset="utf8">
+      <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
@@ -77,7 +77,7 @@
               <select class="product_option_select" id="option" name="[cart][add][id]" aria-label="Select option">
                 <option value="0" disabled="disabled" selected>Select option</option>
                 {% for option in product.options %}
-                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
                 {% endfor %}
               </select>
               <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
