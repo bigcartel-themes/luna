@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "images": [
     {
       "variable": "header",
@@ -202,6 +202,14 @@
       "type": "boolean",
       "default": false,
       "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
       "requires": "inventory"
     },
     {
