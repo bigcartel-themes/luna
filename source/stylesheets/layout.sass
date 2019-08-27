@@ -253,6 +253,9 @@ button, a.button
       background-color: #FFF
       color: #000
 
+      &:disabled
+        color: graytext
+
     &:focus
       box-shadow: none
       outline: none
@@ -277,6 +280,9 @@ button, a.button
 
     select
       color: $secondary-text-color
+
+      option:disabled
+        color: graytext
 
     svg
       fill: $secondary-text-color

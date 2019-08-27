@@ -213,17 +213,10 @@
       border-top: 1px solid $border-color
       +flexbox
 
-option[disabled-type="unavailable"]
+.product-form select span, .product-form select span option
   display: none
-
-.product-form
-  &.show-sold-out
-    option[disabled-type="sold-out"]
-      display: block
-
-  &.hide-sold-out
-    option[disabled-type="sold-out"]
-      display: none
+  opacity: 0
+  visibility: hidden
 
 .product-inventory
   border-top: 1px solid $border-color
