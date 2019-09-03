@@ -11,6 +11,12 @@ function processProduct(product) {
       enableAddButton();
     }
   }
+  if ($('.product_option_select').length) {
+    disableAddButton();
+    if (show_sold_out_product_options === 'false') {
+      $('option[disabled-type="sold-out"]').wrap('<span>');
+    }
+  }
 }
 function createCartesianProductOptions(product) {
   product_option_groups = [];
