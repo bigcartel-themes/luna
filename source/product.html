@@ -74,7 +74,7 @@
             </div>
           {% else %}
             <div class="select">
-              <select class="product_option_select" id="option" name="[cart][add][id]" aria-label="Select option">
+              <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select option">
                 <option value="0" disabled="disabled" selected>Select option</option>
                 {% for option in product.options %}
                   <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
