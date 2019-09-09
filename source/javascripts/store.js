@@ -18,6 +18,20 @@ function unique(item, index, array) {
   return array.indexOf(item) == index;
 }
 
+function cartesianProduct(a) {
+  var i, j, l, m, a1, o = [];
+  if (!a || a.length == 0) return a;
+  a1 = a.splice(0, 1)[0];
+  a = cartesianProduct(a);
+  for (i = 0, l = a1.length; i < l; i++) {
+    if (a && a.length) for (j = 0, m = a.length; j < m; j++)
+      o.push([a1[i]].concat(a[j]));
+    else
+      o.push([a1[i]]);
+  }
+  return o;
+}
+
 Array.prototype.equals = function (array) {
   if (!array)
     return false;
@@ -33,6 +47,34 @@ Array.prototype.equals = function (array) {
     }
   }
   return true;
+}
+
+// From https://github.com/kevlatus/polyfill-array-includes/blob/master/array-includes.js
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function (searchElement, fromIndex) {
+      if (this == null) {
+        throw new TypeError('"this" is null or not defined');
+      }
+      var o = Object(this);
+      var len = o.length >>> 0;
+      if (len === 0) {
+        return false;
+      }
+      var n = fromIndex | 0;
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+      while (k < len) {
+        if (sameValueZero(o[k], searchElement)) {
+          return true;
+        }
+        k++;
+      }
+      return false;
+    }
+  });
 }
 
 Array.prototype.count = function(filterMethod) {
@@ -155,13 +197,11 @@ $('.option-quantity').on('change',function(){
   return false;
 });
 
-if ($('.product_option_select').length) {
-  disableAddButton();
-}
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
 });
+
 function enableAddButton(updated_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
@@ -191,20 +231,35 @@ function enableSelectOption(select_option) {
   select_option.removeAttr("disabled");
   select_option.text(select_option.attr("data-name"));
   select_option.removeAttr("disabled-type");
+  if ((select_option.parent().is('span'))) {
+    select_option.unwrap();
+  }
 }
 function disableSelectOption(select_option, type) {
   if (type === "sold-out") {
     disabled_text = select_option.parent().attr("data-sold-text");
     disabled_type = "sold-out";
+    if (show_sold_out_product_options === 'false') {
+      hide_option = true;
+    }
+    else {
+      hide_option = false;
+    }
   }
   if (type === "unavailable") {
     disabled_text = select_option.parent().attr("data-unavailable-text");
     disabled_type = "unavailable";
+    hide_option = true;
   }
   if (select_option.val() > 0) {
     var name = select_option.attr("data-name");
     select_option.attr("disabled",true);
     select_option.text(name + ' ' + disabled_text);
     select_option.attr("disabled-type",disabled_type);
+    if (hide_option === true) {
+      if (!(select_option.parent().is('span'))) {
+        select_option.wrap('<span>');
+      }
+    }
   }
 }
