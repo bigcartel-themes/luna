@@ -84,7 +84,12 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
+        {% if product.has_option_groups %}
+          <div class="reset-selection-button-container">
+            <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
+          </div>
+        {% endif %}
       </form>
 
     {% endif %}

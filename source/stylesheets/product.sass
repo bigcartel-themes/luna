@@ -68,8 +68,20 @@
 
   .add-to-cart-button
     display: block
-    margin-bottom: $luna-base * 4
     width: 100%
+
+  .reset-selection-button-container
+    text-align: center
+    width: 100%
+
+  button.reset-selection-button
+    display: none
+    height: auto
+    max-width: 100%
+    line-height: normal
+    margin: 20px auto 0
+    padding: 4px
+    width: auto
 
   .product-description
     font-family: $secondary-font
@@ -113,7 +125,7 @@
     border: 1px solid $border-color
     font-family: $secondary-font
     list-style: none
-    margin: 0
+    margin: $luna-base * 4 0 0
     padding: 0
     text-transform: uppercase
 

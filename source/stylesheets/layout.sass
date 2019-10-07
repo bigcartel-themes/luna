@@ -188,9 +188,9 @@ header
 
 button, a.button
   +all-transitions
-  background: none
+  background: $button-border-color
   border: 2px solid $button-border-color
-  color: $button-border-color
+  color: $primary-background-color
   cursor: pointer
   display: block
   font-family: $primary-font
@@ -205,6 +205,17 @@ button, a.button
   text-transform: uppercase
   width: 100%
 
+  &.minimal-button
+    background: none
+    color: $button-border-color
+    border: none
+    font-size: 13px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      background: none
+      text-decoration: underline
+
   &:disabled, &.disabled
     cursor: not-allowed
     opacity: .3
@@ -212,9 +223,9 @@ button, a.button
   &.no-border
     border: none
 
-  &:hover, &:active, &:focus
-    border: 2px solid $button-rollover-color
-    color: $button-rollover-color
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+    border-color: $button-rollover-color
+    background: $button-rollover-color
     opacity: .8
 
 .select
@@ -393,11 +404,18 @@ input, textarea
     border: 2px solid $primary-text-color
 
 a.back-to-site
+  background: none
+  color: $button-border-color
   font-size: 11px
   height: auto
   line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
   width: auto
+
+  &:hover, &:active, &:focus
+    opacity: 1
+    background: $button-border-color
+    color: $primary-background-color
 
 .back-to-site + .badge
   margin-top: $luna-base * 3
