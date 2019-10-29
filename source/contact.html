@@ -8,33 +8,33 @@
   <div class="page-content {{ page.category }}-content">
     <form method="post" action="/contact" class="contact-form">
       <div class="contact-form-block contact-name">
-        <label class="contact-label" for="name-input">Name</label>
+        <label class="contact-label" for="contact-name">Name</label>
         <div class="input-holder">
-          {{ contact | contact_input: 'name', tabindex: 1 }}
+          {{ contact | contact_input: 'contact-name' }}
         </div>
       </div>
       <div class="contact-form-block contact-email">
-        <label class="contact-label" for="email-input">Email</label>
+        <label class="contact-label" for="contact-email">Email</label>
         <div class="input-holder">
-          {{ contact | contact_input: 'email', tabindex: 2 }}
+          {{ contact | contact_input: 'contact-email' }}
         </div>
       </div>
       <div class="contact-form-block contact-subject">
-        <label class="contact-label" for="subject-input">Subject</label>
+        <label class="contact-label" for="contact-subject">Subject</label>
         <div class="input-holder">
-          {{ contact | contact_input: 'subject', tabindex: 3 }}
+          {{ contact | contact_input: 'contact-subject' }}
         </div>
       </div>
       <div class="contact-form-block contact-message">
-        <label class="contact-label" for="message-textarea">Message</label>
+        <label class="contact-label" for="contact-message">Message</label>
         <div class="input-holder">
-          {{ contact | contact_input: 'message', tabindex: 4 }}
+          {{ contact | contact_input: 'contact-message' }}
         </div>
       </div>
       <div class="contact-form-block contact-captcha">
-        <label class="contact-label" for="captcha-input">Spam check</label>
+        <label class="contact-label" for="contact-captcha">Spam check</label>
         <div class="input-holder captcha-holder">
-          {{ contact | contact_input: 'captcha', tabindex: 5 }} {{ contact.captcha }}
+          {{ contact | contact_input: 'contact-captcha' }} {{ contact.captcha }}
           <div class="captcha-instructions">Enter the characters from the image</div>
         </div>
       </div>
