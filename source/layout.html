@@ -27,7 +27,7 @@
     {% endif %}
     <header>
       <div class="wrapper">
-        <nav class="header-nav">
+        <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
             <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">{{ pages.products.name }}</a></li>
             {% for page in pages.all limit:theme.nav_items %}
@@ -48,7 +48,7 @@
           </a>
         </div>
       </div>
-      <nav class="header-nav mobile-nav">
+      <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
           <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">{{ pages.products.name }}</a></li>
           <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
