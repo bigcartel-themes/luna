@@ -41,7 +41,7 @@
         <div class="branding">
           <a href="/" title="Home">
             {% if theme.images.header != blank %}
-              <img class="store-logo" src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }}">
+              <img class="store-logo" src="{{ theme.images.header.url | constrain: 1800, 500 }}" alt="{{ store.name }} Home">
             {% else %}
               <div class="store-header">{{ store.name }}</div>
             {% endif %}
