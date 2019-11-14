@@ -23,7 +23,7 @@
   <div class="product-images{% if product.images.size > 1 %} product-images-slideshow{% endif %}">
     <ul class="slides">
       {% for image in product.images %}
-        <li><img class="product-image" src="{{ image | product_image_url | constrain: 1200 }}" alt="Image of {{ product.name | escape }}"></li>
+        <li><img class="product-image" src="{{ image | product_image_url | constrain: 1200 }}" alt="{{ product.name | escape }}"></li>
       {% endfor %}
     </ul>
   </div>
