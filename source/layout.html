@@ -52,7 +52,7 @@
         <ul>
           <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">{{ pages.products.name }}</a></li>
           <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
-          <li class="more-link"><a href="#footer" title="See more">More</a></li>
+          <li class="more-link"><a href="#footer" title="View additional navigation" aria-label="View additional navigation">More</a></li>
         </ul>
       </nav>
     </header>
@@ -151,7 +151,7 @@
             <li><a href="/cart">Cart</a></li>
             {% if theme.show_search %}
               <li>
-                <a class="open-search" href="#" title="Open search">Search</a>
+                <a role="button" class="open-search" href="#" title="Open search">Search</a>
                 <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
                   <input type="hidden" name="utf8" value='✓'>
                   <input class="search-input" name="search" placeholder="Search..." type="text" autocomplete="off" />
