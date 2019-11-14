@@ -95,7 +95,7 @@
                   <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
                     <div class="product-list-item-container">
                       <figure class="product-list-image-container">
-                        <img alt="Image of {{ category_product.name | escape }}" class="fade-in product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
+                        <img alt="" class="fade-in product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
                       </figure>
                     </div>
                     <div class="product-list-item-info">
