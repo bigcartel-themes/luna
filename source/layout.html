@@ -119,7 +119,7 @@
           <div class="all-similar-products">{{ product_divs }}</div>
           <div class="similar-products">
             <div class="similar-products-header">
-              <div class="similar-products-title">Related products</div>
+              <h2 class="similar-products-title">Related products</h2>
               {% if product.previous_product != blank or product.next_product != blank %}
                 <ul class="prev-next-products">
                   {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
