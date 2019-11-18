@@ -1,5 +1,5 @@
 <div class="artist-category-nav artist-category-nav-header">
-  <nav class="category-nav">
+  <nav role="navigation" aria-label="Category sub-nav" class="category-nav">
     <div class="nav-title">Products</div>
     <ul>
       <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
@@ -54,7 +54,7 @@
     {% endif %}
 
     <div class="artist-category-nav artist-category-nav-footer">
-      <nav class="category-nav">
+      <nav class="category-nav" role="navigation" aria-label="Category sub-nav">
         <div class="nav-title">Products</div>
         <ul>
           <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
