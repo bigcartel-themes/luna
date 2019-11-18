@@ -56,7 +56,7 @@
         </ul>
       </nav>
     </header>
-    <div class="main">
+    <main class="main">
       <div class="fade-in wrapper">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
@@ -75,7 +75,7 @@
           {{ page_content }}
         {% endif %}
       </div>
-    </div>
+    </main>
     {% if page.full_url contains '/product/' %}
       {% if theme.show_similar_products %}
         {% if product.categories != blank %}
