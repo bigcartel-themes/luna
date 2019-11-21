@@ -17,7 +17,11 @@
             <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
               {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
             </div>
-            <a class="cart-item-remove" title="Remove item" href="#"><svg class="cart-remove-icon" width="11" height="11" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M10.11 1.596l-8.484 8.485-.707-.707L9.404.89z"/><path d="M1.626.89l8.485 8.484-.707.707L.919 1.596z"/></g></svg></a>
+            <a class="cart-item-remove" title="Remove item" href="#">
+              <svg aria-hidden="true" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 1.45l-8 8.1m0-8.1l8 8.1" stroke="#666" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
+              </svg>
+            </a>
           </li>
         {% endfor %}
       </ul>
