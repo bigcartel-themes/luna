@@ -50,7 +50,9 @@
       {% endfor %}
     </div>
     {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination }}
+      <nav role="navigation" aria-label="Pagination">
+        {{ paginate | default_pagination }}
+      </nav>
     {% endif %}
 
     <div class="artist-category-nav artist-category-nav-footer">
