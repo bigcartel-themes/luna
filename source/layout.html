@@ -18,14 +18,14 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     {% if theme.announcement_message_text != blank %}
-      <div class="announcement-message">
+      <aside role="complementary" class="announcement-message">
         <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
-        <div class="announcement-message-close" title="Close announcement message">
+        <button aria-label="Close announcement" class="announcement-message-close" title="Close announcement message">
           <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.5 1.45l-8 8.1m0-8.1l8 8.1" stroke="#666" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
           </svg>
-        </div>
-      </div>
+        </button>
+      </aside>
     {% endif %}
     <header>
       <div class="wrapper">
