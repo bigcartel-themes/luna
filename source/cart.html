@@ -15,7 +15,8 @@
               {% endunless %}
             </a>
             <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-              {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
+              <label for="item_{{item.id}}_qty">Quantity</label>
+              {{ item | item_quantity_input, nil, 'option-quantity' }}
             </div>
             <a class="cart-item-remove" title="Remove item" href="#">
               <svg aria-hidden="true" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
