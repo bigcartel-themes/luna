@@ -20,11 +20,11 @@
               <label for="item_{{item.id}}_qty">Quantity</label>
               {{ item | item_quantity_input, nil, 'option-quantity' }}
             </div>
-            <a class="cart-item-remove" title="Remove item" href="#">
+            <button title="Remove item: {{ item.product.name }}" class="cart-item-remove" aria-label="Remove item: {{ item.product.name }}">
               <svg aria-hidden="true" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.5 1.45l-8 8.1m0-8.1l8 8.1" stroke="#666" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
               </svg>
-            </a>
+            </button>
           </li>
         {% endfor %}
       </ul>

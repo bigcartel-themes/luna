@@ -48,7 +48,7 @@
   @media screen and (max-width: $break-small)
     padding: $luna-base * 2 20px
 
-.cart-item-remove
+button.cart-item-remove
   +all-transitions
   +flexbox
   +align-items(center)
@@ -57,14 +57,19 @@
   border-radius: 50%
   padding: $luna-base
   cursor: pointer
+  background-color: transparent
+  transition: 0.2s linear
+  height: inherit
+  width: inherit
+
+  &:hover, &:active, &:focus
+    background-color: transparent
+    border: 2px solid $primary-text-color
 
   .cart-remove-icon
     +all-transitions
     display: block
     fill: $secondary-text-color
-
-  &:hover, &:active, &:focus
-    border: 2px solid $primary-text-color
 
     .cart-remove-icon
       fill: $primary-text-color
