@@ -52,9 +52,15 @@
       </div>
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
-          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">{{ pages.products.name }}</a></li>
-          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
-          <li class="more-link"><a href="#footer" title="View additional navigation" aria-label="View additional navigation">More</a></li>
+          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}>
+            <a href="/products">{{ pages.products.name }}</a>
+          </li>
+          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
+            <a href="/cart">Cart</a>
+          </li>
+          <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}>
+            <a href="/contact">Contact</a>
+          </li>
         </ul>
       </nav>
     </header>
