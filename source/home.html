@@ -8,6 +8,7 @@
   </div>
 {% endif %}
 
+<h1 class="visually-hidden">Featured Products</h1>
 {% if theme.featured_items > 0 %}
   {% get products from products.all limit:theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
