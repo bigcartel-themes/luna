@@ -17,7 +17,7 @@
               {% endunless %}
             </a>
             <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-              <label for="item_{{item.id}}_qty">Quantity</label>
+              <label class="visually-hidden" for="item_{{item.id}}_qty">Quantity</label>
               {{ item | item_quantity_input, nil, 'option-quantity' }}
             </div>
             <button title="Remove item: {{ item.product.name }}" class="cart-item-remove" aria-label="Remove item: {{ item.product.name }}">

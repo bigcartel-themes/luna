@@ -19,6 +19,7 @@
   </nav>
   {% endif %}
 </div>
+<h1 class="visually-hidden">Products</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <div class="product-list">
