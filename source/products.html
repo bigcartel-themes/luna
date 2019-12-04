@@ -55,28 +55,6 @@
         {{ paginate | default_pagination }}
       </nav>
     {% endif %}
-
-    <div class="artist-category-nav artist-category-nav-footer">
-      <nav class="category-nav" role="navigation" aria-label="Category sub-nav">
-        <div class="nav-title">Products</div>
-        <ul>
-          <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
-          {% for category in categories.active %}
-          <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% if artists.active != blank %}
-      <nav class="artist-nav">
-        <div class="nav-title">Artists</div>
-        <ul>
-          {% for artist in artists.active %}
-          <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
-    </div>
   {% else %}
     <div class="empty-products centered-message">No products found.</div>
   {% endif %}
