@@ -64,88 +64,92 @@
         </ul>
       </nav>
     </header>
-    <main class="main">
-      <div class="fade-in wrapper">
-        {% if errors != blank %}
-          <ul class="errors {{ page.permalink }}-errors">
-            {% for error in errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-        {% if page.category == 'custom' %}
-          <div class="custom-page">
-            <h1 class="custom-page-header page-title has-dash">{{ page.name }}</h1>
-            <div class="custom-page-content">{{ page_content | paragraphs }}</div>
-          </div>
-        {% else %}
-          {{ page_content }}
-        {% endif %}
-      </div>
-    </main>
-    {% if page.full_url contains '/product/' %}
-      {% if theme.show_similar_products %}
-        {% if product.categories != blank %}
-          {% for category in product.categories %}
-            {% capture product_divs %}
-              {% for category_product in category.products %}
-                {% assign product_status = '' %}
-                {% case category_product.status %}
-                	{% when 'active' %}
-                		{% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
-                	{% when 'sold-out' %}
-                		{% assign product_status = 'Sold out' %}
-                	{% when 'coming-soon' %}
-                		{% assign product_status = 'Coming soon' %}
-                {% endcase %}
-                {% if product.id != category_product.id %}
-                  <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
-                    <div class="product-list-item-container">
-                      <figure class="product-list-image-container">
-                        <img alt="" class="fade-in product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
-                      </figure>
-                    </div>
-                    <div class="product-list-item-info">
-                      <div class="product-list-item-background"></div>
-                      <div class="product-list-item-info-headers">
-                        {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
-                        <div class="product-list-item-name">{{ category_product.name }}</div>
-                        <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
-                      </div>
-                    </div>
-                  </a>
-                {% endif %}
+    <main>
+      <section>
+        <div class="main fade-in wrapper">
+          {% if errors != blank %}
+            <ul class="errors {{ page.permalink }}-errors">
+              {% for error in errors %}
+                <li>{{ error }}</li>
               {% endfor %}
-            {% endcapture %}
-          {% endfor %}
-        {% endif %}
-      {% endif %}
+            </ul>
+          {% endif %}
 
-      <div class="wrapper">
-        {% if product_divs != blank %}
-          <div class="all-similar-products">{{ product_divs }}</div>
-          <div class="similar-products">
-            <div class="similar-products-header">
-              <h2 class="similar-products-title">Related products</h2>
-              {% if product.previous_product != blank or product.next_product != blank %}
-                <ul class="prev-next-products">
-                  {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-                  {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-                </ul>
-              {% endif %}
+          {% if page.category == 'custom' %}
+            <div class="custom-page">
+              <h1 class="custom-page-header page-title has-dash">{{ page.name }}</h1>
+              <div class="custom-page-content">{{ page_content | paragraphs }}</div>
             </div>
-            <div class="product-list similar-product-list"></div>
+          {% else %}
+            {{ page_content }}
+          {% endif %}
+        </div>
+      </section>
+      <section class="similar-products-section">
+        {% if page.full_url contains '/product/' %}
+          {% if theme.show_similar_products %}
+            {% if product.categories != blank %}
+              {% for category in product.categories %}
+                {% capture product_divs %}
+                  {% for category_product in category.products %}
+                    {% assign product_status = '' %}
+                    {% case category_product.status %}
+                            {% when 'active' %}
+                                    {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                            {% when 'sold-out' %}
+                                    {% assign product_status = 'Sold out' %}
+                            {% when 'coming-soon' %}
+                                    {% assign product_status = 'Coming soon' %}
+                    {% endcase %}
+                    {% if product.id != category_product.id %}
+                      <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
+                        <div class="product-list-item-container">
+                          <figure class="product-list-image-container">
+                            <img alt="" class="fade-in product-list-image {% if category_product.image.height > category_product.image.width %}image-tall{% elsif category_product.image.height < category_product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
+                          </figure>
+                        </div>
+                        <div class="product-list-item-info">
+                          <div class="product-list-item-background"></div>
+                          <div class="product-list-item-info-headers">
+                            {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                            <div class="product-list-item-name">{{ category_product.name }}</div>
+                            <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                          </div>
+                        </div>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                {% endcapture %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+
+          <div class="wrapper">
+            {% if product_divs != blank %}
+              <div class="all-similar-products">{{ product_divs }}</div>
+              <div class="similar-products">
+                <div class="similar-products-header">
+                  <h2 class="similar-products-title">Related products</h2>
+                  {% if product.previous_product != blank or product.next_product != blank %}
+                    <ul class="prev-next-products">
+                      {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+                      {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+                    </ul>
+                  {% endif %}
+                </div>
+                <div class="product-list similar-product-list"></div>
+              </div>
+            {% endif %}
+            {% if product.previous_product != blank or product.next_product != blank %}
+              <ul class="prev-next-products {% if product_divs != blank %}with-related{% endif %}">
+                {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
+                {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
+              </ul>
+            {% endif %}
           </div>
         {% endif %}
-        {% if product.previous_product != blank or product.next_product != blank %}
-          <ul class="prev-next-products {% if product_divs != blank %}with-related{% endif %}">
-            {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-            {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-          </ul>
-        {% endif %}
-      </div>
-    {% endif %}
+      </section>
+    </main>
     <footer role="contentinfo">
       <div class="wrapper">
         <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
