@@ -243,12 +243,13 @@
   +justify-content(center)
   font-family: $secondary-font
   font-size: 15px
-  margin: $luna-base * 5 auto 0
+  margin: 60px auto 0
   padding: $luna-base * 3
   width: 100%
 
   @media screen and (max-width: $break-small)
     font-size: 16px
+    margin-bottom: $luna-base * 3
     margin-top: $luna-base * 3
 
   a, span
@@ -263,5 +264,10 @@
     &.current
       text-decoration: underline
 
-#products_page .footer-nav
-  border-top: 0px
+#products_page .footer-nav, #home_page .footer-nav
+  @media screen and (max-width: $break-small)
+    border-top: 0px
+
+#products_page .main .wrapper, #home_page .main .wrapper
+  @media screen and (max-width: $break-small)
+    border-bottom: 1px solid $border-color
