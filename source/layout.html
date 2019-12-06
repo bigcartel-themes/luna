@@ -18,7 +18,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     {% if theme.announcement_message_text != blank %}
-      <aside role="complementary" class="announcement-message">
+      <aside role="complementary" aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
         <button aria-label="Close announcement" class="announcement-message-close" title="Close announcement message">
           <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,7 @@
         {% endif %}
       {% endif %}
 
-      <aside class="wrapper" role="complementary">
+      <aside class="wrapper" role="complementary" aria-label="Related products">
         {% if product_divs != blank %}
           <div class="all-similar-products">{{ product_divs }}</div>
           <div class="similar-products">
