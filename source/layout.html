@@ -122,7 +122,7 @@
         {% endif %}
       {% endif %}
 
-      <div class="wrapper">
+      <aside class="wrapper" role="complementary">
         {% if product_divs != blank %}
           <div class="all-similar-products">{{ product_divs }}</div>
           <div class="similar-products">
@@ -144,7 +144,7 @@
             {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
           </ul>
         {% endif %}
-      </div>
+      </aside>
     {% endif %}
     <footer role="contentinfo">
       <div class="wrapper">
