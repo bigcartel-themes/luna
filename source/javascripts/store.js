@@ -77,9 +77,11 @@ if (!Array.prototype.includes) {
   });
 }
 
-Array.prototype.count = function(filterMethod) {
-  return this.reduce((count, item) => filterMethod(item)? count + 1 : count, 0);
-}
+Array.prototype.count = function (filterMethod) {
+  return this.reduce(function (count, item) {
+    return filterMethod(item) ? count + 1 : count;
+  }, 0);
+};
 
 String.prototype.hashCode = function() {
   var hash = 0, i, chr;

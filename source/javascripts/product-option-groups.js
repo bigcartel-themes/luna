@@ -82,7 +82,9 @@ function setInitialProductOptionStatuses(product) {
 
 function processAvailableDropdownOptions(product, changed_dropdown) {
   selected_values = getSelectedValues();
-  num_selected = selected_values.count(item => item > 0);
+  num_selected = selected_values.count(function (item) {
+    return item > 0;
+  });
   allSelected = selected_values.every(isGreaterThanZero);
   num_option_groups = product.option_groups.length;
   changed_value = parseInt(changed_dropdown.val());
