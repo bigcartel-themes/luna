@@ -7,7 +7,7 @@
         {% for item in cart.items %}
           <li class="cart-item" data-item-id="{{ item.id }}">
             <a class="cart-item-image" href="{{ item.product.url }}">
-              <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" title="View {{ item.product.name | escape }}" />
+              <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
             </a>
             <a class="cart-item-details" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">
               <div class="cart-item-details-name">{{ item.product.name }}</div>
@@ -37,8 +37,8 @@
             Subtotal <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
         </div>
-        <button type="submit" name="checkout" title="Checkout" class="button checkout-btn">Checkout</button>
-        <a class="button continue-shopping" href="/products" title="Continue shopping">Continue Shopping</a>
+        <button type="submit" name="checkout" class="button checkout-btn">Checkout</button>
+        <a class="button continue-shopping" href="/products">Continue Shopping</a>
       </div>
     </form>
   </div>
