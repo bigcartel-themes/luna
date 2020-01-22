@@ -8,7 +8,8 @@
   +flex-direction(column)
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
-  font-size: 14px
+  font-size: $luna-font-base-px
+  line-height: $luna-font-base-px + 2
   margin-bottom: $luna-base * 8
   padding: $luna-base * 2 $luna-base / 2
 
@@ -20,7 +21,7 @@
       margin-top: $luna-base * 3
 
   .nav-title
-    font-size: 15px
+    font-size: $luna-font-base-px + 2
     margin: 0 $luna-base $luna-base 0
     margin-right: $luna-base
     padding: 3px
@@ -43,7 +44,7 @@
     +flex-wrap(wrap)
     font-family: $secondary-font
     list-style: none
-    margin: 0
+    margin: 6px auto 3px
     padding: 0
 
     @media screen and (max-width: $break-medium)
@@ -198,7 +199,7 @@
   z-index: 1
 
 .product-list-item-name
-  font-size: 20px
+  font-size: $luna-font-base-px + 6
   letter-spacing: 3px
   line-height: 30px
   margin-bottom: 20px
@@ -224,17 +225,17 @@
 
 .product-list-item-price
   font-family: $secondary-font
-  font-size: 16px
+  font-size: $luna-font-base-px + 2
 
 .product-list-item-status
   color: $secondary-text-color
   font-family: $secondary-font
-  font-size: 13px
+  font-size: $luna-font-base-px
   font-style: italic
   margin-bottom: 10px
 
   @media screen and (max-width: $break-small)
-    font-size: 12px
+    font-size: $luna-font-base-px - 2
 
 .pagination
   +flexbox
@@ -242,12 +243,13 @@
   +justify-content(center)
   font-family: $secondary-font
   font-size: 15px
-  margin: $luna-base * 5 auto 0
+  margin: 60px auto 0
   padding: $luna-base * 3
   width: 100%
 
   @media screen and (max-width: $break-small)
     font-size: 16px
+    margin-bottom: $luna-base * 3
     margin-top: $luna-base * 3
 
   a, span
@@ -262,5 +264,13 @@
     &.current
       text-decoration: underline
 
-#products_page .footer-nav
-  border-top: 0px
+#products_page .footer-nav, #home_page .footer-nav
+  @media screen and (max-width: $break-small)
+    border-top: 0px
+
+#products_page .main .wrapper, #home_page .main .wrapper
+  @media screen and (max-width: $break-small)
+    border-bottom: 1px solid $border-color
+
+    .empty-products
+      padding-bottom: $luna-base * 8

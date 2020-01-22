@@ -1,5 +1,5 @@
 <div class="artist-category-nav artist-category-nav-header">
-  <nav class="category-nav">
+  <nav role="navigation" aria-label="Category sub-nav" class="category-nav">
     <div class="nav-title">Products</div>
     <ul>
       <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
@@ -19,6 +19,7 @@
   </nav>
   {% endif %}
 </div>
+<h1 class="visually-hidden">{{ page.name }}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <div class="product-list">
@@ -35,7 +36,7 @@
         <a class="product-list-item {{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
           <div class="product-list-item-container">
             <figure class="product-list-image-container">
-              <img alt="Image of {{ product.name | escape }}" class="fade-in product-list-image {% if product.image.height > product.image.width %}image-tall{% elsif product.image.height < product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ product.image | product_image_url | constrain: 1000, 1000 }}">
+              <img alt="" class="fade-in product-list-image {% if product.image.height > product.image.width %}image-tall{% elsif product.image.height < product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ product.image | product_image_url | constrain: 1000, 1000 }}">
             </figure>
           </div>
           <div class="product-list-item-info">
@@ -50,30 +51,10 @@
       {% endfor %}
     </div>
     {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination }}
+      <nav role="navigation" aria-label="Pagination">
+        {{ paginate | default_pagination }}
+      </nav>
     {% endif %}
-
-    <div class="artist-category-nav artist-category-nav-footer">
-      <nav class="category-nav">
-        <div class="nav-title">Products</div>
-        <ul>
-          <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
-          {% for category in categories.active %}
-          <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% if artists.active != blank %}
-      <nav class="artist-nav">
-        <div class="nav-title">Artists</div>
-        <ul>
-          {% for artist in artists.active %}
-          <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
-    </div>
   {% else %}
     <div class="empty-products centered-message">No products found.</div>
   {% endif %}

@@ -6,7 +6,9 @@
       <ul class="cart-items">
         {% for item in cart.items %}
           <li class="cart-item" data-item-id="{{ item.id }}">
-            <a class="cart-item-image" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}" style="background-image:url('{{ item.product.image | product_image_url | constrain: 576, 576 }}');"></a>
+            <a class="cart-item-image" href="{{ item.product.url }}">
+              <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
+            </a>
             <a class="cart-item-details" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">
               <div class="cart-item-details-name">{{ item.product.name }}</div>
               <div class="cart-item-details-price">{{ item.unit_price | money: theme.money_format }}</div>
@@ -15,9 +17,14 @@
               {% endunless %}
             </a>
             <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-              {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
+              <label class="visually-hidden" for="item_{{item.id}}_qty">Quantity</label>
+              {{ item | item_quantity_input, nil, 'option-quantity' }}
             </div>
-            <a class="cart-item-remove" title="Remove item" href="#"><svg class="cart-remove-icon" width="11" height="11" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M10.11 1.596l-8.484 8.485-.707-.707L9.404.89z"/><path d="M1.626.89l8.485 8.484-.707.707L.919 1.596z"/></g></svg></a>
+            <button title="Remove item: {{ item.product.name }}" class="cart-item-remove" aria-label="Remove item: {{ item.product.name }}">
+              <svg aria-hidden="true" width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 1.45l-8 8.1m0-8.1l8 8.1" stroke="#666" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
+              </svg>
+            </button>
           </li>
         {% endfor %}
       </ul>
@@ -30,8 +37,8 @@
             Subtotal <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
         </div>
-        <button type="submit" name="checkout" title="Checkout" class="button checkout-btn">Checkout</button>
-        <a class="button continue-shopping" href="/products" title="Continue shopping">Continue Shopping</a>
+        <button type="submit" name="checkout" class="button checkout-btn">Checkout</button>
+        <a class="button continue-shopping" href="/products">Continue Shopping</a>
       </div>
     </form>
   </div>

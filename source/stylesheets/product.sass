@@ -39,12 +39,16 @@
     font-family: $secondary-font
     margin-bottom: $luna-base * 4
     text-align: center
+    font-size: $luna-font-base-px + 7
+    font-weight: normal
+    letter-spacing: 1px
+    line-height: 1.4em
 
   .product-status
     color: $secondary-text-color
     display: block
     font-family: $secondary-font
-    font-size: 13px
+    font-size: $luna-font-base-px
     font-style: italic
     margin-bottom: $luna-base * 2
     text-align: center
@@ -85,10 +89,11 @@
     margin: 20px auto 0
     padding: 4px
     width: auto
+    font-size: $luna-font-base-px - 2
 
   .product-description
     font-family: $secondary-font
-    font-size: 15px
+    font-size: $luna-font-base-px
     line-height: 1.58
     margin-bottom: $luna-base * 4
 
@@ -191,13 +196,14 @@
   padding: $luna-base * 4 0
 
   .similar-products-title
-    font-size: 22px
+    font-size: $luna-font-base-px + 8
     letter-spacing: 3px
     text-transform: uppercase
 
   .prev-next-products
     +flexbox
     border: none
+    font-size: $luna-font-base-px
     padding: 0
 
     @media screen and (max-width: $break-small)
@@ -212,6 +218,7 @@
   margin: 0
   margin-left: auto
   padding: $luna-base * 3
+  font-size: $luna-font-base-px
 
   li:not(:last-child):after
     content: "/"
@@ -242,7 +249,7 @@
     color: $secondary-font
     margin-bottom: $luna-base * 3
     text-transform: uppercase
-    font-size: 12px
+    font-size: $luna-font-base-px - 2
     letter-spacing: 1px
     text-align: center
 
@@ -257,7 +264,7 @@
 
   .option-name
     margin-bottom: 1px
-    font-size: 13px
+    font-size: $luna-font-base-px
     text-transform: none
 
   .bar

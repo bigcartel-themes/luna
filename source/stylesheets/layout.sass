@@ -65,6 +65,9 @@ a
   color: $primary-text-color
   text-decoration: none
 
+h1
+  font-size: 2.3em
+
 h1, h2, h3, h4, h5
   color: $header-text-color
   font-weight: normal
@@ -94,7 +97,6 @@ h1, h2, h3, h4, h5
   letter-spacing: 6px
 
 .page-title
-  font-size: 24px
   letter-spacing: 3px
   text-align: center
 
@@ -128,24 +130,18 @@ header
         border-bottom: 1px solid $border-color
         color: $secondary-text-color
         display: block
-        font-size: 12px
+        font-size: $luna-font-base-px - 2
         letter-spacing: 1px
         padding: $luna-base $luna-base * 2 $luna-base * 2
         text-decoration: none
 
         @media screen and (max-width: $break-small)
+          font-size: $luna-font-base-px
           border-bottom: none
           text-decoration: underline
 
         &:hover
           color: $primary-text-color
-
-      .more-link
-        display: none
-
-      @media screen and (max-width: $break-small)
-        .more-link
-          display: block
 
     &.mobile-nav
       display: none
@@ -184,6 +180,7 @@ header
 #cart_page, #contact_page, #maintenance_page, #product_page, .custom
   .main
     background-color: $secondary-background-color
+    padding-bottom: $luna-base * 8
     padding-top: $luna-base * 8
 
 button, a.button
@@ -199,7 +196,6 @@ button, a.button
   letter-spacing: 1px
   line-height: 58px
   max-width: 100%
-  outline: none
   padding: 0 $luna-base * 2
   text-align: center
   text-transform: uppercase
@@ -340,13 +336,13 @@ button, a.button
     &.footer-links
       @media screen and (max-width: $break-small)
         +flex-direction(column)
-        padding: 0 $luna-base * 2
+        padding: 0 20px
         width: 100%
 
         a
           border-bottom: 1px solid $border-color
           font-family: $secondary-font
-          font-size: 13px
+          font-size: $luna-font-base-px - 1
           padding: $luna-base * 2 0
           text-align: center
           text-transform: uppercase
@@ -354,7 +350,7 @@ button, a.button
     a
       +all-transitions
       display: block
-      font-size: 12px
+      font-size: $luna-font-base-px - 2
       padding: $luna-base $luna-base * 2
       text-decoration: none
 
@@ -380,7 +376,7 @@ button, a.button
   border-radius: $border-radius
   background-color: #EA4859
   color: #FAFAFA
-  font-size: 14px
+  font-size: $luna-font-base-px - 1
   line-height: 20px
   list-style: none
   margin: 0 auto $luna-base * 4
@@ -406,7 +402,7 @@ input, textarea
 a.back-to-site
   background: none
   color: $button-border-color
-  font-size: 11px
+  font-size: $luna-font-base-px - 4
   height: auto
   line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
@@ -464,6 +460,11 @@ a.back-to-site
     position: absolute
     right: 20px
     top: 50%
+    border: 0
+    background-color: $secondary-background-color
+    height: 54px
+    width: 44px
+    margin-top: -1px
 
     svg
       fill: $primary-text-color
@@ -475,11 +476,22 @@ a.back-to-site
   font-family: $secondary-font
   font-size: 20px
   font-style: italic
+  line-height: 1.4em
   padding: 0 20px
   text-align: center
 
   a
     text-decoration: underline
+
+.visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
 
 @keyframes reset
   from
