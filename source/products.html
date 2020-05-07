@@ -1,11 +1,14 @@
 {% if theme.max_products_per_row == 4 %}
-  {% assign product_image_constrain = 261 %}
+  {% assign product_image_constrain = 236 %}
   {% assign product_image_constrain_large = product_image_constrain | times: 2 %}
 {% elsif theme.max_products_per_row == 3 %}
   {% assign product_image_constrain = 320 %}
   {% assign product_image_constrain_large = product_image_constrain | times: 2 %}
 {% elsif theme.max_products_per_row == 2 %}
-  {% assign product_image_constrain = 522 %}
+  {% assign product_image_constrain = 488 %}
+  {% assign product_image_constrain_large = product_image_constrain | times: 2 %}
+{% elsif theme.max_products_per_row == 1 %}
+  {% assign product_image_constrain = 992 %}
   {% assign product_image_constrain_large = product_image_constrain | times: 2 %}
 {% endif %}
 
