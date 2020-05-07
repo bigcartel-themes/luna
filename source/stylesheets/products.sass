@@ -85,7 +85,7 @@
   font-size: 0
   letter-spacing: 1px
   padding: 8px
-  padding-bottom: 8px
+  padding-bottom: 16px
   position: relative
   text-decoration: none
   text-transform: uppercase
@@ -93,7 +93,7 @@
   width: calc(100% / #{"{{ theme.max_products_per_row }}"})
 
   &:hover, &:focus
-    color: $links-rollover-color
+    text-decoration: none
 
     &:not(.rollover)
       .product-list-image
@@ -106,6 +106,8 @@
 
   @media (hover: hover), (-moz-touch-enabled: 0)
     &.rollover
+      padding-bottom: 8px
+
       .product-list-thumb-info
         +flexbox
         +align-items(center)
@@ -239,8 +241,15 @@ _:-ms-fullscreen, :root .product-list-thumb
     width: 20px
 
 .product-list-thumb-price
+  display: inline-block
   font-size: 16px
   margin-top: $luna-base * 2
+
+.product-list-thumb-status
+  color: $secondary-text-color
+  display: inline-block
+  font-style: italic
+  text-transform: none
 
 .pagination
   +flexbox
