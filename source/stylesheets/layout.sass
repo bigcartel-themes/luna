@@ -25,7 +25,6 @@ body
   padding: 0
   width: 100%
 
-
   &.maintenance-page
     +flexbox
     +align-items(center)
@@ -54,7 +53,6 @@ body
         font-family: $secondary-font
         font-style: italic
         margin: 10px auto
-
 
 .wrapper
   padding: 0 $luna-base * 2
@@ -90,7 +88,6 @@ h1, h2, h3, h4, h5
       width: $luna-base * 3
 
 .store-header
-  color: $header-text-color
   font-size: 42px
   letter-spacing: 6px
 
@@ -99,69 +96,75 @@ h1, h2, h3, h4, h5
   text-align: center
 
 header
-  padding: $luna-base * 2 0
   text-align: center
 
   &.has-background
     background-color: $secondary-background-color
     padding-bottom: 60px
 
-  .header-nav
-    font-family: $primary-font
-    text-transform: uppercase
+.header-nav
+  font-family: $primary-font
+  margin-top: $luna-base
+  text-transform: uppercase
 
-    @media screen and (max-width: $break-small)
-      display: none
+  @media screen and (max-width: $break-small)
+    display: none
 
-    ul
-      display: flex
-      justify-content: center
-      list-style: none
-      margin: 0
-      padding: 0
+  ul
+    +flexbox
+    +justify-content(center)
+    list-style: none
+    margin: 0
+    padding: 0
 
-      li.selected a
+    li
+      border-bottom: 1px solid $border-color
+      padding: $luna-base
+
+      &.selected a
         color: $primary-text-color
-
-      a
-        +all-transitions
-        border-bottom: 1px solid $border-color
-        color: $secondary-text-color
-        display: block
-        font-size: $luna-font-base-px - 2
-        letter-spacing: 1px
-        padding: $luna-base $luna-base * 2 $luna-base * 2
-        text-decoration: none
-
-        @media screen and (max-width: $break-small)
-          font-size: $luna-font-base-px
-          border-bottom: none
-          text-decoration: underline
-
-        &:hover
-          color: $primary-text-color
-
-    &.mobile-nav
-      display: none
+    a
+      +all-transitions
+      color: $secondary-text-color
+      display: block
+      font-size: $luna-font-base-px - 2
+      letter-spacing: 1px
+      padding: $luna-base
+      text-decoration: none
 
       @media screen and (max-width: $break-small)
-        display: block
-        font-family: $secondary-font
+        font-size: $luna-font-base-px
+        border-bottom: none
+        text-decoration: underline
 
-  .branding
-    font-size: 20px
-    margin: 60px auto
-    text-transform: uppercase
+      &:hover
+        color: $primary-text-color
+
+  &.mobile-nav
+    display: none
 
     @media screen and (max-width: $break-small)
-      margin: 30px auto
-
-      .store-header
-        font-size: 36px
-        letter-spacing: 3px
-
-    > a
       display: block
+      font-family: $secondary-font
+
+.branding
+  font-size: 20px
+  margin: 60px auto
+  text-transform: uppercase
+
+  @media screen and (max-width: $break-small)
+    margin: 30px auto
+
+    .store-header
+      font-size: 36px
+      letter-spacing: 3px
+
+  > a
+    color: $header-text-color
+    display: inline-block
+
+    &:hover, &:focus
+      color: $links-rollover-color
 
 .store-logo
   display: block
@@ -398,8 +401,6 @@ input, textarea
   font-size: 1em
   padding: $luna-base
   outline: none
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
-  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
 
   &:focus, &:active
     background: $primary-background-color
@@ -445,37 +446,39 @@ a.back-to-site
   background-color: $secondary-background-color
   color: $primary-text-color
   font-size: 15px
-  left: 0
-  line-height: 26px
-  padding: 14px 20px
+  min-height: 48px
   position: relative
-  top: 0
   width: 100%
   z-index: 9
 
-  .announcement-message-text
-    text-align: center
-    width: calc(100% - 100px)
+.announcement-message-text
+  text-align: center
 
-    @media screen and (max-width: $break-small)
-      width: calc(100% - 50px)
+.announcement-message-close
+  +transform(translateY(-50%))
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  position: absolute
+  right: 16px
+  top: 50%
+  border: 0
+  background-color: $secondary-background-color
+  height: 44px
+  padding: 0
+  width: 44px
 
-  .announcement-message-close
-    +transform(translateY(-50%))
-    cursor: pointer
-    position: absolute
-    right: 20px
-    top: 50%
-    border: 0
-    background-color: $secondary-background-color
-    height: 54px
-    width: 44px
-    margin-top: -1px
+  &:hover, &:focus
+    background: none !important
 
     svg
-      fill: $primary-text-color
-      height: 11px
-      width: 11px
+      fill: $links-rollover-color
+
+  svg
+    display: block
+    fill: $primary-text-color
+    height: 13px
+    width: 13px
 
 .centered-message
   color: $secondary-text-color
