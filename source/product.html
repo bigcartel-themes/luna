@@ -23,7 +23,9 @@
   <div class="product-images{% if product.images.size > 1 %} product-images-slideshow{% endif %}">
     <ul class="slides">
       {% for image in product.images %}
-        <li><img class="product-image" src="{{ image | product_image_url | constrain: 1200 }}" alt="{{ product.name | escape }}"></li>
+        <li>
+          <img alt="{{ product.name | escape }}" class="lazy product-image" src="{{ image | product_image_url | constrain: 100 }}" data-src="{{ image | product_image_url | constrain: 615 }}" data-srcset="{{ image | product_image_url | constrain: 1230 }} 2x, {{ image | product_image_url | constrain: 615 }} 1x">
+        </li>
       {% endfor %}
     </ul>
   </div>
