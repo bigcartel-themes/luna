@@ -176,12 +176,6 @@
       &:last-child
         border-bottom: 0px
 
-.similar-products
-  padding: 0 20px $luna-base * 6
-
-  @media screen and (max-width: $break-small)
-    padding-bottom: $luna-base
-
 .similar-product-list
   +justify-content(flex-start)
 
@@ -193,7 +187,8 @@
 
 .similar-products-header
   +flexbox
-  padding: $luna-base * 4 0
+  +align-items(center)
+  padding: $luna-base * 3 0
 
   .similar-products-title
     font-size: $luna-font-base-px + 8

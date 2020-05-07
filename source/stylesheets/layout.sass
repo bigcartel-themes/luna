@@ -57,6 +57,7 @@ body
 
 
 .wrapper
+  padding: 0 $luna-base * 2
   margin: 0 auto
   max-width: 1024px
   width: 100%
@@ -98,7 +99,7 @@ h1, h2, h3, h4, h5
   text-align: center
 
 header
-  padding: 20px
+  padding: $luna-base * 2 0
   text-align: center
 
   &.has-background
@@ -170,16 +171,23 @@ header
 
 .main
   +flex(1)
-  padding: 0 20px 60px
+  padding-bottom: 60px
 
   @media screen and (max-width: $break-small)
     padding-bottom: 0
+
+_:-ms-fullscreen, :root .main
+  +flex(1 0 auto)
 
 #cart_page, #contact_page, #maintenance_page, #product_page, .custom
   .main
     background-color: $secondary-background-color
     padding-bottom: $luna-base * 8
     padding-top: $luna-base * 8
+
+    @media screen and (max-width: $break-small)
+      padding-bottom: $luna-base * 4
+      padding-top: $luna-base * 4
 
 button, a.button
   +all-transitions
@@ -254,10 +262,11 @@ button, a.button
     z-index: 2
 
     option
-      background-color: #FFF
+      background-color: #FFFFFF
       color: #000
 
       &:disabled
+        background-color: #FFFFFF
         color: graytext
 
     &:focus
