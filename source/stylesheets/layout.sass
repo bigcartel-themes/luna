@@ -91,6 +91,18 @@ h1, h2, h3, h4, h5
       transform: translateX(-50%)
       width: $luna-base * 3
 
+a[href], label[for], select, button, .pointer
+  cursor: pointer
+
+button, input, textarea, select
+  +appearance(none)
+  background: none
+  border: none
+  border-radius: $border-radius
+  color: $primary-text-color
+  font-family: $primary-font
+  padding: 0
+
 .store-header
   font-size: 42px
   letter-spacing: 6px
@@ -145,7 +157,7 @@ header
         text-decoration: underline
 
       &:hover
-        color: $primary-text-color
+        color: $links-rollover-color
 
   &.mobile-nav
     display: none
@@ -202,12 +214,9 @@ _:-ms-fullscreen, :root .main
       padding-top: $luna-base * 4
 
 button, a.button
-  background: $button-border-color
-  border: 2px solid $button-border-color
-  color: $primary-background-color
-  cursor: pointer
+  background: $button-background-color
+  color: $button-text-color
   display: block
-  font-family: $primary-font
   font-size: 14px
   height: 58px
   letter-spacing: 1px
@@ -220,13 +229,14 @@ button, a.button
 
   &.minimal-button
     background: none
-    color: $button-border-color
+    color: $primary-text-color
     border: none
     font-size: 13px
     padding: 0
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
       background: none
+      color: $links-rollover-color
       text-decoration: underline
 
   &:disabled, &.disabled
@@ -237,14 +247,12 @@ button, a.button
     border: none
 
   &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-    border-color: $button-rollover-color
     background: $button-rollover-color
     opacity: .8
 
 .select
-  border: 2px solid $button-border-color
-  color: $primary-text-color
-  font-family: $primary-font
+  border: 2px solid $primary-text-color
+  border-radius: $border-radius
   height: 58px
   margin-bottom: $luna-base * 3
   max-width: 100%
@@ -254,13 +262,6 @@ button, a.button
   width: 100%
 
   select
-    appearance: none
-    -webkit-appearance: none
-    background: none
-    border: 0
-    border-radius: 0
-    color: $primary-text-color
-    font-family: $primary-font
     height: 100%
     letter-spacing: 1px
     line-height: 58px
@@ -296,30 +297,34 @@ button, a.button
     z-index: 1
 
   &:hover, &:active, &:focus, &:focus-within
-    color: $secondary-text-color
-    border-color: $secondary-text-color
+    color: $links-rollover-color
+    border-color: $links-rollover-color
 
     select
-      color: $secondary-text-color
+      color: $links-rollover-color
 
       option:disabled
         color: graytext
 
     svg
-      fill: $secondary-text-color
+      fill: $links-rollover-color
 
 .custom-page-header
   text-align: center
 
 .custom-page-content
   font-family: $secondary-font
-  font-size: 16px
-  line-height: 1.58
+  font-size: $luna-font-base-px
+  line-height: 1.5em
   margin: 0 auto
-  max-width: 640px
+  max-width: 700px
 
   a
+    color: $secondary-text-color
     text-decoration: underline
+
+    &:hover, &:focus
+      color: $links-rollover-color
 
   ol, ul
     padding-left: 1em
@@ -368,18 +373,18 @@ button, a.button
       padding: $luna-base $luna-base * 2
       text-decoration: none
 
-      &:hover
-        color: $secondary-text-color
+      &:hover, &:focus
+        color: $links-rollover-color
         text-decoration: underline
 
 .social-links a
-  fill: $links-color
+  fill: $secondary-text-color
 
   svg
     height: 22px
     width: 22px
 
-  &:hover
+  &:hover, &:focus
     fill: $links-rollover-color
 
 .search-input
@@ -402,8 +407,8 @@ button, a.button
 
 input, textarea
   appearance: none
-  border: 2px solid $border-color
-  background: $secondary-background-color
+  border: 2px solid $secondary-text-color
+  background: none
   color: $primary-text-color
   font-family: $primary-font
   font-size: 16px
@@ -415,18 +420,11 @@ input, textarea
     border: 2px solid $primary-text-color
 
 a.back-to-site
-  background: none
-  color: $button-border-color
   font-size: $luna-font-base-px - 4
   height: auto
   line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
   width: auto
-
-  &:hover, &:active, &:focus
-    opacity: 1
-    background: $button-border-color
-    color: $primary-background-color
 
 .back-to-site + .badge
   margin-top: $luna-base * 3
@@ -494,8 +492,8 @@ a.back-to-site
   font-family: $secondary-font
   font-size: 20px
   font-style: italic
-  line-height: 1.4em
-  padding: 0 20px
+  line-height: 1.5em
+  padding: 0 16px
   text-align: center
 
   a

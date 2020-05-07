@@ -9,37 +9,22 @@
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
   font-size: $luna-font-base-px
-  line-height: $luna-font-base-px + 2
-  margin-bottom: $luna-base * 8
-  padding: $luna-base * 2 0
+  margin-bottom: $luna-base * 5
+  padding: $luna-base * 2
 
   @media screen and (max-width: $break-small)
-    margin-bottom: $luna-base * 4
-    padding: $luna-base 0
-
-  &.artist-category-nav-footer
-    margin-bottom: 0
-    margin-top: $luna-base * 5
-
-    @media screen and (max-width: $break-medium)
-      margin-top: $luna-base * 3
+    padding: $luna-base
 
   .nav-title
     font-size: $luna-font-base-px + 2
-    margin: 0 $luna-base $luna-base 0
-    margin-right: $luna-base
-    padding: 3px
+    font-weight: bold
+    margin-bottom: $luna-base
 
   nav
     +flexbox
     +align-items(center)
     +justify-content(center)
     +flex-direction(column)
-    padding: $luna-base * 2 0
-
-    &:not(:last-child)
-      @media screen and (max-width: $break-small)
-        margin-bottom: 0
 
   ul
     +flexbox
@@ -76,16 +61,16 @@
   +flexbox
   +flex-wrap(wrap)
   +justify-content(flex-start)
-  margin: 8px -8px
+  margin: $luna-base -$luna-base
 
 .product-list-thumb
   +flex-basis(calc(100% / #{"{{ theme.max_products_per_row }}"}))
   color: $primary-text-color
   display: block
   font-size: 0
-  letter-spacing: 1px
-  padding: 8px
-  padding-bottom: 16px
+  letter-spacing: 2px
+  padding: $luna-base
+  padding-bottom: $luna-base * 2
   position: relative
   text-decoration: none
   text-transform: uppercase
@@ -99,14 +84,20 @@
       .product-list-image
         opacity: .8
 
+      .product-list-thumb-name:after
+        background-color: $links-rollover-color
+
+      .product-list-thumb-status
+        color: $links-rollover-color
+
   @media screen and (max-width: $break-small)
     +flex-basis(calc(100% / #{"{{ theme.max_products_per_row_mobile }}"}))
-    padding: 8px
+    padding: $luna-base
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
   @media (hover: hover), (-moz-touch-enabled: 0)
     &.rollover
-      padding-bottom: 8px
+      padding-bottom: $luna-base
 
       .product-list-thumb-info
         +flexbox
@@ -116,12 +107,12 @@
         +transition(opacity .2s linear)
         color: #FFFFFF
         opacity: 0
-        padding: 16px
+        padding: $luna-base *2  $luna-base
         position: absolute
-        top: 8px
-        left: 8px
-        width: calc(100% - 16px)
-        height: calc(100% - 16px)
+        top: $luna-base
+        left: $luna-base
+        width: calc(100% - ($luna-base * 2))
+        height: calc(100% - ($luna-base * 2))
 
       .product-list-thumb-info-headers
         +transition(top .2s linear)
@@ -207,14 +198,14 @@ _:-ms-fullscreen, :root .product-list-thumb
     visibility: visible
 
 .product-list-thumb-info
-  font-size: 18px
+  font-size: 20px
   line-height: 1.25em
-  padding: 16px 8px
+  padding: $luna-base * 2 $luna-base
   position: relative
   text-align: center
 
   @media screen and (max-width: $break-small)
-    padding: 8px 0
+    padding: $luna-base 0
 
 .product-list-item-background
   background-color: $products-background-color
@@ -241,13 +232,14 @@ _:-ms-fullscreen, :root .product-list-thumb
     width: 20px
 
 .product-list-thumb-price
-  display: inline-block
-  font-size: 16px
+  font-family: $secondary-font
+  font-size: 18px
   margin-top: $luna-base * 2
 
 .product-list-thumb-status
   color: $secondary-text-color
-  display: inline-block
+  font-family: $secondary-font
+  font-size: 18px
   font-style: italic
   text-transform: none
 
@@ -255,7 +247,6 @@ _:-ms-fullscreen, :root .product-list-thumb
   +flexbox
   +align-items(center)
   +justify-content(center)
-  font-family: $secondary-font
   margin: 32px auto 0
   padding: $luna-base * 3
   width: 100%

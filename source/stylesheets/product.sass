@@ -97,11 +97,15 @@
   .product-description
     font-family: $secondary-font
     font-size: $luna-font-base-px
-    line-height: 1.58
+    line-height: 1.5em
     margin-bottom: $luna-base * 4
 
     a
+      color: $secondary-text-color
       text-decoration: underline
+
+      &:hover, &:focus
+        color: $links-rollover-color
 
     ol, ul
       padding-left: 1em
@@ -241,13 +245,13 @@
 .product-inventory
   border-top: 1px solid $border-color
   margin: $luna-base * 4 0 $luna-base * 2
-  padding: $luna-base * 2 $luna-base
+  padding: $luna-base * 2 0
 
   .product-inventory-header
     color: $secondary-font
     margin-bottom: $luna-base * 3
     text-transform: uppercase
-    font-size: $luna-font-base-px - 2
+    font-size: $luna-font-base-px - 1
     letter-spacing: 1px
     text-align: center
 
@@ -258,22 +262,30 @@
   padding: 0
 
   li
-    margin-bottom: $luna-base * 2
+    margin-bottom: $luna-base * 2 + 2
 
   .option-name
-    margin-bottom: 1px
-    font-size: $luna-font-base-px
+    margin-bottom: $luna-base / 2
+    font-size: $luna-font-base-px - 1
     text-transform: none
 
-  .bar
+  .inventory-bar
     background-color: $border-color
     height: 2px
+    position: relative
     width: 100%
 
-    span
-      background-color: $inventory-bar-color
-      display: block
-      height: 2px
+  .inventory-percentage
+    background-color: $border-color
+    display: block
+    height: 3px
+    position: absolute
+    top: 2px
 
-      em
-        display: none
+  .inventory-label
+    color: $secondary-text-color
+    font-size: 12px
+    display: none
+    position: absolute
+    right: 0
+    top: -16px

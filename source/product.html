@@ -45,8 +45,9 @@
             {% for option in product.options %}
         		<li>
         		  {% unless product.has_default_option %}<div class="option-name">{{ option.name }}</div>{% endunless %}
-        			<div class="bar">
-        			  <span style="width:{{ option.inventory }}%;"><em>{{ option.quantity }} in stock</em></span>
+        			<div class="inventory-bar">
+        			  <span class="inventory-percentage" style="width:{{ option.inventory }}%;"></span>
+                <span class="inventory-label">{{ option.quantity }} in stock</span>
         			</div>
         		</li>
         		{% endfor %}
