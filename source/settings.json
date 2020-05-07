@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "images": [
     {
       "variable": "header",
@@ -29,24 +29,24 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Times New Roman"
+      "default": "Varela Round"
     }
   ],
   "colors": [
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#ffffff"
+      "default": "#FFFFFF"
     },
     {
       "variable": "secondary_background_color",
       "label": "Secondary background",
-      "default": "#f0f0f0"
+      "default": "#F2F2F2"
     },
     {
       "variable": "primary_text_color",
       "label": "Primary text",
-      "default": "#333333"
+      "default": "#111111"
     },
     {
       "variable": "secondary_text_color",
@@ -54,39 +54,39 @@
       "default": "#666666"
     },
     {
-      "variable": "link_color",
-      "label": "Links",
-      "default": "#333333"
-    },
-    {
       "variable": "link_rollover_color",
-      "label": "Link rollover",
-      "default": "#888888"
+      "label": "Link hover",
+      "default": "#196a9d"
     },
     {
       "variable": "header_text_color",
       "label": "Header text",
-      "default": "#333333"
+      "default": "#222222"
     },
     {
       "variable": "products_background_color",
-      "label": "Product background rollover",
+      "label": "Product background hover",
       "default": "#000000"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#e5e5e5"
+      "default": "#b1b1b1"
     },
     {
-      "variable": "button_border_color",
-      "label": "Buttons",
+      "variable": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button background",
       "default": "#000000"
     },
     {
       "variable": "button_rollover_color",
-      "label": "Button rollover",
-      "default": "#777777"
+      "label": "Button hover background",
+      "default": "#196a9d"
     },
     {
       "variable": "inventory_bar_color",
@@ -146,8 +146,19 @@
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 12,
+      "default": 36,
       "description": "The number of products displayed per page"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Fit to square", "fit-to-square"],
+        ["Crop to square", "crop-to-square"]
+      ],
+      "default": "fit-to-square",
+      "description": "Sets the display of images in the product grid"
     },
     {
       "variable": "show_overlay",
@@ -157,7 +168,7 @@
         ["On rollover", "rollover"],
         ["Under image", "under_image"]
       ],
-      "default": "rollover",
+      "default": "under_image",
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {
@@ -193,14 +204,14 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Displays a search field in the footer"
     },
     {
       "variable": "show_inventory_bars",
       "label": "Show inventory bars",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Shows a product's inventory amounts (when using inventory tracking)",
       "requires": "inventory"
     },
