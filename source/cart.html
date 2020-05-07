@@ -9,13 +9,16 @@
             <a class="cart-item-image" href="{{ item.product.url }}">
               <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
             </a>
-            <a class="cart-item-details" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">
-              <div class="cart-item-details-name">{{ item.product.name }}</div>
-              {% unless item.product.has_default_option %}
-                <div class="cart-item-details-option">{{ item.option.name }}</div>
+            <div class="cart-item-details">
+              <a class="cart-item-details-name" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}">  {{ item.product.name }}
+                              {% unless item.product.has_default_option %}
+                <span class="cart-item-details-option">- {{ item.option.name }}</span>
               {% endunless %}
+              </a>
+
               <div class="cart-item-details-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
-            </a>
+              <button class="cart-item-remove-text minimal-button">Remove</button>
+            </div>
             <div class="cart-item-quantity-price">
               <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
                 <label class="visually-hidden" for="item_{{item.id}}_qty">Quantity</label>
@@ -34,7 +37,8 @@
       <div class="cart-footer">
         <div class="cart-totals">
           <div class="cart-subtotal cart-total">
-            Subtotal <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
+            Subtotal
+            <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
         </div>
         <div class="cart-footer-buttons">

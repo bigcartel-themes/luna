@@ -42,33 +42,38 @@
   padding: $luna-base * 3 0
 
   @media screen and (max-width: $break-small)
+    +flex-wrap(wrap)
+    +align-items(flex-start)
     padding: $luna-base * 2 0
 
-.cart-item-details-option
-  color: $secondary-text-color
-  font-family: $secondary-font
-  font-style: italic
-  margin-top: $luna-base
-
 .cart-item-image
+  border-radius: $border-radius
   display: block
   height: 90px
   margin-right: $luna-base * 2
-  max-width: 90px
-  width: 100%
+  width: 90px
 
   @media screen and (max-width: $break-small)
-    height: $luna-base * 8
-    max-width: $luna-base * 8
+    height: 60px
+    margin-right: $luna-base
+    width: 60px
 
   img
+    border-radius: $border-radius
     display: block
     object-fit: cover
     height: 100%
     width: 100%
 
 .cart-item-details
+  line-height: 1.25em
+  padding-right: $luna-base * 3
   width: 55%
+
+  @media screen and (max-width: $break-small)
+    +flex(1)
+    +flex-basis(30%)
+    padding-right: $luna-base * 2
 
 .cart-item-details-name
   font-size: 18px
@@ -76,9 +81,14 @@
   @media screen and (max-width: $break-small)
     font-size: 16px
 
+.cart-item-details-option
+  font-family: $secondary-font
+  font-size: 15px
+  margin-top: $luna-base / 2.5
+
 .cart-item-details-unit-price
   font-size: 15px
-  margin-top: $luna-base
+  margin-top: $luna-base / 2.5
 
 .cart-item-quantity-price
   +flexbox
@@ -86,16 +96,32 @@
   +justify-content(flex-end)
   width: 45%
 
+  @media screen and (max-width: $break-small)
+    +flex(1)
+    +flex-direction(column)
+    +align-items(flex-end)
+    width: 45%
+
 .cart-item-details-price
   margin-right: $luna-base * 3
   padding-left: $luna-base * 2
 
+  @media screen and (max-width: $break-small)
+    margin-right: 0
+    margin-top: $luna-base * 2
+
 .cart-item-quantity-holder
   margin-right: auto
+
+  @media screen and (max-width: $break-small)
+    margin-right: 0
 
   input
     text-align: center
     width: 48px
+
+    &:hover, &:focus
+      border-color: $links-rollover-color
 
 button.cart-item-remove
   +flexbox
@@ -108,6 +134,9 @@ button.cart-item-remove
   height: 32px
   padding: 0
   width: 32px
+
+  @media screen and (max-width: $break-small)
+    display: none
 
   &:hover, &:focus
     background: none
@@ -142,12 +171,16 @@ button.cart-item-remove
   margin-bottom: $luna-base * 2
   padding: 0
 
+  @media screen and (max-width: 920px)
+    margin: $luna-base * 3 0
+
 .cart-subtotal-amount
   margin-left: auto
 
 .cart-footer-buttons
   +flexbox
   +flex-direction(column)
+  padding-bottom: $luna-base
 
 .checkout-btn
   display: block
@@ -171,3 +204,14 @@ a.continue-shopping
     border-color: transparent !important
     color: $primary-text-color
     text-decoration: underline
+
+button.cart-item-remove-text
+  color: $links-rollover-color
+  display: inline-block
+  height: auto
+  line-height: normal
+  margin: 0
+  margin-top: 4px
+  padding: 0
+  text-decoration: underline
+  width: auto
