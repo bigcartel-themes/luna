@@ -64,6 +64,10 @@ a
   color: $primary-text-color
   text-decoration: none
 
+  &:focus, &:hover
+    color: $links-rollover-color
+    text-decoration: underline
+
 h1, h2, h3, h4, h5
   color: $header-text-color
   font-weight: normal
@@ -124,10 +128,11 @@ header
       @media screen and (max-width: $break-small)
         border-bottom: none
 
-      &.selected a
-        color: $primary-text-color
+      &.selected
+
+        a
+          color: $primary-text-color
     a
-      +all-transitions
       color: $secondary-text-color
       display: block
       font-size: $luna-font-base-px - 2
@@ -148,6 +153,7 @@ header
     @media screen and (max-width: $break-small)
       display: block
       font-family: $secondary-font
+      padding-bottom: $luna-base * 2
 
 .branding
   font-size: 20px
@@ -167,6 +173,7 @@ header
 
     &:hover, &:focus
       color: $links-rollover-color
+      text-decoration: none
 
 .store-logo
   display: block
@@ -195,7 +202,6 @@ _:-ms-fullscreen, :root .main
       padding-top: $luna-base * 4
 
 button, a.button
-  +all-transitions
   background: $button-border-color
   border: 2px solid $button-border-color
   color: $primary-background-color
@@ -236,7 +242,6 @@ button, a.button
     opacity: .8
 
 .select
-  +all-transitions
   border: 2px solid $button-border-color
   color: $primary-text-color
   font-family: $primary-font
@@ -249,7 +254,6 @@ button, a.button
   width: 100%
 
   select
-    +all-transitions
     appearance: none
     -webkit-appearance: none
     background: none
@@ -282,7 +286,6 @@ button, a.button
       display: none
 
   svg
-    +all-transitions
     fill: $primary-text-color
     height: 8px
     margin-top: -2px
@@ -340,6 +343,7 @@ button, a.button
   ul
     +flexbox
     +justify-content(center)
+    +flex-wrap(wrap)
     list-style: none
     margin: 0 0 $luna-base * 3 0
     padding: 0
@@ -347,7 +351,7 @@ button, a.button
     &.footer-links
       @media screen and (max-width: $break-small)
         +flex-direction(column)
-        padding: 0 20px
+        padding: 0
         width: 100%
 
         a
@@ -359,18 +363,21 @@ button, a.button
           text-transform: uppercase
 
     a
-      +all-transitions
       display: block
-      font-size: $luna-font-base-px - 2
+      font-size: $luna-font-base-px - 1
       padding: $luna-base $luna-base * 2
       text-decoration: none
 
       &:hover
         color: $secondary-text-color
+        text-decoration: underline
 
 .social-links a
-  +all-transitions
   fill: $links-color
+
+  svg
+    height: 22px
+    width: 22px
 
   &:hover
     fill: $links-rollover-color
@@ -394,12 +401,12 @@ button, a.button
   text-align: center
 
 input, textarea
-  +all-transitions
   appearance: none
   border: 2px solid $border-color
   background: $secondary-background-color
   color: $primary-text-color
-  font-size: 1em
+  font-family: $primary-font
+  font-size: 16px
   padding: $luna-base
   outline: none
 
