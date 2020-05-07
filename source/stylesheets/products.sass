@@ -54,7 +54,6 @@
       padding: 3px 0
 
       a
-        +all-transitions
         display: inline
         padding: 6px 8px
         white-space: nowrap
@@ -199,9 +198,9 @@
   z-index: 1
 
 .product-list-item-name
-  font-size: $luna-font-base-px + 6
-  letter-spacing: 3px
-  line-height: 30px
+  font-size: $luna-font-base-px + 4
+  letter-spacing: 2px
+  line-height: 1.25em
   margin-bottom: 20px
   padding: 0 20px
   position: relative
@@ -242,21 +241,16 @@
   +align-items(center)
   +justify-content(center)
   font-family: $secondary-font
-  font-size: 15px
   margin: 60px auto 0
   padding: $luna-base * 3
   width: 100%
 
   @media screen and (max-width: $break-small)
-    font-size: 16px
     margin-bottom: $luna-base * 3
     margin-top: $luna-base * 3
 
   a, span
-    padding: 2px 6px
-
-    @media screen and (max-width: $break-small)
-      padding: 4px 8px
+    padding: 6px
 
     &.disabled
       display: none
