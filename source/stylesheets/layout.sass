@@ -4,21 +4,21 @@
   box-sizing: border-box
 
 html
-  -webkit-tap-highlight-color: rgba(0,0,0,0)
   height: 100%
   min-height: 100%
   position: relative
   width: 100%
 
 body
+  +flexbox
+  +flex-direction(column)
   background-color: $primary-background-color
   background-image: #{"{% if theme.images.background != blank %}url(\'{{ theme.images.background.url | constrain: 200, 200 }}\'){% else %}none{% endif %}"}
   background-repeat: repeat
   background-size: 200px 200px
   color: $primary-text-color
-  cursor: default
   font-family: $primary-font
-  font-size: 14px
+  font-size: 16px
   height: 100%
   line-height: 1
   margin: 0
@@ -64,9 +64,6 @@ body
 a
   color: $primary-text-color
   text-decoration: none
-
-h1
-  font-size: 2.3em
 
 h1, h2, h3, h4, h5
   color: $header-text-color
@@ -172,6 +169,7 @@ header
   max-height: 400px
 
 .main
+  +flex(1)
   padding: 0 20px 60px
 
   @media screen and (max-width: $break-small)
@@ -246,7 +244,6 @@ button, a.button
     border-radius: 0
     color: $primary-text-color
     font-family: $primary-font
-    font-size: 14px
     height: 100%
     letter-spacing: 1px
     line-height: 58px
