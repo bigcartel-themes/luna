@@ -121,6 +121,9 @@ header
       border-bottom: 1px solid $border-color
       padding: $luna-base
 
+      @media screen and (max-width: $break-small)
+        border-bottom: none
+
       &.selected a
         color: $primary-text-color
     a
@@ -134,7 +137,6 @@ header
 
       @media screen and (max-width: $break-small)
         font-size: $luna-font-base-px
-        border-bottom: none
         text-decoration: underline
 
       &:hover
@@ -149,7 +151,7 @@ header
 
 .branding
   font-size: 20px
-  margin: 60px auto
+  margin: 76px auto
   text-transform: uppercase
 
   @media screen and (max-width: $break-small)
@@ -437,19 +439,20 @@ a.back-to-site
     width: 79px
 
 .announcement-message
-  display: none
-
-.has-announcement-message .announcement-message
-  +flexbox
   +align-items(center)
   +justify-content(center)
   background-color: $secondary-background-color
   color: $primary-text-color
+  display: none
   font-size: 15px
-  min-height: 48px
+  padding: 16px 80px
   position: relative
-  width: 100%
-  z-index: 9
+
+  @media screen and (max-width: $break-small)
+    padding: 16px 60px
+
+  .has-announcement-message &
+    display: block
 
 .announcement-message-text
   text-align: center

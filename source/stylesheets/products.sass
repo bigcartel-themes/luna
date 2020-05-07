@@ -95,6 +95,10 @@
   &:hover, &:focus
     color: $links-rollover-color
 
+    &:not(.rollover)
+      .product-list-image
+        opacity: .8
+
   @media screen and (max-width: $break-small)
     +flex-basis(calc(100% / #{"{{ theme.max_products_per_row_mobile }}"}))
     padding: 8px
@@ -235,7 +239,7 @@ _:-ms-fullscreen, :root .product-list-thumb
     width: 20px
 
 .product-list-thumb-price
-  font-size: .75em
+  font-size: 16px
   margin-top: $luna-base * 2
 
 .pagination

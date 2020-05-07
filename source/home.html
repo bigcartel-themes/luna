@@ -61,7 +61,9 @@
                     {% else %}
                       {{ product.default_price | money: theme.money_format }}
                     {% endif %}
-                    {% if product_status != blank %}<span class="product-list-thumb-status">&mdash; {{ product_status }}</span>{% endif %}
+                    {% if product_status != blank %}
+                      <div class="product-list-thumb-status">{{ product_status }}</div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
