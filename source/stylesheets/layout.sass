@@ -57,7 +57,7 @@ body
 .wrapper
   padding: 0 $luna-base * 2
   margin: 0 auto
-  max-width: 1024px
+  max-width: 1100px
   width: 100%
 
 a
@@ -217,7 +217,7 @@ button, a.button
   background: $button-background-color
   color: $button-text-color
   display: block
-  font-size: 14px
+  font-size: 15px
   height: 58px
   letter-spacing: 1px
   line-height: 58px
@@ -231,24 +231,22 @@ button, a.button
     background: none
     color: $primary-text-color
     border: none
-    font-size: 13px
-    padding: 0
+    font-size: 14px
 
-    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-      background: none
+    &:not(:disabled):hover, &:not(:disabled):focus
+      background: none !important
       color: $links-rollover-color
       text-decoration: underline
 
   &:disabled, &.disabled
     cursor: not-allowed
-    opacity: .3
+    opacity: .4
 
   &.no-border
     border: none
 
-  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+  &:not(:disabled):hover, &:not(:disabled):focus
     background: $button-rollover-color
-    opacity: .8
 
 .select
   border: 2px solid $primary-text-color
@@ -420,11 +418,21 @@ input, textarea
     border: 2px solid $primary-text-color
 
 a.back-to-site
+  background: none
+  border-radius: $border-radius
+  border: 2px solid $primary-text-color
+  color: $primary-text-color
   font-size: $luna-font-base-px - 4
   height: auto
   line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
   width: auto
+
+  &:hover, &:focus
+    background: none !important
+    border: 2px solid $links-rollover-color
+    color: $links-rollover-color
+    text-decoration: none
 
 .back-to-site + .badge
   margin-top: $luna-base * 3

@@ -183,13 +183,13 @@ $('.open-search').click(function(e) {
   $(this).hide();
 });
 
-$('.search-input').blur(function(event) {
-  event.preventDefault();
+$('.search-input').blur(function(e) {
+  e.preventDefault();
   $(this).hide();
   $('.open-search').show();
 });
 
-$('.cart-item-remove').click(function(e) {
+$('.remove-item-button').click(function(e) {
   $(this).closest('li').find('input.option-quantity').val(0).closest('form').submit();
   return false;
 });

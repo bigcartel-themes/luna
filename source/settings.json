@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "images": [
     {
       "variable": "header",
@@ -41,7 +41,7 @@
     {
       "variable": "secondary_background_color",
       "label": "Secondary background",
-      "default": "#F2F2F2"
+      "default": "#F3F3F3"
     },
     {
       "variable": "primary_text_color",
@@ -87,11 +87,6 @@
       "variable": "button_rollover_color",
       "label": "Button hover background",
       "default": "#196a9d"
-    },
-    {
-      "variable": "inventory_bar_color",
-      "label": "Inventory Bars",
-      "default": "#999999"
     }
   ],
   "options": [
@@ -168,7 +163,7 @@
         ["On rollover", "rollover"],
         ["Under image", "under_image"]
       ],
-      "default": "under_image",
+      "default": "rollover",
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {

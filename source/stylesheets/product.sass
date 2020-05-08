@@ -7,7 +7,7 @@
   .footer-nav
     border: none
 
-  .related-products-container + footer .footer-nav
+  .related-products-container.under_image + footer .footer-nav
     border-top: 1px solid $border-color
 
 .product-page
@@ -115,9 +115,9 @@
 
   .product-images
     float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}left{% else %}right{% endif %}"}
-    max-width: 65%
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}32px{% endif %}"}
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}32px{% else %}0{% endif %}"}
+    max-width: 63%
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}24px{% endif %}"}
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}24px{% else %}0{% endif %}"}
     position: relative
     width: 100%
 
