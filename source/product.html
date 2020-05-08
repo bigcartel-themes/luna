@@ -24,7 +24,7 @@
     <ul class="slides">
       {% for image in product.images %}
         <li>
-          <img alt="{{ product.name | escape }}" class="lazy product-image" src="{{ image | product_image_url | constrain: 100 }}" data-src="{{ image | product_image_url | constrain: 675 }}" data-srcset="{{ image | product_image_url | constrain: 1350 }} 2x, {{ image | product_image_url | constrain: 675 }} 1x">
+          <img alt="{{ product.name | escape }}" class="lazy product-image" src="{{ image | product_image_url | constrain: 100 }}" data-src="{{ image | product_image_url | constrain: 650 }}" data-srcset="{{ image | product_image_url | constrain: 1300 }} 2x, {{ image | product_image_url | constrain: 650 }} 1x">
         </li>
       {% endfor %}
     </ul>

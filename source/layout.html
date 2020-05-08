@@ -53,13 +53,13 @@
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
           <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}>
-            <a href="/products">Products</a>
-          </li>
-          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
-            <a href="/cart">Cart</a>
+            <a href="/products">{{ pages.products.name }}</a>
           </li>
           <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}>
             <a href="/contact">Contact</a>
+          </li>
+          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
+            <a href="/cart">Cart</a>
           </li>
         </ul>
       </nav>
@@ -124,8 +124,8 @@
                 {% if product.id != category_product.id %}
                   <a class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
                     <div class="product-list-thumb-container">
-                      <figure class="product-list-image-container">
-                        <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ category_product.image | product_image_url | constrain: 50 }}" data-src="{{ category_product.image | product_image_url | constrain: product_image_constrain }}" data-srcset="{{ category_product.image | product_image_url | constrain: product_image_constrain_large }} 2x, {{ category_product.image | product_image_url | constrain: product_image_constrain }} 1x">
+                      <figure class="product-list-image-container" data-image-classes="lazy product-list-image {{ image_class }}" data-small-image-src="{{ category_product.image | product_image_url | constrain: 50 }}" data-normal-image-src="{{ category_product.image | product_image_url | constrain: product_image_constrain }}" data-image-srcset="{{ category_product.image | product_image_url | constrain: product_image_constrain_large }} 2x, {{ category_product.image | product_image_url | constrain: product_image_constrain }} 1x">
+                        <div class="image-wrapper"></div>
                       </figure>
                     </div>
                     <div class="product-list-thumb-info">

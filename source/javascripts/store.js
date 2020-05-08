@@ -152,18 +152,24 @@ $(document).ready(function() {
       var randomIndex = getRandomIndex(elements);
       $('.similar-product-list').append($('.all-similar-products').children().eq(randomIndex));
       elements.splice(randomIndex, 1);
-      $('.similar-product-list .similar-product-list-image').each(function() {
-        $(this).attr("src",$(this).data("src"));
-      })
     }
+    $('.similar-product-list .product-list-image-container').each(function() {
+      image_classes = $(this).data("image-classes");
+      image_src = $(this).data("small-image-src");
+      image_data_src = $(this).data("normal-image-src");
+      image_data_srcset = $(this).data("image-srcset");
+      img = $('<img />').attr('alt','').attr('class',image_classes).attr('src',image_src).attr('data-src',image_data_src).attr('data-srcset',image_data_srcset);
+      $(this).find('.image-wrapper').html(img)
+    })
     $('.all-similar-products').remove();
+    window.document.dispatchEvent(new Event("DOMContentLoaded", {}));
   }
 });
-
 
 $('.home-slideshow').flexslider({
   animation: "slide"
 });
+
 $('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
 var width = $(window).width();
 
