@@ -357,17 +357,17 @@ button, a.button
         padding: 0
         width: 100%
 
-        a
+        li
           border-bottom: 1px solid $border-color
+
+        a
           font-family: $secondary-font
-          font-size: $luna-font-base-px - 1
           padding: $luna-base * 2 0
           text-align: center
           text-transform: uppercase
 
     a
       display: block
-      font-size: $luna-font-base-px - 1
       padding: $luna-base $luna-base * 2
       text-decoration: none
 
@@ -386,12 +386,48 @@ button, a.button
     fill: $links-rollover-color
 
 .search-input
-  background: none
-  border: 1px solid #e5e5e5 !important
-  display: none
-  font-size: 13px
-  position: relative
-  top: -3px
+  border: 1px solid transparent !important
+  cursor: pointer
+  padding: 6px 16px
+  width: 160px
+
+  &::-webkit-input-placeholder
+    color: $primary-text-color
+
+  &::-moz-placeholder
+    color: $primary-text-color
+
+  &:-ms-input-placeholder
+    color: $primary-text-color
+
+  &:-moz-placeholder
+    color: $primary-text-color
+
+  @media screen and (max-width: $break-small)
+    display: block
+    margin: $luna-base auto
+    text-align: center
+    text-transform: uppercase
+    width: 250px
+
+  &:hover
+    border: 1px solid $border-color !important
+
+  &:focus
+    border: 1px solid $links-rollover-color !important
+
+    &::-webkit-input-placeholder
+      color: red
+
+    &::-moz-placeholder
+      color: red
+
+    &:-ms-input-placeholder
+      color: red
+
+    &:-moz-placeholder
+      color: red
+
 
 .errors
   border-radius: $border-radius
@@ -492,8 +528,8 @@ a.back-to-site
   svg
     display: block
     fill: $primary-text-color
-    height: 13px
-    width: 13px
+    height: 16px
+    width: 16px
 
 .centered-message
   color: $secondary-text-color

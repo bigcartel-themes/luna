@@ -185,14 +185,10 @@ if ($('.product-images-slideshow').length && width <= 768 && !inPreview) {
 
 $('.open-search').click(function(e) {
   e.preventDefault();
-  $('.search-input').show().focus();
   $(this).hide();
-});
+  $('.search-form').addClass('visible');
+  $('.search-input').focus();
 
-$('.search-input').blur(function(e) {
-  e.preventDefault();
-  $(this).hide();
-  $('.open-search').show();
 });
 
 $('.remove-item-button').click(function(e) {

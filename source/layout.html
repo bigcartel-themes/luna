@@ -21,9 +21,7 @@
       <aside role="complementary" aria-label="Announcement message" class="announcement-message">
         <div class="wrapper announcement-message-text">{{ theme.announcement_message_text }}</div>
         <button aria-label="Close announcement" class="announcement-message-close" title="Close announcement message">
-          <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.5 1.45l-8 8.1m0-8.1l8 8.1" stroke="#666" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"/>
-          </svg>
+          <svg aria-hidden="true" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"/></svg>
         </button>
       </aside>
     {% endif %}
@@ -189,10 +187,9 @@
             <li><a href="/cart">Cart</a></li>
             {% if theme.show_search %}
               <li>
-                <a role="button" class="open-search" href="#" title="Open search">Search</a>
                 <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
                   <input type="hidden" name="utf8" value='✓'>
-                  <input class="search-input" name="search" placeholder="Search..." type="text" autocomplete="off" />
+                  <input class="search-input" name="search" placeholder="Search" type="text" autocomplete="off" />
                 </form>
               </li>
             {% endif %}

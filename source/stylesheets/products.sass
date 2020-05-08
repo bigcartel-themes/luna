@@ -10,10 +10,10 @@
   border-top: 1px solid $border-color
   font-size: $luna-font-base-px
   margin-bottom: $luna-base * 5
-  padding: $luna-base * 2
+  padding: $luna-base * 3 $luna-base * 2
 
   @media screen and (max-width: $break-small)
-    padding: $luna-base
+    padding: $luna-base * 2 0
 
   .nav-title
     font-size: $luna-font-base-px + 2
@@ -21,10 +21,7 @@
     margin-bottom: $luna-base
 
   nav
-    +flexbox
-    +align-items(center)
-    +justify-content(center)
-    +flex-direction(column)
+    text-align: center
 
   ul
     +flexbox
@@ -36,15 +33,12 @@
     margin: 0 auto
     padding: 0
 
-    @media screen and (max-width: $break-medium)
-      +flex-wrap(wrap)
-
     li
-      padding: 3px 0
+      margin: 4px 2px
 
       a
-        display: inline
-        padding: 6px 8px
+        display: inline-block
+        padding: 4px
         white-space: nowrap
 
         &:hover
@@ -56,6 +50,7 @@
       &:not(:last-child):after
         content: "/"
         padding: 0 2px
+        opacity: .5
 
 .products-nav + .products-nav
   margin-top: $luna-base * 2.5
@@ -276,7 +271,8 @@ _:-ms-fullscreen, :root .product-list-thumb
     margin-top: $luna-base * 3
 
   a, span
-    padding: 8px
+    padding: 8px 10px
+    margin: 2px 4px
 
     &:not(.disabled):hover, &:not(.disabled):focus
       color: $links-rollover-color
