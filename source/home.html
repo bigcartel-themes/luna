@@ -45,31 +45,33 @@
                 image-square
               {% endif %}
             {% endcapture %}
-            <a class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
-              <div class="product-list-thumb-container">
-                <figure class="product-list-image-container">
-                  <div class="image-wrapper">
-                    <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: 50 }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain }} 1x">
-                  </div>
-                </figure>
-              </div>
-              <div class="product-list-thumb-info">
-                <div class="product-list-item-background"></div>
-                <div class="product-list-thumb-info-headers">
-                  <div class="product-list-thumb-name">{{ product.name }}</div>
-                  <div class="product-list-thumb-price">
-                    {% if product.variable_pricing %}
-                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                    {% else %}
-                      {{ product.default_price | money: theme.money_format }}
-                    {% endif %}
-                    {% if product_status != blank %}
-                      <div class="product-list-thumb-status">{{ product_status }}</div>
-                    {% endif %}
+            <div class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}">
+              <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+                <div class="product-list-thumb-container">
+                  <figure class="product-list-image-container">
+                    <div class="image-wrapper">
+                      <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: 50 }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain }} 1x">
+                    </div>
+                  </figure>
+                </div>
+                <div class="product-list-thumb-info">
+                  <div class="product-list-item-background"></div>
+                  <div class="product-list-thumb-info-headers">
+                    <div class="product-list-thumb-name">{{ product.name }}</div>
+                    <div class="product-list-thumb-price">
+                      {% if product.variable_pricing %}
+                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                      {% else %}
+                        {{ product.default_price | money: theme.money_format }}
+                      {% endif %}
+                      {% if product_status != blank %}
+                        <div class="product-list-thumb-status">{{ product_status }}</div>
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
           {% endfor %}
         </div>
       </div>

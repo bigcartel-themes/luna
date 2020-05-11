@@ -61,12 +61,17 @@
   +justify-content(flex-start)
   margin: 8px -8px
 
+.product-list-link
+  text-decoration: none
+
+  &:hover, &:focus
+    text-decoration: none
+
 .product-list-thumb
   border-radius: $border-radius
   color: $primary-text-color
   display: block
   font-size: 0
-  letter-spacing: 2px
   padding: $luna-base
   padding-bottom: $luna-base * 2
   position: relative
@@ -74,19 +79,23 @@
   text-transform: uppercase
   vertical-align: middle
   width: calc(100% / #{"{{ theme.max_products_per_row }}"})
+  word-break: break-word
 
   &:hover, &:focus
     text-decoration: none
 
     &:not(.rollover)
       .product-list-image
-        opacity: .8
+        opacity: .9
 
       .product-list-thumb-name:after
         background-color: $links-rollover-color
 
       .product-list-thumb-status
         color: $links-rollover-color
+
+  @media screen and (max-width: $break-medium)
+    width: calc(100% / 3)
 
   @media screen and (max-width: $break-small)
     padding: $luna-base
@@ -102,7 +111,7 @@
         +justify-content(center)
         +flex-direction(column)
         +transition(opacity .2s linear)
-        color: #FFFFFF
+        color: $button-text-color
         opacity: 0
         padding: $luna-base *2
         position: absolute
@@ -117,10 +126,10 @@
         top: 5%
 
       .product-list-thumb-status
-        color: #FFFFFF
+        color: $button-text-color
 
       .product-list-thumb-name:after
-        background-color: #FFFFFF
+        background-color: $button-text-color
 
       &:hover, &:focus
         .product-list-item-background
@@ -152,6 +161,7 @@ _:-ms-fullscreen, :root .product-list-thumb
     padding-bottom: 0
 
 .product-list-image
+  +transition(opacity .1s linear)
   border-radius: $border-radius
   display: block
   overflow: hidden
@@ -164,11 +174,13 @@ _:-ms-fullscreen, :root .product-list-thumb
 
   .crop-to-square &
     height: 100% !important
+    left: 0
     object-fit: cover
     position: absolute
     width: 100%
 
   .fit-to-square &
+    left: 0
     will-change: transform
     cursor: pointer
     position: absolute
@@ -226,6 +238,7 @@ _:-ms-fullscreen, :root .product-list-thumb
   width: 100%
 
 .product-list-thumb-name
+  letter-spacing: 2px
   overflow-wrap: break-word
   position: relative
 
@@ -241,22 +254,15 @@ _:-ms-fullscreen, :root .product-list-thumb
 
 .product-list-thumb-price
   font-family: $secondary-font
-  font-size: 18px
+  font-size: 16px
   margin-top: $luna-base * 2
-
-  @media screen and (max-width: $break-small)
-    font-size: 16px
 
 .product-list-thumb-status
   color: $secondary-text-color
   font-family: $secondary-font
-  font-size: 18px
+  font-size: 16px
   font-style: italic
-  letter-spacing: normal
   text-transform: none
-
-  @media screen and (max-width: $break-small)
-    font-size: 16px
 
 .pagination
   +flexbox
