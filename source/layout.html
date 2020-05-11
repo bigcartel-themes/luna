@@ -107,6 +107,8 @@
             {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
             {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
           {% endif %}
+          {% assign thumb_constrain_width = 30 %}
+          {% assign thumb_constrain_height = 30 %}
           {% for category in product.categories %}
             {% capture product_divs %}
               {% for category_product in category.products %}
@@ -125,12 +127,14 @@
                     {% if theme.grid_image_style == 'crop-to-square' %}
                       {% assign product_image_constrain_height = '' %}
                       {% assign product_image_constrain_height_large = '' %}
+                      {% assign thumb_constrain_height = '' %}
                     {% endif %}
                   {% elsif category_product.image.height < category_product.image.width %}
                     image-wide
                     {% if theme.grid_image_style == 'crop-to-square' %}
                       {% assign product_image_constrain_width = '' %}
                       {% assign product_image_constrain_width_large = '' %}
+                      {% assign thumb_constrain_width = '' %}
                     {% endif %}
                   {% else %}
                     image-square
@@ -140,7 +144,7 @@
                   <div class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}">
                     <a class="product-list-link" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
                       <div class="product-list-thumb-container">
-                        <figure class="product-list-image-container" data-image-classes="lazy product-list-image {{ image_class }}" data-small-image-src="{{ category_product.image | product_image_url | constrain: 50, 50 }}" data-normal-image-src="{{ category_product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-image-srcset="{{ category_product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ category_product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
+                        <figure class="product-list-image-container" data-image-classes="lazy product-list-image {{ image_class }}" data-small-image-src="{{ category_product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-normal-image-src="{{ category_product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-image-srcset="{{ category_product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ category_product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
                           <div class="image-wrapper"></div>
                         </figure>
                       </div>

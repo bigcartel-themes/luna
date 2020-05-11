@@ -19,7 +19,8 @@
   {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
   {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
 {% endif %}
-
+{% assign thumb_constrain_width = 30 %}
+{% assign thumb_constrain_height = 30 %}
 {% if categories.active != blank or artists.active != blank %}
   <div class="artist-category-nav artist-category-nav-header">
     <nav aria-label="Category navigation" class="category-nav products-nav">
@@ -64,12 +65,14 @@
               {% if theme.grid_image_style == 'crop-to-square' %}
                 {% assign product_image_constrain_height = '' %}
                 {% assign product_image_constrain_height_large = '' %}
+                {% assign thumb_constrain_height = '' %}
               {% endif %}
             {% elsif product.image.height < product.image.width %}
               image-wide
               {% if theme.grid_image_style == 'crop-to-square' %}
                 {% assign product_image_constrain_width = '' %}
                 {% assign product_image_constrain_width_large = '' %}
+                {% assign thumb_constrain_width = '' %}
               {% endif %}
             {% else %}
               image-square
@@ -80,7 +83,7 @@
               <div class="product-list-thumb-container">
                 <figure class="product-list-image-container">
                   <div class="image-wrapper">
-                    <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: 50, 50 }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
+                    <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
                   </div>
                 </figure>
               </div>
