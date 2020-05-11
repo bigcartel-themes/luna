@@ -183,24 +183,6 @@ if ($('.product-images-slideshow').length && width <= 768 && !inPreview) {
   });
 }
 
-$('.open-search').click(function(e) {
-  e.preventDefault();
-  $(this).hide();
-  $('.search-form').addClass('visible');
-  $('.search-input').focus();
-
-});
-
-$('.remove-item-button').click(function(e) {
-  $(this).closest('li').find('input.option-quantity').val(0).closest('form').submit();
-  return false;
-});
-
-$('.option-quantity').on('change',function(){
-  $(this).closest('form').submit();
-  return false;
-});
-
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
