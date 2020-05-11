@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.3.6",
+  "version": "2.4.0",
   "images": [
     {
       "variable": "header",
@@ -29,7 +29,7 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Varela Round"
+      "default": "Montserrat"
     }
   ],
   "colors": [
@@ -51,17 +51,17 @@
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
-      "default": "#666666"
+      "default": "#555555"
     },
     {
       "variable": "link_rollover_color",
       "label": "Link hover",
-      "default": "#196a9d"
+      "default": "#255B8A"
     },
     {
       "variable": "header_text_color",
       "label": "Header text",
-      "default": "#222222"
+      "default": "#111111"
     },
     {
       "variable": "products_background_color",
@@ -86,7 +86,7 @@
     {
       "variable": "button_rollover_color",
       "label": "Button hover background",
-      "default": "#196a9d"
+      "default": "#255B8A"
     }
   ],
   "options": [
@@ -152,7 +152,7 @@
         ["Fit to square", "fit-to-square"],
         ["Crop to square", "crop-to-square"]
       ],
-      "default": "fit-to-square",
+      "default": "crop-to-square",
       "description": "Sets the display of images in the product grid"
     },
     {
@@ -163,7 +163,7 @@
         ["On rollover", "rollover"],
         ["Under image", "under_image"]
       ],
-      "default": "rollover",
+      "default": "under_image",
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {
@@ -199,14 +199,14 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Displays a search field in the footer"
     },
     {
       "variable": "show_inventory_bars",
       "label": "Show inventory bars",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Shows a product's inventory amounts (when using inventory tracking)",
       "requires": "inventory"
     },
