@@ -1,4 +1,4 @@
-<h1 class="page-title has-dash">{{ page.name }}</h1>
+<h1 class="page-title">{{ page.name }}</h1>
 <div class="cart-container{% if cart.item_count == 0 %} empty-cart{% endif %}">
   <div class="empty-cart-message">
     <p class="empty-cart-message centered-message">
@@ -8,6 +8,7 @@
   {% if cart.items != blank %}
     <div class="cart-holder">
       <form method="post" action="/cart" id="cart-form" class="cart-form">
+        <input type="hidden" name="cart_submit" value="true">
         <ul class="cart-items">
           {% for item in cart.items %}
             <li class="cart-item" data-item-id="{{ item.id }}">
