@@ -1,11 +1,9 @@
 @import 'variables'
 
 #cart_page
-  header
-    background-color: $secondary-background-color
+
 
   .main
-    background-color: $primary-background-color
     padding-left: 0
     padding-right: 0
 
@@ -19,12 +17,18 @@
       margin-left: 20px
       margin-right: 20px
 
+.empty-cart-message
+  display: none
+
+  .empty-cart &
+    display: block
+
 .cart-form
   +flexbox
   +flex-direction(row)
   +align-items(flex-start)
 
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: 920px)
     +flex-direction(column)
 
 .cart-items
@@ -35,141 +39,187 @@
   padding: 0
   width: 100%
 
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: 920px)
     max-width: 100%
 
 .cart-item
   +flexbox
   +align-items(center)
   border-bottom: 1px solid $border-color
-  font-size: 15px
-  padding: $luna-base * 4 $luna-base * 2
+  padding: $luna-base * 3 0
 
   @media screen and (max-width: $break-small)
-    padding: $luna-base * 2 20px
+    +flex-wrap(wrap)
+    +align-items(flex-start)
+    padding: $luna-base * 2 0
+
+.cart-item-image
+  +flex-shrink(0)
+  border-radius: $border-radius
+  display: block
+  height: 90px
+  margin-right: $luna-base * 2
+  width: 90px
+
+  @media screen and (max-width: $break-small)
+    height: 60px
+    margin-right: $luna-base
+    width: 60px
+
+  img
+    border-radius: $border-radius
+    display: block
+    object-fit: cover
+    height: 100%
+    width: 100%
+
+.cart-item-details
+  line-height: 1.25em
+  padding-right: $luna-base * 3
+  width: 55%
+
+  @media screen and (max-width: $break-small)
+    +flex(1)
+    +flex-basis(30%)
+    padding-right: $luna-base * 2
+
+.cart-item-details-name
+  font-size: 18px
+
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+
+.cart-item-details-option
+  font-family: $secondary-font
+  font-size: 15px
+  margin-top: $luna-base / 2.5
+
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+
+
+.cart-item-quantity-price
+  +flexbox
+  +align-items(center)
+  +justify-content(flex-end)
+  width: 45%
+
+  @media screen and (max-width: $break-small)
+    +flex(1)
+    +flex-direction(column)
+    +align-items(flex-end)
+    width: 45%
+
+.cart-item-details-price
+  margin-right: $luna-base * 3
+  padding-left: $luna-base * 2
+
+  @media screen and (max-width: $break-small)
+    margin-right: 0
+    margin-top: $luna-base * 2
+
+.cart-item-quantity-holder
+  margin-right: auto
+
+  @media screen and (max-width: $break-small)
+    margin-right: 0
+
+  input
+    padding: 10px
+    text-align: center
+    width: 64px
+
+    &:hover, &:focus
+      border-color: $links-rollover-color
 
 button.cart-item-remove
-  +all-transitions
   +flexbox
   +align-items(center)
   +justify-content(center)
+  +flex-shrink(0)
+  background: none
   border: 2px solid $secondary-text-color
   border-radius: 50%
-  padding: $luna-base
-  cursor: pointer
-  background-color: transparent
-  transition: 0.2s linear
-  height: inherit
-  width: inherit
+  height: 32px
+  padding: 0
+  width: 32px
 
-  &:hover, &:active, &:focus
-    background-color: transparent
-    border: 2px solid $primary-text-color
+  @media screen and (max-width: $break-small)
+    display: none
 
-  .cart-remove-icon
-    +all-transitions
+  &:hover, &:focus
+    background: none
+    border: 2px solid $links-rollover-color
+
+    .cart-item-remove-icon
+      fill: $links-rollover-color
+
+  .cart-item-remove-icon
     display: block
     fill: $secondary-text-color
-
-    .cart-remove-icon
-      fill: $primary-text-color
-
-
-.cart-item-details-option
-  color: $secondary-text-color
-  font-family: $secondary-font
-  font-style: italic
-  margin-top: 10px
-
-.cart-item-image
-  display: block
-  height: 90px
-  margin-right: 20px
-  max-width: 90px
-  width: 100%
-
-  img
-    object-fit: cover
-    height: inherit
-    width: 100%
-
-  @media screen and (max-width: $break-small)
-    height: $luna-base * 8
-    margin-right: $luna-base * 2
-    max-width: $luna-base * 8
-
-.cart-item-details
-  max-width: 300px
-  width: 100%
-
-  @media screen and (max-width: $break-small)
-    max-width: none
-    width: auto
-
-.cart-item-details-price
-  font-size: 14px
-  margin-top: $luna-base
-
-.cart-item-quantity-holder
-  margin-left: auto
-  padding: 0 $luna-base * 4
-  width: 116px
-
-  input
-    box-shadow: none
-    text-align: center
-    width: 48px
+    height: 12px
+    width: 12px
 
 .cart-footer
-  background-color: $secondary-background-color
+  border: 1px solid $border-color
   font-size: $luna-font-base-px
   margin-left: auto
   max-width: 30%
-  padding: $luna-base * 2
-  padding-bottom: 0
+  padding: $luna-base * 3 $luna-base * 2 $luna-base
   width: 100%
 
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: 920px)
+    border: none
     max-width: 100%
+    padding: 0
 
 .cart-subtotal
   +flexbox
-  font-family: $secondary-font
-  line-height: 20px
-  padding: $luna-base 0
+  font-size: 20px
+  margin-bottom: $luna-base * 2
+  padding: 0
 
-  &.cart-total
-    margin-top: $luna-base * 2
-
-    .cart-subtotal-amount
-      font-size: 20px
-
-  &:first-child
-    border-bottom: 1px solid $border-color
+  @media screen and (max-width: 920px)
+    margin: $luna-base * 3 0
 
 .cart-subtotal-amount
-  font-family: $primary-font
   margin-left: auto
+
+.cart-footer-buttons
+  +flexbox
+  +flex-direction(column)
+  padding-bottom: $luna-base
 
 .checkout-btn
   display: block
   font-size: $luna-font-base-px
-  margin: $luna-base * 3 auto 0
+  margin: 0 auto $luna-base
+  max-width: 100%
 
-  @media screen and (max-width: $break-small)
-    max-width: 100%
-
-a.continue-shopping
-  +all-transitions
+a.button.continue-shopping
   background-color: transparent
   border-color: transparent
   color: $primary-text-color
   display: block
-  font-size: $luna-font-base-px
-  margin: 0
-  padding: 0
+  font-size: $luna-font-base-px - 1
+  line-height: normal
+  height: auto
+  margin: 0 auto
+  padding: $luna-base
 
-  &:active, &:focus, &:hover
-    background-color: transparent !important
-    border-color: transparent !important
-    color: $primary-text-color
+  @media screen and (max-width: 920px)
+    margin-top: 8px
+
+button.cart-item-remove-text
+  color: $links-rollover-color
+  display: none
+  height: auto
+  line-height: normal
+  margin: 0
+  margin-top: 6px
+  padding: 0
+  text-decoration: underline
+  width: auto
+
+  @media screen and (max-width: $break-small)
+    display: inline-block

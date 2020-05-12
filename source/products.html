@@ -1,54 +1,112 @@
-<div class="artist-category-nav artist-category-nav-header">
-  <nav role="navigation" aria-label="Category sub-nav" class="category-nav">
-    <div class="nav-title">Products</div>
-    <ul>
-      <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
-      {% for category in categories.active %}
-      <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>
-  {% if artists.active != blank %}
-  <nav class="artist-nav">
-    <div class="nav-title">Artists</div>
-    <ul>
-      {% for artist in artists.active %}
-      <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-      {% endfor %}
-    </ul>
-  </nav>
-  {% endif %}
-</div>
-<h1 class="visually-hidden">{{ page.name }}</h1>
+{% if theme.max_products_per_row == 4 %}
+  {% assign product_image_constrain_width = 255 %}
+  {% assign product_image_constrain_height = 255 %}
+  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+{% elsif theme.max_products_per_row == 3 %}
+  {% assign product_image_constrain_width = 346 %}
+  {% assign product_image_constrain_height = 346 %}
+  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+{% elsif theme.max_products_per_row == 2 %}
+  {% assign product_image_constrain_width = 526 %}
+  {% assign product_image_constrain_height = 526 %}
+  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+{% elsif theme.max_products_per_row == 1 %}
+  {% assign product_image_constrain_width = 1068 %}
+  {% assign product_image_constrain_height = 1068 %}
+  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+{% endif %}
+{% assign thumb_constrain_width = 30 %}
+{% assign thumb_constrain_height = 30 %}
+{% if categories.active != blank or artists.active != blank %}
+  <div class="artist-category-nav artist-category-nav-header">
+    <nav aria-label="Category navigation" class="category-nav products-nav">
+      <div class="nav-title">Products</div>
+      <ul>
+        <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+        {% for category in categories.active %}
+          <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% if artists.active != blank %}
+    <nav class="products-nav artist-nav" aria-label="Artist navigation">
+      <div class="nav-title">Artists</div>
+      <ul>
+        {% for artist in artists.active %}
+          <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </div>
+{% endif %}
+<h1 class="page-title visually-hidden">{{ page.name }}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
-    <div class="product-list">
-      {% for product in products %}
-        {% assign product_status = '' %}
-        {% case product.status %}
-        	{% when 'active' %}
-        		{% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
-        	{% when 'sold-out' %}
-        		{% assign product_status = 'Sold out' %}
-        	{% when 'coming-soon' %}
-        		{% assign product_status = 'Coming soon' %}
-        {% endcase %}
-        <a class="product-list-item {{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
-          <div class="product-list-item-container">
-            <figure class="product-list-image-container">
-              <img alt="" class="fade-in product-list-image {% if product.image.height > product.image.width %}image-tall{% elsif product.image.height < product.image.width %}image-wide{% else %}image-square{% endif %}" src="{{ product.image | product_image_url | constrain: 1000, 1000 }}">
-            </figure>
+    <div class="product-list-container">
+      <div class="product-list">
+        {% for product in products %}
+          {% assign product_status = '' %}
+          {% case product.status %}
+            {% when 'active' %}
+              {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+            {% when 'sold-out' %}
+              {% assign product_status = 'Sold out' %}
+            {% when 'coming-soon' %}
+              {% assign product_status = 'Coming soon' %}
+          {% endcase %}
+          {% capture image_class %}
+            {% if product.image.height > product.image.width %}
+              image-tall
+              {% if theme.grid_image_style == 'crop-to-square' %}
+                {% assign product_image_constrain_height = '' %}
+                {% assign product_image_constrain_height_large = '' %}
+                {% assign thumb_constrain_height = '' %}
+              {% endif %}
+            {% elsif product.image.height < product.image.width %}
+              image-wide
+              {% if theme.grid_image_style == 'crop-to-square' %}
+                {% assign product_image_constrain_width = '' %}
+                {% assign product_image_constrain_width_large = '' %}
+                {% assign thumb_constrain_width = '' %}
+              {% endif %}
+            {% else %}
+              image-square
+            {% endif %}
+          {% endcapture %}
+          <div class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}">
+            <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <div class="product-list-thumb-container">
+                <figure class="product-list-image-container">
+                  <div class="image-wrapper">
+                    <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
+                  </div>
+                </figure>
+              </div>
+              <div class="product-list-thumb-info">
+                <div class="product-list-item-background"></div>
+                <div class="product-list-thumb-info-headers">
+                  <div class="product-list-thumb-name">{{ product.name }}</div>
+                  <div class="product-list-thumb-price">
+                    {% if product.variable_pricing %}
+                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                    {% else %}
+                      {{ product.default_price | money: theme.money_format }}
+                    {% endif %}
+                    {% if product_status != blank %}
+                      <div class="product-list-thumb-status">{{ product_status }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
-          <div class="product-list-item-info">
-            <div class="product-list-item-background"></div>
-            <div class="product-list-item-info-headers">
-              {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
-              <div class="product-list-item-name">{{ product.name }}</div>
-              <div class="product-list-item-price">{{ product.default_price | money: theme.money_format }}</div>
-            </div>
-          </div>
-        </a>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
     {% if paginate.pages > 1 %}
       <nav role="navigation" aria-label="Pagination">

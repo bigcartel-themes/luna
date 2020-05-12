@@ -9,33 +9,20 @@
   border-bottom: 1px solid $border-color
   border-top: 1px solid $border-color
   font-size: $luna-font-base-px
-  line-height: $luna-font-base-px + 2
-  margin-bottom: $luna-base * 8
-  padding: $luna-base * 2 $luna-base / 2
+  margin-bottom: $luna-base * 5
+  padding: $luna-base * 3 $luna-base * 2
 
-  &.artist-category-nav-footer
-    margin-bottom: 0
-    margin-top: $luna-base * 5
-
-    @media screen and (max-width: $break-medium)
-      margin-top: $luna-base * 3
+  @media screen and (max-width: $break-small)
+    padding: $luna-base * 2 0
 
   .nav-title
     font-size: $luna-font-base-px + 2
-    margin: 0 $luna-base $luna-base 0
-    margin-right: $luna-base
-    padding: 3px
+    font-weight: bold
+    margin-bottom: $luna-base
 
   nav
-    +flexbox
-    +align-items(center)
-    +justify-content(center)
-    +flex-direction(column)
-    padding: $luna-base * 2 $luna-base / 2
-
-    &:not(:last-child)
-      @media screen and (max-width: $break-small)
-        margin-bottom: 0
+    text-align: center
+    max-width: 100%
 
   ul
     +flexbox
@@ -44,19 +31,15 @@
     +flex-wrap(wrap)
     font-family: $secondary-font
     list-style: none
-    margin: 6px auto 3px
+    margin: 0 auto
     padding: 0
 
-    @media screen and (max-width: $break-medium)
-      +flex-wrap(wrap)
-
     li
-      padding: 3px 0
+      margin: 4px 2px
 
       a
-        +all-transitions
-        display: inline
-        padding: 6px 8px
+        display: inline-block
+        padding: 4px
         white-space: nowrap
 
         &:hover
@@ -68,145 +51,199 @@
       &:not(:last-child):after
         content: "/"
         padding: 0 2px
+        opacity: .5
+
+.products-nav + .products-nav
+  margin-top: $luna-base * 2.5
 
 .product-list
   +flexbox
   +flex-wrap(wrap)
   +justify-content(flex-start)
-  font-size: 20px
-  margin: 0 -10px
+  margin: 8px -8px
+
+.product-list-link
+  text-decoration: none
+
+  &:hover, &:focus
+    text-decoration: none
+
+.product-list-thumb
+  border-radius: $border-radius
+  color: $primary-text-color
+  display: block
+  font-size: 0
+  padding: $luna-base
+  padding-bottom: $luna-base * 2
+  position: relative
+  text-decoration: none
+  text-transform: uppercase
+  vertical-align: middle
+  width: calc(100% / #{"{{ theme.max_products_per_row }}"})
+  word-break: break-word
+
+  &:hover, &:focus
+    text-decoration: none
+
+    &:not(.rollover)
+      .product-list-image
+        opacity: .9
+
+      .product-list-thumb-name:after
+        background-color: $links-rollover-color
+
+      .product-list-thumb-status
+        color: $links-rollover-color
+
+  @media screen and (max-width: $break-medium)
+    width: calc(100% / 3)
 
   @media screen and (max-width: $break-small)
-    width: auto
+    padding: $luna-base
+    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
-@media screen and (max-width: 1280px)
-  #home .product-list
-    padding: 0 20px
-
-.product-list-item
-  display: inline-block
-  font-size: 0
-  padding-bottom: 40px
-  position: relative
-  vertical-align: middle
-  text-align: center
-  width: #{"{% if theme.max_products_per_row == 4 %} 25% {% elsif theme.max_products_per_row == 3 %} 33.33% {% elsif theme.max_products_per_row == 2 %} 50% {% else %} 100% {% endif %}"}
-
-  @media only screen and (min-width: 768px) and (hover: hover), (-moz-touch-enabled: 0)
+  @media (hover: hover), (-moz-touch-enabled: 0)
     &.rollover
-      margin-bottom: 0px
-      padding-bottom: 0
+      padding-bottom: $luna-base
 
-      .product-list-item-background
-        background-color: $products-background-color
-        border-radius: $border-radius
-        height: 100%
-        left: 0
-        opacity: .6
-        position: absolute
-        top: 0
-        width: 100%
-
-      @media screen and (max-width: $break-small)
-        margin-bottom: 20px
-        padding-bottom: 0
-
-      .product-list-item-info
-        +all-transitions
+      .product-list-thumb-info
         +flexbox
         +align-items(center)
-        +flex-direction(column)
         +justify-content(center)
-        border-radius: $border-radius
-        position: absolute
-        left: 10px
-        top: 10px
-        width: calc(100% - 20px)
-        height: calc(100% - 20px)
+        +flex-direction(column)
+        +transition(opacity .2s linear)
+        color: $button-text-color
         opacity: 0
+        padding: $luna-base *2
+        position: absolute
+        top: $luna-base
+        left: $luna-base
+        width: calc(100% - (#{$luna-base} * 2))
+        height: calc(100% - (#{$luna-base} * 2))
 
-        .product-list-item-name:after
-          background-color: $primary-background-color
+      .product-list-thumb-info-headers
+        +transition(top .2s linear)
+        position: relative
+        top: 5%
 
-        *
-          color: $primary-background-color
+      .product-list-thumb-status
+        color: $button-text-color
 
-        .product-list-item-info-headers
-          top: 5%
+      .product-list-thumb-name:after
+        background-color: $button-text-color
 
-      &:hover .product-list-item-info, &:focus .product-list-item-info
-        opacity: 1
+      &:hover, &:focus
+        .product-list-item-background
+          opacity: .6
 
-        .product-list-item-info-headers
-          top: 0%
+        .product-list-thumb-info
+          opacity: 1
 
-  @media screen and (max-width: $break-small)
-    padding: 0 10px 50px 10px
-    width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
+        .product-list-thumb-info-headers
+          top: 0
 
-.product-list-item-container
-  cursor: default
-  display: inline-block
-  padding-bottom: 100%
+_:-ms-fullscreen, :root .product-list-thumb
+  +flex-basis(auto)
+
+.product-list-thumb-container
   position: relative
   width: 100%
 
 .product-list-image-container
+  border-radius: $border-radius
   font-size: 0
+  margin: 0
+  overflow: hidden
+  padding-bottom: 100%
+  position: relative
   width: 100%
 
+  .default &
+    padding-bottom: 0
+
 .product-list-image
-  +transition(all 0.2s cubic-bezier(0.5, 0, 0, 1.25))
-  +transform(translate3d(-50%,-50%,0))
+  +transition(opacity .1s linear)
   border-radius: $border-radius
-  cursor: pointer
-  left: 50%
+  display: block
+  overflow: hidden
+
+  &.lazy
+    filter: blur(5px)
+
+  .default &
+    width: 100%
+
+  .crop-to-square &
+    height: 100% !important
+    left: 0
+    object-fit: cover
+    position: absolute
+    top: 0
+    width: 100%
+
+  .fit-to-square &
+    left: 0
+    will-change: transform
+    cursor: pointer
+    position: absolute
+    max-width: 100%
+    height: 100%
+    top: 0
+    width: 100%
+
+    &.image-tall
+      height: 100%
+      width: auto
+
+    &.image-wide
+      height: auto
+      width: 100%
+
+    &.image-square
+      height: 100%
+      width: 100%
+
+  &:last-child
+    opacity: 0
+    visibility: hidden
+
+  &:only-child
+    opacity: 1
+    visibility: visible
+
+.image-wrapper
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  height: 100%
   position: absolute
-  top: 50%
-  max-width: 100%
+  width: 100%
 
-  &.image-tall
-    height: calc(100% - 20px)
-    width: auto
+.product-list-thumb-info
+  font-size: 20px
+  line-height: 1.25em
+  padding: $luna-base * 2 $luna-base
+  position: relative
+  text-align: center
 
-    @media screen and (max-width: $break-small)
-      height: calc(100% - 10px)
-
-  &.image-wide
-    height: auto
-    width: calc(100% - 20px)
-
-    @media screen and (max-width: $break-small)
-      width: calc(100% - 10px)
-
-  &.image-square
-    height: calc(100% - 20px)
-    width: calc(100% - 20px)
-
-    @media screen and (max-width: $break-small)
-      height: calc(100% - 10px)
-      width: calc(100% - 10px)
-
-.product-list-item-info
   @media screen and (max-width: $break-small)
-    margin-top: $luna-base
+    font-size: 18px
+    padding: $luna-base
 
-.product-list-item-info-headers
-  +all-transitions
-  +transition(all .3s ease-out)
-  padding-top: $luna-base
-  position: relative
-  z-index: 1
+.product-list-item-background
+  background-color: $products-background-color
+  border-radius: $border-radius
+  height: 100%
+  left: 0
+  opacity: 0
+  position: absolute
+  top: 0
+  width: 100%
 
-.product-list-item-name
-  font-size: $luna-font-base-px + 6
-  letter-spacing: 3px
-  line-height: 30px
-  margin-bottom: 20px
-  padding: 0 20px
-  position: relative
-  text-transform: uppercase
+.product-list-thumb-name
+  letter-spacing: 2px
   overflow-wrap: break-word
+  position: relative
 
   &:after
     bottom: -$luna-base
@@ -216,47 +253,38 @@
     left: 50%
     position: absolute
     transform: translateX(-50%)
-    width: $luna-base * 3
+    width: 20px
 
-  @media screen and (max-width: $break-small)
-    font-size: 16px
-    line-height: 22px
-    padding: 0 8px
-
-.product-list-item-price
+.product-list-thumb-price
   font-family: $secondary-font
-  font-size: $luna-font-base-px + 2
+  font-size: 16px
+  margin-top: $luna-base * 2
 
-.product-list-item-status
+.product-list-thumb-status
   color: $secondary-text-color
   font-family: $secondary-font
-  font-size: $luna-font-base-px
+  font-size: 16px
   font-style: italic
-  margin-bottom: 10px
-
-  @media screen and (max-width: $break-small)
-    font-size: $luna-font-base-px - 2
+  text-transform: none
 
 .pagination
   +flexbox
   +align-items(center)
   +justify-content(center)
-  font-family: $secondary-font
-  font-size: 15px
-  margin: 60px auto 0
+  margin: 0
   padding: $luna-base * 3
   width: 100%
 
   @media screen and (max-width: $break-small)
-    font-size: 16px
-    margin-bottom: $luna-base * 3
-    margin-top: $luna-base * 3
+    margin: $luna-base * 2 0
 
   a, span
-    padding: 2px 6px
+    padding: 8px 10px
+    margin: 2px 4px
 
-    @media screen and (max-width: $break-small)
-      padding: 4px 8px
+    &:not(.disabled):hover, &:not(.disabled):focus
+      color: $links-rollover-color
+      text-decoration: underline
 
     &.disabled
       display: none

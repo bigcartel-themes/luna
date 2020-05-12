@@ -7,6 +7,9 @@
   .footer-nav
     border: none
 
+  .related-products-container.under_image + footer .footer-nav
+    border-top: 1px solid $border-color
+
 .product-page
   padding-bottom: 30px
   position: relative
@@ -41,7 +44,6 @@
     text-align: center
     font-size: $luna-font-base-px + 7
     font-weight: normal
-    letter-spacing: 1px
     line-height: 1.4em
 
   .product-status
@@ -58,8 +60,8 @@
     clear: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
     float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
     max-width: 35%
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}32px{% endif %}"}
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}32px{% else %}0{% endif %}"}
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}24px{% endif %}"}
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}24px{% else %}0{% endif %}"}
     width: 100%
 
     @media screen and (max-width: $break-medium)
@@ -94,11 +96,16 @@
   .product-description
     font-family: $secondary-font
     font-size: $luna-font-base-px
-    line-height: 1.58
+    letter-spacing: normal
+    line-height: 1.5em
     margin-bottom: $luna-base * 4
 
     a
+      color: $secondary-text-color
       text-decoration: underline
+
+      &:hover, &:focus
+        color: $links-rollover-color
 
     ol, ul
       padding-left: 1em
@@ -108,9 +115,9 @@
 
   .product-images
     float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}left{% else %}right{% endif %}"}
-    max-width: 65%
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}32px{% endif %}"}
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}32px{% else %}0{% endif %}"}
+    max-width: 63%
+    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}24px{% endif %}"}
+    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}24px{% else %}0{% endif %}"}
     position: relative
     width: 100%
 
@@ -132,6 +139,7 @@
   .social-buttons
     border: 1px solid $border-color
     font-family: $secondary-font
+    font-size: 14px
     list-style: none
     margin: $luna-base * 4 0 0
     padding: 0
@@ -142,7 +150,7 @@
       +justify-content(center)
       +align-items(center)
       border-bottom: 1px solid $border-color
-      height: 60px
+      height: 54px
       overflow: hidden
       position: relative
       text-align: center
@@ -176,12 +184,6 @@
       &:last-child
         border-bottom: 0px
 
-.similar-products
-  padding: 0 20px $luna-base * 6
-
-  @media screen and (max-width: $break-small)
-    padding-bottom: $luna-base
-
 .similar-product-list
   +justify-content(flex-start)
 
@@ -193,17 +195,22 @@
 
 .similar-products-header
   +flexbox
-  padding: $luna-base * 4 0
+  +align-items(center)
+  padding: $luna-base * 3 0
+  margin-top: $luna-base * 2
+
+  @media screen and (max-width: $break-small)
+    margin-top: 0
+    padding-bottom: $luna-base
 
   .similar-products-title
     font-size: $luna-font-base-px + 8
-    letter-spacing: 3px
     text-transform: uppercase
 
   .prev-next-products
     +flexbox
     border: none
-    font-size: $luna-font-base-px
+    font-size: $luna-font-base-px - 1
     padding: 0
 
     @media screen and (max-width: $break-small)
@@ -214,11 +221,11 @@
   +flexbox
   +justify-content(center)
   font-family: $secondary-font
+  font-size: $luna-font-base-px - 1
   list-style: none
   margin: 0
   margin-left: auto
-  padding: $luna-base * 3
-  font-size: $luna-font-base-px
+  padding: $luna-base * 3 0
 
   li:not(:last-child):after
     content: "/"
@@ -243,14 +250,13 @@
 .product-inventory
   border-top: 1px solid $border-color
   margin: $luna-base * 4 0 $luna-base * 2
-  padding: $luna-base * 2 $luna-base
+  padding: $luna-base * 2 0
 
   .product-inventory-header
     color: $secondary-font
     margin-bottom: $luna-base * 3
     text-transform: uppercase
-    font-size: $luna-font-base-px - 2
-    letter-spacing: 1px
+    font-size: $luna-font-base-px - 1
     text-align: center
 
 .inventory-bars
@@ -260,22 +266,31 @@
   padding: 0
 
   li
-    margin-bottom: $luna-base * 2
+    margin-bottom: $luna-base * 2 + 2
 
   .option-name
-    margin-bottom: 1px
-    font-size: $luna-font-base-px
+    margin-bottom: $luna-base / 2
+    font-size: $luna-font-base-px - 1
     text-transform: none
 
-  .bar
+  .inventory-bar
     background-color: $border-color
     height: 2px
+    position: relative
     width: 100%
 
-    span
-      background-color: $inventory-bar-color
-      display: block
-      height: 2px
+  .inventory-percentage
+    background-color: $border-color
+    display: block
+    height: 3px
+    position: absolute
+    top: 2px
 
-      em
-        display: none
+  .inventory-label
+    color: $secondary-text-color
+    font-size: 12px
+    display: none
+    position: absolute
+    right: 0
+    top: -16px
+

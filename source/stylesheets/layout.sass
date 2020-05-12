@@ -4,27 +4,27 @@
   box-sizing: border-box
 
 html
-  -webkit-tap-highlight-color: rgba(0,0,0,0)
   height: 100%
   min-height: 100%
   position: relative
   width: 100%
 
 body
+  +flexbox
+  +flex-direction(column)
   background-color: $primary-background-color
   background-image: #{"{% if theme.images.background != blank %}url(\'{{ theme.images.background.url | constrain: 200, 200 }}\'){% else %}none{% endif %}"}
   background-repeat: repeat
   background-size: 200px 200px
   color: $primary-text-color
-  cursor: default
   font-family: $primary-font
-  font-size: 14px
+  font-size: 16px
   height: 100%
+  letter-spacing: 1px
   line-height: 1
   margin: 0
   padding: 0
   width: 100%
-
 
   &.maintenance-page
     +flexbox
@@ -55,23 +55,39 @@ body
         font-style: italic
         margin: 10px auto
 
+a.skip-link
+  +transition(all .3s)
+  background: $primary-background-color
+  border: 1px solid $primary-text-color
+  color: $primary-text-color
+  left: 25px
+  padding: 15px 20px
+  position: absolute
+  text-decoration: underline
+  top: -150px
+  z-index: 100
+
+  &:focus
+    top: 20px
 
 .wrapper
+  padding: 0 $luna-base * 2
   margin: 0 auto
-  max-width: 1024px
+  max-width: 1100px
   width: 100%
 
 a
+  +transition(color .1s linear)
   color: $primary-text-color
   text-decoration: none
 
-h1
-  font-size: 2.3em
+  &:focus, &:hover
+    color: $links-rollover-color
+    text-decoration: underline
 
 h1, h2, h3, h4, h5
   color: $header-text-color
   font-weight: normal
-  letter-spacing: 1px
   line-height: 1.4em
   margin: 0
   padding: 0
@@ -91,91 +107,114 @@ h1, h2, h3, h4, h5
       transform: translateX(-50%)
       width: $luna-base * 3
 
-.store-header
-  color: $header-text-color
-  font-size: 42px
-  letter-spacing: 6px
+a[href], label[for], select, button, .pointer
+  cursor: pointer
 
-.page-title
-  letter-spacing: 3px
-  text-align: center
+button, input, textarea, select
+  +appearance(none)
+  background: none
+  border: none
+  border-radius: $border-radius
+  color: $primary-text-color
+  font-family: $primary-font
+  letter-spacing: 1px
+  padding: 0
 
 header
-  padding: 20px
   text-align: center
 
   &.has-background
     background-color: $secondary-background-color
     padding-bottom: 60px
 
-  .header-nav
-    font-family: $primary-font
-    text-transform: uppercase
+.header-nav
+  font-family: $primary-font
+  margin-top: $luna-base
+  text-transform: uppercase
 
-    @media screen and (max-width: $break-small)
-      display: none
+  @media screen and (max-width: $break-small)
+    display: none
 
-    ul
-      display: flex
-      justify-content: center
-      list-style: none
-      margin: 0
-      padding: 0
+  ul
+    +flexbox
+    +justify-content(center)
+    list-style: none
+    margin: 0
+    padding: 0
 
-      li.selected a
-        color: $primary-text-color
-
-      a
-        +all-transitions
-        border-bottom: 1px solid $border-color
-        color: $secondary-text-color
-        display: block
-        font-size: $luna-font-base-px - 2
-        letter-spacing: 1px
-        padding: $luna-base $luna-base * 2 $luna-base * 2
-        text-decoration: none
-
-        @media screen and (max-width: $break-small)
-          font-size: $luna-font-base-px
-          border-bottom: none
-          text-decoration: underline
-
-        &:hover
-          color: $primary-text-color
-
-    &.mobile-nav
-      display: none
+    li
+      border-bottom: 1px solid $border-color
+      padding: $luna-base
 
       @media screen and (max-width: $break-small)
-        display: block
-        font-family: $secondary-font
+        border-bottom: none
 
-  .branding
-    font-size: 20px
-    margin: 60px auto
-    text-transform: uppercase
+      &.selected
+
+        a
+          color: $primary-text-color
+    a
+      color: $secondary-text-color
+      display: block
+      font-size: $luna-font-base-px - 2
+      padding: $luna-base
+      text-decoration: none
+
+      @media screen and (max-width: $break-small)
+        font-size: $luna-font-base-px
+        text-decoration: underline
+
+      &:hover, &:focus
+        color: $links-rollover-color !important
+
+  &.mobile-nav
+    display: none
 
     @media screen and (max-width: $break-small)
-      margin: 30px auto
-
-      .store-header
-        font-size: 36px
-        letter-spacing: 3px
-
-    > a
       display: block
+      font-family: $secondary-font
+      padding-bottom: $luna-base * 2
+
+.branding
+  font-size: 20px
+  margin: 76px auto
+  text-transform: uppercase
+
+  @media screen and (max-width: $break-small)
+    margin: 30px auto
+
+  > a
+    display: inline-block
+
+    &:hover, &:focus
+      text-decoration: none
+
+.store-header
+  font-size: 42px
+  letter-spacing: 4px
+
+  @media screen and (max-width: $break-small)
+    font-size: 36px
+    letter-spacing: 2px
+
+.page-title
+  text-align: center
 
 .store-logo
   display: block
   margin: 0 auto
   max-width: 100%
-  max-height: 400px
+  max-height: 200px
 
 .main
-  padding: 0 20px 60px
+  +flex(1)
+  padding-bottom: 60px
 
   @media screen and (max-width: $break-small)
     padding-bottom: 0
+
+_:-ms-fullscreen, :root .main
+  +flex(1 0 auto)
 
 #cart_page, #contact_page, #maintenance_page, #product_page, .custom
   .main
@@ -183,17 +222,17 @@ header
     padding-bottom: $luna-base * 8
     padding-top: $luna-base * 8
 
+    @media screen and (max-width: $break-small)
+      padding-bottom: $luna-base * 4
+      padding-top: $luna-base * 4
+
 button, a.button
-  +all-transitions
-  background: $button-border-color
-  border: 2px solid $button-border-color
-  color: $primary-background-color
-  cursor: pointer
+  +transition(color, background-color .1s linear)
+  background: $button-background-color
+  color: $button-text-color
   display: block
-  font-family: $primary-font
-  font-size: 14px
+  font-size: 15px
   height: 58px
-  letter-spacing: 1px
   line-height: 58px
   max-width: 100%
   padding: 0 $luna-base * 2
@@ -203,32 +242,28 @@ button, a.button
 
   &.minimal-button
     background: none
-    color: $button-border-color
+    color: $primary-text-color
     border: none
-    font-size: 13px
-    padding: 0
+    font-size: 14px
 
-    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-      background: none
+    &:not(:disabled):hover, &:not(:disabled):focus
+      background: none !important
+      color: $links-rollover-color
       text-decoration: underline
 
   &:disabled, &.disabled
     cursor: not-allowed
-    opacity: .3
+    opacity: .4
 
   &.no-border
     border: none
 
-  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-    border-color: $button-rollover-color
+  &:not(:disabled):hover, &:not(:disabled):focus
     background: $button-rollover-color
-    opacity: .8
 
 .select
-  +all-transitions
-  border: 2px solid $button-border-color
-  color: $primary-text-color
-  font-family: $primary-font
+  border: 2px solid $primary-text-color
+  border-radius: $border-radius
   height: 58px
   margin-bottom: $luna-base * 3
   max-width: 100%
@@ -238,17 +273,7 @@ button, a.button
   width: 100%
 
   select
-    +all-transitions
-    appearance: none
-    -webkit-appearance: none
-    background: none
-    border: 0
-    border-radius: 0
-    color: $primary-text-color
-    font-family: $primary-font
-    font-size: 14px
     height: 100%
-    letter-spacing: 1px
     line-height: 58px
     padding: 0 66px 0 16px
     position: relative
@@ -257,10 +282,11 @@ button, a.button
     z-index: 2
 
     option
-      background-color: #FFF
+      background-color: #FFFFFF
       color: #000
 
       &:disabled
+        background-color: #FFFFFF
         color: graytext
 
     &:focus
@@ -271,7 +297,6 @@ button, a.button
       display: none
 
   svg
-    +all-transitions
     fill: $primary-text-color
     height: 8px
     margin-top: -2px
@@ -282,30 +307,35 @@ button, a.button
     z-index: 1
 
   &:hover, &:active, &:focus, &:focus-within
-    color: $secondary-text-color
-    border-color: $secondary-text-color
+    color: $links-rollover-color
+    border-color: $links-rollover-color
 
     select
-      color: $secondary-text-color
+      color: $links-rollover-color
 
       option:disabled
         color: graytext
 
     svg
-      fill: $secondary-text-color
+      fill: $links-rollover-color
 
 .custom-page-header
   text-align: center
 
 .custom-page-content
   font-family: $secondary-font
-  font-size: 16px
-  line-height: 1.58
+  font-size: $luna-font-base-px
+  letter-spacing: normal
+  line-height: 1.5em
   margin: 0 auto
-  max-width: 640px
+  max-width: 700px
 
   a
+    color: $secondary-text-color
     text-decoration: underline
+
+    &:hover, &:focus
+      color: $links-rollover-color
 
   ol, ul
     padding-left: 1em
@@ -329,71 +359,131 @@ button, a.button
   ul
     +flexbox
     +justify-content(center)
+    +flex-wrap(wrap)
     list-style: none
     margin: 0 0 $luna-base * 3 0
     padding: 0
 
     &.footer-links
+      font-size: 15px
+
       @media screen and (max-width: $break-small)
         +flex-direction(column)
-        padding: 0 20px
+        font-size: 15px
+        padding: 0
         width: 100%
 
-        a
+        li
           border-bottom: 1px solid $border-color
+
+        a
           font-family: $secondary-font
-          font-size: $luna-font-base-px - 1
           padding: $luna-base * 2 0
           text-align: center
           text-transform: uppercase
 
     a
-      +all-transitions
       display: block
-      font-size: $luna-font-base-px - 2
       padding: $luna-base $luna-base * 2
       text-decoration: none
 
-      &:hover
-        color: $secondary-text-color
+      &:hover, &:focus
+        color: $links-rollover-color
+        text-decoration: underline
 
 .social-links a
-  +all-transitions
-  fill: $links-color
+  fill: $secondary-text-color
 
-  &:hover
+  svg
+    height: 22px
+    width: 22px
+
+  &:hover, &:focus
     fill: $links-rollover-color
 
-.search-input
-  background: none
-  border: 1px solid #e5e5e5 !important
-  display: none
-  font-size: 13px
+.search-form
   position: relative
-  top: -3px
+
+  &:focus-within .search-icon
+    display: block
+
+.search-input
+  border: 1px solid transparent !important
+  cursor: pointer
+  margin-left: 8px
+  padding: 6px 32px 6px 8px
+  width: 130px
+
+  &::-webkit-input-placeholder
+    color: $primary-text-color
+
+  &::-moz-placeholder
+    color: $primary-text-color
+
+  &:-ms-input-placeholder
+    color: $primary-text-color
+
+  &:-moz-placeholder
+    color: $primary-text-color
+
+  @media screen and (max-width: $break-small)
+    display: block
+    margin: $luna-base auto
+    padding: 6px 16px
+    text-align: center
+    text-transform: uppercase
+    width: 250px
+
+  &:hover
+    border: 1px solid $border-color !important
+
+  &:focus
+    border: 1px solid $links-rollover-color !important
+
+button.search-button
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: none
+  height: 20px
+  padding: 0
+  position: absolute
+  right: 10px
+  top: 50%
+  transform: translateY(-50%)
+  width: 20px
+
+  @media screen and (max-width: $break-small)
+    display: none
+
+  &:hover, &:focus
+    background: none
+
+.search-icon
+  fill: $primary-text-color
+  display: block
+  height: 16px
+  width: 16px
 
 .errors
   border-radius: $border-radius
-  background-color: #EA4859
-  color: #FAFAFA
-  font-size: $luna-font-base-px - 1
-  line-height: 20px
+  background-color: #b11a2a
+  color: #FFFFFF
+  line-height: 1.5em
   list-style: none
   margin: 0 auto $luna-base * 4
-  padding: 10px 20px
+  padding: $luna-base * 1.5 $luna-base * 2
   text-align: center
 
 input, textarea
-  +all-transitions
   appearance: none
-  border: 2px solid $border-color
-  background: $secondary-background-color
+  border: 2px solid $secondary-text-color
+  background: none
   color: $primary-text-color
-  font-size: 1em
+  font-family: $primary-font
+  font-size: 16px
   padding: $luna-base
   outline: none
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
-  box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)
 
   &:focus, &:active
     background: $primary-background-color
@@ -401,17 +491,20 @@ input, textarea
 
 a.back-to-site
   background: none
-  color: $button-border-color
+  border-radius: $border-radius
+  border: 2px solid $primary-text-color
+  color: $primary-text-color
   font-size: $luna-font-base-px - 4
   height: auto
   line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
   width: auto
 
-  &:hover, &:active, &:focus
-    opacity: 1
-    background: $button-border-color
-    color: $primary-background-color
+  &:hover, &:focus
+    background: none !important
+    border: 2px solid $links-rollover-color
+    color: $links-rollover-color
+    text-decoration: none
 
 .back-to-site + .badge
   margin-top: $luna-base * 3
@@ -430,54 +523,56 @@ a.back-to-site
     width: 79px
 
 .announcement-message
-  display: none
-
-.has-announcement-message .announcement-message
-  +flexbox
   +align-items(center)
   +justify-content(center)
   background-color: $secondary-background-color
   color: $primary-text-color
+  display: none
   font-size: 15px
-  left: 0
-  line-height: 26px
-  padding: 14px 20px
+  padding: 16px 80px
   position: relative
-  top: 0
-  width: 100%
-  z-index: 9
 
-  .announcement-message-text
-    text-align: center
-    width: calc(100% - 100px)
+  @media screen and (max-width: $break-small)
+    padding: 16px 60px
 
-    @media screen and (max-width: $break-small)
-      width: calc(100% - 50px)
+  .has-announcement-message &
+    display: block
 
-  .announcement-message-close
-    +transform(translateY(-50%))
-    cursor: pointer
-    position: absolute
-    right: 20px
-    top: 50%
-    border: 0
-    background-color: $secondary-background-color
-    height: 54px
-    width: 44px
-    margin-top: -1px
+.announcement-message-text
+  text-align: center
+
+.announcement-message-close
+  +transform(translateY(-50%))
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  position: absolute
+  right: 16px
+  top: 50%
+  border: 0
+  background-color: $secondary-background-color
+  height: 44px
+  padding: 0
+  width: 44px
+
+  &:hover, &:focus
+    background: none !important
 
     svg
-      fill: $primary-text-color
-      height: 11px
-      width: 11px
+      fill: $links-rollover-color
+
+  svg
+    display: block
+    fill: $primary-text-color
+    height: 16px
+    width: 16px
 
 .centered-message
   color: $secondary-text-color
   font-family: $secondary-font
   font-size: 20px
-  font-style: italic
-  line-height: 1.4em
-  padding: 0 20px
+  line-height: 1.5em
+  padding: 0 16px
   text-align: center
 
   a

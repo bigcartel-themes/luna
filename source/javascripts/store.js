@@ -152,18 +152,24 @@ $(document).ready(function() {
       var randomIndex = getRandomIndex(elements);
       $('.similar-product-list').append($('.all-similar-products').children().eq(randomIndex));
       elements.splice(randomIndex, 1);
-      $('.similar-product-list .similar-product-list-image').each(function() {
-        $(this).attr("src",$(this).data("src"));
-      })
     }
+    $('.similar-product-list .product-list-image-container').each(function() {
+      image_classes = $(this).data("image-classes");
+      image_src = $(this).data("small-image-src");
+      image_data_src = $(this).data("normal-image-src");
+      image_data_srcset = $(this).data("image-srcset");
+      img = $('<img />').attr('alt','').attr('class',image_classes).attr('src',image_src).attr('data-src',image_data_src).attr('data-srcset',image_data_srcset);
+      $(this).find('.image-wrapper').html(img)
+    })
     $('.all-similar-products').remove();
+    window.document.dispatchEvent(new Event("DOMContentLoaded", {}));
   }
 });
-
 
 $('.home-slideshow').flexslider({
   animation: "slide"
 });
+
 $('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
 var width = $(window).width();
 
@@ -176,28 +182,6 @@ if ($('.product-images-slideshow').length && width <= 768 && !inPreview) {
     directionNav: false
   });
 }
-
-$('.open-search').click(function(e) {
-  e.preventDefault();
-  $('.search-input').show().focus();
-  $(this).hide();
-});
-
-$('.search-input').blur(function(event) {
-  event.preventDefault();
-  $(this).hide();
-  $('.open-search').show();
-});
-
-$('.cart-item-remove').click(function(e) {
-  $(this).closest('li').find('input.option-quantity').val(0).closest('form').submit();
-  return false;
-});
-
-$('.option-quantity').on('change',function(){
-  $(this).closest('form').submit();
-  return false;
-});
 
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
@@ -265,3 +249,26 @@ function disableSelectOption(select_option, type) {
     }
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      }, {
+        rootMargin: "0px 0px 256px 0px"
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});

@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.3.0",
+  "version": "2.4.1",
   "images": [
     {
       "variable": "header",
@@ -29,69 +29,64 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Times New Roman"
+      "default": "Montserrat"
     }
   ],
   "colors": [
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#ffffff"
+      "default": "#FFFFFF"
     },
     {
       "variable": "secondary_background_color",
       "label": "Secondary background",
-      "default": "#f0f0f0"
+      "default": "#F3F3F3"
     },
     {
       "variable": "primary_text_color",
       "label": "Primary text",
-      "default": "#333333"
+      "default": "#111111"
     },
     {
       "variable": "secondary_text_color",
       "label": "Secondary text",
-      "default": "#666666"
-    },
-    {
-      "variable": "link_color",
-      "label": "Links",
-      "default": "#333333"
+      "default": "#555555"
     },
     {
       "variable": "link_rollover_color",
-      "label": "Link rollover",
-      "default": "#888888"
+      "label": "Link hover",
+      "default": "#255B8A"
     },
     {
       "variable": "header_text_color",
       "label": "Header text",
-      "default": "#333333"
+      "default": "#111111"
     },
     {
       "variable": "products_background_color",
-      "label": "Product background rollover",
+      "label": "Product background hover",
       "default": "#000000"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#e5e5e5"
+      "default": "#b1b1b1"
     },
     {
-      "variable": "button_border_color",
-      "label": "Buttons",
+      "variable": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button background",
       "default": "#000000"
     },
     {
       "variable": "button_rollover_color",
-      "label": "Button rollover",
-      "default": "#777777"
-    },
-    {
-      "variable": "inventory_bar_color",
-      "label": "Inventory Bars",
-      "default": "#999999"
+      "label": "Button hover background",
+      "default": "#255B8A"
     }
   ],
   "options": [
@@ -146,8 +141,19 @@
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 12,
+      "default": 36,
       "description": "The number of products displayed per page"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Fit to square", "fit-to-square"],
+        ["Crop to square", "crop-to-square"]
+      ],
+      "default": "crop-to-square",
+      "description": "Sets the display of images in the product grid"
     },
     {
       "variable": "show_overlay",
@@ -157,7 +163,7 @@
         ["On rollover", "rollover"],
         ["Under image", "under_image"]
       ],
-      "default": "rollover",
+      "default": "under_image",
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {
@@ -266,28 +272,33 @@
   ],
   "checkout": {
     "optimize_legibility": "optimizeLegibility",
+    "header_image_max_width": "400px",
+    "header_image_max_height": "200px",
     "antialias_text": "antialiased",
     "header_image": "{{ header }}",
-    "header_width": "900px",
     "background_image": "{{ background }}",
     "background_color": "{{ secondary_background_color }}",
     "gutter_width": "28px",
+    "body_font": "{{ primary_font }}",
+    "body_font_size": "16px",
+    "step_header_font": "{{ primary_font }}",
+    "step_header_font_size": "20px",
+    "step_header_font_weight": "normal",
     "title_font": "{{ primary_font }}",
-    "title_vertical_padding": "60px",
+    "title_vertical_padding": "40px",
     "title_background_color": "transparent",
     "title_position": "center",
     "title_font_size": "42px",
     "title_font_weight": "normal",
     "title_text_transform": "uppercase",
-    "title_color": "{{ header_text_color }}",
+    "title_color": "{{ primary_text_color }}",
     "secondary_font": "{{ secondary_font }}",
     "secondary_font_size": "15px",
     "content_border_radius": "0",
-    "content_width": "530px",
     "content_header_vertical_padding": "28px",
     "content_background_color": "{{ background_color }}",
     "content_banded": "true",
-    "content_header_height": "120px",
+    "content_header_height": "80px",
     "content_horizontal_padding": "0",
     "content_header_background_color": "{{ background_color }}",
     "content_border_color": "transparent",
@@ -295,52 +306,53 @@
     "content_primary_font_size": "24px",
     "content_header_color": "{{ primary_text_color }}",
     "content_color": "{{ primary_text_color }}",
-    "link_font_size": "13px",
-    "link_color": "{{ link_color }}",
+    "link_font_size": "15px",
+    "link_color": "{{ primary_text_color }}",
     "link_hover_color": "{{ link_rollover_color }}",
     "error_border_width": "0",
-    "error_font_size": "13px",
-    "error_background_color": "#ea4859",
+    "error_font_size": "16px",
+    "error_background_color": "#b11a2a",
     "error_color": "#ffffff",
-    "error_border_radius": "0",
-    "error_border_color": "#ea4859",
+    "error_border_radius": "4px",
+    "error_border_color": "#b11a2a",
     "custom_inputs": true,
     "input_focus_color": "#000000",
     "input_focus_background_color": "#ffffff",
-    "input_border_radius": "0",
-    "input_focus_border_color": "#bfbfbf",
+    "input_border_radius": "4px",
+    "input_focus_border_color": "#000000",
     "input_error_border_color": "#ea4859",
     "input_color": "#000000",
     "input_error_color": "#000000",
-    "input_border_color": "#bfbfbf",
-    "input_font_size": "13px",
-    "input_font": "{{ secondary_font }}",
+    "input_border_color": "#8e8e8e",
+    "input_font_size": "16px",
+    "input_font": "{{ primary_font }}",
     "input_horizontal_padding": "8px",
     "input_border_width": "2px",
-    "input_height": "37px",
+    "input_height": "40px",
     "input_background_color": "#ffffff",
     "input_error_background_color": "#ffffff",
     "label_text_transform": "normal",
     "label_color": "#999999",
     "label_font_weight": "normal",
-    "label_font_size": "13px",
+    "label_font_size": "16px",
     "in_field_labels": false,
-    "button_border_color": "{{ button_border_color }}",
-    "button_border_radius": "0",
+    "button_border_color": "{{ button_background_color }}",
+    "button_border_radius": "4px",
     "button_hover_border_color": "{{ button_rollover_color }}",
     "button_height": "47px",
     "button_border_width": "2px",
-    "button_font_size": "14px",
-    "button_font_weight": "normal",
+    "button_font": "{{ primary_font }}",
+    "button_font_size": "16px",
+    "button_font_weight": "bold",
     "button_text_transform": "uppercase",
-    "button_background_color": "{{ background_color }}",
-    "button_color": "{{ button_border_color }}",
-    "button_hover_color": "{{ button_rollover_color }}",
+    "button_background_color": "{{ button_background_color }}",
+    "button_color": "{{ button_text_color }}",
+    "button_hover_color": "{{ button_text_color }}",
     "button_position": "center",
-    "button_hover_background_color": "{{ background_color }}",
-    "step_inactive_header_color": "opacify({{ secondary_text_color }}, .25)",
+    "button_hover_background_color": "{{ button_rollover_color }}",
+    "step_inactive_header_color": "opacify({{ primary_text_color }}, .25)",
     "step_border_color": "{{ border_color }}",
-    "step_border_width": "1px",
+    "step_border_width": "2px",
     "step_header_text_transform": "uppercase",
     "step_background_color": "{{ background_color }}",
     "step_inactive_border_color": "opacify({{ border_color }}, .25)",
@@ -353,7 +365,7 @@
     "step_border_style": "solid",
     "step_primary_font": "{{ primary_font }}",
     "summary_inactive_item_border_color": "opacify({{ border_color }}, .25)",
-    "summary_font_size": "13px",
+    "summary_font_size": "15px",
     "summary_submit_background_color": "{{ background_color }}",
     "summary_inactive_color": "opacify({{ secondary_text_color }}, .25)",
     "summary_submit_border_color": "opacify({{ border_color }}, .25)",

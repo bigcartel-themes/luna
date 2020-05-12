@@ -23,7 +23,9 @@
   <div class="product-images{% if product.images.size > 1 %} product-images-slideshow{% endif %}">
     <ul class="slides">
       {% for image in product.images %}
-        <li><img class="product-image" src="{{ image | product_image_url | constrain: 1200 }}" alt="{{ product.name | escape }}"></li>
+        <li>
+          <img alt="{{ product.name | escape }}" class="lazy product-image" src="{{ image | product_image_url | constrain: 100 }}" data-src="{{ image | product_image_url | constrain: 650 }}" data-srcset="{{ image | product_image_url | constrain: 1300 }} 2x, {{ image | product_image_url | constrain: 650 }} 1x">
+        </li>
       {% endfor %}
     </ul>
   </div>
@@ -43,8 +45,9 @@
             {% for option in product.options %}
         		<li>
         		  {% unless product.has_default_option %}<div class="option-name">{{ option.name }}</div>{% endunless %}
-        			<div class="bar">
-        			  <span style="width:{{ option.inventory }}%;"><em>{{ option.quantity }} in stock</em></span>
+        			<div class="inventory-bar">
+        			  <span class="inventory-percentage" style="width:{{ option.inventory }}%;"></span>
+                <span class="inventory-label">{{ option.quantity }} in stock</span>
         			</div>
         		</li>
         		{% endfor %}
@@ -84,7 +87,7 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
 
         {% if product.has_option_groups %}
