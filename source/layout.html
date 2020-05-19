@@ -42,7 +42,7 @@
         <div class="branding">
           <a href="/" title="Home">
             {% if theme.images.header != blank %}
-              <img class="store-logo" src="{{ theme.images.header.url | constrain: 1800, 200 }}" alt="{{ store.name }} Home">
+              <img class="store-logo" srcset="{{ theme.images.header.url | constrain: 1068, 200 }}, {{ theme.images.header.url | constrain: 2136, 400 }} 2x" src="{{ theme.images.header.url | constrain: 1068, 200 }}" alt="{{ store.name }} Home">
             {% else %}
               <div class="store-header">{{ store.name }}</div>
             {% endif %}
