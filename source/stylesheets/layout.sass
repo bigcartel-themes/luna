@@ -71,10 +71,13 @@ a.skip-link
     top: 20px
 
 .wrapper
-  padding: 0 $luna-base * 2
+  padding: 0 $luna-base * 3
   margin: 0 auto
   max-width: 1100px
   width: 100%
+
+  @media screen and (max-width: $break-small)
+    padding: 0 $luna-base * 2
 
 a
   +transition(color .1s linear)
@@ -514,6 +517,7 @@ a.back-to-site
 
   a
     background: url("{{ 'bc_badge.png' | theme_image_url }}") no-repeat
+    background-size: 100%
     border: none
     display: block
     height: 23px
