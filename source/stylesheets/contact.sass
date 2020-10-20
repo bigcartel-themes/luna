@@ -19,29 +19,23 @@
   textarea
     height: 180px
 
-  #captcha
-    max-width: calc(100% - 135px)
-
 .input-holder
   position: relative
-
-#captcha_image
-  border-radius: $border-radius
-  height: 44px
-  position: absolute
-  right: 0
-  top: 0
 
 .contact-form-block
   margin-bottom: $luna-base * 4
 
-.captcha-instructions
+.recaptcha-note
   font-family: $secondary-font
   font-size: $luna-font-base-px - 2
   font-style: italic
+  line-height: 1.3em
   opacity: .8
   position: relative
   margin-top: 10px
+
+  a
+    text-decoration: underline
 
 button.send-message-button
   max-width: 300px
