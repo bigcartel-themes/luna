@@ -1,3 +1,6 @@
+
+var inPreview = (/\/admin\/design/.test(top.location.pathname));
+
 var isGreaterThanZero = function(currentValue) {
   return currentValue > 0;
 }
@@ -170,7 +173,7 @@ $('.home-slideshow').flexslider({
 $('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
 var width = $(window).width();
 
-if ($('.product-images-slideshow').length && width <= 768) {
+if ($('.product-images-slideshow').length && width <= 768 && !inPreview) {
   $('.product-images-slideshow').addClass('flexslider');
   $('.product-images-slideshow').flexslider({
     animation: 'slide',
