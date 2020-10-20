@@ -1,5 +1,5 @@
 
-var inPreview = (/\/admin\/design/.test(top.location.pathname));
+var inPreview = (/http(s?):\/\/draft-+\w+\.bigcartel\.(test|biz|com)/.test(window.origin)||(/\/admin\/design/.test(top.location.pathname)));
 
 var isGreaterThanZero = function(currentValue) {
   return currentValue > 0;
