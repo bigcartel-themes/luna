@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.4.11",
+  "version": "2.4.12",
   "images": [
     {
       "variable": "header",
@@ -29,7 +29,7 @@
     {
       "variable": "secondary_font",
       "label": "Secondary Font",
-      "default": "Montserrat"
+      "default": "Verdana"
     }
   ],
   "colors": [
@@ -66,12 +66,12 @@
     {
       "variable": "products_background_color",
       "label": "Product background hover",
-      "default": "#000000"
+      "default": "#333333"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#b1b1b1"
+      "default": "#111111"
     },
     {
       "variable": "button_text_color",
