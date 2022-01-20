@@ -27,33 +27,26 @@ body
   width: 100%
 
   &.maintenance-page
-    +flexbox
     +align-items(center)
-    +justify-content(center)
-    padding: 0 20px
+    padding: 100px 20px
 
     .maintenance-content
+      +flexbox
+      +align-items(center)
+      +justify-content(center)
+      +flex-direction(column)
       border: 3px solid $header-text-color
-      display: inline-block
+      color: $primary-text-color
+      font-size: 22px
+      line-height: 1.25em
       padding: $luna-base * 4 $luna-base * 3
-      margin: -20% auto 0
+      max-width: 600px
+      min-height: 200px
       text-align: center
-      width: auto
+      width: 100%
 
-      @media screen and (max-width: $break-small)
-        margin-top: -40%
-
-      h1
-        font-size: 18px
-        font-weight: normal
-        line-height: 1.3em
-        text-transform: none
-
-      p
-        color: $secondary-text-color
-        font-family: $secondary-font
-        font-style: italic
-        margin: 10px auto
+    .social-links
+      margin: $luna-base * 2 0 0
 
 a.skip-link
   +transition(all .3s)
@@ -394,8 +387,19 @@ button, a.button
         color: $links-rollover-color
         text-decoration: underline
 
-.social-links a
-  fill: $secondary-text-color
+
+.social-links
+  +flexbox
+  +justify-content(center)
+  +flex-wrap(wrap)
+  list-style: none
+  margin: 0 0 $luna-base * 3 0
+  padding: 0
+
+  a
+    display: flex !important
+    fill: $secondary-text-color
+    padding: $luna-base $luna-base * 2
 
   svg
     display: block
