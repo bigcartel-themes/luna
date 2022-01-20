@@ -101,7 +101,7 @@
       "label": "Maintenance mode message",
       "type": "text",
       "description": "A message visitors see when your shop is in Maintenance Mode",
-      "default": "We're working on our shop at the moment.<br />Please check back soon."
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
       "variable": "nav_items",
