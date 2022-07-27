@@ -35,7 +35,9 @@
               <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
             {% endfor %}
             <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact">Contact</a></li>
-            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}><a href="/cart">Cart</a></li>
+            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
+              <a href="/cart">Cart (<span class="cart-num-items">{{ cart.item_count }}</span>)</a>
+            </li>
           </ul>
         </nav>
 
@@ -58,7 +60,7 @@
             <a href="/contact">Contact</a>
           </li>
           <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
-            <a href="/cart">Cart</a>
+            <a href="/cart">Cart (<span class="cart-num-items">{{ cart.item_count }}</span>)</a>
           </li>
         </ul>
       </nav>

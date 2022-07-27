@@ -34,6 +34,7 @@ var processUpdate = function(input, item_id, new_val, cart) {
 
   $('.cart-subtotal-amount').fadeOut(100, function() {
     $('.cart-subtotal-amount').html(sub_total);
+    $('.cart-num-items').html(item_count);
     $('.cart-subtotal-amount').fadeIn(500);
   });
 
