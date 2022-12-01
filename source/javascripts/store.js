@@ -165,7 +165,8 @@ $(document).ready(function() {
 });
 
 $('.home-slideshow').flexslider({
-  animation: "slide"
+  animation: "slide",
+  allowOneSlide: false
 });
 
 $('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
