@@ -43,8 +43,16 @@
 
         <div class="branding">
           <a href="/" title="Home">
+            {% assign header_image_height_1x = theme.header_image_height %}
+            {% assign header_image_height_2x = header_image_height_1x | times: 2 %}
             {% if theme.images.header != blank %}
-              <img class="store-logo" srcset="{{ theme.images.header.url | constrain: 1068, 200 }}, {{ theme.images.header.url | constrain: 2136, 400 }} 2x" src="{{ theme.images.header.url | constrain: 1068, 200 }}" alt="{{ store.name }} Home">
+              <img
+                class="store-logo"
+                srcset="{{ theme.images.header.url | constrain: 1068, header_image_height_1x }}, {{ theme.images.header.url | constrain: 2136, header_image_height_2x }} 2x"
+                src="{{ theme.images.header.url | constrain: 1068, header_image_height_1x }}"
+                alt="{{ store.name }} Home"
+                style="max-height: {{ header_image_height_1x }}px"
+              >
             {% else %}
               <div class="store-header">{{ store.name }}</div>
             {% endif %}
