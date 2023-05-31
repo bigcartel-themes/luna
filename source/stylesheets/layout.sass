@@ -82,7 +82,7 @@ a
     text-decoration: underline
 
 h1, h2, h3, h4, h5
-  color: $header-text-color
+  color: transparentize({{ theme.header_text_color }}, 0.2)
   font-weight: normal
   line-height: 1.4em
   margin: 0
@@ -615,8 +615,8 @@ a.back-to-site
 .fade-in
   animation-name: reset, fade-in
   -webkit-animation-name: reset, fade-in
-  animation-duration: .7s
-  -webkit-animation-duration: .7s
+  animation-duration: .2s
+  -webkit-animation-duration: .2s
   animation-timing-function: ease-in
   -webkit-animation-timing-function: ease-in
   animation-iteration-count: 1

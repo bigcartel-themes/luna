@@ -74,7 +74,7 @@
       </nav>
     </header>
     <main class="main" id="main">
-      <div class="fade-in wrapper">
+      <div class="wrapper">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
             {% for error in errors %}
@@ -254,7 +254,7 @@
           {% if store.website != blank %}
             <a href="{{ store.website }}" class="button back-to-site" class="button">Back to site</a>
           {% endif %}
-          <div class="badge">{{ bigcartel_credit }}</div>
+          <div class="badge">{{ powered_by_big_cartel }}</div>
         </nav>
       </div>
     </footer>
