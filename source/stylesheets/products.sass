@@ -35,11 +35,11 @@
     padding: 0
 
     li
-      margin: 4px 2px
+      margin: 4px 0
 
       a
         display: inline-block
-        padding: 4px
+        padding: 4px 10px
         white-space: nowrap
 
         &:hover
@@ -50,7 +50,6 @@
 
       &:not(:last-child):after
         content: "/"
-        padding: 0 2px
         opacity: .5
 
 .products-nav + .products-nav
@@ -77,7 +76,6 @@
   padding-bottom: $luna-base * 2
   position: relative
   text-decoration: none
-  text-transform: uppercase
   vertical-align: middle
   width: calc(100% / #{"{{ theme.max_products_per_row }}"})
   word-break: break-word
@@ -222,14 +220,14 @@ _:-ms-fullscreen, :root .product-list-thumb
   width: 100%
 
 .product-list-thumb-info
-  font-size: 20px
+  font-size: 18px
   line-height: 1.25em
   padding: $luna-base * 2 $luna-base
   position: relative
   text-align: center
 
   @media screen and (max-width: $break-small)
-    font-size: 18px
+    font-size: 16px
     padding: $luna-base
 
 .product-list-item-background
@@ -243,9 +241,10 @@ _:-ms-fullscreen, :root .product-list-thumb
   width: 100%
 
 .product-list-thumb-name
-  letter-spacing: 2px
   overflow-wrap: break-word
   position: relative
+  text-transform: uppercase
+  letter-spacing: 1px
 
   &:after
     bottom: -$luna-base
@@ -262,12 +261,18 @@ _:-ms-fullscreen, :root .product-list-thumb
   font-size: 16px
   margin-top: $luna-base * 2
 
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+
 .product-list-thumb-status
   color: $secondary-text-color
   font-family: $secondary-font
   font-size: 16px
   font-style: italic
   text-transform: none
+
+  @media screen and (max-width: $break-small)
+    font-size: 14px
 
 .pagination
   +flexbox

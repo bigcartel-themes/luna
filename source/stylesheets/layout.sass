@@ -20,7 +20,6 @@ body
   font-family: $primary-font
   font-size: 16px
   height: 100%
-  letter-spacing: 1px
   line-height: 1
   margin: 0
   padding: 0
@@ -89,6 +88,7 @@ h1, h2, h3, h4, h5
   padding: 0
   position: relative
   text-transform: uppercase
+  letter-spacing: .5px
 
   &.has-dash
     margin-bottom: $luna-base * 6
@@ -113,7 +113,6 @@ button, input, textarea, select
   border-radius: $border-radius
   color: $primary-text-color
   font-family: $primary-font
-  letter-spacing: 1px
   padding: 0
 
 header
@@ -127,6 +126,7 @@ header
   font-family: $primary-font
   margin-top: $luna-base
   text-transform: uppercase
+  letter-spacing: .5px
 
   @media screen and (max-width: $break-small)
     display: none
@@ -152,7 +152,7 @@ header
     a
       color: $secondary-text-color
       display: block
-      font-size: $luna-font-base-px - 2
+      font-size: $luna-font-base-px - 1
       padding: $luna-base
       text-decoration: none
 
@@ -234,6 +234,7 @@ button, a.button
   padding: 0 $luna-base * 2
   text-align: center
   text-transform: uppercase
+  letter-spacing: .5px
   width: 100%
 
   &.minimal-button
@@ -261,19 +262,17 @@ button, a.button
   border: 2px solid $primary-text-color
   border-radius: $border-radius
   height: 58px
-  margin-bottom: $luna-base * 3
+  margin-bottom: $luna-base * 2
   max-width: 100%
   padding: 0
   position: relative
-  text-transform: uppercase
   width: 100%
 
   select
     height: 100%
-    line-height: 58px
+    line-height: normal
     padding: 0 66px 0 16px
     position: relative
-    text-transform: uppercase
     width: 100%
     z-index: 2
 
@@ -287,7 +286,6 @@ button, a.button
 
     &:focus
       box-shadow: none
-      outline: none
 
     &::-ms-expand
       display: none
@@ -295,12 +293,12 @@ button, a.button
   svg
     fill: $primary-text-color
     height: 8px
-    margin-top: -2px
     position: absolute
     right: 20px
     top: 50%
     width: 13px
     z-index: 1
+    transform: translateY(-50%)
 
   &:hover, &:active, &:focus, &:focus-within
     color: $links-rollover-color
@@ -321,7 +319,6 @@ button, a.button
 .custom-page-content
   font-family: $secondary-font
   font-size: $luna-font-base-px
-  letter-spacing: normal
   line-height: 1.5em
   margin: 0 auto
   max-width: 700px
@@ -349,6 +346,7 @@ button, a.button
   +align-items(center)
   font-family: $primary-font
   list-style: none
+  gap: $luna-base * 4
   margin: 0
   padding: $luna-base * 5 0
 
@@ -361,11 +359,10 @@ button, a.button
     padding: 0
 
     &.footer-links
-      font-size: 15px
+      font-size: 16px
 
       @media screen and (max-width: $break-small)
         +flex-direction(column)
-        font-size: 15px
         padding: 0
         width: 100%
 
@@ -376,7 +373,6 @@ button, a.button
           font-family: $secondary-font
           padding: $luna-base * 2 0
           text-align: center
-          text-transform: uppercase
 
     a
       display: block
@@ -386,7 +382,6 @@ button, a.button
       &:hover, &:focus
         color: $links-rollover-color
         text-decoration: underline
-
 
 .social-links
   +flexbox
@@ -442,7 +437,6 @@ button, a.button
     margin: $luna-base auto
     padding: 6px 16px
     text-align: center
-    text-transform: uppercase
     width: 250px
 
   &:hover
@@ -517,22 +511,31 @@ a.back-to-site
     color: $links-rollover-color
     text-decoration: none
 
-.back-to-site + .badge
+.back-to-site + .bigcartel-credit
   margin-top: $luna-base * 3
 
-.badge
-  padding: $luna-base $luna-base * 2
+.bigcartel-credit
+  color: $secondary-text-color
+  line-height: 1em
+  font-size: 15px
+  display: flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+  text-decoration: none
 
-  a
-    background: url("{{ 'bc_badge.png' | theme_image_url }}") no-repeat
-    background-size: 100%
-    border: none
+  &:hover
+    text-decoration: none
+
+  &__text
+    position: relative
+
+  &__lockup
     display: block
-    height: 23px
-    overflow: hidden
-    text-indent: 100%
-    white-space: nowrap
-    width: 79px
+    fill: currentColor
+    padding-top: 1px
+    width: 86px
 
 .announcement-message
   +align-items(center)
