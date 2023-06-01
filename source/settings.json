@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.5.3",
+  "version": "2.6.0",
   "images": [
     {
       "variable": "header",
@@ -102,6 +102,18 @@
       "type": "text",
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
+    {
+      "variable": "header_image_height",
+      "label": "Header image height",
+      "type": "select",
+      "options": [
+        ["Small", "200"],
+        ["Medium", "400"],
+        ["Large", "600"]
+      ],
+      "default": "400",
+      "description": "Controls the maximum height of your header image"
     },
     {
       "variable": "nav_items",

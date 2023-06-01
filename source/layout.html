@@ -43,8 +43,16 @@
 
         <div class="branding">
           <a href="/" title="Home">
+            {% assign header_image_height_1x = theme.header_image_height %}
+            {% assign header_image_height_2x = header_image_height_1x | times: 2 %}
             {% if theme.images.header != blank %}
-              <img class="store-logo" srcset="{{ theme.images.header.url | constrain: 1068, 200 }}, {{ theme.images.header.url | constrain: 2136, 400 }} 2x" src="{{ theme.images.header.url | constrain: 1068, 200 }}" alt="{{ store.name }} Home">
+              <img
+                class="store-logo"
+                srcset="{{ theme.images.header.url | constrain: 1068, header_image_height_1x }}, {{ theme.images.header.url | constrain: 2136, header_image_height_2x }} 2x"
+                src="{{ theme.images.header.url | constrain: 1068, header_image_height_1x }}"
+                alt="{{ store.name }} Home"
+                style="max-height: {{ header_image_height_1x }}px"
+              >
             {% else %}
               <div class="store-header">{{ store.name }}</div>
             {% endif %}
@@ -66,7 +74,7 @@
       </nav>
     </header>
     <main class="main" id="main">
-      <div class="fade-in wrapper">
+      <div class="wrapper">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
             {% for error in errors %}
@@ -160,10 +168,10 @@
                             {% else %}
                               {{ category_product.default_price | money: theme.money_format }}
                             {% endif %}
-                            {% if product_status != blank %}
-                              <div class="product-list-thumb-status">{{ product_status }}</div>
-                            {% endif %}
                           </div>
+                          {% if product_status != blank %}
+                            <div class="product-list-thumb-status">{{ product_status }}</div>
+                          {% endif %}
                         </div>
                       </div>
                     </a>
@@ -246,7 +254,7 @@
           {% if store.website != blank %}
             <a href="{{ store.website }}" class="button back-to-site" class="button">Back to site</a>
           {% endif %}
-          <div class="badge">{{ bigcartel_credit }}</div>
+          {{ powered_by_big_cartel }}
         </nav>
       </div>
     </footer>
