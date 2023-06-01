@@ -168,10 +168,10 @@
                             {% else %}
                               {{ category_product.default_price | money: theme.money_format }}
                             {% endif %}
-                            {% if product_status != blank %}
-                              <div class="product-list-thumb-status">{{ product_status }}</div>
-                            {% endif %}
                           </div>
+                          {% if product_status != blank %}
+                            <div class="product-list-thumb-status">{{ product_status }}</div>
+                          {% endif %}
                         </div>
                       </div>
                     </a>

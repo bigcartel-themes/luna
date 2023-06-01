@@ -228,7 +228,7 @@ _:-ms-fullscreen, :root .product-list-thumb
 
   @media screen and (max-width: $break-small)
     font-size: 16px
-    padding: $luna-base
+    padding: $luna-base 0
 
 .product-list-item-background
   background-color: $products-background-color
@@ -252,9 +252,10 @@ _:-ms-fullscreen, :root .product-list-thumb
     background-color: $primary-text-color
     height: 1px
     left: 50%
+    opacity: .5
     position: absolute
     transform: translateX(-50%)
-    width: 20px
+    width: 16px
 
 .product-list-thumb-price
   font-family: $secondary-font
@@ -270,6 +271,7 @@ _:-ms-fullscreen, :root .product-list-thumb
   font-size: 16px
   font-style: italic
   text-transform: none
+  margin-top: 2px
 
   @media screen and (max-width: $break-small)
     font-size: 14px
