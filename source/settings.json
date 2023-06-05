@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "images": [
     {
       "variable": "header",
@@ -296,7 +296,7 @@
     "antialias_text": "antialiased",
     "header_image": "{{ header }}",
     "background_image": "{{ background }}",
-    "background_color": "{{ secondary_background_color }}",
+    "background_color": "{{ background_color }}",
     "gutter_width": "28px",
     "body_font": "{{ primary_font }}",
     "body_font_size": "16px",
