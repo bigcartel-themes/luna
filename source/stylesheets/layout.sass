@@ -1,7 +1,5 @@
-@import 'variables'
-
-*
-  box-sizing: border-box
+\:root
+  --border-radius: $border-radius
 
 html
   height: 100%
@@ -331,10 +329,14 @@ button, a.button
       color: $links-rollover-color
 
   ol, ul
+    list-style: initial
     padding-left: 1em
 
-  img, iframe
-    max-width: 100%
+  p
+    margin-block-start: 1em
+    margin-block-end: 1em
+    margin-inline-start: 0px
+    margin-inline-end: 0px
 
 .custom .footer-nav
   border: none
@@ -602,24 +604,10 @@ a.back-to-site
   position: absolute
   width: 1px
 
-@keyframes reset
-  from
-    opacity: 0
-  to
-    opacity: 0
+.blur-up
+  transition: filter .2s
+  filter: blur(5px)
+  transform: translate3d(0, 0, 0)
 
-@keyframes fade-in
-  from
-    opacity: 0
-  to
-    opacity: 1
-
-.fade-in
-  animation-name: reset, fade-in
-  -webkit-animation-name: reset, fade-in
-  animation-duration: .2s
-  -webkit-animation-duration: .2s
-  animation-timing-function: ease-in
-  -webkit-animation-timing-function: ease-in
-  animation-iteration-count: 1
-  -webkit-animation-iteration-count: 1
+  &.lazyloaded
+    filter: blur(0)

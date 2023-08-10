@@ -208,6 +208,30 @@
       "description": "Sets the display of the Product page"
     },
     {
+      "variable": "desktop_product_page_images",
+      "label": "Desktop product page images",
+      "type": "select",
+      "options": [
+        ["Two column", "two-column"],
+        ["Stacked", "stacked"],
+        ["Carousel", "carousel"],
+        ["Carousel w/ thumbnails", "carousel_thumbs"]
+      ],
+      "default": "stacked",
+      "description": "Sets the display of the Product page gallery"
+    },
+    {
+      "variable": "mobile_product_page_images",
+      "label": "Mobile product page image carousel",
+      "type": "select",
+      "options": [
+        ["Show thumbnails", "show-thumbnails"],
+        ["Hide thumbnails", "hide-thumbnails"]
+      ],
+      "default": "show-thumbnails",
+      "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
+    },
+    {
       "variable": "show_similar_products",
       "label": "Show related products",
       "type": "boolean",

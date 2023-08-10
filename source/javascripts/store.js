@@ -164,24 +164,6 @@ $(document).ready(function() {
   }
 });
 
-$('.home-slideshow').flexslider({
-  animation: "slide",
-  allowOneSlide: false
-});
-
-$('.flexslider').on('touchmove', function (e) { e.stopPropagation(); });
-var width = $(window).width();
-
-if ($('.product-images-slideshow').length && width <= 768) {
-  $('.product-images-slideshow').addClass('flexslider');
-  $('.product-images-slideshow').flexslider({
-    animation: 'slide',
-    animationLoop: false,
-    controlsContainer: 'canvas',
-    directionNav: false
-  });
-}
-
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
@@ -226,7 +208,7 @@ function disableSelectOption(select_option, type) {
   if (type === "sold-out") {
     disabled_text = select_option.parent().attr("data-sold-text");
     disabled_type = "sold-out";
-    if (show_sold_out_product_options === 'false') {
+    if (themeOptions.showSoldOutOptions === 'false') {
       hide_option = true;
     }
     else {
@@ -250,26 +232,3 @@ function disableSelectOption(select_option, type) {
     }
   }
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
-  if ("IntersectionObserver" in window) {
-    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          let lazyImage = entry.target;
-          lazyImage.src = lazyImage.dataset.src;
-          lazyImage.srcset = lazyImage.dataset.srcset;
-          lazyImage.classList.remove("lazy");
-          lazyImageObserver.unobserve(lazyImage);
-        }
-      }, {
-        rootMargin: "0px 0px 256px 0px"
-      });
-    });
-
-    lazyImages.forEach(function(lazyImage) {
-      lazyImageObserver.observe(lazyImage);
-    });
-  }
-});

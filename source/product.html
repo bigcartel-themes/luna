@@ -20,14 +20,80 @@
     </div>
   </div>
 
-  <div class="product-images{% if product.images.size > 1 %} product-images-slideshow{% endif %}">
-    <ul class="slides">
-      {% for image in product.images %}
-        <li>
-          <img alt="{{ product.name | escape }}" class="lazy product-image" src="{{ image | product_image_url | constrain: 100 }}" data-src="{{ image | product_image_url | constrain: 650 }}" data-srcset="{{ image | product_image_url | constrain: 1300 }} 2x, {{ image | product_image_url | constrain: 650 }} 1x">
-        </li>
-      {% endfor %}
-    </ul>
+  <div class="product-images {{ theme.desktop_product_page_images }} {{ theme.mobile_product_page_images }}">
+    {% if product.images.size > 1 %}
+      <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for image in product.images %}
+              {% assign image_width = image.width | times: 1.0 %}
+              {% assign image_height = image.height | times: 1.0 %}
+              {% assign aspect_ratio = image_width | divided_by: image_height %}
+              <li class="splide__slide">
+                <a class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                  <img
+                    alt="Image of {{ product.name | escape }}"
+                    class="product-image lazyload"
+                    fetchpriority="high"
+                    src="{{ image | product_image_url | constrain: 200 }}"
+                    data-srcset="
+                      {{ image | product_image_url | constrain: 400 }} 400w,
+                      {{ image | product_image_url | constrain: 700 }} 700w,
+                      {{ image | product_image_url | constrain: 1000 }} 1000w,
+                      {{ image | product_image_url | constrain: 1400 }} 1400w,
+                      {{ image | product_image_url | constrain: 2000 }} 2000w,
+                    "
+                    width="{{ image.height | times: aspect_ratio }}"
+                    height="{{ image.height }}"
+                    data-sizes="auto"
+                  >
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="product-thumbnails" role="group">
+        <div class="product-thumbnails--inner">
+          <ul class="product-thumbnails--list">
+            {% for image in product.images %}
+              <li class="product-thumbnails--item">
+                <img
+                  alt="Image of {{ product.name | escape }}"
+                  class="lazyload"
+                  src="{{ image | product_image_url | constrain: 30 }}"
+                  data-srcset="
+                    {{ image | product_image_url | constrain: 60 }} 60w,
+                    {{ image | product_image_url | constrain: 120 }} 120w,
+                    {{ image | product_image_url | constrain: 200 }} 200w,
+                  "
+                  data-sizes="auto"
+                >
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% else %}
+      {% assign image_width = product.image.width | times: 1.0 %}
+      {% assign image_height = product.image.height | times: 1.0 %}
+      <a class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+        <img
+          alt="Image of {{ product.name | escape }}"
+          class="blur-up product-image lazyload"
+          fetchpriority="high"
+          src="{{ product.image | product_image_url | constrain: 200 }}"
+          data-srcset="
+            {{ product.image | product_image_url | constrain: 400 }} 400w,
+            {{ product.image | product_image_url | constrain: 700 }} 700w,
+            {{ product.image | product_image_url | constrain: 1000 }} 1000w,
+            {{ product.image | product_image_url | constrain: 1400 }} 1400w,
+            {{ product.image | product_image_url | constrain: 2000 }} 2000w,
+          "
+          data-sizes="auto"
+        >
+      </a>
+    {% endif %}
   </div>
 
   <div class="product-details">
@@ -102,29 +168,29 @@
     {% if theme.show_facebook or theme.show_twitter or theme.show_pinterest %}
       <ul class="social-buttons">
         {% if theme.show_facebook %}
-        <li class="social-facebook">
-          <div class="social-title">Share it</div>
-          <div class="social-action">
-            <div class="fb-share-button" data-href="{{ page.full_url }}" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url }}src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-          </div>
-        </li>
+          <li class="social-facebook">
+            <div class="social-title">Share it</div>
+            <div class="social-action">
+              <div class="fb-share-button" data-href="{{ page.full_url }}" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url }}src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+            </div>
+          </li>
         {% endif %}
         {% if theme.show_twitter %}
-        <li class="social-twitter">
-          <div class="social-title">Tweet It</div>
-          <div class="social-action">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </div>
-        </li>
+          <li class="social-twitter">
+            <div class="social-title">Tweet It</div>
+            <div class="social-action">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+          </li>
         {% endif %}
         {% if theme.show_pinterest %}
-        <li class="social-pinterest">
-          <div class="social-title">Pin It</div>
-          <div class="social-action">
-            <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description | escape | truncate: 490 }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
-            <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-          </div>
-        </li>
+          <li class="social-pinterest">
+            <div class="social-title">Pin It</div>
+            <div class="social-action">
+              <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description | escape | truncate: 490 }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
+              <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+            </div>
+          </li>
         {% endif %}
       </ul>
     {% endif %}

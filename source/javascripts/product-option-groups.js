@@ -10,7 +10,7 @@ function processProduct(product) {
     }
   }
   if ($('.product_option_select').length) {
-    if (show_sold_out_product_options === 'false') {
+    if (themeOptions.showSoldOutOptions === 'false') {
       $('option[disabled-type="sold-out"]').wrap('<span>');
     }
   }
