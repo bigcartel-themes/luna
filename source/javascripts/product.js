@@ -1,6 +1,7 @@
 var lightbox = new PhotoSwipeLightbox({
   gallery: '.splide__list',
   children: 'a',
+  loop: false,
   paddingFn: (viewportSize) => {
     let paddingVal = 100;
     if (viewportSize.x < 768) {

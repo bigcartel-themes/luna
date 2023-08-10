@@ -2,7 +2,7 @@ var productSlideshowContainer = document.querySelector('.product-carousel');
 
 if (productSlideshowContainer) {
   var splide = new Splide( '.product-carousel', {
-    rewind: true,
+    rewind: false,
     keyboard: true,
     arrows: true,
     pagination: true,
@@ -22,7 +22,19 @@ if (productSlideshowContainer) {
   }
 
   splide.on( 'mounted move', function () {
+    let thumbContainer = document.querySelector('.product-thumbnails--list');
+    let displayWidth = Math.ceil(thumbContainer.getBoundingClientRect().width);
+    let scrollWidth = Math.ceil(thumbContainer.scrollWidth);
+
+    if (scrollWidth > displayWidth) {
+      thumbContainer.classList.add('is-overflow');
+    }
+    else {
+      thumbContainer.classList.remove('is-overflow');
+    }
+
     var thumbnail = thumbnails[ splide.index ];
+
     if (thumbnail) {
       if (current) {
         current.classList.remove('is-active');

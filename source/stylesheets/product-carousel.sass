@@ -114,15 +114,34 @@
   &--list
     display: flex
     gap: 12px
+    align-items: center
+    justify-content: center
+
+    &.is-overflow
+      justify-content: flex-start
 
   &--item
-    width: 100px
-    height: 100px
+    width: 80px
+    height: 80px
     flex-shrink: 0
+    cursor: pointer
+    border-radius: var(--border-radius)
+    overflow: hidden
+    user-select: none
+    pointer-events: none
+    border: 2px solid transparent
+
+    &:not(.is-active):hover
+      img
+        opacity: .8
+
+    &.is-active
+      border: 2px solid $links-rollover-color
 
     img
-      border-radius: var(--border-radius)
       display: block
       object-fit: cover
       width: 100%
       height: 100%
+      user-select: none
+      pointer-events: auto
