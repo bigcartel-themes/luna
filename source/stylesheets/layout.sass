@@ -1,5 +1,5 @@
 \:root
-  --border-radius: $border-radius
+  --border-radius: 4px
 
 html
   height: 100%
@@ -108,7 +108,7 @@ button, input, textarea, select
   +appearance(none)
   background: none
   border: none
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   color: $primary-text-color
   font-family: $primary-font
   padding: 0
@@ -220,7 +220,7 @@ _:-ms-fullscreen, :root .main
       padding-bottom: $luna-base * 4
       padding-top: $luna-base * 4
 
-button, a.button
+button.button, a.button
   +transition(color, background-color .1s linear)
   background: $button-background-color
   color: $button-text-color
@@ -258,7 +258,7 @@ button, a.button
 
 .select
   border: 2px solid $primary-text-color
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   height: 58px
   margin-bottom: $luna-base * 2
   max-width: 100%
@@ -472,7 +472,7 @@ button.search-button
   width: 16px
 
 .errors
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   background-color: #b11a2a
   color: #FFFFFF
   line-height: 1.5em
@@ -497,7 +497,7 @@ input, textarea
 
 a.back-to-site
   background: none
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   border: 2px solid $primary-text-color
   color: $primary-text-color
   font-size: $luna-font-base-px - 4
