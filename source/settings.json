@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "images": [
     {
       "variable": "header",
@@ -208,16 +208,23 @@
       "description": "Sets the display of the Product page"
     },
     {
+      "variable": "product_image_zoom",
+      "label": "Enable product image zoom",
+      "type": "boolean",
+      "default": true,
+      "description": "Click to open a larger version of the Product page image"
+    },
+    {
       "variable": "desktop_product_page_images",
       "label": "Desktop product page images",
       "type": "select",
       "options": [
         ["Two column", "two-column"],
         ["Stacked", "stacked"],
-        ["Carousel", "carousel"],
-        ["Carousel w/ thumbnails", "carousel_thumbs"]
+        ["Thumbnails", "thumbnails"],
+        ["Carousel", "carousel"]
       ],
-      "default": "stacked",
+      "default": "carousel",
       "description": "Sets the display of the Product page gallery"
     },
     {
@@ -228,7 +235,7 @@
         ["Show thumbnails", "show-thumbnails"],
         ["Hide thumbnails", "hide-thumbnails"]
       ],
-      "default": "show-thumbnails",
+      "default": "hide-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {

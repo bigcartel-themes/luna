@@ -4,6 +4,7 @@
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">.preload * { transition: none !important;display: none !important } .transition-preload { transition: none !important }</style>
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
@@ -266,6 +267,7 @@
         showSoldOutOptions: '{{ theme.show_sold_out_product_options }}',
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
+        productImageZoom: '{{ theme.product_image_zoom }}',
       }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
