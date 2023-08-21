@@ -220,7 +220,7 @@
             <li><a href="/cart">Cart</a></li>
             {% if theme.show_search %}
               <li>
-                <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
+                <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
                   <input type="hidden" name="utf8" value='✓'>
                   <label class="visually-hidden" for="search">Search products</label>
                   <input class="search-input" id="search" name="search" placeholder="Search" type="text" autocomplete="off" />
