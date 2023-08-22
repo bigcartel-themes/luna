@@ -8,7 +8,7 @@ if (productSlideshowContainer) {
   }
 
   var splide = new Splide('.product-carousel', {
-    rewind: false,
+    rewind: true,
     keyboard: true,
     arrows: desktopSplide,
     type: themeOptions.desktopProductPageImages == 'carousel' ? 'loop' : 'fade',
@@ -43,17 +43,15 @@ if (productSlideshowContainer) {
     updateSlideContainer();
 
     const thumbContainer = document.querySelector('.product-thumbnails--list');
-    const scrollContainer = document.querySelector('.product-thumbnails--inner');
     const halfWidth = Math.round(thumbContainer.getBoundingClientRect().width / 2);
-    const scrollWidth = Math.round(thumbContainer.scrollWidth);
 
     const thumbnail = thumbnails[splide.index];
     const offsetLeft = (thumbnail.offsetLeft);
     if (offsetLeft > halfWidth) {
-      scrollContainer.scrollTo({ left: offsetLeft - halfWidth, behavior: 'smooth' });
+      thumbContainer.scrollTo({ left: offsetLeft - halfWidth, behavior: 'smooth' });
     }
     if (offsetLeft < halfWidth) {
-      scrollContainer.scrollTo({ left: offsetLeft - halfWidth, behavior: 'smooth' });
+      thumbContainer.scrollTo({ left: offsetLeft - halfWidth, behavior: 'smooth' });
     }
     if (thumbnail) {
       if (current) {
@@ -69,11 +67,11 @@ if (productSlideshowContainer) {
   splide.mount();
 }
 const thumbScrollers = document.querySelectorAll('.thumb-scroller');
-const scrollContainer = document.querySelector('.product-thumbnails--inner');
+const thumbContainer = document.querySelector('.product-thumbnails--list');
 thumbScrollers.forEach(thumbScroller => {
   thumbScroller.addEventListener('click', function () {
-    const containerWidth = scrollContainer.getBoundingClientRect().width;
-    const scrollLeft = Math.round(scrollContainer.scrollLeft);
+    const containerWidth = thumbContainer.getBoundingClientRect().width;
+    const scrollLeft = Math.round(thumbContainer.scrollLeft);
     const scrollDirection = this.dataset.direction;
     let scrollPosition;
     if (scrollDirection === 'left') {
@@ -82,15 +80,14 @@ thumbScrollers.forEach(thumbScroller => {
     if (scrollDirection === 'right') {
       scrollPosition = scrollLeft + containerWidth;
     }
-    scrollContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    thumbContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
   });
 });
-scrollContainer.addEventListener('scroll', function () {
-  const scrollLeft = Math.round(scrollContainer.scrollLeft);
+thumbContainer?.addEventListener('scroll', function () {
+  let scrollLeft = this.scrollLeft;
   const firstThumbnailWidth = document.getElementsByClassName('product-thumbnails--item')[1].offsetLeft;
-  const thumbContainer = document.querySelector('.product-thumbnails--list');
-  const scrollWidth = Math.round(thumbContainer.scrollWidth);
-  const displayWidth = Math.round(thumbContainer.getBoundingClientRect().width);
+  const scrollWidth = Math.round(this.scrollWidth);
+  const displayWidth = Math.round(this.getBoundingClientRect().width);
   const scrollRight = scrollWidth - displayWidth;
 
   if (scrollLeft < firstThumbnailWidth) {

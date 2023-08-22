@@ -22,9 +22,9 @@
 
   <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}">
     {% if product.images.size > 1 %}
-      <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} image carousel">
+      <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
         <div class="overlay-image-counter">
-          <span class="current-slide-number">1</span>/{{ product.images.size }}
+          <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
         </div>
         <div class="splide__track">
           <ul class="splide__list">
@@ -34,13 +34,13 @@
               {% assign aspect_ratio = image_width | divided_by: image_height %}
               <li class="splide__slide">
                 {% if theme.product_image_zoom %}
-                  <a class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                  <a aria-label="Open image {{ forloop.index }} in lightbox" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
                 {% endif %}
                   <img
                     alt="Image of {{ product.name | escape }}"
                     class="product-image lazyload"
                     fetchpriority="high"
-                    loading="lazy"
+                    {% if forloop.index > 1 %}loading="lazy"{% endif %}
                     src="{{ image | product_image_url | constrain: 200 }}"
                     data-srcset="
                       {{ image | product_image_url | constrain: 400 }} 400w,
@@ -60,12 +60,12 @@
         </div>
       </div>
       <div class="product-thumbnails-buttons-container">
-        <button aria-label="Slide left" class="thumb-scroller thumb-scroller--left" disabled data-direction="left">
+        <button aria-label="Slide left" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--left" disabled data-direction="left">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
         <div class="product-thumbnails" role="group">
           <div class="product-thumbnails--inner">
-            <ul class="product-thumbnails--list{% if product.images.size > 5 %} is-overflow{% endif %}">
+            <ul class="product-thumbnails--list{% if product.images.size > 5 %} is-overflow{% endif %}" id="carousel-thumbnail">
               {% for image in product.images %}
                 <li class="product-thumbnails--item">
                   <button type="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.images.size }}">
@@ -86,7 +86,7 @@
             </ul>
           </div>
         </div>
-        <button aria-label="Slide right" class="thumb-scroller thumb-scroller--right" data-direction="right">
+        <button aria-label="Slide right" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--right" data-direction="right">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
       </div>
@@ -99,10 +99,10 @@
       {% assign image_width = product.image.width | times: 1.0 %}
       {% assign image_height = product.image.height | times: 1.0 %}
       {% if theme.product_image_zoom %}
-        <a class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+        <a aria-label="Open image of {{ product.name | escape }} in lightbox" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
       {% endif %}
         <img
-          alt="Image of {{ product.name | escape }}"
+          alt="{{ product.name | escape }}"
           class="blur-up product-image lazyload"
           fetchpriority="high"
           src="{{ product.image | product_image_url | constrain: 200 }}"
@@ -120,30 +120,7 @@
   </div>
 
   <div class="product-details">
-    {% if product.description != blank %}
-      <div class="product-description">
-        {{ product.description | paragraphs }}
-      </div>
-    {% endif %}
-
     {% if product.status == 'active' %}
-      {% if theme.show_inventory_bars %}
-        <div class="product-inventory">
-        	<h2 class="product-inventory-header">Availability</h2>
-        	<ul class="inventory-bars">
-            {% for option in product.options %}
-        		<li>
-        		  {% unless product.has_default_option %}<div class="option-name">{{ option.name }}</div>{% endunless %}
-        			<div class="inventory-bar">
-        			  <span class="inventory-percentage" style="width:{{ option.inventory }}%;"></span>
-                <span class="inventory-label">{{ option.quantity }} in stock</span>
-        			</div>
-        		</li>
-        		{% endfor %}
-        	</ul>
-        </div>
-      {% endif %}
-
       <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
@@ -185,7 +162,31 @@
           </div>
         {% endif %}
       </form>
+    {% endif %}
 
+    {% if product.description != blank %}
+      <div class="product-description">
+        {{ product.description | paragraphs }}
+      </div>
+    {% endif %}
+
+    {% if product.status == 'active' %}
+      {% if theme.show_inventory_bars %}
+        <div class="product-inventory">
+        	<h2 class="product-inventory-header">Availability</h2>
+        	<ul class="inventory-bars">
+            {% for option in product.options %}
+        		<li>
+        		  {% unless product.has_default_option %}<div class="option-name">{{ option.name }}</div>{% endunless %}
+        			<div class="inventory-bar">
+        			  <span class="inventory-percentage" style="width:{{ option.inventory }}%;"></span>
+                <span class="inventory-label">{{ option.quantity }} in stock</span>
+        			</div>
+        		</li>
+        		{% endfor %}
+        	</ul>
+        </div>
+      {% endif %}
     {% endif %}
 
     {% if theme.show_facebook or theme.show_twitter or theme.show_pinterest %}

@@ -1,7 +1,14 @@
 if (themeOptions.productImageZoom === 'true') {
+  let carouselImages = document.querySelector('.splide__list');
+  let galleryElement = '.product-images';
+  let galleryChildren = '.gallery-link';
+  if (carouselImages) {
+    galleryElement = '.splide__list';
+    galleryChildren = '.splide__slide:not(.splide__slide--clone) a'
+  }
   var lightbox = new PhotoSwipeLightbox({
-    gallery: '.splide__list',
-    children: '.splide__slide:not(.splide__slide--clone) a',
+    gallery: galleryElement,
+    children: galleryChildren,
     loop: true,
     showHideAnimationType: 'fade',
     paddingFn: (viewportSize) => {

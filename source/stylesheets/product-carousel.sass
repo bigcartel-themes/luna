@@ -2,8 +2,8 @@
   --thumbnail-active-color: $links-rollover-color
   --thumb-scroller-color: $primary-text-color
   --thumb-scroller-background: rgba(0,0,0,.1)
-  --current-slide-background: rgba(255, 255, 255, 1)
-  --current-slide-color: rgba(0,0,0,1)
+  --current-slide-background: $secondary-background-color
+  --current-slide-color: $primary-text-color
 
 .product-carousel
   .splide__list
@@ -60,10 +60,18 @@
 .splide__track
   border-radius: var(--border-radius)
 
+.splide__arrows
+  display: none
+
+  @media (hover: hover)
+    display: block
+
 .splide__arrow
-  opacity: 0 !important
-  visibility: hidden !important
   transition: opacity .2s ease
+  opacity: 0
+
+  &:disabled
+    opacity: 0
 
   &--prev
     left: .75em
@@ -71,45 +79,45 @@
   &--next
     right: .75em
 
-@media (hover: hover)
-  .splide:hover .splide__arrow
-    opacity: 1 !important
-    visibility: visible !important
+.splide:hover, .splide:focus-within
+  .splide__arrow:not(:disabled)
+    opacity: 1
 
 .product-thumbnails
-  overflow: hidden
-
-  &--inner
-    overflow-x: auto
-    scroll-snap-type: x mandatory
-    scroll-behavior: smooth
-
-    &::-webkit-scrollbar
-      display: none
 
   &--list
     display: flex
-    gap: 10px
+    gap: 1rem
+    padding: .5rem
+    scroll-padding-left: .5rem
     align-items: center
     justify-content: center
     position: relative
 
     &.is-overflow
       justify-content: flex-start
+      overflow-x: auto
+      scroll-snap-type: x mandatory
+      scroll-behavior: smooth
+
+      &::-webkit-scrollbar
+        display: none
 
     &.thumbnails
       flex-wrap: wrap
 
   &--item
-    width: calc((100% / 5) - 8px)
+    width: calc(20% - .8rem)
     flex-shrink: 0
     cursor: pointer
     border-radius: var(--border-radius)
-    overflow: hidden
     user-select: none
     pointer-events: none
     position: relative
     scroll-snap-align: start
+
+    @media screen and (max-width: $break-small)
+      width: calc(25% - .8rem)
 
     &:before
       content: ""
@@ -122,7 +130,7 @@
 
     &[aria-current="true"]
       button
-        border: 2px solid var(--thumbnail-active-color)
+        box-shadow: 0 0 0 2px var(--thumbnail-active-color)
 
     button
       position: absolute
@@ -136,7 +144,6 @@
       user-select: none
       border-radius: var(--border-radius)
       pointer-events: auto
-      border: 2px solid transparent
 
       img
         height: 100%
@@ -153,6 +160,9 @@
   margin-top: 12px
   width: 100%
 
+  @media screen and (max-width: $break-small)
+    gap: 6px
+
   .product-thumbnails
     flex: 1
 
@@ -160,19 +170,23 @@
     display: none
     align-items: center
     justify-content: center
-    width: 26px
-    height: 30px
-    background: var(--thumb-scroller-background)
+    width: 32px
+    height: 56px
     color: var(--thumb-scroller-color)
 
+    @media screen and (max-width: $break-small)
+      height: 44px
+
     &[disabled]
-      opacity: .5
+      opacity: .3
       cursor: not-allowed
+
+    &:not([disabled]):hover
+      background: var(--thumb-scroller-background)
 
     svg
       display: block
-      width: 20px
-      height: 20px
+      width: 16px
 
     &--left
       svg
@@ -227,9 +241,12 @@
 
   .desktop-thumbnails
     .product-thumbnails
+      padding: 0px
+
       &--list
         display: grid
         grid-template-columns: repeat(5, 1fr)
+        padding: 4px 0
 
       &--item
         width: 100%
@@ -272,10 +289,12 @@
 
 .overlay-image-counter
   position: absolute
-  right: 12px
-  top: 12px
+  right: 10px
+  bottom: 10px
+  font-size: .8em
+  line-height: normal
   z-index: 1000
   background: var(--current-slide-background)
   color: var(--current-slide-color)
-  padding: 4px
+  padding: 6px 8px
   border-radius: var(--border-radius)
