@@ -219,12 +219,12 @@
       "label": "Desktop product page images",
       "type": "select",
       "options": [
-        ["Two column", "two-column"],
-        ["Stacked", "stacked"],
         ["Thumbnails", "thumbnails"],
-        ["Carousel", "carousel"]
+        ["Carousel", "carousel"],
+        ["Stacked 2 column", "two-column"],
+        ["Stacked full width", "stacked"]
       ],
-      "default": "carousel",
+      "default": "thumbnails",
       "description": "Sets the display of the Product page gallery"
     },
     {
@@ -235,7 +235,7 @@
         ["Show thumbnails", "show-thumbnails"],
         ["Hide thumbnails", "hide-thumbnails"]
       ],
-      "default": "hide-thumbnails",
+      "default": "show-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {

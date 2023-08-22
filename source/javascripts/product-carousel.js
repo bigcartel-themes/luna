@@ -23,7 +23,7 @@ if (productSlideshowContainer) {
     }
   });
 
-  const thumbnails = document.getElementsByClassName('product-thumbnails--item');
+  let thumbnails = document.getElementsByClassName('product-thumbnails--item');
   let current;
 
   for (let i = 0; i < thumbnails.length; i++) {
@@ -44,8 +44,8 @@ if (productSlideshowContainer) {
 
     const thumbContainer = document.querySelector('.product-thumbnails--list');
     const scrollContainer = document.querySelector('.product-thumbnails--inner');
-    const halfWidth = Math.ceil(thumbContainer.getBoundingClientRect().width / 2);
-    const scrollWidth = Math.ceil(thumbContainer.scrollWidth);
+    const halfWidth = Math.round(thumbContainer.getBoundingClientRect().width / 2);
+    const scrollWidth = Math.round(thumbContainer.scrollWidth);
 
     const thumbnail = thumbnails[splide.index];
     const offsetLeft = (thumbnail.offsetLeft);
@@ -58,21 +58,22 @@ if (productSlideshowContainer) {
     if (thumbnail) {
       if (current) {
         current.classList.remove('is-active');
-        thumbnail.removeAttribute('aria-current');
+        current.removeAttribute('aria-current');
       }
-      thumbnail.setAttribute('aria-current', 'true');
+
       thumbnail.classList.add('is-active');
       current = thumbnail;
+      thumbnail.setAttribute('aria-current', 'true');
     }
   });
   splide.mount();
 }
 const thumbScrollers = document.querySelectorAll('.thumb-scroller');
+const scrollContainer = document.querySelector('.product-thumbnails--inner');
 thumbScrollers.forEach(thumbScroller => {
   thumbScroller.addEventListener('click', function () {
-    const scrollContainer = document.querySelector('.product-thumbnails--inner');
     const containerWidth = scrollContainer.getBoundingClientRect().width;
-    let scrollLeft = Math.ceil(scrollContainer.scrollLeft);
+    const scrollLeft = Math.round(scrollContainer.scrollLeft);
     const scrollDirection = this.dataset.direction;
     let scrollPosition;
     if (scrollDirection === 'left') {
@@ -84,11 +85,32 @@ thumbScrollers.forEach(thumbScroller => {
     scrollContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
   });
 });
+scrollContainer.addEventListener('scroll', function () {
+  const scrollLeft = Math.round(scrollContainer.scrollLeft);
+  const firstThumbnailWidth = document.getElementsByClassName('product-thumbnails--item')[1].offsetLeft;
+  const thumbContainer = document.querySelector('.product-thumbnails--list');
+  const scrollWidth = Math.round(thumbContainer.scrollWidth);
+  const displayWidth = Math.round(thumbContainer.getBoundingClientRect().width);
+  const scrollRight = scrollWidth - displayWidth;
+
+  if (scrollLeft < firstThumbnailWidth) {
+    document.querySelector('.thumb-scroller--left').setAttribute('disabled', 'true');
+  }
+  else {
+    document.querySelector('.thumb-scroller--left').removeAttribute('disabled');
+  }
+  if (scrollLeft >= scrollRight) {
+    document.querySelector('.thumb-scroller--right').setAttribute('disabled', 'true');
+  }
+  else {
+    document.querySelector('.thumb-scroller--right').removeAttribute('disabled');
+  }
+});
 
 function updateSlideContainer() {
   const thumbContainer = document.querySelector('.product-thumbnails--list');
-  const displayWidth = Math.ceil(thumbContainer.getBoundingClientRect().width);
-  const scrollWidth = Math.ceil(thumbContainer.scrollWidth);
+  const displayWidth = Math.round(thumbContainer.getBoundingClientRect().width);
+  const scrollWidth = Math.round(thumbContainer.scrollWidth);
   const thumbScrollers = document.querySelectorAll('.thumb-scroller');
   const currentSlideSpans = document.querySelectorAll('.current-slide-number');
   if (scrollWidth > displayWidth) {
@@ -110,9 +132,9 @@ function updateSlideContainer() {
 
 const previousSlideButton = document.querySelector('.previous-slide');
 const nextSlideButton = document.querySelector('.next-slide');
-previousSlideButton.addEventListener('click', function () {
+previousSlideButton?.addEventListener('click', function () {
   splide.go(splide.index - 1);
 });
-nextSlideButton.addEventListener('click', function () {
+nextSlideButton?.addEventListener('click', function () {
   splide.go(splide.index + 1);
 });
