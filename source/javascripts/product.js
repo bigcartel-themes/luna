@@ -3,6 +3,7 @@ if (themeOptions.productImageZoom === 'true') {
     gallery: '.splide__list',
     children: '.splide__slide:not(.splide__slide--clone) a',
     loop: true,
+    showHideAnimationType: 'fade',
     paddingFn: (viewportSize) => {
       let paddingVal = 100;
       if (viewportSize.x < 768) {
