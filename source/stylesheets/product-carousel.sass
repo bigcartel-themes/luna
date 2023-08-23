@@ -4,6 +4,9 @@
   --thumb-scroller-background: rgba(0,0,0,.1)
   --current-slide-background: $secondary-background-color
   --current-slide-color: $primary-text-color
+  --active-slide-border-width: 1px
+  --gap-width: 10px
+  --num-images: 5
 
 .product-carousel
   .splide__list
@@ -17,45 +20,6 @@
 
   .splide__slide:not(.is-active)
     height: 0
-
-.product-thumbnail-carousel
-  margin-top: 12px
-
-  .splide__slide
-    border-radius: var(--border-radius)
-    opacity: 0.8
-    border: none !important
-    aspect-ratio: 1 / 1
-
-    img
-      border-radius: var(--border-radius)
-      border: 2px solid transparent !important
-
-    @media (hover: hover)
-      &:hover
-        img
-          border: 2px solid var(--border-color) !important
-
-    &[aria-current="true"]
-      opacity: 1
-
-      img
-        border: 2px solid var(--border-color) !important
-
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-
-  .splide__list
-    scroll-padding-left: 15px
-    overflow-x: auto
-
-.product-thumbnail-carousel.splide:not(.is-overflow) .splide__list
-  justify-content: center
-
-.product-thumbnail-carousel.splide:not(.is-overflow) .splide__slide:last-child
-  margin: 0 !important
 
 .splide__track
   border-radius: var(--border-radius)
@@ -87,12 +51,23 @@
 
   &--list
     display: flex
-    gap: 1rem
-    padding: .5rem
-    scroll-padding-left: .5rem
+    gap: var(--gap-width)
+    flex: 1
+    padding: calc(var(--gap-width) / 2)
+    scroll-padding-left: calc(var(--gap-width) / 2)
     align-items: center
     justify-content: center
     position: relative
+
+    @media screen and (max-width: $break-small)
+      .product-thumbnails--item
+        --num-images: 4
+
+      &.mobile-overflow
+        padding: 0
+
+        .product-thumbnails--item
+          --num-images: 5
 
     &.is-overflow
       justify-content: flex-start
@@ -107,7 +82,7 @@
       flex-wrap: wrap
 
   &--item
-    width: calc(20% - .8rem)
+    width: calc(calc(100% / var(--num-images)) - calc(var(--gap-width) - calc(var(--gap-width) / var(--num-images))))
     flex-shrink: 0
     cursor: pointer
     border-radius: var(--border-radius)
@@ -115,9 +90,6 @@
     pointer-events: none
     position: relative
     scroll-snap-align: start
-
-    @media screen and (max-width: $break-small)
-      width: calc(25% - .8rem)
 
     &:before
       content: ""
@@ -129,10 +101,10 @@
         opacity: .8
 
     &[aria-current="true"]
-      button
-        box-shadow: 0 0 0 2px var(--thumbnail-active-color)
+      .product-thumbnails--change-slide
+        box-shadow: 0 0 0 var(--active-slide-border-width) var(--thumbnail-active-color)
 
-    button
+    .product-thumbnails--change-slide
       position: absolute
       top: 0
       left: 0
@@ -156,15 +128,9 @@
 .product-thumbnails-buttons-container
   align-items: center
   display: flex
-  gap: 10px
-  margin-top: 12px
+  gap: 4px
+  margin-top: 16px
   width: 100%
-
-  @media screen and (max-width: $break-small)
-    gap: 6px
-
-  .product-thumbnails
-    flex: 1
 
   .thumb-scroller
     display: none
@@ -178,7 +144,7 @@
       height: 44px
 
     &[disabled]
-      opacity: .3
+      opacity: .2
       cursor: not-allowed
 
     &:not([disabled]):hover
@@ -197,8 +163,9 @@
         transform: rotate(-90deg)
 
     &.hidden
-      opacity: 0
-      visibility: hidden
+      display: none
+      //opacity: 0
+      //visibility: hidden
 
 @media screen and (min-width: $break-small + 1)
   .overlay-image-counter
@@ -216,7 +183,7 @@
         flex-shrink: 0
         width: 100%
 
-    .product-thumbnails
+    .product-thumbnails-buttons-container
       display: none
 
   .desktop-two-column
@@ -225,8 +192,35 @@
         flex-direction: row
         flex-wrap: wrap
 
+      .splide__track
+        overflow: visible
+
       .splide__slide
         width: calc((100% / 2) - 8px)
+
+        &:not(:first-child)
+          &:before
+            content: ""
+            display: block
+            padding-bottom: 100%
+
+          a
+            position: absolute
+            top: 0
+            left: 0
+            display: block
+            height: 100%
+            width: 100%
+            padding: 0
+            overflow: hidden
+            user-select: none
+            border-radius: var(--border-radius)
+            pointer-events: auto
+
+            img
+              height: 100%
+              width: 100%
+              object-fit: cover
 
         &:first-child
           width: 100%
