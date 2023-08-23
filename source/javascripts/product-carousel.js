@@ -84,7 +84,7 @@ thumbScrollers.forEach(thumbScroller => {
   });
 });
 thumbContainer?.addEventListener('scroll', function () {
-  let scrollLeft = this.scrollLeft;
+  let scrollLeft = Math.round(this.scrollLeft);
   const firstThumbnailWidth = document.getElementsByClassName('product-thumbnails--item')[1].offsetLeft;
   const scrollWidth = Math.round(this.scrollWidth);
   const displayWidth = Math.round(this.getBoundingClientRect().width);
@@ -104,6 +104,9 @@ thumbContainer?.addEventListener('scroll', function () {
   }
 });
 
+window.addEventListener('resize', function() {
+  updateSlideContainer();
+});
 function updateSlideContainer() {
   const thumbContainer = document.querySelector('.product-thumbnails--list');
   const displayWidth = Math.round(thumbContainer.getBoundingClientRect().width);
