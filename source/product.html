@@ -9,7 +9,7 @@
 {% endcase %}
 <div class="product-page">
   <div class="product-page-headings">
-    {% if product_status != blank %}<span class="product-status">{{ product_status }}</span>{% endif %}
+    {% if product_status != blank %}<div class="product-status">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
     <div class="product-price">
       {% if product.variable_pricing %}
@@ -20,12 +20,14 @@
     </div>
   </div>
 
-  <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}">
+  <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">
     {% if product.images.size > 1 %}
       <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
-        <div class="overlay-image-counter">
-          <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
-        </div>
+        {% if product.images.size > 5 %}
+          <div class="overlay-image-counter">
+            <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
+          </div>
+        {% endif %}
         <div class="splide__track">
           <ul class="splide__list">
             {% for image in product.images %}
@@ -63,29 +65,25 @@
         <button aria-label="Slide left" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--left" disabled data-direction="left">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
-        <div class="product-thumbnails" role="group">
-          <div class="product-thumbnails--inner">
-            <ul class="product-thumbnails--list{% if product.images.size > 5 %} is-overflow{% endif %}" id="carousel-thumbnail">
-              {% for image in product.images %}
-                <li class="product-thumbnails--item">
-                  <button type="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.images.size }}">
-                    <img
-                      alt=""
-                      class="lazyload"
-                      loading="lazy"
-                      src="{{ image | product_image_url | constrain: 30 }}"
-                      data-srcset="
-                        {{ image | product_image_url | constrain: 120 }} 120w,
-                        {{ image | product_image_url | constrain: 240 }} 240w
-                      "
-                      data-sizes="auto"
-                    >
-                  </button>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+        <ul class="product-thumbnails--list{% if product.images.size == 5 %} mobile-overflow{% endif %}{% if product.images.size > 5 %} is-overflow{% endif %}" id="carousel-thumbnail">
+          {% for image in product.images %}
+            <li class="product-thumbnails--item">
+              <button class="product-thumbnails--change-slide" type="button" tabindex="0" aria-label="View image {{ forloop.index }} of {{ product.images.size }}">
+                <img
+                  alt=""
+                  class="lazyload"
+                  loading="lazy"
+                  src="{{ image | product_image_url | constrain: 30 }}"
+                  data-srcset="
+                    {{ image | product_image_url | constrain: 120 }} 120w,
+                    {{ image | product_image_url | constrain: 240 }} 240w
+                  "
+                  data-sizes="auto"
+                >
+              </button>
+            </li>
+          {% endfor %}
+        </ul>
         <button aria-label="Slide right" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--right" data-direction="right">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>

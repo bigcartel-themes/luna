@@ -9,25 +9,22 @@
     border-top: 1px solid $border-color
 
 .product-page
-  padding-bottom: 32px
-  position: relative
+  display: grid
+  grid-template-columns: minmax(210px, 370px) minmax(240px, 700px)
+  grid-template-rows: auto 1fr
+  column-gap: calc(var(--large-padding) / 1.5)
+  row-gap: 40px
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    grid-template-columns: 1fr
 
   .product-page-headings
-    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
-    max-width: 35%
-    margin-bottom: $luna-base * 7
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}40px{% endif %}"}
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}40px{% else %}0{% endif %}"}
-    width: 100%
-
-    @media screen and (max-width: $break-medium)
-      max-width: 40%
+    grid-area: 1 / 1 / 2 / 2
 
     @media screen and (max-width: $break-small)
-      float: none
+      grid-area: 1
       max-width: 100%
-      margin-bottom: $luna-base * 6
-      padding: 0
 
   .product-title
     margin-bottom: $luna-base * 3
@@ -36,37 +33,23 @@
   .product-price
     font-family: $secondary-font
     text-align: center
-    font-size: $luna-font-base-px + 8
+    font-size: $luna-font-base-px + 4
     font-weight: normal
 
   .product-status
     color: $secondary-text-color
-    display: block
     font-family: $secondary-font
     font-size: $luna-font-base-px
     font-style: italic
-    margin-bottom: $luna-base * 2
+    margin-bottom: $luna-base * 1.75
     text-align: center
-    vertical-align: top
 
   .product-details
-    display: grid
-    gap: $luna-base * 4
-    clear: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
-    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}right{% else %}left{% endif %}"}
-    max-width: 35%
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}24px{% endif %}"}
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}24px{% else %}0{% endif %}"}
-    width: 100%
-
-    @media screen and (max-width: $break-medium)
-      max-width: 40%
-      padding: 0
+    grid-area: 2 / 1 / 3 / 2
 
     @media screen and (max-width: $break-small)
-      float: none
+      grid-area: 3
       max-width: 100%
-      padding: 0
 
   .add-to-cart-button
     display: block
@@ -109,21 +92,12 @@
       margin-inline-end: 0px
 
   .product-images
-    float: #{"{% if theme.product_page_layout == 'images_left_details_right' %}left{% else %}right{% endif %}"}
-    max-width: 63%
-    padding-left: #{"{% if theme.product_page_layout == 'images_left_details_right' %}0{% else %}24px{% endif %}"}
-    padding-right: #{"{% if theme.product_page_layout == 'images_left_details_right' %}24px{% else %}0{% endif %}"}
-    position: relative
-    width: 100%
-
-    @media screen and (max-width: $break-medium)
-      max-width: 58%
+    grid-area: 1 / 2 / 3 / 2
 
     @media screen and (max-width: $break-small)
-      float: none
-      margin-bottom: 32px
+      display: grid
+      grid-area: 2
       max-width: 100%
-      padding: 0
 
   .product-image
     border-radius: var(--border-radius)
