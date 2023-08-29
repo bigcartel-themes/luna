@@ -18,9 +18,7 @@ body
   background-size: 200px 200px
   color: $primary-text-color
   font-family: $primary-font
-  font-size: 16px
   height: 100%
-  line-height: 1
   margin: 0
   padding: 0
   width: 100%
@@ -36,8 +34,8 @@ body
       +flex-direction(column)
       border: 3px solid $header-text-color
       color: $primary-text-color
-      font-size: 22px
-      line-height: 1.25em
+      font-size: $luna-font-base-px + 2
+      gap: 24px
       padding: $luna-base * 4 $luna-base * 3
       max-width: 600px
       min-height: 200px
@@ -45,7 +43,7 @@ body
       width: 100%
 
     .social-links
-      margin: $luna-base * 2 0 0
+      margin: 0
 
 a.skip-link
   +transition(all .3s)
@@ -269,7 +267,6 @@ button.button, a.button
 
   select
     height: 100%
-    line-height: normal
     padding: 0 48px 0 16px
     position: relative
     width: 100%
@@ -318,7 +315,6 @@ button.button, a.button
 .custom-page-content
   font-family: $secondary-font
   font-size: $luna-font-base-px
-  line-height: 1.5em
   margin: 0 auto
   max-width: 700px
 
@@ -373,7 +369,7 @@ button.button, a.button
           border-bottom: 1px solid $border-color
 
         a
-          padding: $luna-base * 2 0
+          padding: $luna-base * 1.5 0
           text-align: center
 
     a
@@ -415,7 +411,6 @@ button.button, a.button
 .search-input
   border: 1px solid $secondary-text-color
   cursor: pointer
-  line-height: normal
   padding: 12px 32px 12px 12px
   width: 240px
 
@@ -461,7 +456,6 @@ button.search-button
   border-radius: var(--border-radius)
   background-color: #b11a2a
   color: #FFFFFF
-  line-height: 1.5em
   list-style: none
   margin: 0 auto $luna-base * 4
   padding: $luna-base * 1.5 $luna-base * 2
@@ -478,7 +472,6 @@ a.back-to-site
   color: $primary-text-color
   font-size: $luna-font-base-px - 4
   height: auto
-  line-height: 1em
   padding: $luna-base * 2 $luna-base * 4
   width: auto
 
@@ -562,8 +555,7 @@ a.back-to-site
 .centered-message
   color: $secondary-text-color
   font-family: $secondary-font
-  font-size: 20px
-  line-height: 1.5em
+  font-size: 18px
   padding: 0 16px
   text-align: center
 

@@ -9,6 +9,7 @@
   </head>
   <body class="maintenance-page">
     <main class="maintenance-content">
+        <h1 class="maintenance-header">{{ store.name }}</h1>
         <div class="maintenance-message">{{ theme.maintenance_message }}</div>
 
         {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
