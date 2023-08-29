@@ -358,7 +358,7 @@ button.button, a.button
     +justify-content(center)
     +flex-wrap(wrap)
     list-style: none
-    margin: 0 0 $luna-base * 3 0
+    margin: 0
     padding: 0
 
     &.footer-links
@@ -412,15 +412,12 @@ button.button, a.button
 .search-form
   position: relative
 
-  &:focus-within .search-icon
-    display: block
-
 .search-input
-  border: 1px solid transparent !important
+  border: 1px solid $secondary-text-color
   cursor: pointer
-  margin-left: 8px
-  padding: 6px 32px 6px 8px
-  width: 130px
+  line-height: normal
+  padding: 8px 32px 8px 8px
+  width: 240px
 
   &::-webkit-input-placeholder
     color: $primary-text-color
@@ -442,10 +439,10 @@ button.button, a.button
     width: 250px
 
   &:hover
-    border: 1px solid $border-color !important
+    border: 1px solid $border-color
 
   &:focus
-    border: 1px solid $links-rollover-color !important
+    border: 1px solid $links-rollover-color
 
 button.search-button
   +flexbox
@@ -459,9 +456,6 @@ button.search-button
   top: 50%
   transform: translateY(-50%)
   width: 20px
-
-  @media screen and (max-width: $break-small)
-    display: none
 
   &:hover, &:focus
     background: none
