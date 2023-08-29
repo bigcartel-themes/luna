@@ -1,7 +1,7 @@
 \:root
-  --pagination-background: rgba(0,0,0,.5)
-  --pagination-page-background: #9d9d9d
-  --pagination-active-page: #fff
+  --pagination-background: transparent
+  --pagination-page-background: $secondary-text-color
+  --pagination-active-page: $primary-text-color
 
 .home-slideshow
   margin-bottom: 48px
@@ -9,6 +9,11 @@
   .slideshow-image
     border-radius: var(--border-radius)
     width: 100%
+
+  .splide__arrow
+    border-radius: var(--border-radius)
+    width: 2em
+    height: 4em
 
   .splide__pagination
     z-index: 1
@@ -23,7 +28,7 @@
     transform: translateX(-50%)
     left: 50%
     padding: 4px 8px
-    gap: 4px
+    gap: 2px
     right: auto
 
     li
@@ -32,9 +37,9 @@
     .splide__pagination__page
       opacity: 1
       background: var(--pagination-page-background)
-      height: 8px
-      width: 8px
+      height: 10px
+      width: 10px
 
       &.is-active
         background: var(--pagination-active-page)
-        transform: scale(1.2)
+        transform: scale(1.1)
