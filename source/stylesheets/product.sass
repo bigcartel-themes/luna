@@ -6,7 +6,7 @@
     border: none
 
   .related-products-container.under_image + footer .footer-nav
-    border-top: 1px solid $border-color
+    border-top: 1px solid var(--border-color)
 
 .product-page
   display: grid
@@ -31,14 +31,14 @@
     text-align: center
 
   .product-price
-    font-family: $secondary-font
+    font-family: var(--secondary-font)
     text-align: center
     font-size: $luna-font-base-px + 4
     font-weight: normal
 
   .product-status
-    color: $secondary-text-color
-    font-family: $secondary-font
+    color: var(--secondary-text-color)
+    font-family: var(--secondary-font)
     font-size: $luna-font-base-px
     font-style: italic
     margin-bottom: $luna-base * 1.75
@@ -63,23 +63,21 @@
     display: none
     height: auto
     max-width: 100%
-    line-height: normal
     margin: 20px auto 0
     padding: 4px
     width: auto
     font-size: $luna-font-base-px - 2
 
   .product-description
-    font-family: $secondary-font
+    font-family: var(--secondary-font)
     font-size: $luna-font-base-px
-    line-height: 1.5em
 
     a
-      color: $secondary-text-color
+      color: var(--secondary-text-color)
       text-decoration: underline
 
       &:hover, &:focus
-        color: $links-rollover-color
+        color: var(--links-rollover-color)
 
     ol, ul
       list-style: initial
@@ -104,8 +102,8 @@
     width: 100%
 
   .social-buttons
-    border: 1px solid $border-color
-    font-family: $secondary-font
+    border: 1px solid var(--border-color)
+    font-family: var(--secondary-font)
     font-size: 14px
     list-style: none
     margin: $luna-base * 4 0 0
@@ -117,7 +115,7 @@
       +flexbox
       +justify-content(center)
       +align-items(center)
-      border-bottom: 1px solid $border-color
+      border-bottom: 1px solid var(--border-color)
       height: 54px
       overflow: hidden
       position: relative
@@ -185,10 +183,10 @@
       display: none
 
 .prev-next-products
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid var(--border-color)
   +flexbox
   +justify-content(center)
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: $luna-font-base-px - 1
   list-style: none
   margin: 0
@@ -207,7 +205,7 @@
     display: none
 
     @media screen and (max-width: $break-small)
-      border-top: 1px solid $border-color
+      border-top: 1px solid var(--border-color)
       +flexbox
 
 .product-form select span, .product-form select span option
@@ -216,12 +214,11 @@
   visibility: hidden
 
 .product-inventory
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   margin: $luna-base * 4 0 $luna-base * 2
   padding: $luna-base * 2 0
 
   .product-inventory-header
-    color: $secondary-font
     margin-bottom: $luna-base * 3
     text-transform: uppercase
     letter-spacing: .5px
@@ -229,7 +226,7 @@
     text-align: center
 
 .inventory-bars
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   list-style: none
   margin: 0
   padding: 0
@@ -243,20 +240,20 @@
     text-transform: none
 
   .inventory-bar
-    background-color: $border-color
+    background-color: var(--border-color)
     height: 2px
     position: relative
     width: 100%
 
   .inventory-percentage
-    background-color: $border-color
+    background-color: var(--border-color)
     display: block
     height: 3px
     position: absolute
     top: 2px
 
   .inventory-label
-    color: $secondary-text-color
+    color: var(--secondary-text-color)
     font-size: 12px
     display: none
     position: absolute

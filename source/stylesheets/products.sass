@@ -4,8 +4,8 @@
   +align-items(center)
   +justify-content(center)
   +flex-direction(column)
-  border-bottom: 1px solid $border-color
-  border-top: 1px solid $border-color
+  border-bottom: 1px solid var(--border-color)
+  border-top: 1px solid var(--border-color)
   font-size: $luna-font-base-px
   margin-bottom: $luna-base * 5
   padding: $luna-base * 3 $luna-base * 2
@@ -26,7 +26,7 @@
     +align-items(center)
     +justify-content(center)
     +flex-wrap(wrap)
-    font-family: $secondary-font
+    font-family: var(--secondary-font)
     list-style: none
     margin: 0 auto
     padding: 0
@@ -66,7 +66,7 @@
 
 .product-list-thumb
   border-radius: var(--border-radius)
-  color: $primary-text-color
+  color: var(--primary-text-color)
   display: block
   font-size: 0
   padding: $luna-base
@@ -85,10 +85,10 @@
         opacity: .9
 
       .product-list-thumb-name:after
-        background-color: $links-rollover-color
+        background-color: var(--links-rollover-color)
 
       .product-list-thumb-status
-        color: $links-rollover-color
+        color: var(--links-rollover-color)
 
   @media screen and (max-width: $break-medium)
     width: calc(100% / 3)
@@ -107,7 +107,7 @@
         +justify-content(center)
         +flex-direction(column)
         +transition(opacity .2s linear)
-        color: $button-text-color
+        color: var(--button-text-color)
         opacity: 0
         padding: $luna-base *2
         position: absolute
@@ -122,10 +122,10 @@
         top: 5%
 
       .product-list-thumb-status
-        color: $button-text-color
+        color: var(--button-text-color)
 
       .product-list-thumb-name:after
-        background-color: $button-text-color
+        background-color: var(--button-text-color)
 
       &:hover, &:focus
         .product-list-item-background
@@ -225,7 +225,7 @@ _:-ms-fullscreen, :root .product-list-thumb
     padding: $luna-base 0
 
 .product-list-item-background
-  background-color: $products-background-color
+  background-color: var(--products-background-color)
   border-radius: var(--border-radius)
   height: 100%
   left: 0
@@ -243,7 +243,7 @@ _:-ms-fullscreen, :root .product-list-thumb
   &:after
     bottom: -$luna-base
     content: ""
-    background-color: $primary-text-color
+    background-color: var(--primary-text-color)
     height: 1px
     left: 50%
     opacity: .5
@@ -252,7 +252,7 @@ _:-ms-fullscreen, :root .product-list-thumb
     width: 16px
 
 .product-list-thumb-price
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: 16px
   margin-top: $luna-base * 2
 
@@ -260,8 +260,8 @@ _:-ms-fullscreen, :root .product-list-thumb
     font-size: 14px
 
 .product-list-thumb-status
-  color: $secondary-text-color
-  font-family: $secondary-font
+  color: var(--secondary-text-color)
+  font-family: var(--secondary-font)
   font-size: 16px
   font-style: italic
   text-transform: none
@@ -286,7 +286,7 @@ _:-ms-fullscreen, :root .product-list-thumb
     margin: 2px 4px
 
     &:not(.disabled):hover, &:not(.disabled):focus
-      color: $links-rollover-color
+      color: var(--links-rollover-color)
       text-decoration: underline
 
     &.disabled
@@ -301,7 +301,7 @@ _:-ms-fullscreen, :root .product-list-thumb
 
 #products_page .main .wrapper, #home_page .main .wrapper
   @media screen and (max-width: $break-small)
-    border-bottom: 1px solid $border-color
+    border-bottom: 1px solid var(--border-color)
 
     .empty-products
       padding-bottom: $luna-base * 8

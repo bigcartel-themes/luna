@@ -30,7 +30,7 @@
     +flex-direction(column)
 
 .cart-items
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   list-style: none
   margin: 0
   max-width: 65%
@@ -43,7 +43,7 @@
 .cart-item
   +flexbox
   +align-items(center)
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid var(--border-color)
   padding: $luna-base * 3 0
 
   @media screen and (max-width: $break-small)
@@ -88,7 +88,7 @@
     font-size: 16px
 
 .cart-item-details-option
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: 15px
   margin-top: $luna-base / 2.5
 
@@ -127,7 +127,7 @@
     width: 64px
 
     &:hover, &:focus
-      border-color: $links-rollover-color
+      border-color: var(--links-rollover-color)
 
 button.cart-item-remove
   +flexbox
@@ -135,7 +135,7 @@ button.cart-item-remove
   +justify-content(center)
   +flex-shrink(0)
   background: none
-  border: 2px solid $secondary-text-color
+  border: 2px solid var(--secondary-text-color)
   border-radius: 50%
   height: 32px
   padding: 0
@@ -146,19 +146,19 @@ button.cart-item-remove
 
   &:hover, &:focus
     background: none
-    border: 2px solid $links-rollover-color
+    border: 2px solid var(--links-rollover-color)
 
     .cart-item-remove-icon
-      fill: $links-rollover-color
+      fill: var(--links-rollover-color)
 
   .cart-item-remove-icon
     display: block
-    fill: $secondary-text-color
+    fill: var(--secondary-text-color)
     height: 12px
     width: 12px
 
 .cart-footer
-  border: 1px solid $border-color
+  border: 1px solid var(--border-color)
   font-size: $luna-font-base-px
   margin-left: auto
   max-width: 30%
@@ -196,10 +196,9 @@ button.cart-item-remove
 a.button.continue-shopping
   background-color: transparent
   border-color: transparent
-  color: $primary-text-color
+  color: var(--primary-text-color)
   display: block
   font-size: $luna-font-base-px - 1
-  line-height: normal
   height: auto
   margin: 0 auto
   padding: $luna-base
@@ -208,10 +207,9 @@ a.button.continue-shopping
     margin-top: 8px
 
 button.cart-item-remove-text
-  color: $links-rollover-color
+  color: var(--links-rollover-color)
   display: none
   height: auto
-  line-height: normal
   margin: 0
   margin-top: 6px
   padding: 0

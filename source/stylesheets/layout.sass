@@ -2,6 +2,27 @@
   --border-radius: 4px
   --large-padding: 7%
   --small-padding: 3.5%
+  --primary-background-color: #{"{{ theme.background_color }}"}
+  --secondary-background-color: #{"{{ theme.secondary_background_color }}"}
+
+  --primary-text-color: #{"{{ theme.primary_text_color }}"}
+  --secondary-text-color: #{"{{ theme.secondary_text_color }}"}
+
+  --links-rollover-color: #{"{{ theme.link_rollover_color }}"}
+
+  --header-text-color: #{"{{ theme.header_text_color }}"}
+
+  --products-background-color: #{"{{ theme.products_background_color }}"}
+
+  --border-color: #{"{{ theme.border_color }}"}
+
+  --button-text-color: #{"{{ theme.button_text_color }}"}
+  --button-background-color: #{"{{ theme.button_background_color }}"}
+
+  --button-rollover-color: #{"{{ theme.button_rollover_color }}"}
+
+  --primary-font: #{"{{ theme.primary_font | font_family }}"}
+  --secondary-font: #{"{{ theme.secondary_font | font_family }}"}
 
 html
   height: 100%
@@ -12,12 +33,12 @@ html
 body
   +flexbox
   +flex-direction(column)
-  background-color: $primary-background-color
+  background-color: var(--primary-background-color)
   background-image: #{"{% if theme.images.background != blank %}url(\'{{ theme.images.background.url | constrain: 200, 200 }}\'){% else %}none{% endif %}"}
   background-repeat: repeat
   background-size: 200px 200px
-  color: $primary-text-color
-  font-family: $primary-font
+  color: var(--primary-text-color)
+  font-family: var(--primary-font)
   height: 100%
   margin: 0
   padding: 0
@@ -32,8 +53,8 @@ body
       +align-items(center)
       +justify-content(center)
       +flex-direction(column)
-      border: 3px solid $header-text-color
-      color: $primary-text-color
+      border: 3px solid var(--header-text-color)
+      color: var(--primary-text-color)
       font-size: $luna-font-base-px + 2
       gap: 24px
       padding: $luna-base * 4 $luna-base * 3
@@ -47,9 +68,9 @@ body
 
 a.skip-link
   +transition(all .3s)
-  background: $primary-background-color
-  border: 1px solid $primary-text-color
-  color: $primary-text-color
+  background: var(--primary-background-color)
+  border: 1px solid var(--primary-text-color)
+  color: var(--primary-text-color)
   left: 25px
   padding: 15px 20px
   position: absolute
@@ -71,15 +92,15 @@ a.skip-link
 
 a
   +transition(color .1s linear)
-  color: $primary-text-color
+  color: var(--primary-text-color)
   text-decoration: none
 
   &:focus, &:hover
-    color: $links-rollover-color
+    color: var(--links-rollover-color)
     text-decoration: underline
 
 h1, h2, h3, h4, h5
-  color: $header-text-color
+  color: var(--header-text-color)
   font-weight: normal
   line-height: 1.4em
   margin: 0
@@ -94,7 +115,7 @@ h1, h2, h3, h4, h5
     &:after
       bottom: -$luna-base
       content: ""
-      background-color: $header-text-color
+      background-color: var(--header-text-color)
       height: 2px
       left: 50%
       position: absolute
@@ -109,19 +130,17 @@ button, input, textarea, select
   background: none
   border: none
   border-radius: var(--border-radius)
-  color: $primary-text-color
-  font-family: $primary-font
+  color: var(--primary-text-color)
   padding: 0
 
 header
   text-align: center
 
   &.has-background
-    background-color: $secondary-background-color
+    background-color: var(--secondary-background-color)
     padding-bottom: 60px
 
 .header-nav
-  font-family: $primary-font
   margin-top: $luna-base
   text-transform: uppercase
   letter-spacing: .5px
@@ -137,7 +156,7 @@ header
     padding: 0
 
     li
-      border-bottom: 1px solid $border-color
+      border-bottom: 1px solid var(--border-color)
       padding: $luna-base
 
       @media screen and (max-width: $break-small)
@@ -146,9 +165,9 @@ header
       &.selected
 
         a
-          color: $primary-text-color
+          color: var(--primary-text-color)
     a
-      color: $secondary-text-color
+      color: var(--secondary-text-color)
       display: block
       font-size: $luna-font-base-px - 1
       padding: $luna-base
@@ -159,14 +178,14 @@ header
         text-decoration: underline
 
       &:hover, &:focus
-        color: $links-rollover-color !important
+        color: var(--links-rollover-color) !important
 
   &.mobile-nav
     display: none
 
     @media screen and (max-width: $break-small)
       display: block
-      font-family: $secondary-font
+      font-family: var(--secondary-font)
       padding-bottom: $luna-base * 2
 
 .branding
@@ -212,7 +231,7 @@ _:-ms-fullscreen, :root .main
 
 #cart_page, #contact_page, #maintenance_page, #product_page, .custom
   .main
-    background-color: $secondary-background-color
+    background-color: var(--secondary-background-color)
     padding-bottom: $luna-base * 8
     padding-top: $luna-base * 8
 
@@ -222,8 +241,8 @@ _:-ms-fullscreen, :root .main
 
 button.button, a.button
   +transition(color, background-color .1s linear)
-  background: $button-background-color
-  color: $button-text-color
+  background: var(--button-background-color)
+  color: var(--button-text-color)
   display: block
   font-size: 16px
   height: 56px
@@ -236,13 +255,13 @@ button.button, a.button
 
   &.minimal-button
     background: none
-    color: $primary-text-color
+    color: var(--primary-text-color)
     border: none
     font-size: 14px
 
     &:not(:disabled):hover, &:not(:disabled):focus
       background: none !important
-      color: $links-rollover-color
+      color: var(--links-rollover-color)
       text-decoration: underline
 
   &:disabled, &.disabled
@@ -253,10 +272,10 @@ button.button, a.button
     border: none
 
   &:not(:disabled):hover, &:not(:disabled):focus
-    background: $button-rollover-color
+    background: var(--button-rollover-color)
 
 .select
-  border: 2px solid $primary-text-color
+  border: 2px solid var(--primary-text-color)
   border-radius: var(--border-radius)
   height: 56px
   margin-bottom: $luna-base * 2
@@ -287,7 +306,7 @@ button.button, a.button
       display: none
 
   svg
-    fill: $primary-text-color
+    fill: var(--primary-text-color)
     height: 8px
     position: absolute
     right: 16px
@@ -297,33 +316,33 @@ button.button, a.button
     transform: translateY(-50%)
 
   &:hover, &:active, &:focus, &:focus-within
-    color: $links-rollover-color
-    border-color: $links-rollover-color
+    color: var(--links-rollover-color)
+    border-color: var(--links-rollover-color)
 
     select
-      color: $links-rollover-color
+      color: var(--links-rollover-color)
 
       option:disabled
         color: graytext
 
     svg
-      fill: $links-rollover-color
+      fill: var(--links-rollover-color)
 
 .custom-page-header
   text-align: center
 
 .custom-page-content
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: $luna-font-base-px
   margin: 0 auto
   max-width: 700px
 
   a
-    color: $secondary-text-color
+    color: var(--secondary-text-color)
     text-decoration: underline
 
     &:hover, &:focus
-      color: $links-rollover-color
+      color: var(--links-rollover-color)
 
   ol, ul
     list-style: initial
@@ -339,11 +358,10 @@ button.button, a.button
   border: none
 
 .footer-nav
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   +flexbox
   +flex-direction(column)
   +align-items(center)
-  font-family: $primary-font
   list-style: none
   gap: $luna-base * 4
   margin: 0
@@ -366,7 +384,7 @@ button.button, a.button
         width: 100%
 
         li
-          border-bottom: 1px solid $border-color
+          border-bottom: 1px solid var(--border-color)
 
         a
           padding: $luna-base * 1.5 0
@@ -378,7 +396,7 @@ button.button, a.button
       text-decoration: none
 
       &:hover, &:focus
-        color: $links-rollover-color
+        color: var(--links-rollover-color)
         text-decoration: underline
 
 .social-links
@@ -391,7 +409,7 @@ button.button, a.button
 
   a
     display: flex !important
-    fill: $secondary-text-color
+    fill: var(--secondary-text-color)
     padding: $luna-base $luna-base * 2
 
   svg
@@ -403,28 +421,28 @@ button.button, a.button
       width: 16px
 
   &:hover, &:focus
-    fill: $links-rollover-color
+    fill: var(--links-rollover-color)
 
 .search-form
   position: relative
 
 .search-input
-  border: 1px solid $secondary-text-color
+  border: 1px solid var(--secondary-text-color)
   cursor: pointer
   padding: 12px 32px 12px 12px
   width: 240px
 
   &::-webkit-input-placeholder
-    color: $primary-text-color
+    color: var(--primary-text-color)
 
   &::-moz-placeholder
-    color: $primary-text-color
+    color: var(--primary-text-color)
 
   &:-ms-input-placeholder
-    color: $primary-text-color
+    color: var(--primary-text-color)
 
   &:-moz-placeholder
-    color: $primary-text-color
+    color: var(--primary-text-color)
 
   @media screen and (max-width: $break-small)
     display: block
@@ -432,7 +450,7 @@ button.button, a.button
     width: 250px
 
   &:hover, &:focus
-    border: 1px solid $links-rollover-color
+    border: 1px solid var(--links-rollover-color)
 
 button.search-button
   +flexbox
@@ -447,7 +465,7 @@ button.search-button
   width: 24px
 
 .search-icon
-  fill: $primary-text-color
+  fill: var(--primary-text-color)
   display: block
   height: 16px
   width: 16px
@@ -462,14 +480,14 @@ button.search-button
   text-align: center
 
 input, textarea
-  border: 2px solid $secondary-text-color
+  border: 2px solid var(--secondary-text-color)
   padding: $luna-base
 
 a.back-to-site
   background: none
   border-radius: var(--border-radius)
-  border: 2px solid $primary-text-color
-  color: $primary-text-color
+  border: 2px solid var(--primary-text-color)
+  color: var(--primary-text-color)
   font-size: $luna-font-base-px - 4
   height: auto
   padding: $luna-base * 2 $luna-base * 4
@@ -477,15 +495,15 @@ a.back-to-site
 
   &:hover, &:focus
     background: none !important
-    border: 2px solid $links-rollover-color
-    color: $links-rollover-color
+    border: 2px solid var(--links-rollover-color)
+    color: var(--links-rollover-color)
     text-decoration: none
 
 .back-to-site + .bigcartel-credit
   margin-top: $luna-base * 3
 
 .bigcartel-credit
-  color: $secondary-text-color
+  color: var(--secondary-text-color)
   line-height: 1em
   font-size: 15px
   display: flex
@@ -510,8 +528,8 @@ a.back-to-site
 .announcement-message
   +align-items(center)
   +justify-content(center)
-  background-color: $secondary-background-color
-  color: $primary-text-color
+  background-color: var(--secondary-background-color)
+  color: var(--primary-text-color)
   display: none
   font-size: 15px
   padding: 16px 80px
@@ -535,7 +553,7 @@ a.back-to-site
   right: 16px
   top: 50%
   border: 0
-  background-color: $secondary-background-color
+  background-color: var(--secondary-background-color)
   height: 44px
   padding: 0
   width: 44px
@@ -544,17 +562,17 @@ a.back-to-site
     background: none !important
 
     svg
-      fill: $links-rollover-color
+      fill: var(--links-rollover-color)
 
   svg
     display: block
-    fill: $primary-text-color
+    fill: var(--primary-text-color)
     height: 16px
     width: 16px
 
 .centered-message
-  color: $secondary-text-color
-  font-family: $secondary-font
+  color: var(--secondary-text-color)
+  font-family: var(--secondary-font)
   font-size: 18px
   padding: 0 16px
   text-align: center
