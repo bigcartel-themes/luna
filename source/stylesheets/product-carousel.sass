@@ -1,10 +1,10 @@
 \:root
   --thumbnail-active-color: $links-rollover-color
   --thumb-scroller-color: $primary-text-color
-  --thumb-scroller-background: rgba(0,0,0,.1)
+  --thumb-scroller-background: #{rgba(0,0,0,.1)}
   --current-slide-background: $secondary-background-color
   --current-slide-color: $primary-text-color
-  --active-slide-border-width: 1px
+  --active-slide-border-width: 2px
   --gap-width: 10px
   --num-images: 5
 
@@ -74,6 +74,7 @@
       overflow-x: auto
       scroll-snap-type: x mandatory
       scroll-behavior: smooth
+      scrollbar-width: none
 
       &::-webkit-scrollbar
         display: none
@@ -286,7 +287,6 @@
   right: 10px
   bottom: 10px
   font-size: .8em
-  line-height: normal
   z-index: 1000
   background: var(--current-slide-background)
   color: var(--current-slide-color)

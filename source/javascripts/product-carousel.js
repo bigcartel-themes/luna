@@ -1,26 +1,20 @@
 const productSlideshowContainer = document.querySelector('.product-carousel');
 
 if (productSlideshowContainer) {
-  let desktopSplide = false;
-  const slideshowClassNames = ['desktop-carousel', 'desktop-thumbnails', 'desktop-carousel_thumbs'];
-  if (productSlideshowContainer && slideshowClassNames.some(className => productSlideshowContainer.parentElement.classList.contains(className))) {
-    desktopSplide = true;
+  let showArrows = true;
+  let slideshowType = 'loop';
+  if (window.innerWidth > 767 && themeOptions.desktopProductPageImages != 'carousel') {
+    slideshowType = 'fade';
+    showArrows = false;
   }
 
   var splide = new Splide('.product-carousel', {
     rewind: true,
     keyboard: true,
-    arrows: desktopSplide,
-    type: themeOptions.desktopProductPageImages == 'carousel' ? 'loop' : 'fade',
+    arrows: showArrows,
+    type: slideshowType,
     pagination: false,
     lazyLoad: 'sequential',
-    mediaQuery: 'min',
-    breakpoints: {
-      767: {
-        destroy: !desktopSplide,
-        pagination: false,
-      },
-    }
   });
 
   let thumbnails = document.getElementsByClassName('product-thumbnails--item');
@@ -105,7 +99,9 @@ thumbContainer?.addEventListener('scroll', function () {
 });
 
 window.addEventListener('resize', function() {
-  updateSlideContainer();
+  if (productSlideshowContainer) {
+    updateSlideContainer();
+  }
 });
 function updateSlideContainer() {
   const thumbContainer = document.querySelector('.product-thumbnails--list');
