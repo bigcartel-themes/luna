@@ -416,7 +416,7 @@ button.button, a.button
   border: 1px solid $secondary-text-color
   cursor: pointer
   line-height: normal
-  padding: 8px 32px 8px 8px
+  padding: 12px 32px 12px 12px
   width: 240px
 
   &::-webkit-input-placeholder
@@ -434,31 +434,22 @@ button.button, a.button
   @media screen and (max-width: $break-small)
     display: block
     margin: $luna-base auto
-    padding: 6px 16px
-    text-align: center
     width: 250px
 
-  &:hover
-    border: 1px solid $border-color
-
-  &:focus
+  &:hover, &:focus
     border: 1px solid $links-rollover-color
 
 button.search-button
   +flexbox
   +align-items(center)
   +justify-content(center)
-  background: none
-  height: 20px
+  height: 24px
   padding: 0
   position: absolute
-  right: 10px
+  right: 8px
   top: 50%
   transform: translateY(-50%)
-  width: 20px
-
-  &:hover, &:focus
-    background: none
+  width: 24px
 
 .search-icon
   fill: $primary-text-color
@@ -477,18 +468,8 @@ button.search-button
   text-align: center
 
 input, textarea
-  appearance: none
   border: 2px solid $secondary-text-color
-  background: none
-  color: $primary-text-color
-  font-family: $primary-font
-  font-size: 16px
   padding: $luna-base
-  outline: none
-
-  &:focus, &:active
-    background: $primary-background-color
-    border: 2px solid $primary-text-color
 
 a.back-to-site
   background: none
