@@ -275,15 +275,28 @@
       justify-content: center
       margin-top: 16px
 
-      button
+      .change-slide
         display: flex
         align-items: center
         justify-content: center
         padding: 0
-        width: 30px
-        height: 30px
+        width: 40px
+        height: 40px
         background: var(--thumb-scroller-background)
         color: var(--thumb-scroller-color)
+
+        svg
+          display: block
+          width: 16px
+
+        &--left
+          svg
+            transform: rotate(90deg)
+
+        &--right
+          svg
+            transform: rotate(-90deg)
+
 
 .overlay-image-counter
   position: absolute

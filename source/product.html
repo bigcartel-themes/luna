@@ -187,9 +187,13 @@
         </button>
       </div>
       <div class="mobile-buttons-indicator">
-        <button class="previous-slide">&laquo;</button>
+        <button class="change-slide change-slide--left previous-slide">
+          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
         <div><span class="current-slide-number">1</span> of {{ product.images.size }}</div>
-        <button class="next-slide">&raquo;</button>
+        <button class="change-slide change-slide--right next-slide">
+          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+        </button>
       </div>
     {% else %}
       {% assign image_width = product.image.width | times: 1.0 %}
