@@ -1,12 +1,21 @@
 \:root
   --thumbnail-active-color: var(--links-rollover-color)
   --thumb-scroller-color: var(--primary-text-color)
-  --thumb-scroller-background: #{rgba(0,0,0,.1)}
-  --current-slide-background: var(--secondary-background-color)
+  --thumb-scroller-border-width: 1px
+  --thumb-scroller-border-color: var(--primary-text-color)
+  --thumb-scroller-background: var(--secondary-background-color)
+  --thumb-scroller-background-hover: transparent
+  --current-slide-background: var(--primary-background-color)
   --current-slide-color: var(--primary-text-color)
   --active-slide-border-width: 2px
-  --gap-width: 10px
+  --active-slide-border-width-offset: #{-2px}
+  --arrow-background-color: var(--primary-background-color)
+  --arrow-color: var(--primary-text-color)
+  --gap-width: 16px
   --num-images: 5
+
+  @media screen and (max-width: $break-small)
+    --gap-width: 12px
 
 .product-carousel
   .splide__list
@@ -16,6 +25,8 @@
     transition: height .2s ease
 
     img
+      display: block
+      width: 100%
       height: auto
 
   .splide__slide:not(.is-active)
@@ -35,7 +46,9 @@
   opacity: 0
   border-radius: var(--border-radius)
   width: 2em
-  height: 4em
+  height: 3em
+  background: var(--arrow-background-color)
+  color: var(--arrow-color)
 
   &:disabled
     opacity: 0
@@ -46,6 +59,9 @@
   &--next
     right: .75em
 
+  svg
+    fill: currentColor
+
 .splide:hover, .splide:focus-within
   .splide__arrow:not(:disabled)
     opacity: 1
@@ -55,19 +71,26 @@
   &--list
     display: flex
     gap: var(--gap-width)
+    list-style: none
     flex: 1
-    padding: calc(var(--gap-width) / 2)
+    padding: 0 calc(var(--gap-width) / 2)
     scroll-padding-left: calc(var(--gap-width) / 2)
     align-items: center
     justify-content: center
     position: relative
+    border-radius: var(--border-radius)
+
+    &.mobile-overflow
+      padding-left: 0
+      padding-right: 0
 
     @media screen and (max-width: $break-small)
       .product-thumbnails--item
         --num-images: 4
 
       &.mobile-overflow
-        padding: 0
+        padding-left: 0
+        padding-right: 0
 
         .product-thumbnails--item
           --num-images: 5
@@ -106,7 +129,9 @@
 
     &[aria-current="true"]
       .product-thumbnails--change-slide
-        box-shadow: 0 0 0 var(--active-slide-border-width) var(--thumbnail-active-color)
+        img
+          outline: var(--active-slide-border-width) solid var(--thumbnail-active-color)
+          outline-offset: var(--active-slide-border-width-offset)
 
     .product-thumbnails--change-slide
       position: absolute
@@ -122,6 +147,7 @@
       pointer-events: auto
 
       img
+        border-radius: var(--border-radius)
         height: 100%
         width: 100%
         object-fit: cover
@@ -133,7 +159,7 @@
   align-items: center
   display: flex
   gap: 4px
-  margin-top: 16px
+  margin-top: var(--gap-width)
   width: 100%
 
   .thumb-scroller
@@ -141,8 +167,11 @@
     align-items: center
     justify-content: center
     width: 32px
-    height: 56px
+    height: 48px
     color: var(--thumb-scroller-color)
+    background: var(--thumb-scroller-background)
+    border-radius: var(--border-radius)
+    border: var(--thumb-scroller-border-width) solid transparent
 
     @media screen and (max-width: $break-small)
       height: 44px
@@ -152,9 +181,11 @@
       cursor: not-allowed
 
     &:not([disabled]):hover
-      background: var(--thumb-scroller-background)
+      background: var(--thumb-scroller-background-hover)
+      border-color: var(--thumb-scroller-border-color)
 
     svg
+      fill: currentColor
       display: block
       width: 16px
 
@@ -242,9 +273,10 @@
       padding: 0px
 
       &--list
+        list-style: none
         display: grid
         grid-template-columns: repeat(5, 1fr)
-        padding: 4px 0
+        padding: 0
 
       &--item
         width: 100%
@@ -296,7 +328,6 @@
         &--right
           svg
             transform: rotate(-90deg)
-
 
 .overlay-image-counter
   position: absolute

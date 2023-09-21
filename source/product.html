@@ -7,7 +7,7 @@
 	{% when 'coming-soon' %}
 		{% assign product_status = 'Coming soon' %}
 {% endcase %}
-<div class="product-page">
+<div class="product-page {{ theme.product_page_layout }}">
   <div class="product-page-headings">
     {% if product_status != blank %}<div class="product-status">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
@@ -135,10 +135,10 @@
               {% assign aspect_ratio = image_width | divided_by: image_height %}
               <li class="splide__slide">
                 {% if theme.product_image_zoom %}
-                  <a aria-label="Open image {{ forloop.index }} in lightbox" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                  <a aria-label="Open image {{ forloop.index }} in image viewer" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
                 {% endif %}
                   <img
-                    alt="Image of {{ product.name | escape }}"
+                    alt="Image {{ forloop.index }} of {{ product.name | escape }}"
                     class="product-image lazyload"
                     {% if forloop.index == 1 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                     src="{{ image | product_image_url | constrain: 200 }}"
@@ -187,11 +187,11 @@
         </button>
       </div>
       <div class="mobile-buttons-indicator">
-        <button class="change-slide change-slide--left previous-slide">
+        <button aria-label="View previous image" class="change-slide change-slide--left previous-slide">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
         <div><span class="current-slide-number">1</span> of {{ product.images.size }}</div>
-        <button class="change-slide change-slide--right next-slide">
+        <button aria-label="View next image" class="change-slide change-slide--right next-slide">
           <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
       </div>
@@ -199,7 +199,7 @@
       {% assign image_width = product.image.width | times: 1.0 %}
       {% assign image_height = product.image.height | times: 1.0 %}
       {% if theme.product_image_zoom %}
-        <a aria-label="Open image of {{ product.name | escape }} in lightbox" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+        <a aria-label="Open image of {{ product.name | escape }} in image viewer" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
       {% endif %}
         <img
           alt="{{ product.name | escape }}"
