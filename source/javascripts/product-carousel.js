@@ -15,6 +15,12 @@ if (productSlideshowContainer) {
     type: slideshowType,
     pagination: false,
     lazyLoad: 'sequential',
+    mediaQuery: 'min',
+    breakpoints: {
+      767: {
+        destroy: themeOptions.desktopProductPageImages == 'carousel' || themeOptions.desktopProductPageImages == 'thumbnails' ? false : true,
+      },
+    }
   });
 
   let thumbnails = document.getElementsByClassName('product-thumbnails--item');
