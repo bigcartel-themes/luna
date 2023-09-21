@@ -183,6 +183,12 @@ header
   &.mobile-nav
     display: none
 
+    ul
+      gap: $luna-base
+
+      li
+        padding: 0
+
     @media screen and (max-width: $break-small)
       display: block
       font-family: var(--secondary-font)
@@ -408,11 +414,12 @@ button.button, a.button
 
   a
     display: flex !important
-    fill: var(--secondary-text-color)
+    color: var(--secondary-text-color)
     padding: $luna-base $luna-base * 2
 
   svg
     display: block
+    fill: currentColor
     height: 26px
     width: 26px
 
@@ -420,7 +427,7 @@ button.button, a.button
       width: 16px
 
   &:hover, &:focus
-    fill: var(--links-rollover-color)
+    color: var(--links-rollover-color)
 
 .search-form
   position: relative
