@@ -296,6 +296,12 @@
       "description": "Ex: https://instagram.com/bigcartel"
     },
     {
+      "variable": "tiktok_url",
+      "label": "TikTok URL",
+      "type": "text",
+      "description": "Ex: https://tiktok.com/@bigcartelofficial"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
@@ -308,16 +314,34 @@
       "description": "Ex: https://facebook.com/bigcartel"
     },
     {
+      "variable": "snapchat_url",
+      "label": "Snapchat URL",
+      "type": "text",
+      "description": "Ex: https://snapchat.com/add/bigcartel"
+    },
+    {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: https://pinterest.com/bigcartel"
+      "description": "Ex: https://pinterest.com/big_cartel"
+    },
+    {
+      "variable": "youtube_url",
+      "label": "YouTube URL",
+      "type": "text",
+      "description": "Ex: https://youtube.com/@BigCartelDotCom"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "bandcamp_url",
+      "label": "Bandcamp URL",
+      "type": "text",
+      "description": "Ex: https://bigcartel.bandcamp.com"
     }
   ],
   "checkout": {
