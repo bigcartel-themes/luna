@@ -43,7 +43,7 @@
             </div>
           {% else %}
             <div class="select">
-              <select class="product_option_select" id="option" name="cart[add][id]" title="Select variant" required>
+              <select class="product-option-select" id="option" name="cart[add][id]" title="Select variant" required>
                 <option value="" disabled="disabled" selected>Select variant</option>
                 {% for option in product.options %}
                   <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
@@ -122,20 +122,17 @@
   <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">
     {% if product.images.size > 1 %}
       <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
-        {% if product.images.size > 5 %}
-          <div class="overlay-image-counter">
-            <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
-          </div>
-        {% endif %}
         <div class="splide__track">
-          <ul class="splide__list">
+          <div class="splide__list">
             {% for image in product.images %}
               {% assign image_width = image.width | times: 1.0 %}
               {% assign image_height = image.height | times: 1.0 %}
               {% assign aspect_ratio = image_width | divided_by: image_height %}
-              <li class="splide__slide">
+              <div class="splide__slide">
                 {% if theme.product_image_zoom %}
-                  <a aria-label="Open image {{ forloop.index }} in image viewer" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                  <a aria-label="Open image {{ forloop.index }} in image viewer" class="zoom-image-container gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                {% else %}
+                  <div class="zoom-image-container">
                 {% endif %}
                   <img
                     alt="Image {{ forloop.index }} of {{ product.name | escape }}"
@@ -153,11 +150,16 @@
                     height="{{ image.height }}"
                     data-sizes="auto"
                   >
-                {% if theme.product_image_zoom %}</a>{% endif %}
-              </li>
+                {% if theme.product_image_zoom %}</a>{% else %}</div>{% endif %}
+              </div>
             {% endfor %}
-          </ul>
+          </div>
         </div>
+        {% if product.images.size > 5 %}
+          <div class="overlay-image-counter">
+            <span class="current-slide-number">1</span>&nbsp;/&nbsp;{{ product.images.size }}
+          </div>
+        {% endif %}
       </div>
       <div class="product-thumbnails-buttons-container">
         <button aria-label="Slide left" aria-controls="carousel-thumbnail" class="thumb-scroller thumb-scroller--left" disabled data-direction="left">
@@ -170,11 +172,10 @@
                 <img
                   alt=""
                   class="lazyload"
-                  loading="lazy"
-                  src="{{ image | product_image_url | constrain: 30 }}"
+                  src="{{ image | product_image_url | constrain: 150 }}"
                   data-srcset="
-                    {{ image | product_image_url | constrain: 120 }} 120w,
-                    {{ image | product_image_url | constrain: 240 }} 240w
+                    {{ image | product_image_url | constrain: 250 }} 250w,
+                    {{ image | product_image_url | constrain: 300 }} 300w
                   "
                   data-sizes="auto"
                 >
@@ -188,18 +189,20 @@
       </div>
       <div class="mobile-buttons-indicator">
         <button aria-label="View previous image" class="change-slide change-slide--left previous-slide">
-          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+          <svg fill="currentColor" aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
         <div><span class="current-slide-number">1</span> of {{ product.images.size }}</div>
         <button aria-label="View next image" class="change-slide change-slide--right next-slide">
-          <svg aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
+          <svg fill="currentColor" aria-hidden="true" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </button>
       </div>
     {% else %}
       {% assign image_width = product.image.width | times: 1.0 %}
       {% assign image_height = product.image.height | times: 1.0 %}
       {% if theme.product_image_zoom %}
-        <a aria-label="Open image of {{ product.name | escape }} in image viewer" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+        <a aria-label="Open image of {{ product.name | escape }} in image viewer" class="zoom-image-container gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+      {% else %}
+        <div class="zoom-image-container">
       {% endif %}
         <img
           alt="{{ product.name | escape }}"
@@ -215,7 +218,7 @@
           "
           data-sizes="auto"
         >
-      {% if theme.product_image_zoom %}</a>{% endif %}
+      {% if theme.product_image_zoom %}</a>{% else %}</div>{% endif %}
     {% endif %}
   </div>
 </div>

@@ -66,6 +66,10 @@
   .splide__arrow:not(:disabled)
     opacity: 1
 
+.product-image
+  border-radius: var(--border-radius)
+  width: 100%
+
 .product-thumbnails
 
   &--list
@@ -152,7 +156,8 @@
         width: 100%
         object-fit: cover
 
-.gallery-link
+a.gallery-link
+  cursor: zoom-in
   display: block
 
 .product-thumbnails-buttons-container
@@ -171,7 +176,7 @@
     color: var(--thumb-scroller-color)
     background: var(--thumb-scroller-background)
     border-radius: var(--border-radius)
-    border: var(--thumb-scroller-border-width) solid transparent
+    border: var(--thumb-scroller-border-width) solid var(--thumb-scroller-border-color)
 
     @media screen and (max-width: $break-small)
       height: 44px
@@ -182,7 +187,6 @@
 
     &:not([disabled]):hover
       background: var(--thumb-scroller-background-hover)
-      border-color: var(--thumb-scroller-border-color)
 
     svg
       fill: currentColor
@@ -239,7 +243,7 @@
             display: block
             padding-bottom: 100%
 
-          a
+          .zoom-image-container
             position: absolute
             top: 0
             left: 0
@@ -301,7 +305,7 @@
 
     .mobile-buttons-indicator
       display: flex
-      font-size: .925em
+      font-size: .925rem
       gap: 24px
       align-items: center
       justify-content: center
@@ -333,8 +337,7 @@
   position: absolute
   right: 10px
   bottom: 10px
-  font-size: .8em
-  z-index: 1000
+  font-size: .8rem
   background: var(--current-slide-background)
   color: var(--current-slide-color)
   padding: 6px 8px

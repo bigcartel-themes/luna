@@ -4,41 +4,33 @@
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">.transition-preload { transition: none !important }</style>
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
+    <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}_page" class="{{ page.category }} transition-preload">
+  <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader">
     <a class="skip-link" href="#main">Skip to main content</a>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=1504448526533606&autoLogAppEvents=1';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
     {% if theme.announcement_message_text != blank %}
-      <aside role="complementary" aria-label="Announcement message" class="announcement-message">
-        <div class="wrapper announcement-message-text">{{ theme.announcement_message_text }}</div>
-        <button aria-label="Close announcement" class="announcement-message-close" title="Close announcement message">
-          <svg aria-hidden="true" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"/></svg>
+      <div aria-label="Announcement message" class="announcement-message">
+        <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+        <button title="Close announcement message" class="announcement-message__close-button">
+          <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="9.2 12.3 12.5 12.5">
+            <path d="m21.4 14.4-4.1 4.1 4 4.1c.6.5.6 1.3 0 1.8-.4.5-1.2.5-1.7 0l-4.1-4.1-4.1 4.1c-.5.5-1.3.5-1.8 0s-.5-1.3 0-1.8l4.1-4.1-4.1-4.1c-.5-.5-.5-1.3 0-1.8s1.3-.5 1.8 0l4.1 4.1 4.1-4c.5-.6 1.3-.6 1.8 0 .5.4.5 1.2 0 1.7Z"/>
+          </svg>
         </button>
-      </aside>
+      </div>
     {% endif %}
     <header>
       <div class="wrapper">
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
-            <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}><a href="/products">{{ pages.products.name }}</a></li>
+            <li><a href="/products">{{ pages.products.name }}</a></li>
             {% for page in pages.all limit:theme.nav_items %}
-              <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
+              <li>{{ page | link_to }}</li>
             {% endfor %}
-            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact">Contact</a></li>
-            <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
-              <a href="/cart">Cart (<span class="cart-num-items">{{ cart.item_count }}</span>)</a>
-            </li>
+            <li><a href="/contact">{{ pages.contact.name }}</a></li>
+            <li><a href="/cart">{{ pages.cart.name }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
           </ul>
         </nav>
 
@@ -62,15 +54,9 @@
       </div>
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
-          <li{% if page.full_url contains '/products' or page.full_url contains '/product/' or page.full_url contains '/category/' or page.full_url contains '/artist/' %} class="selected"{% endif %}>
-            <a href="/products">{{ pages.products.name }}</a>
-          </li>
-          <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}>
-            <a href="/contact">Contact</a>
-          </li>
-          <li{% if page.full_url contains '/cart' %} class="selected"{% endif %}>
-            <a href="/cart">Cart (<span class="cart-num-items">{{ cart.item_count }}</span>)</a>
-          </li>
+          <li><a href="/products">{{ pages.products.name }}</a></li>
+          <li><a href="/contact">{{ pages.contact.name }}</a></li>
+          <li><a href="/cart">{{ pages.cart.name }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
         </ul>
       </nav>
     </header>
@@ -212,13 +198,13 @@
       <div class="wrapper">
         <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
           <ul class="footer-links">
-            <li><a href="/">Home</a></li>
+            <li><a href="/">{{ pages.home.name }}</a></li>
             <li><a href="/products">{{ pages.products.name }}</a></li>
             {% for page in pages.all %}
               <li>{{ page | link_to }}</li>
             {% endfor %}
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/cart">Cart</a></li>
+            <li><a href="/contact">{{ pages.contact.name }}</a></li>
+            <li><a href="/cart">{{ pages.cart.name }}</a></li>
           </ul>
           {% if theme.show_search %}
             <div class="footer-search">
@@ -264,13 +250,36 @@
         secondaryBackgroundColor: '{{ theme.secondary_background_color }}',
       }
       const themeOptions = {
-        showSoldOutOptions: '{{ theme.show_sold_out_product_options }}',
+        showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
-        productImageZoom: '{{ theme.product_image_zoom }}',
+        productImageZoom: {{ theme.product_image_zoom }},
       }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% if theme.announcement_message_text != blank %}
+      <script>
+        let hashCode=function(s){return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;},0);}
+        let announcementElement = document.querySelector(".announcement-message");
+        let announcementText = document.querySelector(".announcement-message__text").innerHTML;
+        let closeAnnouncementBtn = document.querySelector(".announcement-message__close-button");
+        let hashedAnnouncement = hashCode(announcementText);
+
+        function closeAnnouncement() {
+          let announcementElement = document.querySelector(".announcement-message");
+          announcementElement?.remove();
+          document.cookie = `announcementClosed=${hashedAnnouncement};path=/`;
+        }
+
+        if (announcementElement?.classList && closeAnnouncementBtn && hashedAnnouncement) {
+          let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
+          if (!hasClosedAnnouncement) {
+            announcementElement.classList.add('visible');
+          }
+          closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+        }
+      </script>
+    {% endif %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}

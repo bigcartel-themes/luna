@@ -224,7 +224,7 @@
         ["Stacked 2 column", "two-column"],
         ["Stacked full width", "stacked"]
       ],
-      "default": "thumbnails",
+      "default": "stacked",
       "description": "Sets the display of the Product page gallery"
     },
     {
@@ -249,7 +249,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Displays a search field in the footer"
     },
     {

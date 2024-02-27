@@ -196,7 +196,7 @@ header
 
 .branding
   font-size: 20px
-  margin: 76px auto
+  margin: 54px auto
   text-transform: uppercase
 
   @media screen and (max-width: $break-small)
@@ -530,51 +530,6 @@ a.back-to-site
     fill: currentColor
     padding-top: 1px
     width: 86px
-
-.announcement-message
-  +align-items(center)
-  +justify-content(center)
-  background-color: var(--secondary-background-color)
-  color: var(--primary-text-color)
-  display: none
-  font-size: 15px
-  padding: 16px 80px
-  position: relative
-
-  @media screen and (max-width: $break-small)
-    padding: 16px 60px
-
-  .has-announcement-message &
-    display: block
-
-.announcement-message-text
-  text-align: center
-
-.announcement-message-close
-  +transform(translateY(-50%))
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  position: absolute
-  right: 16px
-  top: 50%
-  border: 0
-  background-color: var(--secondary-background-color)
-  height: 44px
-  padding: 0
-  width: 44px
-
-  &:hover, &:focus
-    background: none !important
-
-    svg
-      fill: var(--links-rollover-color)
-
-  svg
-    display: block
-    fill: var(--primary-text-color)
-    height: 16px
-    width: 16px
 
 .centered-message
   color: var(--secondary-text-color)

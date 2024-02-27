@@ -85,7 +85,7 @@ thumbScrollers.forEach(thumbScroller => {
 });
 thumbContainer?.addEventListener('scroll', function () {
   let scrollLeft = Math.round(this.scrollLeft);
-  const firstThumbnailWidth = document.getElementsByClassName('product-thumbnails--item')[1].offsetLeft;
+  const firstThumbnailWidth = document.getElementsByClassName('product-thumbnails--item')[0].offsetWidth;
   const scrollWidth = Math.round(this.scrollWidth);
   const displayWidth = Math.round(this.getBoundingClientRect().width);
   const scrollRight = scrollWidth - displayWidth;
