@@ -22,7 +22,7 @@
   {% get products from products.all limit:theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
       <div class="product-list-container">
-        <div class="product-list" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
+        <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
           {% for product in products %}
             {% assign product_status = '' %}
             {% case product.status %}

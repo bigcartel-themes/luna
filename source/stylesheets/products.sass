@@ -58,6 +58,12 @@
   +justify-content(flex-start)
   margin: 8px -8px
 
+  &--center
+    +justify-content(center)
+
+  @media screen and (max-width: $break-small)
+    +justify-content(flex-start)
+
 .product-list-link
   text-decoration: none
 
