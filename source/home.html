@@ -1,5 +1,5 @@
 {% if theme.image_sets.slideshow.size > 0 %}
-  <div class="splide home-slideshow">
+  <div class="{% if theme.image_sets.slideshow.size > 1 %}splide{% endif %} home-slideshow">
     <div class="splide__track">
       <div class="splide__list">
         {% for image in theme.image_sets.slideshow %}

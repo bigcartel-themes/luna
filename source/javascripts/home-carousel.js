@@ -1,6 +1,6 @@
-const homeSlideshow = document.querySelector(".home-slideshow");
+const homeSlideshow = document.querySelector(".splide.home-slideshow");
 if (homeSlideshow) {
-  var homeSplide = new Splide('.home-slideshow', {
+  var homeSplide = new Splide('.splide.home-slideshow', {
     rewind: true,
     keyboard: true,
     arrows: true,

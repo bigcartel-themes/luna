@@ -4,7 +4,10 @@
   --pagination-active-page: var(--primary-text-color)
 
 .home-slideshow
-  margin-bottom: 48px
+  margin-bottom: 64px
+
+  .splide__list
+    width: 100%
 
   .slideshow-image
     border-radius: var(--border-radius)
@@ -15,12 +18,16 @@
     width: 2em
     height: 4em
 
+  .splide__slide
+    width: 100%
+
   .splide__pagination
     z-index: 1
     background: var(--pagination-background)
     border-radius: 18px
     display: inline-flex
-    position: relative
+    position: absolute
+    height: 24px
     margin-top: 8px
     bottom: auto
     align-items: center
