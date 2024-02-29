@@ -1,10 +1,5 @@
 //= require_directory ./stylesheets/vendor
-//= require stylesheets/layout
-//= require stylesheets/home
-//= require stylesheets/products
-//= require stylesheets/product
-//= require stylesheets/contact
-//= require stylesheets/cart
+//= require stylesheets/all
 
  /*============================================================
   Colors + Custom Styles - add and override styles below

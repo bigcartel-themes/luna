@@ -1,10 +1,8 @@
-@import 'variables'
-
 .contact-label
   display: block
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: $luna-font-base-px + 2
-  margin-bottom: $luna-base + 2
+  margin-bottom: $luna-base / 2
 
 .contact-form
   margin: 0 auto
@@ -23,13 +21,12 @@
   position: relative
 
 .contact-form-block
-  margin-bottom: $luna-base * 4
+  margin-bottom: $luna-base * 3
 
 .recaptcha-note
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: $luna-font-base-px - 2
   font-style: italic
-  line-height: 1.3em
   opacity: .8
   position: relative
   margin-top: 10px

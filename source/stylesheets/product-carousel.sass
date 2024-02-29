@@ -1,0 +1,344 @@
+\:root
+  --thumbnail-active-color: var(--links-rollover-color)
+  --thumb-scroller-color: var(--primary-text-color)
+  --thumb-scroller-border-width: 1px
+  --thumb-scroller-border-color: var(--primary-text-color)
+  --thumb-scroller-background: var(--secondary-background-color)
+  --thumb-scroller-background-hover: transparent
+  --current-slide-background: var(--primary-background-color)
+  --current-slide-color: var(--primary-text-color)
+  --active-slide-border-width: 2px
+  --active-slide-border-width-offset: #{-2px}
+  --arrow-background-color: var(--primary-background-color)
+  --arrow-color: var(--primary-text-color)
+  --gap-width: 16px
+  --num-images: 5
+
+  @media screen and (max-width: $break-small)
+    --gap-width: 12px
+
+.product-carousel
+  .splide__list
+    align-items: flex-start
+
+  .splide__slide
+    transition: height .2s ease
+
+    img
+      display: block
+      width: 100%
+      height: auto
+
+  .splide__slide:not(.is-active)
+    height: 0
+
+.splide__track
+  border-radius: var(--border-radius)
+
+.splide__arrows
+  display: none
+
+  @media (hover: hover)
+    display: block
+
+.splide__arrow
+  transition: opacity .2s ease
+  opacity: 0
+  border-radius: var(--border-radius)
+  width: 2em
+  height: 3em
+  background: var(--arrow-background-color)
+  color: var(--arrow-color)
+
+  &:disabled
+    opacity: 0
+
+  &--prev
+    left: .75em
+
+  &--next
+    right: .75em
+
+  svg
+    fill: currentColor
+
+.splide:hover, .splide:focus-within
+  .splide__arrow:not(:disabled)
+    opacity: 1
+
+.product-image
+  border-radius: var(--border-radius)
+  width: 100%
+
+.product-thumbnails
+
+  &--list
+    display: flex
+    gap: var(--gap-width)
+    list-style: none
+    flex: 1
+    padding: 0 calc(var(--gap-width) / 2)
+    scroll-padding-left: calc(var(--gap-width) / 2)
+    align-items: center
+    justify-content: center
+    position: relative
+    border-radius: var(--border-radius)
+
+    &.mobile-overflow
+      padding-left: 0
+      padding-right: 0
+
+    @media screen and (max-width: $break-small)
+      .product-thumbnails--item
+        --num-images: 4
+
+      &.mobile-overflow
+        padding-left: 0
+        padding-right: 0
+
+        .product-thumbnails--item
+          --num-images: 5
+
+    &.is-overflow
+      justify-content: flex-start
+      overflow-x: auto
+      scroll-snap-type: x mandatory
+      scroll-behavior: smooth
+      scrollbar-width: none
+
+      &::-webkit-scrollbar
+        display: none
+
+    &.thumbnails
+      flex-wrap: wrap
+
+  &--item
+    width: calc(calc(100% / var(--num-images)) - calc(var(--gap-width) - calc(var(--gap-width) / var(--num-images))))
+    flex-shrink: 0
+    cursor: pointer
+    border-radius: var(--border-radius)
+    user-select: none
+    pointer-events: none
+    position: relative
+    scroll-snap-align: start
+
+    &:before
+      content: ""
+      display: block
+      padding-bottom: 100%
+
+    &:not([aria-current="true"]):hover
+      img
+        opacity: .8
+
+    &[aria-current="true"]
+      .product-thumbnails--change-slide
+        img
+          outline: var(--active-slide-border-width) solid var(--thumbnail-active-color)
+          outline-offset: var(--active-slide-border-width-offset)
+
+    .product-thumbnails--change-slide
+      position: absolute
+      top: 0
+      left: 0
+      display: block
+      height: 100%
+      width: 100%
+      padding: 0
+      overflow: hidden
+      user-select: none
+      border-radius: var(--border-radius)
+      pointer-events: auto
+
+      img
+        border-radius: var(--border-radius)
+        height: 100%
+        width: 100%
+        object-fit: cover
+
+a.gallery-link
+  cursor: zoom-in
+  display: block
+
+.product-thumbnails-buttons-container
+  align-items: center
+  display: flex
+  gap: 4px
+  margin-top: var(--gap-width)
+  width: 100%
+
+  .thumb-scroller
+    display: none
+    align-items: center
+    justify-content: center
+    width: 32px
+    height: 48px
+    color: var(--thumb-scroller-color)
+    background: var(--thumb-scroller-background)
+    border-radius: var(--border-radius)
+    border: var(--thumb-scroller-border-width) solid var(--thumb-scroller-border-color)
+
+    @media screen and (max-width: $break-small)
+      height: 44px
+
+    &[disabled]
+      opacity: .2
+      cursor: not-allowed
+
+    &:not([disabled]):hover
+      background: var(--thumb-scroller-background-hover)
+
+    svg
+      fill: currentColor
+      display: block
+      width: 16px
+
+    &--left
+      svg
+        transform: rotate(90deg)
+
+    &--right
+      svg
+        transform: rotate(-90deg)
+
+    &.hidden
+      display: none
+      //opacity: 0
+      //visibility: hidden
+
+@media screen and (min-width: $break-small + 1)
+  .overlay-image-counter
+    display: none
+
+  .desktop-stacked, .desktop-two-column
+    .splide
+      .splide__list
+        display: flex !important
+        flex-direction: column
+        gap: 16px
+
+      .splide__slide
+        height: auto
+        flex-shrink: 0
+        width: 100%
+
+    .product-thumbnails-buttons-container
+      display: none
+
+  .desktop-two-column
+    .splide
+      .splide__list
+        flex-direction: row
+        flex-wrap: wrap
+
+      .splide__track
+        overflow: visible
+
+      .splide__slide
+        width: calc((100% / 2) - 8px)
+
+        &:not(:first-child)
+          &:before
+            content: ""
+            display: block
+            padding-bottom: 100%
+
+          .zoom-image-container
+            position: absolute
+            top: 0
+            left: 0
+            display: block
+            height: 100%
+            width: 100%
+            padding: 0
+            overflow: hidden
+            user-select: none
+            border-radius: var(--border-radius)
+            pointer-events: auto
+
+            img
+              height: 100%
+              width: 100%
+              object-fit: cover
+
+        &:first-child
+          width: 100%
+
+  .desktop-carousel
+
+    .thumb-scroller
+      display: flex
+
+    .overlay-image-counter
+      display: flex
+
+  .desktop-thumbnails
+    .product-thumbnails
+      padding: 0px
+
+      &--list
+        list-style: none
+        display: grid
+        grid-template-columns: repeat(5, 1fr)
+        padding: 0
+
+      &--item
+        width: 100%
+
+  .mobile-buttons-indicator
+    display: none
+
+@media screen and (max-width: $break-small)
+  .mobile-show-thumbnails
+    .mobile-buttons-indicator
+      display: none
+
+    .thumb-scroller
+      display: flex
+
+  .mobile-hide-thumbnails
+    .overlay-image-counter
+      display: none
+
+    .product-thumbnails-buttons-container
+      display: none
+
+    .mobile-buttons-indicator
+      display: flex
+      font-size: .925rem
+      gap: 24px
+      align-items: center
+      justify-content: center
+      margin-top: 16px
+
+      .change-slide
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 0
+        width: 40px
+        height: 40px
+        background: var(--thumb-scroller-background)
+        color: var(--thumb-scroller-color)
+
+        svg
+          display: block
+          width: 16px
+
+        &--left
+          svg
+            transform: rotate(90deg)
+
+        &--right
+          svg
+            transform: rotate(-90deg)
+
+.overlay-image-counter
+  position: absolute
+  right: 10px
+  bottom: 10px
+  font-size: .8rem
+  background: var(--current-slide-background)
+  color: var(--current-slide-color)
+  padding: 6px 8px
+  border-radius: var(--border-radius)
