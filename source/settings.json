@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "images": [
     {
       "variable": "header",
@@ -20,6 +20,211 @@
       "description": "900px by 500px images recommended"
     }
   ],
+  "preset_styles": {
+    "preview": {
+      "title_font": "primary_font",
+      "body_font": "secondary_font",
+      "text_color": "primary_text_color",
+      "background_color": "background_color"
+    },
+    "presets": [
+      {
+        "group_name": "Classic",
+        "styles": [
+          {
+            "style_name": "Classic #1",
+            "fonts": {
+              "primary_font": "Varela Round",
+              "secondary_font": "Verdana"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "secondary_background_color": "#F3F3F3",
+              "primary_text_color": "#111111",
+              "secondary_text_color": "#555555",
+              "link_rollover_color": "#255B8A",
+              "header_text_color": "#111111",
+              "products_background_color": "#333333",
+              "border_color": "#111111",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#000000",
+              "button_rollover_color": "#255B8A"
+            }
+          },
+          {
+            "style_name": "Classic #2",
+            "fonts": {
+              "primary_font": "DM Sans",
+              "secondary_font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "secondary_background_color": "#333333",
+              "primary_text_color": "#F8F8F8",
+              "secondary_text_color": "#F8F8F8",
+              "link_rollover_color": "#AEAEAE",
+              "header_text_color": "#F8F8F8",
+              "products_background_color": "#141415",
+              "border_color": "#494949",
+              "button_text_color": "#141415",
+              "button_background_color": "#F8F8F8",
+              "button_rollover_color": "#AEAEAE"
+            }
+          },
+          {
+            "style_name": "Classic #3",
+            "fonts": {
+              "primary_font": "Poppins",
+              "secondary_font": "Poppins"
+            },
+            "colors": {
+              "background_color": "#F8F8FA",
+              "secondary_background_color": "#FFFFFF",
+              "primary_text_color": "#2A2A2C",
+              "secondary_text_color": "#2A2A2C",
+              "link_rollover_color": "#203BE1",
+              "header_text_color": "#2A2A2C",
+              "products_background_color": "#203BE1",
+              "border_color": "#E3E4EA",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#203BE1",
+              "button_rollover_color": "#2A2A2C"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Elegant",
+        "styles": [
+          {
+            "style_name": "Elegant #1",
+            "fonts": {
+              "primary_font": "Spectral",
+              "secondary_font": "Cabin"
+            },
+            "colors": {
+              "background_color": "#F5F4EE",
+              "secondary_background_color": "#F2EEE7",
+              "primary_text_color": "#262522",
+              "secondary_text_color": "#262522",
+              "link_rollover_color": "#7C3C17",
+              "header_text_color": "#262522",
+              "products_background_color": "#262522",
+              "border_color": "#C3C0B0",
+              "button_text_color": "#F5F4EE",
+              "button_background_color": "#262522",
+              "button_rollover_color": "#7C3C17"
+            }
+          },
+          {
+            "style_name": "Elegant #2",
+            "fonts": {
+              "primary_font": "Marcellus",
+              "secondary_font": "Inter"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "secondary_background_color": "#332F2F",
+              "primary_text_color": "#FFF5E5",
+              "secondary_text_color": "#FFF5E5",
+              "link_rollover_color": "#CAB696",
+              "header_text_color": "#FFF5E5",
+              "products_background_color": "#141415",
+              "border_color": "#605553",
+              "button_text_color": "#222121",
+              "button_background_color": "#CAB696",
+              "button_rollover_color": "#FFF5E5"
+            }
+          },
+          {
+            "style_name": "Elegant #3",
+            "fonts": {
+              "primary_font": "Cormorant",
+              "secondary_font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F1F1F1",
+              "secondary_background_color": "#EBE7E7",
+              "primary_text_color": "#0F1B27",
+              "secondary_text_color": "#0F1B27",
+              "link_rollover_color": "#8A5A5A",
+              "header_text_color": "#0F1B27",
+              "products_background_color": "#0F1B27",
+              "border_color": "#DBD1D1",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#8A5A5A",
+              "button_rollover_color": "#0F1B27"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Playful",
+        "styles": [
+          {
+            "style_name": "Playful #1",
+            "fonts": {
+              "primary_font": "Syne",
+              "secondary_font": "Syne"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "secondary_background_color": "#F2F2F3",
+              "primary_text_color": "#0000FF",
+              "secondary_text_color": "#0000FF",
+              "link_rollover_color": "#000098",
+              "header_text_color": "#0000FF",
+              "products_background_color": "#FFE500",
+              "border_color": "#E0E1E7",
+              "button_text_color": "#0000FF",
+              "button_background_color": "#FFE500",
+              "button_rollover_color": "#EBD300"
+            }
+          },
+          {
+            "style_name": "Playful #2",
+            "fonts": {
+              "primary_font": "Quicksand",
+              "secondary_font": "Quicksand"
+            },
+            "colors": {
+              "background_color": "#FFFBFD",
+              "secondary_background_color": "#FFECF7",
+              "primary_text_color": "#33246D",
+              "secondary_text_color": "#33246D",
+              "link_rollover_color": "#FF169E",
+              "header_text_color": "#33246D",
+              "products_background_color": "#33246D",
+              "border_color": "#FFECF7",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#FF169E",
+              "button_rollover_color": "#FF61BD"
+            }
+          },
+          {
+            "style_name": "Playful #3",
+            "fonts": {
+              "primary_font": "Prompt",
+              "secondary_font": "Prompt"
+            },
+            "colors": {
+              "background_color": "#5E2498",
+              "secondary_background_color": "#51168B",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#C390F6",
+              "link_rollover_color": "#FFE462",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#360665",
+              "border_color": "#C390F6",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#D01A67",
+              "button_rollover_color": "#B0094F"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "fonts": [
     {
       "variable": "primary_font",
@@ -208,6 +413,37 @@
       "description": "Sets the display of the Product page"
     },
     {
+      "variable": "product_image_zoom",
+      "label": "Enable product image zoom",
+      "type": "boolean",
+      "default": true,
+      "description": "Click to open a larger version of the Product page image"
+    },
+    {
+      "variable": "desktop_product_page_images",
+      "label": "Desktop product page images",
+      "type": "select",
+      "options": [
+        ["Thumbnails", "thumbnails"],
+        ["Carousel", "carousel"],
+        ["Stacked 2 column", "two-column"],
+        ["Stacked full width", "stacked"]
+      ],
+      "default": "stacked",
+      "description": "Sets the display of the Product page gallery"
+    },
+    {
+      "variable": "mobile_product_page_images",
+      "label": "Mobile product page image carousel",
+      "type": "select",
+      "options": [
+        ["Show thumbnails", "show-thumbnails"],
+        ["Hide thumbnails", "hide-thumbnails"]
+      ],
+      "default": "show-thumbnails",
+      "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
+    },
+    {
       "variable": "show_similar_products",
       "label": "Show related products",
       "type": "boolean",
@@ -218,7 +454,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Displays a search field in the footer"
     },
     {
@@ -259,34 +495,58 @@
       "description": "Adds a Pin It button to the Product page"
     },
     {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: https://instagram.com/bigcartel"
+    },
+    {
+      "variable": "tiktok_url",
+      "label": "TikTok URL",
+      "type": "text",
+      "description": "Ex: https://tiktok.com/@bigcartelofficial"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel"
+      "description": "Ex: https://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel"
+      "description": "Ex: https://facebook.com/bigcartel"
     },
     {
-      "variable": "tumblr_url",
-      "label": "Tumblr URL",
+      "variable": "snapchat_url",
+      "label": "Snapchat URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com"
-    },
-    {
-      "variable": "instagram_url",
-      "label": "Instagram URL",
-      "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
+      "description": "Ex: https://snapchat.com/add/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
+      "description": "Ex: https://pinterest.com/big_cartel"
+    },
+    {
+      "variable": "youtube_url",
+      "label": "YouTube URL",
+      "type": "text",
+      "description": "Ex: https://youtube.com/@BigCartelDotCom"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: https://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "bandcamp_url",
+      "label": "Bandcamp URL",
+      "type": "text",
+      "description": "Ex: https://bigcartel.bandcamp.com"
     }
   ],
   "checkout": {

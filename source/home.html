@@ -1,45 +1,32 @@
 {% if theme.image_sets.slideshow.size > 0 %}
-  <div class="flexslider home-slideshow">
-    <ul class="slides">
-      {% for image in theme.image_sets.slideshow %}
-        <li>
-          <img alt="" srcset="{{ image.url | constrain: 1068 }}, {{ image.url | constrain: 2136 }} 2x" src="{{ image.url | constrain: 1068 }}">
-        </li>
-      {% endfor %}
-    </ul>
+  <div class="{% if theme.image_sets.slideshow.size > 1 %}splide{% endif %} home-slideshow">
+    <div class="splide__track">
+      <div class="splide__list">
+        {% for image in theme.image_sets.slideshow %}
+          <div class="splide__slide">
+            <img
+              alt="Slideshow image {{ forloop.index }}"
+              {% if forloop.index == 1 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+              class="slideshow-image"
+              srcset="{{ image.url | constrain: 1068 }}, {{ image.url | constrain: 2136 }} 2x"
+              src="{{ image.url | constrain: 1068 }}">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 {% endif %}
-{% if theme.max_products_per_row == 4 %}
-  {% assign product_image_constrain_width = 255 %}
-  {% assign product_image_constrain_height = 255 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 3 %}
-  {% assign product_image_constrain_width = 346 %}
-  {% assign product_image_constrain_height = 346 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 2 %}
-  {% assign product_image_constrain_width = 526 %}
-  {% assign product_image_constrain_height = 526 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 1 %}
-  {% assign product_image_constrain_width = 1068 %}
-  {% assign product_image_constrain_height = 1068 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% endif %}
-{% assign thumb_constrain_width = 30 %}
-{% assign thumb_constrain_height = 30 %}
 
 <h1 class="visually-hidden">Featured Products</h1>
 {% if theme.featured_items > 0 %}
   {% get products from products.all limit:theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
       <div class="product-list-container">
-        <div class="product-list">
+        <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
           {% for product in products %}
+            {% assign image_width = product.image.width | times: 1.0 %}
+            {% assign image_height = product.image.height | times: 1.0 %}
+            {% assign aspect_ratio = image_width | divided_by: image_height %}
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}
@@ -49,49 +36,36 @@
               {% when 'coming-soon' %}
                 {% assign product_status = 'Coming soon' %}
             {% endcase %}
-            {% capture image_class %}
-              {% if product.image.height > product.image.width %}
-                image-tall
-                {% if theme.grid_image_style == 'crop-to-square' %}
-                  {% assign product_image_constrain_height = '' %}
-                  {% assign product_image_constrain_height_large = '' %}
-                  {% assign thumb_constrain_height = '' %}
-                {% endif %}
-              {% elsif product.image.height < product.image.width %}
-                image-wide
-                {% if theme.grid_image_style == 'crop-to-square' %}
-                  {% assign product_image_constrain_width = '' %}
-                  {% assign product_image_constrain_width_large = '' %}
-                  {% assign thumb_constrain_width = '' %}
-                {% endif %}
-              {% else %}
-                image-square
-              {% endif %}
-            {% endcapture %}
-            <div class="product-list-thumb {{ theme.grid_image_style }} {{ theme.show_overlay }}">
-              <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
-                <div class="product-list-thumb-container">
-                  <figure class="product-list-image-container">
-                    <div class="image-wrapper">
-                      <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
-                    </div>
-                  </figure>
+            <div class="product-list-thumb {{ product.css_class }}">
+              <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+                <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                  <img
+                    alt=""
+                    class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                    src="{{ product.image | product_image_url | constrain: 20 }}"
+                    {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                    data-srcset="
+                      {{ product.image | product_image_url | constrain: 240 }} 240w,
+                      {{ product.image | product_image_url | constrain: 320 }} 320w,
+                      {{ product.image | product_image_url | constrain: 400 }} 400w,
+                      {{ product.image | product_image_url | constrain: 540 }} 540w,
+                      {{ product.image | product_image_url | constrain: 600 }} 600w,
+                      {{ product.image | product_image_url | constrain: 800 }} 800w,
+                      {{ product.image | product_image_url | constrain: 960 }} 960w
+                    "
+                    data-sizes="auto"
+                  >
                 </div>
                 <div class="product-list-thumb-info">
-                  <div class="product-list-item-background"></div>
-                  <div class="product-list-thumb-info-headers">
-                    <div class="product-list-thumb-name">{{ product.name }}</div>
-                    <div class="product-list-thumb-price">
-                      {% if product.variable_pricing %}
-                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                      {% else %}
-                        {{ product.default_price | money: theme.money_format }}
-                      {% endif %}
-                    </div>
-                    {% if product_status != blank %}
-                      <div class="product-list-thumb-status">{{ product_status }}</div>
+                  <div class="product-list-thumb-name">{{ product.name }}</div>
+                  <div class="product-list-thumb-price">
+                    {% if product.variable_pricing %}
+                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                    {% else %}
+                      {{ product.default_price | money: theme.money_format }}
                     {% endif %}
                   </div>
+                  {% if product_status != blank %}<div class="product-list-thumb-status">{{ product_status }}</div>{% endif %}
                 </div>
               </a>
             </div>

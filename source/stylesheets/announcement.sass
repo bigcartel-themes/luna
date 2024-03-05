@@ -1,0 +1,38 @@
+.announcement-message
+  background-color: var(--secondary-background-color)
+  color: var(--primary-text-color)
+  display: none
+  font-size: .975em
+  padding: 16px 144px
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+  @media screen and (max-width: $break-medium)
+    padding: 16px 88px
+
+  &.visible
+    display: block
+
+  &__close-button
+    +transform(translateY(-50%))
+    +transition(none)
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    color: inherit
+    height: 32px
+    padding: 0
+    position: absolute
+    right: 16px
+    top: 50%
+    width: 32px
+
+    @media screen and (max-width: $break-small)
+      right: 8px
+
+  &__close-icon
+    fill: currentColor
+    height: 14px
+    width: 14px

@@ -1,71 +1,52 @@
-@import 'variables'
+\:root
+  --pagination-background: transparent
+  --pagination-page-background: var(--secondary-text-color)
+  --pagination-active-page: var(--primary-text-color)
 
-.flex-viewport
-  border-radius: 4px
+.home-slideshow
+  margin-bottom: 64px
 
-.flexslider
-  background: none
-  border: none
-  margin: 0 auto $luna-base * 10
+  .splide__list
+    width: 100%
 
-  .slides
+  .slideshow-image
+    border-radius: var(--border-radius)
+    width: 100%
 
-    img
-      margin: 0 auto
-      width: 100%
+  .splide__arrow
+    border-radius: var(--border-radius)
+    width: 2em
+    height: 4em
 
-    > li
-      +transform(translateZ(0px))
+  .splide__slide
+    width: 100%
 
-.flex-direction-nav li a
-  +transition(all .1s ease-in)
-  background-image: url("{{ 'slideshow_arrows.png' | theme_image_url }}")
-  background-repeat: no-repeat
-  background-color: rgba(0,0,0,.7)
-  background-size: 65px auto
-  border-radius: $border-radius
-  border: none
-  height: 66px
-  margin: -33px 0 0
-  position: absolute
-  text-indent: -9999px
-  text-align: initial !important
-  width: 33px
+  .splide__pagination
+    z-index: 1
+    background: var(--pagination-background)
+    border-radius: 18px
+    display: inline-flex
+    position: absolute
+    height: 24px
+    margin-top: 8px
+    bottom: auto
+    align-items: center
+    justify-content: center
+    transform: translateX(-50%)
+    left: 50%
+    padding: 4px 8px
+    gap: 2px
+    right: auto
 
-  @media screen and (max-width: $break-small)
-    display: none !important
+    li
+      display: flex
 
-  &:hover
-    background-color: rgba(0,0,0,1)
+    .splide__pagination__page
+      opacity: 1
+      background: var(--pagination-page-background)
+      height: 10px
+      width: 10px
 
-  &.flex-prev
-    background-position: 6px 15px
-    border-radius: $border-radius
-    left: 18px
-
-  &.flex-next
-    background-position: -38px 15px
-    right: 18px
-
-.flex-control-nav
-  bottom: -32px
-
-.flex-control-paging li
-  border-radius: 50%
-  height: 11px
-  margin: 6px
-  width: 11px
-  -webkit-backface-visibility: hidden
-
-  a
-    +all-transitions
-    background: $primary-text-color
-    border-radius: 50%
-    border: none
-    opacity: 0.5
-
-    &.flex-active
-      opacity: 0.3
-
-    &:hover
-      opacity: 0.7
+      &.is-active
+        background: var(--pagination-active-page)
+        transform: scale(1.1)
