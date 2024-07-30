@@ -329,6 +329,13 @@
       "description": "The number of custom page links to display in the main navigation."
     },
     {
+      "variable": "featured_header",
+      "label": "Featured header",
+      "type": "text",
+      "description": "Displays above your featured products or categories on the Home page",
+      "default": "Featured"
+    },
+    {
       "variable": "featured_items",
       "label": "Featured products",
       "type": "select",
