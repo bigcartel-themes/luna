@@ -1,22 +1,33 @@
 {% if categories.active != blank or artists.active != blank %}
   <div class="artist-category-nav artist-category-nav-header">
     <nav aria-label="Category navigation" class="category-nav products-nav">
-      <div class="nav-title">Products</div>
+      <div class="nav-title">
+        {% if page.full_url contains "search=" %}
+          Search Results
+        {% else %}
+          {{ page.name }}
+        {% endif %}
+      </div>
+      {% unless page.full_url contains 'search=' %}
       <ul>
         <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
         {% for category in categories.active %}
           <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
         {% endfor %}
       </ul>
+      {% endunless %}
     </nav>
     {% if artists.active != blank %}
     <nav class="products-nav artist-nav" aria-label="Artist navigation">
-      <div class="nav-title">Artists</div>
-      <ul>
-        {% for artist in artists.active %}
-          <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
-        {% endfor %}
-      </ul>
+      {% unless page.full_url contains 'search=' %}
+        <div class="nav-title">Artists</div>
+          <ul>
+            {% for artist in artists.active %}
+              <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endunless %}  
     </nav>
     {% endif %}
   </div>
