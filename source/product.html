@@ -12,11 +12,13 @@
     {% if product_status != blank %}<div class="product-status">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
     <div class="product-price">
-      {% if product.variable_pricing %}
-        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-      {% else %}
-        {{ product.default_price | money: theme.money_format }}
-      {% endif %}
+      {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+        {% if product.variable_pricing %}
+          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+        {% else %}
+          {{ product.default_price | money: theme.money_format }}
+        {% endif %}
+      {% endunless %}
     </div>
   </div>
   <div class="product-details">
