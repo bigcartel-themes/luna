@@ -9,7 +9,7 @@
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader">
+  <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="MwnpJNps"></script>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -23,7 +23,7 @@
         </button>
       </div>
     {% endif %}
-    <header>
+    <header data-bc-hook="header">
       <div class="wrapper">
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
@@ -165,7 +165,7 @@
 
 
 
-    <footer>
+    <footer data-bc-hook="footer">
       <div class="wrapper">
         <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
           <ul class="footer-links">
