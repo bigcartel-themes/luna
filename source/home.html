@@ -59,11 +59,13 @@
                 <div class="product-list-thumb-info">
                   <div class="product-list-thumb-name">{{ product.name }}</div>
                   <div class="product-list-thumb-price">
-                    {% if product.variable_pricing %}
-                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                    {% else %}
-                      {{ product.default_price | money: theme.money_format }}
-                    {% endif %}
+                    {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                      {% if product.variable_pricing %}
+                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                      {% else %}
+                        {{ product.default_price | money: theme.money_format }}
+                      {% endif %}
+                    {% endunless %}
                   </div>
                   {% if product_status != blank %}<div class="product-list-thumb-status">{{ product_status }}</div>{% endif %}
                 </div>
