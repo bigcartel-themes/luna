@@ -17,9 +17,9 @@
   </div>
 {% endif %}
 
-<h1 class="visually-hidden">Featured Products</h1>
+<h1 class="page-title">{{ theme.featured_header }}</h1>
 {% if theme.featured_items > 0 %}
-  {% get products from products.all limit:theme.featured_items order:theme.featured_order %}
+  {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
       <div class="product-list-container">
         <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
@@ -74,8 +74,11 @@
           {% endfor %}
         </div>
       </div>
+      {% if paginate.pages > 1 %}
+        {% if theme.all_products_button_text != blank %}<a class="button all-products-button" href="/products">{{ theme.all_products_button_text }}</a>{% endif %}
+      {% endif %}
     {% else %}
       <div class="empty-products centered-message">No products found.</div>
     {% endif %}
-  {% endget %}
+  {% endpaginate %}
 {% endif %}

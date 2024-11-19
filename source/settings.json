@@ -329,6 +329,13 @@
       "description": "The number of custom page links to display in the main navigation."
     },
     {
+      "variable": "featured_header",
+      "label": "Featured products header",
+      "type": "text",
+      "description": "Displays above featured products on the Home page",
+      "default": "Featured Products"
+    },
+    {
       "variable": "featured_items",
       "label": "Featured products",
       "type": "select",
@@ -378,6 +385,13 @@
       ],
       "default": "crop-to-square",
       "description": "Sets the display of images in the product grid"
+    },
+    {
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "type": "text",
+      "description": "Displays underneath featured products and links to your Products Page",
+      "default": "All Products"
     },
     {
       "variable": "show_overlay",
