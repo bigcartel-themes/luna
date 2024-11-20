@@ -18,17 +18,16 @@
       {% endunless %}
     </nav>
     {% if artists.active != blank %}
-    <nav class="products-nav artist-nav" aria-label="Artist navigation">
       {% unless page.full_url contains 'search=' %}
-        <div class="nav-title">Artists</div>
+        <nav class="products-nav artist-nav" aria-label="Artist navigation">
+          <div class="nav-title">Artists</div>
           <ul>
             {% for artist in artists.active %}
               <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
             {% endfor %}
           </ul>
-        </div>
+        </nav>
       {% endunless %}  
-    </nav>
     {% endif %}
   </div>
 {% endif %}
