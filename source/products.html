@@ -1,13 +1,13 @@
 {% if categories.active != blank or artists.active != blank %}
   <div class="artist-category-nav artist-category-nav-header">
     <nav aria-label="Category navigation" class="category-nav products-nav">
-      <div class="nav-title">
+      <h1 class="nav-title">
         {% if page.full_url contains "search=" %}
           Search Results
         {% else %}
           {{ page.name }}
         {% endif %}
-      </div>
+      </h1>
       {% unless page.full_url contains 'search=' %}
       <ul>
         <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
@@ -31,7 +31,6 @@
     {% endif %}
   </div>
 {% endif %}
-<h1 class="page-title visually-hidden">{{ page.name }}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <div class="product-list-container">
