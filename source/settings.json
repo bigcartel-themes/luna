@@ -333,7 +333,7 @@
       "label": "Featured products header",
       "type": "text",
       "description": "Displays above featured products on the Home page",
-      "default": "Featured Products"
+      "default": "Featured"
     },
     {
       "variable": "featured_items",
