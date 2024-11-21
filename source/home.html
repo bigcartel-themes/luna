@@ -17,7 +17,11 @@
   </div>
 {% endif %}
 
-<h1 class="page-title">{{ theme.featured_header }}</h1>
+{% if theme.featured_header != blank %}
+  <h1 class="page-title">{{ theme.featured_header }}</h1>
+{% else %}
+  <h1 class="visually-hidden">Featured Products</h1>
+{% endif %}
 {% if theme.featured_items > 0 %}
   {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
