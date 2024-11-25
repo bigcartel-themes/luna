@@ -529,10 +529,22 @@
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
     },
     {
-      "variable": "twitter_url",
-      "label": "Twitter URL",
+      "variable": "bluesky_url",
+      "label": "Bluesky URL",
       "type": "text",
-      "description": "Ex: https://twitter.com/bigcartel"
+      "description": "Ex: https://bsky.app/profile/bigcartel.com"
+    },
+    {
+      "variable": "threads_url",
+      "label": "Threads URL",
+      "type": "text",
+      "description": "Ex: https://threads.net/@bigcartel"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "X URL",
+      "type": "text",
+      "description": "Ex: https://x.com/bigcartel"
     },
     {
       "variable": "facebook_url",
