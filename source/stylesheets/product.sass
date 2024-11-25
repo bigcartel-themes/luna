@@ -122,55 +122,6 @@
     border-radius: var(--border-radius)
     width: 100%
 
-  .social-buttons
-    border: 1px solid var(--border-color)
-    font-family: var(--secondary-font)
-    font-size: 14px
-    list-style: none
-    margin: $luna-base * 4 0 0
-    padding: 0
-    text-transform: uppercase
-    letter-spacing: .5px
-
-    li
-      +flexbox
-      +justify-content(center)
-      +align-items(center)
-      border-bottom: 1px solid var(--border-color)
-      height: 54px
-      overflow: hidden
-      position: relative
-      text-align: center
-
-      .social-title
-        display: block
-        position: absolute
-        width: 100%
-
-      .social-action
-        opacity: 0
-        position: relative
-        visibility: hidden
-
-      &:hover
-        .social-title
-          display: none
-
-        .social-action
-          opacity: 1
-          visibility: visible
-
-      @media screen and (max-width: $break-small)
-        .social-title
-          display: none
-
-        .social-action
-          opacity: 1
-          visibility: visible
-
-      &:last-child
-        border-bottom: 0px
-
 .similar-product-list
   +justify-content(flex-start)
 
