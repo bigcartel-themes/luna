@@ -90,36 +90,6 @@
         </div>
       {% endif %}
     {% endif %}
-
-    {% if theme.show_facebook or theme.show_twitter or theme.show_pinterest %}
-      <ul class="social-buttons">
-        {% if theme.show_facebook %}
-          <li class="social-facebook">
-            <div class="social-title">Share it</div>
-            <div class="social-action">
-              <div class="fb-share-button" data-href="{{ page.full_url }}" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.full_url }}src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-            </div>
-          </li>
-        {% endif %}
-        {% if theme.show_twitter %}
-          <li class="social-twitter">
-            <div class="social-title">Tweet It</div>
-            <div class="social-action">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.full_url }}" data-text="Check out {{ product.name }} from {{ store.name }}!">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-          </li>
-        {% endif %}
-        {% if theme.show_pinterest %}
-          <li class="social-pinterest">
-            <div class="social-title">Pin It</div>
-            <div class="social-action">
-              <a href="http://pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.image.url }}&description={% if product.description != blank %}{{ product.description | escape | truncate: 490 }}{% endif %}" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"></a>
-              <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-            </div>
-          </li>
-        {% endif %}
-      </ul>
-    {% endif %}
   </div>
   <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">
     {% if product.images.size > 1 %}

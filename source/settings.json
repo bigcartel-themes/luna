@@ -496,27 +496,6 @@
       "requires": "inventory"
     },
     {
-      "variable": "show_facebook",
-      "label": "Show Facebook's Share button",
-      "type": "boolean",
-      "default": false,
-      "description": "Adds a Share button to the Product page"
-    },
-    {
-      "variable": "show_twitter",
-      "label": "Show Twitter's Tweet button",
-      "type": "boolean",
-      "default": false,
-      "description": "Adds a Tweet button to the Product page"
-    },
-    {
-      "variable": "show_pinterest",
-      "label": "Show Pinterest's Pin It button",
-      "type": "boolean",
-      "default": false,
-      "description": "Adds a Pin It button to the Product page"
-    },
-    {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
