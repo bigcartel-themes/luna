@@ -9,7 +9,7 @@
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader">
+  <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="MwnpJNps"></script>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -23,7 +23,7 @@
         </button>
       </div>
     {% endif %}
-    <header>
+    <header data-bc-hook="header">
       <div class="wrapper">
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
@@ -62,7 +62,7 @@
         </ul>
       </nav>
     </header>
-    <main class="main" id="main">
+    <main class="main" id="main" data-bc-hook="main">
       <div class="wrapper">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
@@ -102,9 +102,9 @@
                     {% when 'coming-soon' %}
                       {% assign product_status = 'Coming soon' %}
                   {% endcase %}
-                  <div class="product-list-thumb {{ product.css_class }}">
+                  <div class="product-list-thumb {{ product.css_class }}" data-bc-hook="product-item" data-bc-product-id="{{ product.id }}">
                     <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
-                      <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                      <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}" data-bc-hook="product-thumbnail">
                         <img
                           alt=""
                           class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
@@ -122,9 +122,9 @@
                           data-sizes="auto"
                         >
                       </div>
-                      <div class="product-list-thumb-info">
-                        <div class="product-list-thumb-name">{{ product.name }}</div>
-                        <div class="product-list-thumb-price">
+                      <div class="product-list-thumb-info" data-bc-hook="product-header">
+                        <div class="product-list-thumb-name" data-bc-hook="product-title">{{ product.name }}</div>
+                        <div class="product-list-thumb-price" data-bc-hook="product-price">
                           {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
                             {% if product.variable_pricing %}
                               {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
@@ -157,7 +157,7 @@
             {% endif %}
           </div>
           <div class="product-list-container">
-            <div class="related-product-list product-list"></div>
+            <div class="related-product-list product-list" data-bc-hook="product-collection"></div>
           </div>
         </div>
       </aside>
@@ -165,7 +165,7 @@
 
 
 
-    <footer>
+    <footer data-bc-hook="footer">
       <div class="wrapper">
         <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
           <ul class="footer-links">

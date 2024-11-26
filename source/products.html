@@ -34,7 +34,7 @@
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <div class="product-list-container">
-      <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
+      <div class="product-list {% if products.size < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}" data-bc-hook="product-collection">
         {% for product in products %}
           {% assign image_width = product.image.width | times: 1.0 %}
           {% assign image_height = product.image.height | times: 1.0 %}
@@ -48,9 +48,9 @@
             {% when 'coming-soon' %}
               {% assign product_status = 'Coming soon' %}
           {% endcase %}
-          <div class="product-list-thumb {{ product.css_class }}">
+          <div class="product-list-thumb {{ product.css_class }}" data-bc-hook="product-item" data-bc-product-id="{{ product.id }}">
             <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
-              <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+              <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}" data-bc-hook="product-thumbnail-container">
                 <img
                   alt=""
                   class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
@@ -66,11 +66,12 @@
                     {{ product.image | product_image_url | constrain: 960 }} 960w
                   "
                   data-sizes="auto"
+                  data-bc-hook="product-thumbnail-container"
                 >
               </div>
-              <div class="product-list-thumb-info">
-                <div class="product-list-thumb-name">{{ product.name }}</div>
-                <div class="product-list-thumb-price">
+              <div class="product-list-thumb-info" data-bc-hook="product-header">
+                <div class="product-list-thumb-name" data-bc-hook="product-name">{{ product.name }}</div>
+                <div class="product-list-thumb-price" data-bc-hook="product-price">
                   {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
                     {% if product.variable_pricing %}
                       {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
