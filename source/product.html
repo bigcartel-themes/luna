@@ -7,9 +7,10 @@
 	{% when 'coming-soon' %}
 		{% assign product_status = 'Coming soon' %}
 {% endcase %}
+{% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
 <div class="product-page {{ theme.product_page_layout }}">
   <div class="product-page-headings">
-    {% if product_status != blank %}<div class="product-status">{{ product_status }}</div>{% endif %}
+    {% if product_status != blank %}<div class="product-status {{ status_class }}">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
     <div class="product-price">
       {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}

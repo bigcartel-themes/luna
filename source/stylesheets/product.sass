@@ -47,12 +47,17 @@
     font-weight: normal
 
   .product-status
-    color: var(--secondary-text-color)
     font-family: var(--secondary-font)
     font-size: $luna-font-base-px
     font-style: italic
     margin-bottom: $luna-base * 1.75
     text-align: center
+
+    &.status-primary
+      color: var(--product-status-text-color-primary)
+        
+    &.status-secondary
+      color: var(--product-status-text-color-secondary)
 
   .product-details
     grid-area: var(--details-grid-area)

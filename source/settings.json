@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "images": [
     {
       "variable": "header",
@@ -39,7 +39,7 @@
             },
             "colors": {
               "background_color": "#FFFFFF",
-              "secondary_background_color": "#F3F3F3",
+              "secondary_background_color": "#FFFFFF",
               "primary_text_color": "#111111",
               "secondary_text_color": "#555555",
               "link_rollover_color": "#255B8A",
@@ -48,7 +48,9 @@
               "border_color": "#111111",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#000000",
-              "button_rollover_color": "#255B8A"
+              "button_rollover_color": "#255B8A",
+              "product_status_text_color_primary": "#E60000",
+              "product_status_text_color_secondary": "#787878"
             }
           },
           {
@@ -59,7 +61,7 @@
             },
             "colors": {
               "background_color": "#141415",
-              "secondary_background_color": "#333333",
+              "secondary_background_color": "#141415",
               "primary_text_color": "#F8F8F8",
               "secondary_text_color": "#F8F8F8",
               "link_rollover_color": "#AEAEAE",
@@ -68,7 +70,9 @@
               "border_color": "#494949",
               "button_text_color": "#141415",
               "button_background_color": "#F8F8F8",
-              "button_rollover_color": "#AEAEAE"
+              "button_rollover_color": "#AEAEAE",
+              "product_status_text_color_primary": "#4E6EE8",
+              "product_status_text_color_secondary": "#CCCCCC"
             }
           },
           {
@@ -79,7 +83,7 @@
             },
             "colors": {
               "background_color": "#F8F8FA",
-              "secondary_background_color": "#FFFFFF",
+              "secondary_background_color": "#F8F8FA",
               "primary_text_color": "#2A2A2C",
               "secondary_text_color": "#2A2A2C",
               "link_rollover_color": "#203BE1",
@@ -88,7 +92,9 @@
               "border_color": "#E3E4EA",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#203BE1",
-              "button_rollover_color": "#2A2A2C"
+              "button_rollover_color": "#2A2A2C",
+              "product_status_text_color_primary": "#E60000",
+              "product_status_text_color_secondary": "#888888"
             }
           }
         ]
@@ -103,7 +109,7 @@
               "secondary_font": "Cabin"
             },
             "colors": {
-              "background_color": "#F5F4EE",
+              "background_color": "#F2EEE7",
               "secondary_background_color": "#F2EEE7",
               "primary_text_color": "#262522",
               "secondary_text_color": "#262522",
@@ -113,7 +119,9 @@
               "border_color": "#C3C0B0",
               "button_text_color": "#F5F4EE",
               "button_background_color": "#262522",
-              "button_rollover_color": "#7C3C17"
+              "button_rollover_color": "#7C3C17",
+              "product_status_text_color_primary": "#A64300",
+              "product_status_text_color_secondary": "#7F7F7F"
             }
           },
           {
@@ -123,7 +131,7 @@
               "secondary_font": "Inter"
             },
             "colors": {
-              "background_color": "#141415",
+              "background_color": "#332F2F",
               "secondary_background_color": "#332F2F",
               "primary_text_color": "#FFF5E5",
               "secondary_text_color": "#FFF5E5",
@@ -133,7 +141,9 @@
               "border_color": "#605553",
               "button_text_color": "#222121",
               "button_background_color": "#CAB696",
-              "button_rollover_color": "#FFF5E5"
+              "button_rollover_color": "#FFF5E5",
+              "product_status_text_color_primary": "#FF8C00",
+              "product_status_text_color_secondary": "#888888"
             }
           },
           {
@@ -143,7 +153,7 @@
               "secondary_font": "Source Sans Pro"
             },
             "colors": {
-              "background_color": "#F1F1F1",
+              "background_color": "#EBE7E7",
               "secondary_background_color": "#EBE7E7",
               "primary_text_color": "#0F1B27",
               "secondary_text_color": "#0F1B27",
@@ -153,7 +163,9 @@
               "border_color": "#DBD1D1",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#8A5A5A",
-              "button_rollover_color": "#0F1B27"
+              "button_rollover_color": "#0F1B27",
+              "product_status_text_color_primary": "#D08770",
+              "product_status_text_color_secondary": "#7F7F7F"
             }
           }
         ]
@@ -168,7 +180,7 @@
               "secondary_font": "Syne"
             },
             "colors": {
-              "background_color": "#FFFFFF",
+              "background_color": "#F2F2F3",
               "secondary_background_color": "#F2F2F3",
               "primary_text_color": "#0000FF",
               "secondary_text_color": "#0000FF",
@@ -178,7 +190,9 @@
               "border_color": "#E0E1E7",
               "button_text_color": "#0000FF",
               "button_background_color": "#FFE500",
-              "button_rollover_color": "#EBD300"
+              "button_rollover_color": "#EBD300",
+              "product_status_text_color_primary": "#FFA500",
+              "product_status_text_color_secondary": "#7F7F7F"
             }
           },
           {
@@ -188,7 +202,7 @@
               "secondary_font": "Quicksand"
             },
             "colors": {
-              "background_color": "#FFFBFD",
+              "background_color": "#FFECF7",
               "secondary_background_color": "#FFECF7",
               "primary_text_color": "#33246D",
               "secondary_text_color": "#33246D",
@@ -198,7 +212,9 @@
               "border_color": "#FFECF7",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#FF169E",
-              "button_rollover_color": "#FF61BD"
+              "button_rollover_color": "#FF61BD",
+              "product_status_text_color_primary": "#FF169E",
+              "product_status_text_color_secondary": "#7F7F7F"
             }
           },
           {
@@ -208,7 +224,7 @@
               "secondary_font": "Prompt"
             },
             "colors": {
-              "background_color": "#5E2498",
+              "background_color": "#51168B",
               "secondary_background_color": "#51168B",
               "primary_text_color": "#FFFFFF",
               "secondary_text_color": "#C390F6",
@@ -218,7 +234,9 @@
               "border_color": "#C390F6",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#D01A67",
-              "button_rollover_color": "#B0094F"
+              "button_rollover_color": "#B0094F",
+              "product_status_text_color_primary": "#FF1493",
+              "product_status_text_color_secondary": "#C390F6"
             }
           }
         ]
@@ -246,7 +264,7 @@
     {
       "variable": "secondary_background_color",
       "label": "Secondary background",
-      "default": "#F3F3F3"
+      "default": "#FFFFFF"
     },
     {
       "variable": "primary_text_color",
@@ -292,6 +310,16 @@
       "variable": "button_rollover_color",
       "label": "Button hover background",
       "default": "#255B8A"
+    },
+    {
+      "variable": "product_status_text_color_primary",
+      "label": "Product status text (primary)",
+      "default": "#E60000"
+    },
+    {
+      "variable": "product_status_text_color_secondary",
+      "label": "Product status text (secondary)",
+      "default": "#787878"
     }
   ],
   "options": [
