@@ -88,11 +88,11 @@
     font-size: $luna-font-base-px
 
     a
-      color: var(--secondary-text-color)
+      color: var(--link-text-color)
       text-decoration: underline
 
       &:hover, &:focus
-        color: var(--links-rollover-color)
+        color: var(--link-rollover-color)
 
     p
       margin: revert
@@ -148,7 +148,7 @@
 
   .similar-products-title
     font-size: $luna-font-base-px + 8
-    text-transform: uppercase
+    text-transform: capitalize
 
   .prev-next-products
     +flexbox
@@ -197,8 +197,6 @@
 
   .product-inventory-header
     margin-bottom: $luna-base * 3
-    text-transform: uppercase
-    letter-spacing: .5px
     font-size: $luna-font-base-px - 1
     text-align: center
 
