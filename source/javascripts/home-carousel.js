@@ -7,6 +7,9 @@ if (homeSlideshow) {
     type: 'loop',
     pagination: true,
     lazyLoad: 'sequential',
+    autoplay: themeOptions.homepageSlideshowAutoplay,
+    interval: themeOptions.homepageSlideshowSpeed,
+    speed: 1500
   });
   homeSplide.mount();
 }

@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.9.1",
+  "version": "2.10.0",
   "images": [
     {
       "variable": "header",
@@ -383,6 +383,27 @@
       "options": "0..6",
       "default": 2,
       "description": "The number of custom page links to display in the main navigation."
+    },
+    {
+      "variable": "homepage_slideshow_autoplay",
+      "label": "Auto-play homepage slideshow",
+      "type": "boolean",
+      "default": false,
+      "description": "Automatically advances slides in the homepage slideshow"
+    },
+    {
+      "variable": "homepage_slideshow_speed",
+      "label": "Slideshow speed",
+      "type": "select",
+      "options": [
+        ["Slowest", 6000],
+        ["Slower", 5000],
+        ["Normal", 4000],
+        ["Faster", 3500],
+        ["Fastest", 3000]
+      ],
+      "default": 4000,
+      "description": "Controls how quickly slides advance in the auto-playing slideshow"
     },
     {
       "variable": "featured_header",
