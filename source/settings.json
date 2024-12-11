@@ -10,14 +10,14 @@
     {
       "variable": "background",
       "label": "Repeating background image",
-      "description": "200px by 200px image recommended"
+      "description": "200 x 200 image recommended"
     }
   ],
   "image_sets": [
     {
       "variable": "slideshow",
       "label": "Slideshow",
-      "description": "900px by 500px images recommended"
+      "description": "900 x 500 images recommended"
     }
   ],
   "preset_styles": {
