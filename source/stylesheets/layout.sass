@@ -103,6 +103,7 @@ a
   &:focus, &:hover
     color: var(--link-rollover-color)
     text-decoration: underline
+    text-underline-offset: 2px
 
 h1, h2, h3, h4, h5
   color: var(--header-text-color)
@@ -182,10 +183,11 @@ header
 
       @media screen and (max-width: $break-small)
         font-size: $luna-font-base-px
-        text-decoration: underline
 
       &:hover, &:focus
         color: var(--link-rollover-color) !important
+        text-decoration: underline
+        text-underline-offset: 2px
 
   &.mobile-nav
     display: none
@@ -341,6 +343,7 @@ button.button, a.button
   a
     color: var(--secondary-text-color)
     text-decoration: underline
+    text-underline-offset: 2px
 
     &:hover, &:focus
       color: var(--link-rollover-color)
@@ -401,11 +404,9 @@ button.button, a.button
     a
       display: block
       padding: $luna-base $luna-base * 2
-      text-decoration: none
 
       &:hover, &:focus
         color: var(--link-rollover-color)
-        text-decoration: underline
 
 .social-links
   +flexbox
@@ -543,6 +544,7 @@ a.back-to-site
 
   a
     text-decoration: underline
+    text-underline-offset: 2px
 
 .visually-hidden
   border: 0
