@@ -212,6 +212,30 @@
           {
             "style_name": "Playful #2",
             "fonts": {
+              "primary_font": "Yuji Mai",
+              "secondary_font": "Open Sans"
+            },
+            "colors": {
+              "background_color": "#000000",
+              "secondary_background_color": "#000000",
+              "primary_text_color": "#DDDDDD",
+              "secondary_text_color": "#DDDDDD",
+              "link_text_color": "#DDDDDD",
+              "link_rollover_color": "#18D1E6",
+              "shop_name_text_color": "#18D1E6",
+              "header_text_color": "#18D1E6",
+              "products_background_color": "#FFFFFF",
+              "border_color": "#FFECF7",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#18D1E6",
+              "button_rollover_color": "#13A6B6",
+              "product_status_text_color_primary": "#18D1E6",
+              "product_status_text_color_secondary": "#919191"
+            }
+          },
+          {
+            "style_name": "Playful #3",
+            "fonts": {
               "primary_font": "Quicksand",
               "secondary_font": "Quicksand"
             },
@@ -234,7 +258,7 @@
             }
           },
           {
-            "style_name": "Playful #3",
+            "style_name": "Playful #4",
             "fonts": {
               "primary_font": "Prompt",
               "secondary_font": "Prompt"
