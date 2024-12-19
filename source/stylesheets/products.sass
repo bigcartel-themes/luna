@@ -42,9 +42,11 @@
 
         &:hover
           text-decoration: underline
+          text-underline-offset: 2px
 
       &.selected a
         text-decoration: underline
+        text-underline-offset: 2px
 
       &:not(:last-child):after
         content: "/"
@@ -213,6 +215,7 @@ a.product-list-link
 
     &.current
       text-decoration: underline
+      text-underline-offset: 2px
 
 #products_page .footer-nav, #home_page .footer-nav
   @media screen and (max-width: $break-small)

@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.9.1",
+  "version": "2.10.1",
   "images": [
     {
       "variable": "header",
@@ -10,14 +10,14 @@
     {
       "variable": "background",
       "label": "Repeating background image",
-      "description": "200px by 200px image recommended"
+      "description": "200 x 200 image recommended"
     }
   ],
   "image_sets": [
     {
       "variable": "slideshow",
       "label": "Slideshow",
-      "description": "900px by 500px images recommended"
+      "description": "900 x 500 images recommended"
     }
   ],
   "preset_styles": {
@@ -52,7 +52,9 @@
               "button_background_color": "#000000",
               "button_rollover_color": "#255B8A",
               "product_status_text_color_primary": "#E60000",
-              "product_status_text_color_secondary": "#787878"
+              "product_status_text_color_secondary": "#787878",
+              "announcement_background_color": "#255B8A",
+              "announcement_text_color": "#FFFFFF"
             }
           },
           {
@@ -76,7 +78,9 @@
               "button_background_color": "#F8F8F8",
               "button_rollover_color": "#AEAEAE",
               "product_status_text_color_primary": "#4E6EE8",
-              "product_status_text_color_secondary": "#CCCCCC"
+              "product_status_text_color_secondary": "#CCCCCC",
+              "announcement_background_color": "#494949",
+              "announcement_text_color": "#F8F8F8"
             }
           },
           {
@@ -100,7 +104,9 @@
               "button_background_color": "#203BE1",
               "button_rollover_color": "#2A2A2C",
               "product_status_text_color_primary": "#E60000",
-              "product_status_text_color_secondary": "#888888"
+              "product_status_text_color_secondary": "#888888",
+              "announcement_background_color": "#203BE1",
+              "announcement_text_color": "#F8F8FA"
             }
           }
         ]
@@ -129,7 +135,9 @@
               "button_background_color": "#262522",
               "button_rollover_color": "#7C3C17",
               "product_status_text_color_primary": "#A64300",
-              "product_status_text_color_secondary": "#7F7F7F"
+              "product_status_text_color_secondary": "#7F7F7F",
+              "announcement_background_color": "#7C3C17",
+              "announcement_text_color": "#F2EEE7"
             }
           },
           {
@@ -153,7 +161,9 @@
               "button_background_color": "#CAB696",
               "button_rollover_color": "#FFF5E5",
               "product_status_text_color_primary": "#FF8C00",
-              "product_status_text_color_secondary": "#888888"
+              "product_status_text_color_secondary": "#888888",
+              "announcement_background_color": "#FF8C00",
+              "announcement_text_color": "#332F2F"
             }
           },
           {
@@ -174,10 +184,12 @@
               "products_background_color": "#0F1B27",
               "border_color": "#DBD1D1",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#8A5A5A",
+              "button_background_color": "#D08770",
               "button_rollover_color": "#0F1B27",
               "product_status_text_color_primary": "#D08770",
-              "product_status_text_color_secondary": "#7F7F7F"
+              "product_status_text_color_secondary": "#7F7F7F",
+              "announcement_background_color": "#D08770",
+              "announcement_text_color": "#0F1B27"
             }
           }
         ]
@@ -206,11 +218,39 @@
               "button_background_color": "#FFE500",
               "button_rollover_color": "#EBD300",
               "product_status_text_color_primary": "#FFA500",
-              "product_status_text_color_secondary": "#7F7F7F"
+              "product_status_text_color_secondary": "#7F7F7F",
+              "announcement_background_color": "#FFE500",
+              "announcement_text_color": "#222222"
             }
           },
           {
             "style_name": "Playful #2",
+            "fonts": {
+              "primary_font": "Yuji Mai",
+              "secondary_font": "Open Sans"
+            },
+            "colors": {
+              "background_color": "#000000",
+              "secondary_background_color": "#000000",
+              "primary_text_color": "#DDDDDD",
+              "secondary_text_color": "#DDDDDD",
+              "link_text_color": "#DDDDDD",
+              "link_rollover_color": "#18D1E6",
+              "shop_name_text_color": "#18D1E6",
+              "header_text_color": "#18D1E6",
+              "products_background_color": "#FFFFFF",
+              "border_color": "#FFECF7",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#18D1E6",
+              "button_rollover_color": "#13A6B6",
+              "product_status_text_color_primary": "#18D1E6",
+              "product_status_text_color_secondary": "#919191",
+              "announcement_background_color": "#18D1E6",
+              "announcement_text_color": "#000000"
+            }
+          },
+          {
+            "style_name": "Playful #3",
             "fonts": {
               "primary_font": "Quicksand",
               "secondary_font": "Quicksand"
@@ -224,17 +264,19 @@
               "link_rollover_color": "#FF169E",
               "shop_name_text_color": "#33246D",
               "header_text_color": "#33246D",
-              "products_background_color": "#33246D",
+              "products_background_color": "#292929",
               "border_color": "#FFECF7",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#FF169E",
               "button_rollover_color": "#FF61BD",
               "product_status_text_color_primary": "#FF169E",
-              "product_status_text_color_secondary": "#7F7F7F"
+              "product_status_text_color_secondary": "#7F7F7F",
+              "announcement_background_color": "#FF169E",
+              "announcement_text_color": "#FFFFFF"
             }
           },
           {
-            "style_name": "Playful #3",
+            "style_name": "Playful #4",
             "fonts": {
               "primary_font": "Prompt",
               "secondary_font": "Prompt"
@@ -251,10 +293,12 @@
               "products_background_color": "#360665",
               "border_color": "#C390F6",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#D01A67",
+              "button_background_color": "#EE178B",
               "button_rollover_color": "#B0094F",
               "product_status_text_color_primary": "#FF1493",
-              "product_status_text_color_secondary": "#C390F6"
+              "product_status_text_color_secondary": "#C390F6",
+              "announcement_background_color": "#EE178B",
+              "announcement_text_color": "#FFFFFF"
             }
           }
         ]
@@ -348,6 +392,16 @@
       "variable": "product_status_text_color_secondary",
       "label": "Product status text (secondary)",
       "default": "#787878"
+    },
+    {
+      "variable": "announcement_background_color",
+      "label": "Announcement background",
+      "default": "#000000"
+    },
+    {
+      "variable": "announcement_text_color",
+      "label": "Announcement text",
+      "default": "#FFFFFF"
     }
   ],
   "options": [
@@ -383,6 +437,27 @@
       "options": "0..6",
       "default": 2,
       "description": "The number of custom page links to display in the main navigation."
+    },
+    {
+      "variable": "homepage_slideshow_autoplay",
+      "label": "Auto-play homepage slideshow",
+      "type": "boolean",
+      "default": false,
+      "description": "Automatically advances slides in the homepage slideshow"
+    },
+    {
+      "variable": "homepage_slideshow_speed",
+      "label": "Slideshow speed",
+      "type": "select",
+      "options": [
+        ["Slowest", 6000],
+        ["Slower", 5000],
+        ["Normal", 4000],
+        ["Faster", 3500],
+        ["Fastest", 3000]
+      ],
+      "default": 4000,
+      "description": "Controls how quickly slides advance in the auto-playing slideshow"
     },
     {
       "variable": "featured_header",
