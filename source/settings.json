@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.10.1",
+  "version": "2.11.0",
   "images": [
     {
       "variable": "header",
@@ -679,6 +679,12 @@
       "label": "YouTube URL",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
+    },
+    {
+      "variable": "linkedin_url",
+      "label": "LinkedIn URL",
+      "type": "text",
+      "description": "Ex: https://linkedin.com/in/bigcartel"
     },
     {
       "variable": "tumblr_url",
