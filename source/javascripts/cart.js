@@ -26,7 +26,75 @@ $('body')
       e.preventDefault();
       return false;
     }
-  })
+  });
+
+const shouldUseWebShare = () => {
+  const hasShareApi = 'share' in navigator;
+  
+  const isMobileUserAgentData = 'userAgentData' in navigator && navigator.userAgentData.mobile;
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || 
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  
+  return hasShareApi && (isMobileUserAgentData || isIOS || isAndroid);
+};
+
+document.querySelector('.copy-cart-link')?.addEventListener('click', async (event) => {
+  event.preventDefault();
+  const link = event.currentTarget;
+  const originalText = link.textContent;
+  const text = link.dataset.clipboardText;
+
+  if (shouldUseWebShare()) {
+    try {
+      await navigator.share({
+        title: 'Check out this cart I saved',
+        url: text
+      });
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        console.warn('Share failed:', error);
+      }
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(text);
+      link.textContent = 'Link copied!';
+      setTimeout(() => {
+        link.textContent = originalText;
+      }, 2000);
+    } catch (error) {
+      console.warn('Clipboard copy failed:', error);
+    }
+  }
+});
+
+function updateShareableLink() {
+  fetch('/cart/shareable_link.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data?.shareable_link) {
+        throw new Error('Invalid response format');
+      }
+      const linkElement = document.querySelector('.copy-cart-link');
+      if (linkElement) {
+        linkElement.href = data.shareable_link;
+        linkElement.dataset.clipboardText = data.shareable_link;
+      }
+    })
+    .catch(error => {
+      console.warn('Failed to update shareable cart link:', error);
+      const linkElement = document.querySelector('.copy-cart-link');
+      if (linkElement) {
+        linkElement.style.display = 'none';
+      }
+    });
+}
 
 var processUpdate = function(input, item_id, new_val, cart) {
   var sub_total = strip_tags(Format.money(cart.total, true, true));
@@ -37,6 +105,8 @@ var processUpdate = function(input, item_id, new_val, cart) {
     $('.cart-num-items').html(item_count);
     $('.cart-subtotal-amount').fadeIn(500);
   });
+
+  updateShareableLink();
 
   if (item_count == 0) {
     $('.cart-form').slideUp('fast',function() {

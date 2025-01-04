@@ -2,7 +2,7 @@
 <div class="cart-container{% if cart.item_count == 0 %} empty-cart{% endif %}">
   <div class="empty-cart-message">
     <p class="empty-cart-message centered-message">
-      Your cart is empty! Sounds like a good time to <a href="/products" title="Start shopping">start shopping</a>.
+      Your cart is empty, <a href="/products" title="Start shopping">shop now</a>.
     </p>
   </div>
   {% if cart.items != blank %}
@@ -52,7 +52,10 @@
           </div>
           <div class="cart-footer-buttons">
             <button type="submit" name="checkout" class="button checkout-btn">Checkout</button>
-            <a class="button continue-shopping minimal-button" href="/products">Continue Shopping</a>
+            <a class="button footer minimal-button" href="/products">Continue Shopping</a>
+            {% if cart.shareable_link %}
+              <a href="{{ cart.shareable_link }}" class="button footer minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
+            {% endif %}
           </div>
         </div>
       </form>
