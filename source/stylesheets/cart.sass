@@ -211,8 +211,12 @@ button.cart-item-remove-text
   margin: 0
   margin-top: 6px
   padding: 0
-  text-decoration: underline
+  text-decoration: none
   width: auto
+  font-size: 14px
 
   @media screen and (max-width: $break-small)
     display: inline-block
+
+  &:hover, &:focus
+    text-decoration: underline
