@@ -137,10 +137,13 @@
     @media screen and (max-width: $break-small)
       width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
 
+.related-products-container 
+  margin: 0 auto 60px auto
+
 .similar-products-header
   +flexbox
   +align-items(center)
-  padding: $luna-base * 3 0
+  padding: $luna-base * 3 0 0 0
   margin-top: $luna-base * 2
 
   @media screen and (max-width: $break-small)
@@ -149,7 +152,6 @@
 
   .similar-products-title
     font-size: $luna-font-base-px + 8
-    text-transform: capitalize
 
   .prev-next-products
     +flexbox

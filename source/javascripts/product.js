@@ -28,19 +28,7 @@ if (themeOptions.productImageZoom === true) {
   });
   lightbox.init();
 }
-$(document).ready(function() {
-  if ($('.all-related-products').length) {
-    var num_products = $('.all-related-products .product-list-thumb').length;
-    var elements = $('.all-related-products').children().toArray();
-    var num_to_display = $('.related-products-container').data('num-products');
-    for (var i=1; i<=num_to_display; i++) {
-      var randomIndex = getRandomIndex(elements);
-      $('.related-product-list').append($('.all-related-products').children().eq(randomIndex));
-      elements.splice(randomIndex, 1);
-    }
-    $('.all-related-products').remove();
-  }
-});
+
 
 $('.product-option-select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
