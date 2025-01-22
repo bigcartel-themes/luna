@@ -574,7 +574,7 @@
         ["Stacked 2 column", "two-column"],
         ["Stacked full width", "stacked"]
       ],
-      "default": "stacked",
+      "default": "thumbnails",
       "description": "Sets the display of the Product page gallery"
     },
     {
