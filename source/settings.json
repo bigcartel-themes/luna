@@ -593,11 +593,13 @@
       "label": "Show related products",
       "type": "boolean",
       "default": true,
+      "description": "Displays related products on Product pages"
     },
     {
       "variable": "similar_products_header",
       "label": "Related products header",
       "type": "text",
+      "max_length": 75,
       "description": "Displays above related products on Products pages",
       "default": "You might also like",
       "requires": [
