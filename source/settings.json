@@ -442,7 +442,7 @@
       "variable": "homepage_slideshow_autoplay",
       "label": "Auto-play homepage slideshow",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Automatically advances slides in the homepage slideshow"
     },
     {
