@@ -132,11 +132,11 @@
         {% endcomment %}
         {% assign final_permalinks_array = final_product_permalinks | split: ',' %}
         {% if final_permalinks_array.size > 0 %}
-          <aside class="related-products-container wrapper" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ theme.similar_products_header | default: 'Related Products' }}">
+          <aside class="related-products-container wrapper" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ theme.similar_products_header | default: 'You might also like' }}">
             <div class="all-related-products" style="display: none"></div>
             <div class="similar-products">
               <div class="similar-products-header">
-                <h2 class="similar-products-title">{{ theme.similar_products_header | default: 'Related products' }}</h2>
+                <h2 class="similar-products-title">{{ theme.similar_products_header | default: 'You might also like' }}</h2>
                 {% if product.previous_product != blank or product.next_product != blank %}
                   <ul class="prev-next-products">
                     {% if product.previous_product != blank %}
