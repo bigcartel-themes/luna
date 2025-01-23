@@ -91,17 +91,22 @@
         {% endcomment %}
         {% if product.categories != blank %}
           {% for category in product.categories limit: 4 %}
+            {% if current_count >= related_products_limit %}
+              {% break %}
+            {% endif %}
+            
             {% for product in category.products | order: theme.similar_products_order %}
-              {% if final_product_permalinks | split: ',' | size < related_products_limit %}
-                {% assign product_permalink = product.permalink %}
-                {% if product.id != current_id %}
-                  {% assign product_permalinks_array = final_product_permalinks | split: ',' %}
-                  {% unless product_permalinks_array contains product_permalink %}
-                    {% assign final_product_permalinks = final_product_permalinks | append: product_permalink | append: ',' %}
-                  {% endunless %}
-                {% endif %}
-              {% else %}
+              {% if current_count >= related_products_limit %}
                 {% break %}
+              {% endif %}
+              
+              {% assign product_permalink = product.permalink %}
+              {% if product.id != current_id %}
+                {% assign product_permalinks_array = final_product_permalinks | split: ',' %}
+                {% unless product_permalinks_array contains product_permalink %}
+                  {% assign final_product_permalinks = final_product_permalinks | append: product_permalink | append: ',' %}
+                  {% assign current_count = current_count | plus: 1 %}
+                {% endunless %}
               {% endif %}
             {% endfor %}
           {% endfor %}
