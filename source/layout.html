@@ -152,7 +152,16 @@
                 <div class="related-product-list product-list">
                   {% for product_permalink in final_permalinks_array %}
                     {% assign matched_product = products[product_permalink] %}
-                    
+                    {% assign matched_product_status = '' %}
+                    {% case matched_product.status %} 
+                      {% when 'active' %} 
+                        {% if matched_product.on_sale %}{% assign matched_product_status = 'On sale' %}{% endif %} 
+                      {% when 'sold-out' %} 
+                        {% assign matched_product_status = 'Sold out' %} 
+                      {% when 'coming-soon' %} 
+                        {% assign matched_product_status = 'Coming soon' %} 
+                    {% endcase %}
+                    {% capture matched_product_status_class %}{% if matched_product.status == 'active' and matched_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                     {% if matched_product != blank %}
                       <div class="product-list-thumb {{ matched_product.css_class }}">
                         <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ matched_product.url }}" title="View {{ matched_product.name | escape }}">
@@ -185,6 +194,7 @@
                                 {% endif %}
                               {% endunless %}
                             </div>
+                            {% if matched_product_status != blank %}<div class="product-list-thumb-status {{ matched_product_status_class }}">{{ matched_product_status }}</div>{% endif %}
                           </div>
                         </a>
                       </div>
