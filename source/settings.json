@@ -463,13 +463,6 @@
       ]
     },
     {
-      "variable": "featured_header",
-      "label": "Featured products header",
-      "type": "text",
-      "description": "Displays above featured products on the Home page",
-      "default": "Featured"
-    },
-    {
       "variable": "featured_items",
       "label": "Featured products",
       "type": "select",
@@ -483,7 +476,20 @@
       "type": "select",
       "options": "product_orders",
       "default": "position",
-      "description": "The order of products on the Home page"
+      "description": "The order of products on the Home page",
+      "requires": [
+        "featured_items gt 0"
+      ]
+    },
+    {
+      "variable": "featured_header",
+      "label": "Featured products header",
+      "type": "text",
+      "description": "Displays above featured products on the Home page",
+      "default": "Featured",
+      "requires": [
+        "featured_items gt 0"
+      ]
     },
     {
       "variable": "max_products_per_row",
