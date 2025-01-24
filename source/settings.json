@@ -630,12 +630,8 @@
       "variable": "similar_products_order",
       "label": "Related products order",
       "type": "select",
-      "options": [
-        ["Top Selling", "sales"],
-        ["Newest", "newest"],
-        ["Regular", "regular"]
-      ],
-      "default": "sales",
+      "options": "product_orders",
+      "default": "top-selling",
       "description": "The order of related products on the Product pages",
       "requires": [
         "show_similar_products eq true"
@@ -649,20 +645,12 @@
       "description": "Displays a search field in the footer"
     },
     {
-      "variable": "show_inventory_bars",
-      "label": "Show inventory bars",
-      "type": "boolean",
-      "default": false,
-      "description": "Shows a product's inventory amounts (when using inventory tracking)",
-      "requires": "inventory"
-    },
-    {
       "variable": "show_sold_out_product_options",
       "label": "Show sold out product variants",
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -670,7 +658,15 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of sold out products on product grids and product pages",
-      "requires": "inventory"
+      "requires": ["inventory"]
+    },
+    {
+      "variable": "show_inventory_bars",
+      "label": "Show inventory bars",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": ["inventory"]
     },
     {
       "variable": "instagram_url",
