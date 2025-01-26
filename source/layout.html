@@ -82,134 +82,78 @@
     </main>
     {% if page.full_url contains '/product/' %}
       {% if theme.show_similar_products %}
-        {% assign current_id = product.id | to_string %}
-        {% assign related_products_limit = theme.similar_products | default: 5 %}
-        {% assign final_product_permalinks = '' %}
-        
-        {% comment %}
-        Step 1: Collect Products from Categories
-        {% endcomment %}
-        {% if product.categories != blank %}
-          {% for category in product.categories limit: 4 %}
-            {% if current_count >= related_products_limit %}
-              {% break %}
-            {% endif %}
-            
-            {% for product in category.products | order: theme.similar_products_order %}
-              {% if current_count >= related_products_limit %}
-                {% break %}
+        {% assign related_products_header = theme.similar_products_header | default: 'You might also like' %}
+        {% assign related_products_collection = product.related_products %}
+
+        <aside class="related-products-container wrapper" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ related_products_header }}">
+          <div class="all-related-products" style="display: none"></div>
+          <div class="similar-products">
+            <div class="similar-products-header">
+              <h2 class="similar-products-title">{{ related_products_header }}</h2>
+              {% if product.previous_product != blank or product.next_product != blank %}
+                <ul class="prev-next-products">
+                  {% if product.previous_product != blank %}
+                    <li>{{ product.previous_product | link_to: "Previous product" }}</li>
+                  {% endif %}
+                  {% if product.next_product != blank %}
+                    <li>{{ product.next_product | link_to: "Next product" }}</li>
+                  {% endif %}
+                </ul>
               {% endif %}
-              
-              {% assign product_permalink = product.permalink %}
-              {% if product.id != current_id %}
-                {% assign product_permalinks_array = final_product_permalinks | split: ',' %}
-                {% unless product_permalinks_array contains product_permalink %}
-                  {% assign final_product_permalinks = final_product_permalinks | append: product_permalink | append: ',' %}
-                  {% assign current_count = current_count | plus: 1 %}
-                {% endunless %}
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        {% endif %}
-        
-        {% comment %}
-        Step 2: Collect Fallback Products from products.all
-        {% endcomment %}
-        {% assign current_count = final_product_permalinks | split: ',' | size %}
-        {% assign remaining_limit = related_products_limit | minus: current_count %}
-        
-        {% if remaining_limit > 0 %}
-          {% paginate products from products.all by remaining_limit order: theme.similar_products_order %}
-            {% for product in products %}
-              {% assign product_permalink = product.permalink %}
-              {% if product.id != current_id %}
-                {% assign product_permalinks_array = final_product_permalinks | split: ',' %}
-                {% unless product_permalinks_array contains product_permalink %}
-                  {% assign final_product_permalinks = final_product_permalinks | append: product_permalink | append: ',' %}
-                {% endunless %}
-              {% endif %}
-            {% endfor %}
-          {% endpaginate %}
-        {% endif %}
-        
-        {% comment %}
-        Step 3: Render Final Products
-        {% endcomment %}
-        {% assign final_permalinks_array = final_product_permalinks | split: ',' %}
-        {% if final_permalinks_array.size > 0 %}
-          <aside class="related-products-container wrapper" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ theme.similar_products_header | default: 'You might also like' }}">
-            <div class="all-related-products" style="display: none"></div>
-            <div class="similar-products">
-              <div class="similar-products-header">
-                <h2 class="similar-products-title">{{ theme.similar_products_header | default: 'You might also like' }}</h2>
-                {% if product.previous_product != blank or product.next_product != blank %}
-                  <ul class="prev-next-products">
-                    {% if product.previous_product != blank %}
-                      <li>{{ product.previous_product | link_to: "Previous product" }}</li>
-                    {% endif %}
-                    {% if product.next_product != blank %}
-                      <li>{{ product.next_product | link_to: "Next product" }}</li>
-                    {% endif %}
-                  </ul>
-                {% endif %}
-              </div>
-              <div class="product-list-container">
-                <div class="related-product-list product-list">
-                  {% for product_permalink in final_permalinks_array %}
-                    {% assign matched_product = products[product_permalink] %}
-                    {% assign matched_product_status = '' %}
-                    {% case matched_product.status %} 
-                      {% when 'active' %} 
-                        {% if matched_product.on_sale %}{% assign matched_product_status = 'On sale' %}{% endif %} 
-                      {% when 'sold-out' %} 
-                        {% assign matched_product_status = 'Sold out' %} 
-                      {% when 'coming-soon' %} 
-                        {% assign matched_product_status = 'Coming soon' %} 
-                    {% endcase %}
-                    {% capture matched_product_status_class %}{% if matched_product.status == 'active' and matched_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
-                    {% if matched_product != blank %}
-                      <div class="product-list-thumb {{ matched_product.css_class }}">
-                        <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ matched_product.url }}" title="View {{ matched_product.name | escape }}">
-                          <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
-                            <img
-                              alt="{{ matched_product.name }}"
-                              class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
-                              src="{{ matched_product.image | product_image_url | constrain: 20 }}"
-                              {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ matched_product.image.width | divided_by: matched_product.image.height }}"{% endunless %}
-                              data-srcset="
-                                {{ matched_product.image | product_image_url | constrain: 240 }} 240w,
-                                {{ matched_product.image | product_image_url | constrain: 320 }} 320w,
-                                {{ matched_product.image | product_image_url | constrain: 400 }} 400w,
-                                {{ matched_product.image | product_image_url | constrain: 540 }} 540w,
-                                {{ matched_product.image | product_image_url | constrain: 600 }} 600w,
-                                {{ matched_product.image | product_image_url | constrain: 800 }} 800w,
-                                {{ matched_product.image | product_image_url | constrain: 960 }} 960w
-                              "
-                              data-sizes="auto"
-                            >
-                          </div>
-                          <div class="product-list-thumb-info">
-                            <div class="product-list-thumb-name">{{ matched_product.name }}</div>
-                            <div class="product-list-thumb-price">
-                              {% unless matched_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
-                                {% if matched_product.variable_pricing %}
-                                  {{ matched_product.min_price | money: theme.money_format }} - {{ matched_product.max_price | money: theme.money_format }}
-                                {% else %}
-                                  {{ matched_product.default_price | money: theme.money_format }}
-                                {% endif %}
-                              {% endunless %}
-                            </div>
-                            {% if matched_product_status != blank %}<div class="product-list-thumb-status {{ matched_product_status_class }}">{{ matched_product_status }}</div>{% endif %}
-                          </div>
-                        </a>
+            </div>
+            <div class="product-list-container">
+              <div class="related-product-list product-list">
+                {% for related_product in related_products_collection %}
+                  {% assign related_product_status = '' %}
+                  {% case related_product.status %} 
+                    {% when 'active' %} 
+                      {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %} 
+                    {% when 'sold-out' %} 
+                      {% assign related_product_status = 'Sold out' %} 
+                    {% when 'coming-soon' %} 
+                      {% assign related_product_status = 'Coming soon' %} 
+                  {% endcase %}
+                  {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
+                  <div class="product-list-thumb {{ related_product.css_class }}">
+                    <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+                      <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                        <img
+                          alt="{{ related_product.name }}"
+                          class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                          src="{{ related_product.image | product_image_url | constrain: 20 }}"
+                          {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ related_product.image.width | divided_by: related_product.image.height }}"{% endunless %}
+                          data-srcset="
+                            {{ related_product.image | product_image_url | constrain: 240 }} 240w,
+                            {{ related_product.image | product_image_url | constrain: 320 }} 320w,
+                            {{ related_product.image | product_image_url | constrain: 400 }} 400w,
+                            {{ related_product.image | product_image_url | constrain: 540 }} 540w,
+                            {{ related_product.image | product_image_url | constrain: 600 }} 600w,
+                            {{ related_product.image | product_image_url | constrain: 800 }} 800w,
+                            {{ related_product.image | product_image_url | constrain: 960 }} 960w
+                          "
+                          data-sizes="auto"
+                        >
                       </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+                      <div class="product-list-thumb-info">
+                        <div class="product-list-thumb-name">{{ related_product.name }}</div>
+                        <div class="product-list-thumb-price">
+                          {% unless related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                            {% if related_product.variable_pricing %}
+                              {{ related_product.min_price | money: theme.money_format }} - {{ related_product.max_price | money: theme.money_format }}
+                            {% else %}
+                              {{ related_product.default_price | money: theme.money_format }}
+                            {% endif %}
+                          {% endunless %}
+                        </div>
+                        {% if related_product_status != blank %}<div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>{% endif %}
+                      </div>
+                    </a>
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          </aside>
-        {% endif %}
+          </div>
+        </aside>
       {% endif %}
     {% endif %}
 
