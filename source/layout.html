@@ -159,7 +159,10 @@
 
     <footer data-bc-hook="footer">
       <div class="wrapper">
-        <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
+        {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
+          <div class="footer-custom-content">{{ theme.footer_text }} </div>
+        {% endif %}
+        <nav class="footer-nav footer-nav--main" role="navigation" aria-label="Footer main">
           <ul class="footer-links">
             <li><a href="/">{{ pages.home.name }}</a></li>
             <li><a href="/products">{{ pages.products.name }}</a></li>
@@ -270,6 +273,9 @@
                 <li><a href="{{ theme.bandcamp_url }}" title="Bandcamp"><svg class="bandcamp-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M349 406H0l163-300h349L349 406Z"/></svg></a></li>
               {% endif %}
             </ul>
+          {% endif %}
+          {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
+            <div class="footer-custom-content">{{ theme.footer_text }} </div>
           {% endif %}
           {{ powered_by_big_cartel }}
         </nav>
