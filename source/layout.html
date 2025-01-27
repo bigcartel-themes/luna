@@ -157,19 +157,36 @@
       {% endif %}
     {% endif %}
 
-
     <footer data-bc-hook="footer">
       <div class="wrapper">
         <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
           <ul class="footer-links">
             <li><a href="/">{{ pages.home.name }}</a></li>
             <li><a href="/products">{{ pages.products.name }}</a></li>
-            {% for page in pages.all %}
-              <li>{{ page | link_to }}</li>
-            {% endfor %}
             <li><a href="/contact">{{ pages.contact.name }}</a></li>
             <li><a href="/cart">{{ pages.cart.name }}</a></li>
           </ul>
+        </nav>
+        {% if categories.active.size > 0 and show_categories_in_footer == true %}
+        <nav class="footer-nav footer-nav--categories" role="navigation" aria-label="Footer categories">
+          
+          <ul class="footer-links">
+            {% for category in categories.active %}
+              <li>{{ category | link_to }}</li>
+            {% endfor %}
+          </ul>
+        </nav>
+        {% endif %}
+        <nav class="footer-nav footer-nav--pages" role="navigation" aria-label="Footer pages">
+          {% if pages.all.size > 0 %}
+          <ul class="footer-links">
+            {% for page in pages.all %}
+              <li>{{ page | link_to }}</li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <nav class="footer-nav footer-nav--social" role="navigation" aria-label="Footer social">
+          {% endif %}
           {% if theme.show_search %}
             <div class="footer-search">
               <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
