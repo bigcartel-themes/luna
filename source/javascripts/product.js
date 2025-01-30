@@ -35,6 +35,65 @@ $('.product-option-select').on('change',function() {
   enableAddButton(option_price);
 });
 
+function updateInventoryMessage(optionId = null) {
+  const product = window.bigcartel.product;
+  const messageElement = document.querySelector('[data-inventory-message]');
+
+  if (
+    !themeOptions?.showLowInventoryMessages ||
+    themeOptions.showInventoryBars ||
+    !messageElement
+  ) {
+    return;
+  }
+
+  messageElement.textContent = '';
+  const productOptions = product?.options || [];
+
+  // If no option is selected (initial page load or reset) or product has no options
+  if (!optionId) {
+    const hasOptionWithStatus = (status) => 
+      productOptions.length > 0 && 
+      productOptions.some(option => 
+        option && 
+        !option.sold_out && 
+        option[status]
+      );
+
+    // Single option product - check both statuses
+    if (productOptions.length === 1) {
+      const option = productOptions[0];
+      if (option && !option.sold_out) {
+        if (option.isAlmostSoldOut) {
+          messageElement.textContent = themeOptions.almostSoldOutMessage;
+        } else if (option.isLowInventory) {
+          messageElement.textContent = themeOptions.lowInventoryMessage;
+        }
+      }
+      return;
+    }
+
+    // Multiple options - only check for low inventory across all options
+    if (productOptions.length > 1 && hasOptionWithStatus('isLowInventory')) {
+      messageElement.textContent = themeOptions.lowInventoryMessage;
+    }
+    return;
+  }
+
+  // Handle selected option
+  const selectedOption = product.options.find(option => option.id === parseInt(optionId));
+  if (!selectedOption || selectedOption.sold_out) return;
+
+  // For selected options:
+  // - Single option products: check both almost sold out and low inventory
+  // - Multiple option products: check both statuses when specific option selected
+  if (selectedOption.isAlmostSoldOut) {
+    messageElement.textContent = themeOptions.almostSoldOutMessage;
+  } else if (selectedOption.isLowInventory) {
+    messageElement.textContent = themeOptions.lowInventoryMessage;
+  }
+}
+
 function enableAddButton(updated_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
@@ -47,6 +106,7 @@ function enableAddButton(updated_price) {
   }
   addButton.html(addButtonTitle + priceTitle);
   addButton.attr('aria-label',addButton.text());
+  updateInventoryMessage($('#option').val());
 }
 
 function disableAddButton(type) {
@@ -98,3 +158,7 @@ function disableSelectOption(select_option, type) {
     }
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateInventoryMessage();
+});
