@@ -17,7 +17,6 @@
   --products-background-color: #{'rgba(var(--products-background-color-rgb), .9)'}
 
   --border-color: #{"{{ theme.border_color }}"}
-  --border-color-secondary: color-mix(in srgb, var(--border-color) 50%, black)
 
   --button-text-color: #{"{{ theme.button_text_color }}"}
   --button-background-color: #{"{{ theme.button_background_color }}"}
@@ -437,9 +436,9 @@ footer
       top: 0
       left: 50%
       transform: translateX(-50%)
-      width: 50px
+      width: 25px
       max-width: 100%
-      border-top: 1px solid var(--border-color-secondary)
+      border-top: 1px solid var(--border-color)
 
 .social-links
   +flexbox
