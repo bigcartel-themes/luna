@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.11.1",
+  "version": "2.12.0",
   "images": [
     {
       "variable": "header",
@@ -53,6 +53,7 @@
               "button_rollover_color": "#255B8A",
               "product_status_text_color_primary": "#E60000",
               "product_status_text_color_secondary": "#787878",
+              "inventory_status_text_color": "#E60000",
               "announcement_background_color": "#255B8A",
               "announcement_text_color": "#FFFFFF"
             }
@@ -60,136 +61,141 @@
           {
             "style_name": "Classic #2",
             "fonts": {
-              "primary_font": "DM Sans",
-              "secondary_font": "DM Sans"
+              "primary_font": "Enriqueta",
+              "secondary_font": "Karla"
             },
             "colors": {
-              "background_color": "#141415",
-              "secondary_background_color": "#141415",
-              "primary_text_color": "#F8F8F8",
-              "secondary_text_color": "#F8F8F8",
-              "link_text_color": "#F8F8F8",
-              "link_rollover_color": "#AEAEAE",
-              "shop_name_text_color": "#F8F8F8",
-              "header_text_color": "#F8F8F8",
-              "products_background_color": "#141415",
-              "border_color": "#494949",
-              "button_text_color": "#141415",
-              "button_background_color": "#F8F8F8",
-              "button_rollover_color": "#AEAEAE",
-              "product_status_text_color_primary": "#4E6EE8",
-              "product_status_text_color_secondary": "#CCCCCC",
-              "announcement_background_color": "#494949",
-              "announcement_text_color": "#F8F8F8"
+              "background_color": "#2D3319",
+              "secondary_background_color": "#2D3319",
+              "primary_text_color": "#F4F1DE",
+              "secondary_text_color": "#D8D4BC",
+              "link_text_color": "#F4F1DE",
+              "link_rollover_color": "#E09F3E",
+              "shop_name_text_color": "#FFFFFF",
+              "header_text_color": "#F4F1DE",
+              "products_background_color": "#232810",
+              "border_color": "#3D4425",
+              "button_text_color": "#2D3319",
+              "button_background_color": "#E09F3E",
+              "button_rollover_color": "#C78A2F",
+              "product_status_text_color_primary": "#E09F3E",
+              "product_status_text_color_secondary": "#D8D4BC",
+              "inventory_status_text_color": "#E09F3E",
+              "announcement_background_color": "#3D4425",
+              "announcement_text_color": "#F4F1DE"
             }
           },
           {
             "style_name": "Classic #3",
             "fonts": {
-              "primary_font": "Poppins",
-              "secondary_font": "Poppins"
+              "primary_font": "Arvo",
+              "secondary_font": "Source Sans Pro"
             },
             "colors": {
-              "background_color": "#F8F8FA",
-              "secondary_background_color": "#F8F8FA",
-              "primary_text_color": "#2A2A2C",
-              "secondary_text_color": "#2A2A2C",
-              "link_text_color": "#2A2A2C",
-              "link_rollover_color": "#203BE1",
-              "shop_name_text_color": "#2A2A2C",
-              "header_text_color": "#2A2A2C",
-              "products_background_color": "#203BE1",
-              "border_color": "#E3E4EA",
+              "background_color": "#F8F9FA",
+              "secondary_background_color": "#EDF2F7",
+              "primary_text_color": "#1A365D",
+              "secondary_text_color": "#4A5568",
+              "link_text_color": "#1A365D",
+              "link_rollover_color": "#7B341E",
+              "shop_name_text_color": "#1A365D",
+              "header_text_color": "#1A365D",
+              "products_background_color": "#1A365D",
+              "border_color": "#E2E8F0",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#203BE1",
-              "button_rollover_color": "#2A2A2C",
-              "product_status_text_color_primary": "#E60000",
-              "product_status_text_color_secondary": "#888888",
-              "announcement_background_color": "#203BE1",
-              "announcement_text_color": "#F8F8FA"
+              "button_background_color": "#7B341E",
+              "button_rollover_color": "#652B1B",
+              "product_status_text_color_primary": "#7B341E",
+              "product_status_text_color_secondary": "#718096",
+              "inventory_status_text_color": "#7B341E",
+              "announcement_background_color": "#7B341E",
+              "announcement_text_color": "#F8F9FA"
             }
           }
         ]
       },
       {
-        "group_name": "Elegant",
+        "group_name": "Bold",
         "styles": [
           {
-            "style_name": "Elegant #1",
+            "style_name": "Bold #1",
             "fonts": {
-              "primary_font": "Spectral",
-              "secondary_font": "Cabin"
+              "primary_font": "BioRhyme",
+              "secondary_font": "DM Sans"
             },
             "colors": {
-              "background_color": "#F2EEE7",
-              "secondary_background_color": "#F2EEE7",
-              "primary_text_color": "#262522",
-              "secondary_text_color": "#262522",
-              "link_text_color": "#262522",
-              "link_rollover_color": "#7C3C17",
-              "shop_name_text_color": "#262522",
-              "header_text_color": "#262522",
-              "products_background_color": "#262522",
-              "border_color": "#C3C0B0",
-              "button_text_color": "#F5F4EE",
-              "button_background_color": "#262522",
-              "button_rollover_color": "#7C3C17",
-              "product_status_text_color_primary": "#A64300",
-              "product_status_text_color_secondary": "#7F7F7F",
-              "announcement_background_color": "#7C3C17",
-              "announcement_text_color": "#F2EEE7"
+              "background_color": "#7209B7",
+              "secondary_background_color": "#5F07A0",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#DFB8F5",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#4CC9F0",
+              "shop_name_text_color": "#FFFFFF",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#5F07A0",
+              "border_color": "#8A0AD6",
+              "button_text_color": "#7209B7",
+              "button_background_color": "#4CC9F0",
+              "button_rollover_color": "#22B9EB",
+              "product_status_text_color_primary": "#4CC9F0",
+              "product_status_text_color_secondary": "#DFB8F5",
+              "inventory_status_text_color": "#4CC9F0",
+              "announcement_background_color": "#4CC9F0",
+              "announcement_text_color": "#7209B7"
             }
           },
           {
-            "style_name": "Elegant #2",
+            "style_name": "Bold #2",
             "fonts": {
-              "primary_font": "Marcellus",
-              "secondary_font": "Inter"
+              "primary_font": "Titillium Web",
+              "secondary_font": "Work Sans"
             },
             "colors": {
-              "background_color": "#332F2F",
-              "secondary_background_color": "#332F2F",
-              "primary_text_color": "#FFF5E5",
-              "secondary_text_color": "#FFF5E5",
-              "link_text_color": "#FFF5E5",
-              "link_rollover_color": "#CAB696",
-              "shop_name_text_color": "#FFF5E5",
-              "header_text_color": "#FFF5E5",
-              "products_background_color": "#141415",
-              "border_color": "#605553",
-              "button_text_color": "#222121",
-              "button_background_color": "#CAB696",
-              "button_rollover_color": "#FFF5E5",
-              "product_status_text_color_primary": "#FF8C00",
-              "product_status_text_color_secondary": "#888888",
-              "announcement_background_color": "#FF8C00",
-              "announcement_text_color": "#332F2F"
+              "background_color": "#FF2E00",
+              "secondary_background_color": "#FF2E00",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#FFB8AA",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#FFF500",
+              "shop_name_text_color": "#FFFFFF",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#E62900",
+              "border_color": "#FF5233",
+              "button_text_color": "#FF2E00",
+              "button_background_color": "#FFF500",
+              "button_rollover_color": "#E6DC00",
+              "product_status_text_color_primary": "#FFF500",
+              "product_status_text_color_secondary": "#FFB8AA",
+              "inventory_status_text_color": "#FFF500",
+              "announcement_background_color": "#FFF500",
+              "announcement_text_color": "#FF2E00"
             }
           },
           {
-            "style_name": "Elegant #3",
+            "style_name": "Bold #3",
             "fonts": {
-              "primary_font": "Cormorant",
+              "primary_font": "Inknut Antiqua",
               "secondary_font": "Source Sans Pro"
             },
             "colors": {
-              "background_color": "#EBE7E7",
-              "secondary_background_color": "#EBE7E7",
-              "primary_text_color": "#0F1B27",
-              "secondary_text_color": "#0F1B27",
-              "link_text_color": "#0F1B27",
-              "link_rollover_color": "#8A5A5A",
-              "shop_name_text_color": "#0F1B27",
-              "header_text_color": "#0F1B27",
-              "products_background_color": "#0F1B27",
-              "border_color": "#DBD1D1",
-              "button_text_color": "#FFFFFF",
-              "button_background_color": "#D08770",
-              "button_rollover_color": "#0F1B27",
-              "product_status_text_color_primary": "#D08770",
-              "product_status_text_color_secondary": "#7F7F7F",
-              "announcement_background_color": "#D08770",
-              "announcement_text_color": "#0F1B27"
+              "background_color": "#000000",
+              "secondary_background_color": "#000000",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#A3A3A3",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#00FF66",
+              "shop_name_text_color": "#FFFFFF",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#141414",
+              "border_color": "#333333",
+              "button_text_color": "#000000",
+              "button_background_color": "#00FF66",
+              "button_rollover_color": "#00E65C",
+              "product_status_text_color_primary": "#00FF66",
+              "product_status_text_color_secondary": "#A3A3A3",
+              "inventory_status_text_color": "#00FF66",
+              "announcement_background_color": "#00FF66",
+              "announcement_text_color": "#000000"
             }
           }
         ]
@@ -200,104 +206,253 @@
           {
             "style_name": "Playful #1",
             "fonts": {
-              "primary_font": "Syne",
-              "secondary_font": "Syne"
+              "primary_font": "Quicksand",
+              "secondary_font": "Nunito Sans"
             },
             "colors": {
-              "background_color": "#F2F2F3",
-              "secondary_background_color": "#F2F2F3",
-              "primary_text_color": "#0000FF",
-              "secondary_text_color": "#0000FF",
-              "link_text_color": "#0000FF",
-              "link_rollover_color": "#000098",
-              "shop_name_text_color": "#0000FF",
-              "header_text_color": "#0000FF",
-              "products_background_color": "#FFE500",
-              "border_color": "#E0E1E7",
-              "button_text_color": "#0000FF",
-              "button_background_color": "#FFE500",
-              "button_rollover_color": "#EBD300",
-              "product_status_text_color_primary": "#FFA500",
-              "product_status_text_color_secondary": "#7F7F7F",
-              "announcement_background_color": "#FFE500",
-              "announcement_text_color": "#222222"
+              "background_color": "#FF7549",
+              "secondary_background_color": "#FF7549",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#FFF6F4",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#001B3D",
+              "shop_name_text_color": "#001B3D",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#F26B3F",
+              "border_color": "#FF8F6B",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#001B3D",
+              "button_rollover_color": "#002B61",
+              "product_status_text_color_primary": "#FFFFFF",
+              "product_status_text_color_secondary": "#FFD6CC",
+              "inventory_status_text_color": "#FFFFFF",
+              "announcement_background_color": "#001B3D",
+              "announcement_text_color": "#FF7549"
             }
           },
           {
             "style_name": "Playful #2",
             "fonts": {
-              "primary_font": "Yuji Mai",
-              "secondary_font": "Open Sans"
+              "primary_font": "Chewy",
+              "secondary_font": "Poppins"
             },
             "colors": {
-              "background_color": "#000000",
-              "secondary_background_color": "#000000",
-              "primary_text_color": "#DDDDDD",
-              "secondary_text_color": "#DDDDDD",
-              "link_text_color": "#DDDDDD",
-              "link_rollover_color": "#18D1E6",
-              "shop_name_text_color": "#18D1E6",
-              "header_text_color": "#18D1E6",
-              "products_background_color": "#FFFFFF",
-              "border_color": "#FFECF7",
-              "button_text_color": "#FFFFFF",
-              "button_background_color": "#18D1E6",
-              "button_rollover_color": "#13A6B6",
-              "product_status_text_color_primary": "#18D1E6",
-              "product_status_text_color_secondary": "#919191",
-              "announcement_background_color": "#18D1E6",
-              "announcement_text_color": "#000000"
+              "background_color": "#5D2AFF",
+              "secondary_background_color": "#4D1FE6",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#D1C2FF",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#FFE81A",
+              "shop_name_text_color": "#FFE81A",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#4D1FE6",
+              "border_color": "#7952FF",
+              "button_text_color": "#5D2AFF",
+              "button_background_color": "#FFE81A",
+              "button_rollover_color": "#FFE200",
+              "product_status_text_color_primary": "#FFE81A",
+              "product_status_text_color_secondary": "#D1C2FF",
+              "inventory_status_text_color": "#FFE81A",
+              "announcement_background_color": "#FFE81A",
+              "announcement_text_color": "#5D2AFF"
             }
           },
           {
             "style_name": "Playful #3",
             "fonts": {
-              "primary_font": "Quicksand",
-              "secondary_font": "Quicksand"
+              "primary_font": "Overlock",
+              "secondary_font": "DM Sans"
             },
             "colors": {
-              "background_color": "#FFECF7",
-              "secondary_background_color": "#FFECF7",
-              "primary_text_color": "#33246D",
-              "secondary_text_color": "#33246D",
-              "link_text_color": "#33246D",
-              "link_rollover_color": "#FF169E",
-              "shop_name_text_color": "#33246D",
-              "header_text_color": "#33246D",
-              "products_background_color": "#292929",
-              "border_color": "#FFECF7",
+              "background_color": "#00C2A8",
+              "secondary_background_color": "#00C2A8",
+              "primary_text_color": "#FFFFFF",
+              "secondary_text_color": "#B3FFF6",
+              "link_text_color": "#FFFFFF",
+              "link_rollover_color": "#2D1B69",
+              "shop_name_text_color": "#FFFFFF",
+              "header_text_color": "#FFFFFF",
+              "products_background_color": "#00A892",
+              "border_color": "#00DBBD",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#FF169E",
-              "button_rollover_color": "#FF61BD",
-              "product_status_text_color_primary": "#FF169E",
-              "product_status_text_color_secondary": "#7F7F7F",
-              "announcement_background_color": "#FF169E",
+              "button_background_color": "#2D1B69",
+              "button_rollover_color": "#3D2589",
+              "product_status_text_color_primary": "#FFFFFF",
+              "product_status_text_color_secondary": "#B3FFF6",
+              "inventory_status_text_color": "#2D1B69",
+              "announcement_background_color": "#2D1B69",
+              "announcement_text_color": "#00C2A8"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Earthy",
+        "styles": [
+          {
+            "style_name": "Earthy #1",
+            "fonts": {
+              "primary_font": "Hahmlet",
+              "secondary_font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F2E9E4",
+              "secondary_background_color": "#E8DDD5",
+              "primary_text_color": "#4A4236",
+              "secondary_text_color": "#7D6E5B",
+              "link_text_color": "#4A4236",
+              "link_rollover_color": "#C17817",
+              "shop_name_text_color": "#4A4236",
+              "header_text_color": "#4A4236",
+              "products_background_color": "#E8DDD5",
+              "border_color": "#D5C5B5",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#C17817",
+              "button_rollover_color": "#A66614",
+              "product_status_text_color_primary": "#C17817",
+              "product_status_text_color_secondary": "#7D6E5B",
+              "inventory_status_text_color": "#C17817",
+              "announcement_background_color": "#C17817",
+              "announcement_text_color": "#F2E9E4"
+            }
+          },
+          {
+            "style_name": "Earthy #2",
+            "fonts": {
+              "primary_font": "Fauna One",
+              "secondary_font": "Work Sans"
+            },
+            "colors": {
+              "background_color": "#014235",
+              "secondary_background_color": "#014235",
+              "primary_text_color": "#F2F7F5",
+              "secondary_text_color": "#A7C4BC",
+              "link_text_color": "#F2F7F5",
+              "link_rollover_color": "#FFA62B",
+              "shop_name_text_color": "#F2F7F5",
+              "header_text_color": "#F2F7F5",
+              "products_background_color": "#013329",
+              "border_color": "#015C4B",
+              "button_text_color": "#014235",
+              "button_background_color": "#FFA62B",
+              "button_rollover_color": "#F59300",
+              "product_status_text_color_primary": "#FFA62B",
+              "product_status_text_color_secondary": "#A7C4BC",
+              "inventory_status_text_color": "#FFA62B",
+              "announcement_background_color": "#FFA62B",
+              "announcement_text_color": "#014235"
+            }
+          },
+          {
+            "style_name": "Earthy #3",
+            "fonts": {
+              "primary_font": "Fjord One",
+              "secondary_font": "Karla"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "secondary_background_color": "#FFFFFF",
+              "primary_text_color": "#5C4B44",
+              "secondary_text_color": "#8C7B74",
+              "link_text_color": "#5C4B44",
+              "link_rollover_color": "#946B54",
+              "shop_name_text_color": "#5C4B44",
+              "header_text_color": "#5C4B44",
+              "products_background_color": "#FAF6F6",
+              "border_color": "#E8DADA",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#946B54",
+              "button_rollover_color": "#7D5A46",
+              "product_status_text_color_primary": "#946B54",
+              "product_status_text_color_secondary": "#8C7B74",
+              "inventory_status_text_color": "#946B54",
+              "announcement_background_color": "#946B54",
+              "announcement_text_color": "#FFFFFF"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Dreamy",
+        "styles": [
+          {
+            "style_name": "Dreamy #1",
+            "fonts": {
+              "primary_font": "Lora",
+              "secondary_font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#C8E7FF",
+              "secondary_background_color": "#B3DDFF",
+              "primary_text_color": "#2B5C8F",
+              "secondary_text_color": "#4F7CAD",
+              "link_text_color": "#2B5C8F",
+              "link_rollover_color": "#FF99B9",
+              "shop_name_text_color": "#2B5C8F",
+              "header_text_color": "#2B5C8F",
+              "products_background_color": "#B3DDFF",
+              "border_color": "#A3D3FF",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#FF99B9",
+              "button_rollover_color": "#FF80A7",
+              "product_status_text_color_primary": "#FF99B9",
+              "product_status_text_color_secondary": "#4F7CAD",
+              "inventory_status_text_color": "#FF99B9",
+              "announcement_background_color": "#FF99B9",
               "announcement_text_color": "#FFFFFF"
             }
           },
           {
-            "style_name": "Playful #4",
+            "style_name": "Dreamy #2",
             "fonts": {
-              "primary_font": "Prompt",
-              "secondary_font": "Prompt"
+              "primary_font": "Spectral",
+              "secondary_font": "Quicksand"
             },
             "colors": {
-              "background_color": "#51168B",
-              "secondary_background_color": "#51168B",
-              "primary_text_color": "#FFFFFF",
-              "secondary_text_color": "#C390F6",
-              "link_text_color": "#FFFFFF",
-              "link_rollover_color": "#FFE462",
-              "shop_name_text_color": "#FFFFFF",
-              "header_text_color": "#FFFFFF",
-              "products_background_color": "#360665",
-              "border_color": "#C390F6",
+              "background_color": "#F3E6F0",
+              "secondary_background_color": "#EAD9E6",
+              "primary_text_color": "#805B7B",
+              "secondary_text_color": "#A68BA2",
+              "link_text_color": "#805B7B",
+              "link_rollover_color": "#B893B2",
+              "shop_name_text_color": "#805B7B",
+              "header_text_color": "#805B7B",
+              "products_background_color": "#EAD9E6",
+              "border_color": "#E0CCDC",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#EE178B",
-              "button_rollover_color": "#B0094F",
-              "product_status_text_color_primary": "#FF1493",
-              "product_status_text_color_secondary": "#C390F6",
-              "announcement_background_color": "#EE178B",
+              "button_background_color": "#B893B2",
+              "button_rollover_color": "#9B7994",
+              "product_status_text_color_primary": "#B893B2",
+              "product_status_text_color_secondary": "#A68BA2",
+              "inventory_status_text_color": "#C77BA5",
+              "announcement_background_color": "#B893B2",
+              "announcement_text_color": "#FFFFFF"
+            }
+          },
+          {
+            "style_name": "Dreamy #3",
+            "fonts": {
+              "primary_font": "Cormorant",
+              "secondary_font": "Work Sans"
+            },
+            "colors": {
+              "background_color": "#F9F5FF",
+              "secondary_background_color": "#F0E8FF",
+              "primary_text_color": "#6B4D90",
+              "secondary_text_color": "#9B7EBF",
+              "link_text_color": "#6B4D90",
+              "link_rollover_color": "#4EA5D9",
+              "shop_name_text_color": "#6B4D90",
+              "header_text_color": "#6B4D90",
+              "products_background_color": "#F0E8FF",
+              "border_color": "#E6DAFF",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#4EA5D9",
+              "button_rollover_color": "#3B8FBF",
+              "product_status_text_color_primary": "#4EA5D9",
+              "product_status_text_color_secondary": "#9B7EBF",
+              "inventory_status_text_color": "#4EA5D9",
+              "announcement_background_color": "#4EA5D9",
               "announcement_text_color": "#FFFFFF"
             }
           }
@@ -394,6 +549,11 @@
       "default": "#787878"
     },
     {
+      "variable": "inventory_status_text_color",
+      "label": "Low Inventory messages",
+      "default": "#E15C2A"
+    },
+    {
       "variable": "announcement_background_color",
       "label": "Announcement background",
       "default": "#000000"
@@ -409,12 +569,14 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
+      "max_length": 500,
       "description": "Displays an announcement message on the top of every page"
     },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
       "type": "text",
+      "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
@@ -442,7 +604,7 @@
       "variable": "homepage_slideshow_autoplay",
       "label": "Auto-play homepage slideshow",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Automatically advances slides in the homepage slideshow"
     },
     {
@@ -457,14 +619,10 @@
         ["Fastest", 3000]
       ],
       "default": 4000,
-      "description": "Controls how quickly slides advance in the auto-playing slideshow"
-    },
-    {
-      "variable": "featured_header",
-      "label": "Featured products header",
-      "type": "text",
-      "description": "Displays above featured products on the Home page",
-      "default": "Featured"
+      "description": "Controls how quickly slides advance in the auto-playing slideshow",
+      "requires": [
+        "homepage_slideshow_autoplay eq true"
+      ]
     },
     {
       "variable": "featured_items",
@@ -480,7 +638,20 @@
       "type": "select",
       "options": "product_orders",
       "default": "position",
-      "description": "The order of products on the Home page"
+      "description": "The order of products on the Home page",
+      "requires": [
+        "featured_items gt 0"
+      ]
+    },
+    {
+      "variable": "featured_header",
+      "label": "Featured products header",
+      "type": "text",
+      "description": "Displays above featured products on the Home page",
+      "default": "Featured",
+      "requires": [
+        "featured_items gt 0"
+      ]
     },
     {
       "variable": "max_products_per_row",
@@ -574,7 +745,7 @@
         ["Stacked 2 column", "two-column"],
         ["Stacked full width", "stacked"]
       ],
-      "default": "stacked",
+      "default": "thumbnails",
       "description": "Sets the display of the Product page gallery"
     },
     {
@@ -593,7 +764,40 @@
       "label": "Show related products",
       "type": "boolean",
       "default": true,
-      "description": "Displays related products on the Product page"
+      "description": "Displays related products on Product pages"
+    },
+    {
+      "variable": "similar_products_header",
+      "label": "Related products header",
+      "type": "text",
+      "max_length": 75,
+      "description": "Displays above related products on Products pages",
+      "default": "You might also like",
+      "requires": [
+        "show_similar_products eq true"
+      ]
+    },
+    {
+      "variable": "similar_products",
+      "label": "Related products",
+      "type": "select",
+      "options": "1..8",
+      "default": 3,
+      "description": "The maximum number of related products to show on Product pages",
+      "requires": [
+        "show_similar_products eq true"
+      ]
+    },
+    {
+      "variable": "similar_products_order",
+      "label": "Related products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "top-selling",
+      "description": "The order of related products on the Product pages",
+      "requires": [
+        "show_similar_products eq true"
+      ]
     },
     {
       "variable": "show_search",
@@ -603,20 +807,12 @@
       "description": "Displays a search field in the footer"
     },
     {
-      "variable": "show_inventory_bars",
-      "label": "Show inventory bars",
-      "type": "boolean",
-      "default": false,
-      "description": "Shows a product's inventory amounts (when using inventory tracking)",
-      "requires": "inventory"
-    },
-    {
       "variable": "show_sold_out_product_options",
       "label": "Show sold out product variants",
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -624,7 +820,94 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of sold out products on product grids and product pages",
-      "requires": "inventory"
+      "requires": ["inventory"]
+    },
+    {
+      "variable": "show_inventory_bars",
+      "label": "Show inventory bars",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": ["inventory"]
+    },
+    {
+      "variable": "show_low_inventory_messages",
+      "label": "Show product stock alerts",
+      "type": "boolean",
+      "default": true,
+      "description": "Show shoppers alerts on Product pages when it's running low on stock",
+      "requires": [
+        "inventory",
+        "show_inventory_bars eq false"
+      ]
+    },
+    {
+      "variable": "low_inventory_threshold",
+      "label": "Low stock alert",
+      "options": "1..100",
+      "type": "select",
+      "default": "10",
+      "description": "When stock drops below this number, shoppers will see low stock message. 'Almost sold out' message shows at half this amount",
+      "requires": [
+        "inventory",
+        "show_inventory_bars eq false",
+        "show_low_inventory_messages eq true"
+      ]
+    },
+    {
+      "variable": "low_inventory_message",
+      "label": "Low stock message",
+      "type": "text",
+      "max_length": 50,
+      "description": "Message shown when stock drops below your alert level",
+      "default": "Limited quantities available",
+      "requires": [
+        "inventory",
+        "show_inventory_bars eq false",
+        "show_low_inventory_messages eq true"
+      ]
+    },
+    {
+      "variable": "almost_sold_out_message",
+      "label": "Almost sold out message",
+      "type": "text",
+      "max_length": 50,
+      "description": "Message shown when stock drops below half your alert level",
+      "default": "Only a few left!",
+      "requires": [
+        "inventory",
+        "show_inventory_bars eq false",
+        "show_low_inventory_messages eq true",
+        "low_inventory_threshold gt 1"
+      ]
+    },
+    {
+      "variable": "show_categories_in_footer",
+      "label": "Show categories in footer",
+      "type": "boolean",
+      "default": true,
+      "description": "Show categories in the footer"
+    },
+    {
+      "variable": "footer_text",
+      "label": "Footer text",
+      "type": "text",
+      "max_length": 2048,
+      "description": "Show a custom message to your shop's footer"
+    },
+    {
+      "variable": "footer_text_position",
+      "label": "Footer text position",
+      "type": "select",
+      "options": [
+        ["Start of footer", "start"],
+        ["End of footer", "end"]
+      ],
+      "default": "end",
+      "description": "Choose where to show your footer message",
+      "requires": [
+        "footer_text present"
+      ]
     },
     {
       "variable": "instagram_url",
@@ -679,6 +962,12 @@
       "label": "YouTube URL",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
+    },
+    {
+      "variable": "spotify_url",
+      "label": "Spotify URL",
+      "type": "text",
+      "description": "Ex: https://open.spotify.com/artist/0gxy..."
     },
     {
       "variable": "linkedin_url",

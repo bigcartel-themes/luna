@@ -82,99 +82,114 @@
     </main>
     {% if page.full_url contains '/product/' %}
       {% if theme.show_similar_products %}
-        {% if product.categories != blank %}
-          {% assign current_id = product.id %}
-          {% for category in product.categories limit: 2 %}
-            {% capture product_divs %}
-              {% for product in category.products limit: 10 %}
-                {% if product.id != current_id %}
-                  {% assign image_width = product.image.width | times: 1.0 %}
-                  {% assign image_height = product.image.height | times: 1.0 %}
-                  {% assign aspect_ratio = image_width | divided_by: image_height %}
-                  {% assign product_status = '' %}
-                  {% case product.status %}
-                    {% when 'active' %}
-                      {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
-                    {% when 'sold-out' %}
-                      {% assign product_status = 'Sold out' %}
-                    {% when 'coming-soon' %}
-                      {% assign product_status = 'Coming soon' %}
-                  {% endcase %}
-                  <div class="product-list-thumb {{ product.css_class }}">
-                    <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
-                      <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
-                        <img
-                          alt=""
-                          class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
-                          src="{{ product.image | product_image_url | constrain: 20 }}"
-                          {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
-                          data-srcset="
-                            {{ product.image | product_image_url | constrain: 240 }} 240w,
-                            {{ product.image | product_image_url | constrain: 320 }} 320w,
-                            {{ product.image | product_image_url | constrain: 400 }} 400w,
-                            {{ product.image | product_image_url | constrain: 540 }} 540w,
-                            {{ product.image | product_image_url | constrain: 600 }} 600w,
-                            {{ product.image | product_image_url | constrain: 800 }} 800w,
-                            {{ product.image | product_image_url | constrain: 960 }} 960w
-                          "
-                          data-sizes="auto"
-                        >
-                      </div>
-                      <div class="product-list-thumb-info">
-                        <div class="product-list-thumb-name">{{ product.name }}</div>
-                        <div class="product-list-thumb-price">
-                          {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
-                            {% if product.variable_pricing %}
-                              {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                            {% else %}
-                              {{ product.default_price | money: theme.money_format }}
-                            {% endif %}
-                          {% endunless %}
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+        {% assign related_products_header = theme.similar_products_header | default: 'You might also like' %}
+        {% assign related_products_collection = product.related_products %}
+
+        {% if related_products_collection.size > 0 %}
+          <aside class="related-products-container wrapper" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ related_products_header }}">
+            <div class="similar-products">
+              <div class="similar-products-header">
+                <h2 class="similar-products-title">{{ related_products_header }}</h2>
+                {% if product.previous_product != blank or product.next_product != blank %}
+                  <ul class="prev-next-products">
+                    {% if product.previous_product != blank %}
+                      <li>{{ product.previous_product | link_to: "Previous product" }}</li>
+                    {% endif %}
+                    {% if product.next_product != blank %}
+                      <li>{{ product.next_product | link_to: "Next product" }}</li>
+                    {% endif %}
+                  </ul>
                 {% endif %}
-              {% endfor %}
-            {% endcapture %}
-          {% endfor %}
+              </div>
+              <div class="product-list-container">
+                <div class="related-product-list product-list">
+                  {% for related_product in related_products_collection %}
+                    {% assign related_product_status = '' %}
+                    {% case related_product.status %} 
+                      {% when 'active' %} 
+                        {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %} 
+                      {% when 'sold-out' %} 
+                        {% assign related_product_status = 'Sold out' %} 
+                      {% when 'coming-soon' %} 
+                        {% assign related_product_status = 'Coming soon' %} 
+                    {% endcase %}
+                    {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
+                    <div class="product-list-thumb {{ related_product.css_class }}">
+                      <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+                        <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                          <img
+                            alt="{{ related_product.name }}"
+                            class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                            src="{{ related_product.image | product_image_url | constrain: 20 }}"
+                            {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ related_product.image.width | divided_by: related_product.image.height }}"{% endunless %}
+                            data-srcset="
+                              {{ related_product.image | product_image_url | constrain: 240 }} 240w,
+                              {{ related_product.image | product_image_url | constrain: 320 }} 320w,
+                              {{ related_product.image | product_image_url | constrain: 400 }} 400w,
+                              {{ related_product.image | product_image_url | constrain: 540 }} 540w,
+                              {{ related_product.image | product_image_url | constrain: 600 }} 600w,
+                              {{ related_product.image | product_image_url | constrain: 800 }} 800w,
+                              {{ related_product.image | product_image_url | constrain: 960 }} 960w
+                            "
+                            data-sizes="auto"
+                          >
+                        </div>
+                        <div class="product-list-thumb-info">
+                          <div class="product-list-thumb-name">{{ related_product.name }}</div>
+                          <div class="product-list-thumb-price">
+                            {% unless related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                              {% if related_product.variable_pricing %}
+                                {{ related_product.min_price | money: theme.money_format }} - {{ related_product.max_price | money: theme.money_format }}
+                              {% else %}
+                                {{ related_product.default_price | money: theme.money_format }}
+                              {% endif %}
+                            {% endunless %}
+                          </div>
+                          {% if related_product_status != blank %}<div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>{% endif %}
+                        </div>
+                      </a>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </aside>
         {% endif %}
       {% endif %}
     {% endif %}
-    {% if product_divs != blank %}
-      <aside class="related-products-container wrapper" data-num-products="3" role="complementary" aria-label="Related Products">
-        <div class="all-related-products" style="display: none">{{ product_divs }}</div>
-        <div class="similar-products">
-          <div class="similar-products-header">
-            <h2 class="similar-products-title">Related products</h2>
-            {% if product.previous_product != blank or product.next_product != blank %}
-              <ul class="prev-next-products">
-                {% if product.previous_product != blank %}<li>{{ product.previous_product | link_to: "Previous product" }}</li>{% endif %}
-                {% if product.next_product != blank %}<li>{{ product.next_product | link_to: "Next product" }}</li>{% endif %}
-              </ul>
-            {% endif %}
-          </div>
-          <div class="product-list-container">
-            <div class="related-product-list product-list"></div>
-          </div>
-        </div>
-      </aside>
-    {% endif %}
-
-
 
     <footer data-bc-hook="footer">
       <div class="wrapper">
-        <nav class="footer-nav" id="footer" role="navigation" aria-label="Footer">
+        {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
+          <div class="footer-custom-content">{{ theme.footer_text }} </div>
+        {% endif %}
+        <nav class="footer-nav footer-nav--main" role="navigation" aria-label="Footer main">
           <ul class="footer-links">
             <li><a href="/">{{ pages.home.name }}</a></li>
             <li><a href="/products">{{ pages.products.name }}</a></li>
-            {% for page in pages.all %}
-              <li>{{ page | link_to }}</li>
-            {% endfor %}
             <li><a href="/contact">{{ pages.contact.name }}</a></li>
             <li><a href="/cart">{{ pages.cart.name }}</a></li>
           </ul>
+        </nav>
+        {% if categories.active.size > 0 and show_categories_in_footer == true %}
+          <nav class="footer-nav footer-nav--categories" role="navigation" aria-label="Footer categories">
+            <ul class="footer-links">
+              {% for category in categories.active %}
+                <li>{{ category | link_to }}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+        {% if pages.all.size > 0 %}
+          <nav class="footer-nav footer-nav--pages" role="navigation" aria-label="Footer pages">
+            <ul class="footer-links">
+              {% for page in pages.all %}
+                <li>{{ page | link_to }}</li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+        <nav class="footer-nav footer-nav--social" role="navigation" aria-label="Footer social">
           {% if theme.show_search %}
             <div class="footer-search">
               <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
@@ -196,9 +211,11 @@
             or theme.facebook_url != blank
             or theme.pinterest_url != blank
             or theme.youtube_url != blank
+            or theme.spotify_url != blank
+            or theme.linkedin_url != blank
+            or theme.twitch_url != blank
             or theme.tumblr_url != blank
-            or theme.bandcamp_url != blank
-            or theme.linkedin_url != blank %}
+            or theme.bandcamp_url != blank %}
             <ul class="social-links">
               {% if theme.instagram_url != blank %}
                 <li><a href="{{ theme.instagram_url }}" title="Instagram"><svg class="instagram-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 45.39c67.27 0 75.23.26 101.8 1.47 24.56 1.12 37.9 5.22 46.78 8.67a78 78 0 0129 18.85 78 78 0 0118.85 29c3.45 8.88 7.55 22.22 8.67 46.78 1.21 26.57 1.47 34.53 1.47 101.8s-.26 75.23-1.47 101.8c-1.12 24.56-5.22 37.9-8.67 46.78a83.51 83.51 0 01-47.81 47.81c-8.88 3.45-22.22 7.55-46.78 8.67-26.56 1.21-34.53 1.47-101.8 1.47s-75.24-.26-101.8-1.47c-24.56-1.12-37.9-5.22-46.78-8.67a78 78 0 01-29-18.85 78 78 0 01-18.85-29c-3.45-8.88-7.55-22.22-8.67-46.78-1.21-26.57-1.47-34.53-1.47-101.8s.26-75.23 1.47-101.8c1.12-24.56 5.22-37.9 8.67-46.78a78 78 0 0118.85-29 78 78 0 0129-18.85c8.88-3.45 22.22-7.55 46.78-8.67 26.57-1.21 34.53-1.47 101.8-1.47m0-45.39c-68.42 0-77 .29-103.87 1.52S102.92 7 86.92 13.22a123.68 123.68 0 00-44.64 29.06 123.68 123.68 0 00-29.06 44.64c-6.22 16-10.48 34.34-11.7 61.15S0 183.5 0 256s.29 77 1.52 103.87 5.48 45.13 11.7 61.13a123.68 123.68 0 0029.06 44.62 123.52 123.52 0 0044.64 29.07c16 6.23 34.34 10.49 61.15 11.71s35.45 1.52 103.87 1.52 77-.29 103.87-1.52 45.11-5.48 61.11-11.71a128.74 128.74 0 0073.69-73.69c6.23-16 10.49-34.34 11.71-61.15s1.52-35.45 1.52-103.87-.29-77-1.52-103.87-5.48-45.11-11.71-61.11a123.52 123.52 0 00-29.05-44.62 123.68 123.68 0 00-44.64-29.08c-16-6.22-34.34-10.48-61.15-11.7S320.34 0 251.92 0z"/><path fill="currentColor" d="M251.92 122.56a129.36 129.36 0 10129.36 129.36 129.35 129.35 0 00-129.36-129.36zm0 213.36a84 84 0 1184-84 84 84 0 01-84 84z"/><circle fill="currentColor" cx="386.4" cy="117.44" r="30.23"/></svg></a></li>
@@ -236,6 +253,18 @@
                 <li><a href="{{ theme.youtube_url }}" title="YouTube"><svg class="youtube-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M550 124c-7-24-25-42-49-49-42-11-213-11-213-11S117 64 75 76c-24 6-42 24-49 48-11 43-11 132-11 132s0 90 11 133c7 23 25 41 49 47 42 12 213 12 213 12s171 0 213-11c24-7 42-25 49-48 11-43 11-133 11-133s0-89-11-132zM232 338V175l143 81-143 82z"/></svg></a></li>
               {% endif %}
 
+              {% if theme.spotify_url != blank %}
+                <li><a href="{{ theme.spotify_url }}" title="Spotify"><svg class="spotify-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg></a></li>
+              {% endif %}
+
+              {% if theme.linkedin_url != blank %}
+                <li><a href="{{ theme.linkedin_url }}" title="LinkedIn"><svg class="linkedin-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a></li>
+              {% endif %}
+
+              {% if theme.twitch_url != blank %}
+                <li><a href="{{ theme.twitch_url }}" title="Twitch"><svg class="twitch-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M391.2 103.5H352.5v109.7h38.6zM285 103H246.4V212.8H285zM120.8 0 24.3 91.4V420.6H140.1V512l96.5-91.4h77.3L487.7 256V0zM449.1 237.8l-77.2 73.1H294.6l-67.6 64v-64H140.1V36.6H449.1z"/></svg></a></li>
+              {% endif %}
+
               {% if theme.tumblr_url != blank %}
                 <li><a href="{{ theme.tumblr_url }}" title="Tumblr"><svg class="tumblr-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310 480c-14 15-50 32-98 32-120 0-147-89-147-141V227H18c-6 0-10-4-10-10v-68c0-7 4-13 11-16 62-21 82-76 85-117 0-11 6-16 16-16h71c5 0 10 4 10 10v115h83c5 0 10 5 10 10v82c0 5-5 10-10 10h-84v133c0 34 24 54 68 36 5-2 9-3 13-2 3 1 6 3 7 8l22 64c2 5 3 10 0 14z"/></svg></a></li>
               {% endif %}
@@ -243,14 +272,10 @@
               {% if theme.bandcamp_url != blank %}
                 <li><a href="{{ theme.bandcamp_url }}" title="Bandcamp"><svg class="bandcamp-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M349 406H0l163-300h349L349 406Z"/></svg></a></li>
               {% endif %}
-
-              {% if theme.linkedin_url != blank %}
-                <li><a href="{{ theme.linkedin_url }}" title="LinkedIn"><svg class="linkedin-icon" height="36" width="36" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a></li>
-              {% endif %}
             </ul>
           {% endif %}
-          {% if store.website != blank %}
-            <a href="{{ store.website }}" class="button back-to-site" class="button">Back to site</a>
+          {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
+            <div class="footer-custom-content">{{ theme.footer_text }} </div>
           {% endif %}
           {{ powered_by_big_cartel }}
         </nav>
@@ -265,6 +290,10 @@
       const themeOptions = {
         showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         showSoldOutPrices: {{ theme.show_sold_out_product_prices }},
+        showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
+        lowInventoryMessage: '{{ theme.low_inventory_message }}',
+        almostSoldOutMessage: '{{ theme.almost_sold_out_message }}',
+        showInventoryBars: {{ theme.show_inventory_bars }},
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},

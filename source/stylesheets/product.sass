@@ -1,9 +1,4 @@
-#instant-checkout-button
-  margin-top: 12px
-
 #product_page
-  .footer-nav
-    border: none
 
   .related-products-container.under_image + footer .footer-nav
     border-top: 1px solid var(--border-color)
@@ -137,10 +132,16 @@
     @media screen and (max-width: $break-small)
       width: #{"{% if theme.max_products_per_row_mobile == 2 %} 50% {% else %} 100% {% endif %}"}
 
+.related-products-container 
+  margin: 0 auto 60px auto
+
+  @media screen and (max-width: $break-small)
+    margin-top: 40px
+
 .similar-products-header
   +flexbox
   +align-items(center)
-  padding: $luna-base * 3 0
+  padding: $luna-base * 3 0 0 0
   margin-top: $luna-base * 2
 
   @media screen and (max-width: $break-small)
@@ -149,7 +150,6 @@
 
   .similar-products-title
     font-size: $luna-font-base-px + 8
-    text-transform: capitalize
 
   .prev-next-products
     +flexbox
@@ -235,3 +235,12 @@
     right: 0
     top: -16px
 
+#instant-checkout-button
+  margin-top: 12px
+
+.inventory-status-message
+  color: var(--inventory-status-text-color)
+  margin: 10px 0 auto
+  text-align: center
+  padding: 8px 0
+  font-weight: 500
