@@ -167,11 +167,16 @@
           <ul class="footer-links">
             <li><a href="/">{{ pages.home.name }}</a></li>
             <li><a href="/products">{{ pages.products.name }}</a></li>
+            {% if pages.all.size <= 2 %}
+              {% for page in pages.all %}
+                <li>{{ page | link_to }}</li>
+              {% endfor %}
+            {% endif %}
             <li><a href="/contact">{{ pages.contact.name }}</a></li>
             <li><a href="/cart">{{ pages.cart.name }}</a></li>
           </ul>
         </nav>
-        {% if categories.active.size > 0 and show_categories_in_footer == true %}
+        {% if categories.active.size > 0 and theme.show_categories_in_footer == true %}
           <nav class="footer-nav footer-nav--categories" role="navigation" aria-label="Footer categories">
             <ul class="footer-links">
               {% for category in categories.active %}
@@ -180,7 +185,7 @@
             </ul>
           </nav>
         {% endif %}
-        {% if pages.all.size > 0 %}
+        {% if pages.all.size >= 3 and theme.show_custom_pages_in_footer == true %}
           <nav class="footer-nav footer-nav--pages" role="navigation" aria-label="Footer pages">
             <ul class="footer-links">
               {% for page in pages.all %}
