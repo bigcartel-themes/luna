@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.12.0",
+  "version": "2.13.0",
   "images": [
     {
       "variable": "header",
@@ -886,14 +886,21 @@
       "label": "Show categories in footer",
       "type": "boolean",
       "default": true,
-      "description": "Show categories in the footer"
+      "description": "Display product category links in your shop's footer"
+    },
+    {
+      "variable": "show_custom_pages_in_footer",
+      "label": "Show custom pages in footer",
+      "type": "boolean",
+      "default": true,
+      "description": "Display links to your custom pages in your shop's footer"
     },
     {
       "variable": "footer_text",
       "label": "Footer text",
       "type": "text",
       "max_length": 2048,
-      "description": "Show a custom message to your shop's footer"
+      "description": "Show a custom message in your shop's footer"
     },
     {
       "variable": "footer_text_position",
