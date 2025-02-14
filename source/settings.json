@@ -581,6 +581,13 @@
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
+      "variable": "contact_text",
+      "label": "Contact page text",
+      "type": "text",
+      "max_length": 1024,
+      "description": "Displays a message on your contact page"
+    },
+    {
       "variable": "header_image_height",
       "label": "Header image height",
       "type": "select",
