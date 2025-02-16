@@ -377,11 +377,15 @@ button.button, a.button
 
 .footer-custom-content
   color: var(--secondary-text-color)
-  padding: 20px 0
-  display: flex
+  display: grid
+  grid-template-columns: 1fr
   justify-content: center
-  align-items: center
   text-align: center
+  padding: 20px 0
+  gap: 20px
+
+  > *
+    justify-self: center
 
 footer
   padding-top: 100px
