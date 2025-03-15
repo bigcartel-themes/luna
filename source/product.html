@@ -67,6 +67,19 @@
       </form>
     {% endif %}
 
+    {% if product.status == "active" and theme.show_bnpl_messaging %}
+      {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
+        <div id="payment-processor-messaging">
+          <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+            <div id="paypal-messaging-element"></div>
+          </div>
+          <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+            <div id="payment-method-messaging-element"></div>
+          </div>
+        </div>
+      {% endunless %}
+    {% endif %}
+
     {% if product.description != blank %}
       <div class="product-description">
         {{ product.description | paragraphs }}

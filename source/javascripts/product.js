@@ -107,6 +107,7 @@ function enableAddButton(updated_price) {
   addButton.html(addButtonTitle + priceTitle);
   addButton.attr('aria-label',addButton.text());
   updateInventoryMessage($('#option').val());
+  showBnplMessaging(updated_price, { alignment: 'center', displayMode: 'flex', pageType: 'product' });
 }
 
 function disableAddButton(type) {
@@ -160,5 +161,11 @@ function disableSelectOption(select_option, type) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateInventoryMessage();
+  const isProductPage = document.body.getAttribute('data-bc-page-type') === 'product';
+  if (isProductPage) {
+    updateInventoryMessage();
+    
+    const price = window.bigcartel?.product?.default_price || null;    
+    showBnplMessaging(price, { alignment: 'center', displayMode: 'flex', pageType: 'product' });
+  }
 });

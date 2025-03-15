@@ -82,6 +82,7 @@
   .product-description
     font-family: var(--secondary-font)
     font-size: $luna-font-base-px
+    margin-top: 32px
 
     a
       color: var(--link-text-color)
@@ -110,7 +111,7 @@
       list-style: decimal
 
   .product-form
-    margin-bottom: 32px
+    margin-bottom: 16px
 
   .product-images
     grid-area: var(--images-grid-area)
@@ -248,3 +249,39 @@
   text-align: center
   padding: 8px 0
   font-weight: 500
+
+#payment-processor-messaging
+  margin: 20px 0 0
+  width: 100%
+  display: block
+  
+  body[data-bc-page-type="product"] &
+    margin-bottom: 20px
+
+  body[data-bc-page-type="cart"] &
+    margin-bottom: 40px
+
+  &.display-flex
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    &.dual-messaging
+      gap: 15px
+
+  &.display-grid
+    display: grid
+  
+  &.hidden
+    position: absolute
+    left: -9999px
+    top: -9999px
+
+  > div
+    margin-bottom: 0
+  
+  // Only apply the margin for non-flex layouts when dual messaging is present
+  &:not(.display-flex)
+    &.dual-messaging > div.visible:first-of-type
+      margin-bottom: 15px
