@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "images": [
     {
       "variable": "header",
@@ -922,6 +922,13 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
     },
     {
       "variable": "instagram_url",

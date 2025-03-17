@@ -132,6 +132,8 @@ var processUpdate = function(input, item_id, new_val, cart) {
         });
       }
     }
+
+    showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
   }
   else {
     $('.cart-item[data-item-id="'+item_id+'"]').slideUp('fast');
@@ -143,3 +145,14 @@ function strip_tags(string) {
   new_string = string.replace(/<(.|\n)*?>/g, '');
   return new_string;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isCartPage = document.body.getAttribute('data-bc-page-type') === 'cart';
+  if (isCartPage) {
+    Cart.refresh((cart) => {
+      if (cart?.total) {
+        showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
+      }
+    });
+  }
+});

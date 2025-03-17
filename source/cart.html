@@ -52,9 +52,20 @@
           </div>
           <div class="cart-footer-buttons">
             <button type="submit" name="checkout" class="button checkout-btn">Checkout</button>
-            <a class="button footer minimal-button" href="/products">Continue Shopping</a>
             {% if cart.shareable_link %}
               <a href="{{ cart.shareable_link }}" class="button footer minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
+            {% endif %}
+            {% if theme.show_bnpl_messaging and cart.items != blank %}
+              {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
+                <div id="payment-processor-messaging">
+                  <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+                    <div id="paypal-messaging-element"></div>
+                  </div>
+                  <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+                    <div id="payment-method-messaging-element"></div>
+                  </div>
+                </div>
+              {% endunless %}
             {% endif %}
           </div>
         </div>
