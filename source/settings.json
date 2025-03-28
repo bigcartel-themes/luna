@@ -928,7 +928,10 @@
       "label": "Buy Now, Pay Later Messaging",
       "type": "boolean",
       "default": true,
-      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan.",
+      "requires": [
+        "feature:theme_bnpl_messaging neq opted_out"
+      ]
     },
     {
       "variable": "instagram_url",
