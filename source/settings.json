@@ -830,6 +830,13 @@
       "requires": ["inventory"]
     },
     {
+      "variable": "show_coming_soon_product_prices",
+      "label": "Show prices for coming soon products",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the price of coming soon products on product grids and product pages"
+    },
+    {
       "variable": "show_inventory_bars",
       "label": "Show inventory bars",
       "type": "boolean",
