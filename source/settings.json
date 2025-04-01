@@ -985,78 +985,91 @@
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://instagram.com/bigcartel"
     },
     {
       "variable": "tiktok_url",
       "label": "TikTok URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
     },
     {
       "variable": "bluesky_url",
       "label": "Bluesky URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bsky.app/profile/bigcartel.com"
     },
     {
       "variable": "threads_url",
       "label": "Threads URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://threads.net/@bigcartel"
     },
     {
       "variable": "twitter_url",
       "label": "X URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://x.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://facebook.com/bigcartel"
     },
     {
       "variable": "snapchat_url",
       "label": "Snapchat URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://snapchat.com/add/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://pinterest.com/big_cartel"
     },
     {
       "variable": "youtube_url",
       "label": "YouTube URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
     },
     {
       "variable": "spotify_url",
       "label": "Spotify URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://open.spotify.com/artist/0gxy..."
     },
     {
       "variable": "linkedin_url",
       "label": "LinkedIn URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://linkedin.com/in/bigcartel"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
     },
     {
       "variable": "bandcamp_url",
       "label": "Bandcamp URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.bandcamp.com"
     }
