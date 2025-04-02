@@ -926,7 +926,8 @@
       "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan.",
       "requires": [
         "feature:theme_bnpl_messaging neq opted_out"
-      ]
+      ],
+      "plan_type": "paid"
     },
     {
       "variable": "money_format",
