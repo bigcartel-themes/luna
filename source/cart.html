@@ -56,16 +56,14 @@
               <a href="{{ cart.shareable_link }}" class="button footer minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
             {% endif %}
             {% if theme.show_bnpl_messaging and cart.items != blank %}
-              {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
-                <div id="payment-processor-messaging">
-                  <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
-                    <div id="paypal-messaging-element"></div>
-                  </div>
-                  <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
-                    <div id="payment-method-messaging-element"></div>
-                  </div>
+              <div id="payment-processor-messaging">
+                <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+                  <div id="paypal-messaging-element"></div>
                 </div>
-              {% endunless %}
+                <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+                  <div id="payment-method-messaging-element"></div>
+                </div>
+              </div>
             {% endif %}
           </div>
         </div>
