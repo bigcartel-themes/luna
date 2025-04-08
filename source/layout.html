@@ -299,6 +299,7 @@
         optOuts: [{% if theme.features.opt_outs %}{% for opt in theme.features.opt_outs %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
       };
       const themeColors = {
+        backgroundColor: '{{ theme.background_color }}',
         primaryTextColor: '{{ theme.primary_text_color }}',
         secondaryBackgroundColor: '{{ theme.secondary_background_color }}',
         productsBackgroundColor: '{{ theme.products_background_color }}'
