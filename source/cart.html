@@ -7,6 +7,9 @@
   </div>
   {% if cart.items != blank %}
     <div class="cart-holder">
+      {% if theme.cart_text %}
+        <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
+      {% endif %}
       <form method="post" action="/cart" id="cart-form" class="cart-form">
         <input type="hidden" name="cart_submit" value="true">
         <ul class="cart-items">

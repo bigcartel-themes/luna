@@ -962,26 +962,34 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "section": "messaging",
-      "type": "text",
+      "type": "textarea",
       "max_length": 500,
       "description": "Displays an announcement message on the top of every page"
-    },
-    {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
-      "section": "messaging",
-      "type": "text",
-      "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
       "variable": "contact_text",
       "label": "Contact page text",
       "section": "messaging",
-      "type": "text",
+      "type": "textarea",
       "max_length": 1024,
-      "description": "Displays a message on your contact page"
+      "description": "Displays a message at the top of your contact page"
+    },
+    {
+      "variable": "cart_text",
+      "label": "Cart page text",
+      "section": "messaging",
+      "max_length": 1024,
+      "type": "textarea",
+      "description": "Displays a message at the top your cart page when there are items in the cart"
+    },
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "section": "messaging",
+      "type": "textarea",
+      "max_length": 2048,
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
       "variable": "instagram_url",
