@@ -283,7 +283,9 @@
             <div class="footer-custom-content">{{ theme.footer_text }} </div>
           {% endif %}
           <div data-bc-hook="credit">
-            {{ big_cartel_credit_logo }}
+            {% unless theme.hide_big_cartel_credit %}
+              {{ big_cartel_credit_logo }}
+            {% endunless %}
           </div>
         </nav>
       </div>
