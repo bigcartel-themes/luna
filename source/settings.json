@@ -656,7 +656,7 @@
       "type": "boolean",
       "default": false,
       "description": "Choose whether to display the Big Cartel logo in your shop footer and menus",
-      "requires_upsell": {
+      "requires_upgrade": {
         "unless": "feature:theme_hide_big_cartel_credit_eligible",
         "analytics_product_sub_area": "Hide Watermark"
       }
@@ -939,7 +939,7 @@
       "requires": [
         "feature:theme_bnpl_messaging eq visible"
       ],
-      "requires_upsell": {
+      "requires_upgrade": {
         "unless": "feature:buy_now_pay_later",
         "default": false,
         "analytics_label": "BNPL"
