@@ -10,7 +10,6 @@
   </head>
 
   <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
-    <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
