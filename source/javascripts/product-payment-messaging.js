@@ -46,7 +46,7 @@ const PAYMENT_CONFIG = {
       elementId: 'paypal-messaging-element',
       containerId: 'paypal-messaging-container',
       timeouts: {
-        render: 500
+        render: 1000
       },
       pageTypes: {
         product: 'product-details',
@@ -645,6 +645,10 @@ async function showPaypalMessaging(
       container.style.height = 'auto';
       container.style.overflow = 'visible';
       isVisible = true;
+    }
+    
+    if (!isVisible) {
+      console.warn(`[BNPL] PayPal message did not render visibly within the ${PAYMENT_CONFIG.SUPPORTED_PROCESSORS.paypal.timeouts.render}ms timeout.`);
     }
     
     return isVisible;
