@@ -1,7 +1,24 @@
+{% comment %} Define a consistent title suffix {% endcomment %}
+{% capture title_suffix %} | {{ store.name }}{% endcapture %}
+
+{% comment %} Set default page title {% endcomment %}
+{% assign page_title = page.name | append: title_suffix %}
+
+{% comment %} Handle special page cases {% endcomment %}
+{% if page.name == 'Home' %}
+  {% assign page_title = store.name %}
+{% elsif page.full_url contains '/products' %}
+  {% if page.full_url contains 'search=' %}
+    {% assign page_title = t['products.search_results'] | append: title_suffix %}
+  {% elsif theme.collections %}
+    {% assign page_title = t['navigation.categories'] | append: title_suffix %}
+  {% endif %}
+{% endif %}
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ store.name }}</title>
+    <title>{{ page_title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
