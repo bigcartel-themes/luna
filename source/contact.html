@@ -6,7 +6,7 @@
   </div>
 {% else %}
   <div class="page-content {{ page.category }}-content">
-    {% if theme.contact_text %}
+    {% if theme.contact_text != blank %}
       <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
     {% endif %}
 
