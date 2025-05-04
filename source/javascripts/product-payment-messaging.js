@@ -278,7 +278,9 @@ async function showBnplMessaging(price = null, options = {}) {
   }
 
   const colors = {
-    backgroundColor: themeColors?.backgroundColor || PAYMENT_CONFIG.DEFAULT_COLORS.background,
+    // Some themes have a content background color so we prioritize that to ensure we are using the correct 
+    // background color for the messaging
+    backgroundColor: themeColors?.contentBackgroundColor || themeColors?.backgroundColor || PAYMENT_CONFIG.DEFAULT_COLORS.background,
     primaryTextColor: themeColors?.primaryTextColor || PAYMENT_CONFIG.DEFAULT_COLORS.text
   };
 
