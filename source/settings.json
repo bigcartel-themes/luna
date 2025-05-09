@@ -964,8 +964,7 @@
       "section": "general",
       "type": "boolean",
       "default": true,
-      "description": "Show the price of sold out products on product grids and product pages",
-      "requires": ["inventory"]
+      "description": "Show the price of sold out products on product grids and product pages"
     },
     {
       "variable": "show_coming_soon_product_prices",
