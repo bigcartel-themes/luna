@@ -651,11 +651,11 @@
     },
     {
       "variable": "hide_big_cartel_credit",
-      "label": "Hide Big Cartel logo in menus",
+      "label": "Hide Big Cartel logo in footer and menus",
       "section": "global_navigation",
       "type": "boolean",
       "default": false,
-      "description": "Choose whether to display the Big Cartel logo in your shop footer and menus",
+      "description": "Choose whether to show attribution to Big Cartel in your shop design",
       "requires_upgrade": {
         "unless": "feature:theme_hide_big_cartel_credit_eligible",
         "analytics_product_sub_area": "Hide Watermark"
