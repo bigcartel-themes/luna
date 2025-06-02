@@ -1017,7 +1017,7 @@
       "sub_section": "navigation",
       "type": "text",
       "default": "Contact",
-      "description": "Text for the 'Contact' link and references to the cart page",
+      "description": "Text for the 'Contact' link and references to the contact page",
       "requires": [ "translation_mode eq manual" ]
     },
     {
