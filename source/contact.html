@@ -1,8 +1,16 @@
-<h1 class="page-title has-dash">{{ page.name }}</h1>
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.contact'] %}
+{% if page.name != 'Contact' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
+<h1 class="page-title has-dash">{{ page_title }}</h1>
 
 {% if contact.sent %}
   <div class="contact-form-block contact-send">
-    <p class="contact-sent centered-message">Your message has been sent and we'll get back to you soon!</p>
+    <p class="contact-sent centered-message">{{ t['contact.form_success'] }}</p>
   </div>
 {% else %}
   <div class="page-content {{ page.category }}-content">
@@ -12,31 +20,31 @@
 
     <form method="post" action="/contact" class="contact-form">
       <div class="contact-form-block contact-name">
-        <label class="contact-label" for="name">Name</label>
+        <label class="contact-label" for="name">{{ t['contact.name'] }}</label>
         <div class="input-holder">
           {{ contact | contact_input: 'name' }}
         </div>
       </div>
       <div class="contact-form-block contact-email">
-        <label class="contact-label" for="email">Email</label>
+        <label class="contact-label" for="email">{{ t['contact.email'] }}</label>
         <div class="input-holder">
           {{ contact | contact_input: 'email' }}
         </div>
       </div>
       <div class="contact-form-block contact-subject">
-        <label class="contact-label" for="subject">Subject</label>
+        <label class="contact-label" for="subject">{{ t['contact.subject'] }}</label>
         <div class="input-holder">
           {{ contact | contact_input: 'subject' }}
         </div>
       </div>
       <div class="contact-form-block contact-message">
-        <label class="contact-label" for="message">Message</label>
+        <label class="contact-label" for="message">{{ t['contact.message'] }}</label>
         <div class="input-holder">
           {{ contact | contact_input: 'message' }}
         </div>
       </div>
       <div class="contact-form-block contact-send">
-        <button class="send-message-button button" type="submit" name="submit">Send message</button>
+        <button class="send-message-button button" type="submit" name="submit">{{ t['contact.send_button'] }}</button>
       </div>
       <div class="contact-form-block contact-recaptcha">
         <div class="recaptcha-note">

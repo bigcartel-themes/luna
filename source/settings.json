@@ -727,17 +727,6 @@
       ]
     },
     {
-      "variable": "featured_header",
-      "label": "Featured products header",
-      "section": "homepage",
-      "type": "text",
-      "description": "Displays above featured products on the Home page",
-      "default": "Featured",
-      "requires": [
-        "featured_items gt 0"
-      ]
-    },
-    {
       "variable": "featured_items",
       "label": "Featured products",
       "section": "homepage",
@@ -757,14 +746,6 @@
       "requires": [
         "featured_items gt 0"
       ]
-    },
-    {
-      "variable": "all_products_button_text",
-      "label": "All products button text",
-      "section": "homepage",
-      "type": "text",
-      "description": "Displays underneath featured products and links to your Products Page",
-      "default": "All Products"
     },
     {
       "variable": "product_page_layout",
@@ -819,18 +800,6 @@
       "type": "boolean",
       "default": true,
       "description": "Displays related products on Product pages"
-    },
-    {
-      "variable": "similar_products_header",
-      "label": "Related products header",
-      "section": "product_page",
-      "type": "text",
-      "max_length": 75,
-      "description": "Displays above related products on Products pages",
-      "default": "You might also like",
-      "requires": [
-        "show_similar_products eq true"
-      ]
     },
     {
       "variable": "similar_products",
@@ -898,35 +867,6 @@
         "inventory",
         "show_inventory_bars eq false",
         "show_low_inventory_messages eq true"
-      ]
-    },
-    {
-      "variable": "low_inventory_message",
-      "label": "Low stock message",
-      "section": "product_page",
-      "type": "text",
-      "max_length": 50,
-      "description": "Message shown when stock drops below your alert level",
-      "default": "Limited quantities available",
-      "requires": [
-        "inventory",
-        "show_inventory_bars eq false",
-        "show_low_inventory_messages eq true"
-      ]
-    },
-    {
-      "variable": "almost_sold_out_message",
-      "label": "Almost sold out message",
-      "section": "product_page",
-      "type": "text",
-      "max_length": 50,
-      "description": "Message shown when stock drops below half your alert level",
-      "default": "Only a few left!",
-      "requires": [
-        "inventory",
-        "show_inventory_bars eq false",
-        "show_low_inventory_messages eq true",
-        "low_inventory_threshold gt 1"
       ]
     },
     {
@@ -1007,6 +947,575 @@
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
+    {
+      "variable": "translation_locale",
+      "label": "Language for text in your shop",
+      "section": "translations",
+      "type": "select",
+      "options": "storefront_locales",
+      "default": "en-US",
+      "description": "Language to use for translations"
+    },
+    {
+      "variable": "translation_mode",
+      "label": "Translation mode",
+      "section": "translations",
+      "type": "select",
+      "options": [
+        ["Automatic", "automatic"],
+        ["Manual", "manual"]
+      ],
+      "default": "automatic",
+      "description": "Select how text appears throughout your shop. Automatic uses our default translations for your chosen language. Manual lets you customize individual text elements to improve translations or personalize messaging."
+    },
+
+    // Manual Navigation Translations
+    {
+      "variable": "navigation_home_tr_text",
+      "label": "'Home'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Home",
+      "description": "Text for the 'Home' navigation link.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_search_tr_text",
+      "label": "'Search'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Search",
+      "description": "Text for the 'Search' navigation link or button.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_shop_tr_text",
+      "label": "'Shop'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Shop",
+      "description": "Text for the 'Shop' navigation links in the header and menus",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_cart_tr_text",
+      "label": "'Cart'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Cart",
+      "description": "Text for the 'Cart' link and references to the cart page",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_contact_tr_text",
+      "label": "'Contact' text",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Contact",
+      "description": "Text for the 'Contact' link and references to the cart page",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_view_all_tr_text",
+      "label": "'View all'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "View all",
+      "description": "Text for 'View all' links, often in product collections.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_view_tr_text",
+      "label": "'View'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "View",
+      "description": "General text for 'View' links or buttons.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_next_tr_text",
+      "label": "'Next'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Next",
+      "description": "Text for 'Next' buttons or links in pagination.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_previous_tr_text",
+      "label": "'Previous'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Previous",
+      "description": "Text for 'Previous' buttons or links in pagination.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_all_tr_text",
+      "label": "'All'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "All",
+      "description": "Text abbreviation used for links to all products",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_all_products_tr_text",
+      "label": "'All products'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "All products",
+      "description": "Text for links pointing to all products.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_products_tr_text",
+      "label": "'Products'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Products",
+      "description": "Text for 'Products' navigation links.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_categories_tr_text",
+      "label": "'Categories'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Categories",
+      "description": "Text for 'Categories' navigation links.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_pages_tr_text",
+      "label": "'Pages'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Pages",
+      "description": "Text for 'Pages' navigation links.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_more_tr_text",
+      "label": "'More'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "More",
+      "description": "Text for 'More' navigation menus",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_social_tr_text",
+      "label": "'Social'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Follow us",
+      "description": "Text for titles on your social media links",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_subscribe_tr_text",
+      "label": "'Subscribe'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Follow us",
+      "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_back_to_site_tr_text",
+      "label": "'Back to site'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Back to site",
+      "description": "Text 'Back to site' link in navigation which links to your 'website' configured in your <a href='/account/your-shop'>shop info</a>",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_newest_tr_text",
+      "label": "'Newest'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Newest",
+      "description": "Text for 'Newest' labels in menus for product collections",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "navigation_top_selling_tr_text",
+      "label": "'Top-selling'",
+      "section": "translations",
+      "sub_section": "navigation",
+      "type": "text",
+      "default": "Top-selling",
+      "description": "Text for 'Top-selling' labels in menus for product collections",
+      "requires": [ "translation_mode eq manual" ]
+    },
+
+    // Homepage Translations
+    {
+      "variable": "home_featured_products_tr_text",
+      "label": "'Featured products'",
+      "section": "translations",
+      "sub_section": "homepage",
+      "type": "text",
+      "default": "Featured products",
+      "allow_blank": true,
+      "description": "Text for the featured products section on the home page.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "home_featured_categories_tr_text",
+      "label": "'Featured categories'",
+      "section": "translations",
+      "sub_section": "homepage",
+      "type": "text",
+      "default": "Featured categories",
+      "allow_blank": true,
+      "description": "Text for the featured categories section on the home page.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "home_featured_tr_text",
+      "label": "'Featured'",
+      "section": "translations",
+      "sub_section": "homepage",
+      "type": "text",
+      "default": "Featured",
+      "allow_blank": true,
+      "description": "Generic title for featured content on the home page.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "home_all_products_tr_text",
+      "label": "'All products'",
+      "section": "translations",
+      "sub_section": "homepage",
+      "type": "text",
+      "default": "All products",
+      "description": "Button caption for the 'All products' button on the home page.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+  
+    // Manual Product Translations
+    {
+      "variable": "products_add_to_cart_tr_text",
+      "label": "'Add to cart'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Add to cart",
+      "description": "Text for the 'Add to cart' buttons",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_select_variant_tr_text",
+      "label": "'Select variant'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Select variant",
+      "description": "Text for product variant dropdowns and selections",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_select_tr_text",
+      "label": "'Select'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Select",
+      "description": "Text for the word used before product variant group dropdowns and selections (e.g. 'Select <variant group name>')",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_reset_tr_text",
+      "label": "'Reset'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Reset",
+      "description": "Text for button shown when resetting product variant selections",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_coming_soon_tr_text",
+      "label": "'Coming soon'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Coming soon",
+      "description": "Text displayed for products not yet available",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_on_sale_tr_text",
+      "label": "'On sale'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "On sale",
+      "description": "Text indicating a product is on sale",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_sold_out_tr_text",
+      "label": "'Sold out'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Sold out",
+      "description": "Text displayed when a product is out of stock",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_related_products_tr_text",
+      "label": "Related products header",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "description": "Displays above related products on Products pages",
+      "default": "You might also like",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_low_inventory_tr_text",
+      "label": "Low stock message",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "max_length": 50,
+      "description": "Message shown when stock drops below your alert level",
+      "default": "Limited quantities available",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_almost_sold_out_tr_text",
+      "label": "Almost sold out message",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "max_length": 50,
+      "description": "Message shown on product pages when stock drops below half your alert level",
+      "default": "Only a few left!",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_no_products_tr_text",
+      "label": "'No products found'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "No products found",
+      "description": "Text displayed in status messages when no products are found",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_search_results_tr_text",
+      "label": "'Search results'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Search results",
+      "description": "Text displayed when showing title of search results",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_in_stock_tr_text",
+      "label": "'In stock'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "in stock",
+      "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
+      "requires": [ "translation_mode eq manual" ]
+    },
+
+    // Manual Cart Translations
+    {
+      "variable": "cart_checkout_tr_text",
+      "label": "'Checkout'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Checkout",
+      "description": "Text for the 'Checkout' button or page title",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_share_this_cart_tr_text",
+      "label": "'Share this cart'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Share this cart",
+      "description": "Text for the 'Share this cart' feature",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_share_this_cart_link_copy_success_tr_text",
+      "label": "'Share this cart copy link success message'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Link copied!",
+      "description": "Success message when the cart share link is copied to the clipboard",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_remove_tr_text",
+      "label": "'Remove'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Remove",
+      "description": "Text for link to remove items from the cart",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_subtotal_tr_text",
+      "label": "'Subtotal'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Subtotal",
+      "description": "Text label for the cart subtotal.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_continue_shopping_tr_text",
+      "label": "'Continue shopping'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Continue shopping",
+      "description": "Text for the 'Continue shopping' link or button",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_view_cart_tr_text",
+      "label": "'View cart'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "View cart",
+      "description": "Text for the 'View cart' link or button",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_empty_cart_tr_text",
+      "label": "'Empty cart'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Your cart is empty",
+      "description": "Text for the empty cart message",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_quantity_abbreviated_tr_text",
+      "label": "'Qty'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Qty",
+      "description": "Text abbreviation for quantity labels",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "cart_quantity_tr_text",
+      "label": "'Quantity'",
+      "section": "translations",
+      "sub_section": "cart",
+      "type": "text",
+      "default": "Quantity",
+      "description": "Text quantity labels",
+      "requires": [ "translation_mode eq manual" ]
+    },
+
+    // Manual Contact Translations
+    {
+      "variable": "contact_name_tr_text",
+      "label": "'Name'",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "default": "Name",
+      "description": "Text for the name field in contact forms.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "contact_subject_tr_text",
+      "label": "'Subject'",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "default": "Subject",
+      "description": "Text for the subject field in contact forms.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "contact_email_tr_text",
+      "label": "'Email'",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "default": "Email",
+      "description": "Text for the email field in contact forms.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "contact_message_tr_text",
+      "label": "'Message'",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "default": "Message",
+      "description": "Text for the message field in contact forms.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "contact_send_button_tr_text",
+      "label": "'Send message'",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "default": "Send message",
+      "description": "Text for the send button in contact forms.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "contact_form_success_tr_text",
+      "label": "Contact page submission text",
+      "section": "translations",
+      "sub_section": "contact_form",
+      "type": "text",
+      "max_length": 250,
+      "default": "Thanks! Your message has been sent and we'll get back to you soon.",
+      "description": "Shown when visitor successfully sends a message from the contact form",
+      "requires": [ "translation_mode eq manual" ]
+    },
+
+    // Social Profile URL Settings
     {
       "variable": "instagram_url",
       "label": "Instagram URL",

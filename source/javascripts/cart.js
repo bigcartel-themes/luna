@@ -59,7 +59,7 @@ document.querySelector('.copy-cart-link')?.addEventListener('click', async (even
   } else {
     try {
       await navigator.clipboard.writeText(text);
-      link.textContent = 'Link copied!';
+      link.textContent = themeTranslations?.cart?.shareThisCartLinkCopySuccess || 'Link copied!';
       setTimeout(() => {
         link.textContent = originalText;
       }, 2000);

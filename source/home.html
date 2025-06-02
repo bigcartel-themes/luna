@@ -19,9 +19,9 @@
 
 {% if theme.featured_items > 0 %}
   {% if theme.featured_header != blank %}
-    <h1 class="page-title">{{ theme.featured_header }}</h1>
+    <h1 class="page-title">{{ t['home.featured_products'] }}</h1>
   {% else %}
-    <h1 class="visually-hidden">Featured Products</h1>
+    <h1 class="visually-hidden">{{ t['home.featured_products'] }}</h1>
   {% endif %}
 {% endif %}
 {% if theme.featured_items > 0 %}
@@ -36,15 +36,17 @@
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}
-                {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                {% if product.on_sale %}
+                  {% assign product_status = t['products.on_sale'] %}
+                {% endif %}
               {% when 'sold-out' %}
-                {% assign product_status = 'Sold out' %}
+                {% assign product_status = t['products.sold_out'] %}
               {% when 'coming-soon' %}
-                {% assign product_status = 'Coming soon' %}
+                {% assign product_status = t['products.coming_soon'] %}
             {% endcase %}
             {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
             <div class="product-list-thumb {{ product.css_class }}">
-              <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="{{ product.name | escape }}">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img
                     alt=""
@@ -90,10 +92,10 @@
         </div>
       </div>
       {% if paginate.pages > 1 %}
-        {% if theme.all_products_button_text != blank %}<a class="button all-products-button" href="/products">{{ theme.all_products_button_text }}</a>{% endif %}
+        {% if theme.all_products_button_text != blank %}<a class="button all-products-button" href="/products">{{ t['home.all_products'] }}</a>{% endif %}
       {% endif %}
     {% else %}
-      <div class="empty-products centered-message">No products found.</div>
+      <div class="empty-products centered-message">{{ t['products.no_products'] }}</div>
     {% endif %}
   {% endpaginate %}
 {% endif %}
