@@ -77,7 +77,7 @@
       </nav>
     </header>
     <main class="main" id="main">
-      <div class="wrapper">
+      <div class="wrapper" data-bc-hook="content">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
             {% for error in errors %}

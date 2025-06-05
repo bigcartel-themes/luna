@@ -20,7 +20,7 @@
 		{% assign product_status = t['products.coming_soon'] %}
 {% endcase %}
 {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
-<div class="product-page {{ theme.product_page_layout }}">
+<div class="product-page {{ theme.product_page_layout }}" data-bc-hook="product-container">
   <div class="product-page-headings">
     {% if product_status != blank %}<div class="product-status {{ status_class }}">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
