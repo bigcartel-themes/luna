@@ -683,7 +683,7 @@
       "section": "global_navigation",
       "type": "textarea",
       "max_length": 2048,
-      "description": "Show a custom message in your shop's footer"
+      "description": "Show a custom message in your shop's footer. Accepts HTML for links and styling."
     },
     {
       "variable": "footer_text_position",
