@@ -34,6 +34,12 @@
   --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
 
+  // Video player customization
+  --video-rounded-radius: var(--border-radius)
+  --video-margin-small: var(--small-padding)
+  --video-margin-large: var(--large-padding)
+  --video-size-large: 100%
+
 html
   height: 100%
   min-height: 100%
@@ -247,7 +253,7 @@ header
     padding-bottom: 0
   
   h1.page-title
-    font-size: 20px
+    font-size: 25px
     text-align: center
 
 _:-ms-fullscreen, :root .main

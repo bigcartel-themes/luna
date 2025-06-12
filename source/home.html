@@ -17,11 +17,22 @@
   </div>
 {% endif %}
 
+{% if theme.home_featured_video_url %}
+  {% assign featured_video_header = t['home.featured_video'] %}
+  <div class="home-featured-video-section">
+    {% if featured_video_header != blank %}
+      <h1 class="page-title">{{ featured_video_header }}</h1>
+    {% endif %}
+    <div id="featured-video"></div>
+  </div>
+{% endif %}
+
 {% if theme.featured_items > 0 %}
-  {% if theme.featured_header != blank %}
-    <h1 class="page-title">{{ t['home.featured'] }}</h1>
+  {% assign featured_header = t['home.featured'] %}
+  {% if featured_header != blank %}
+    <h1 class="page-title">{{ featured_header }}</h1>
   {% else %}
-    <h1 class="visually-hidden">{{ t['home.featured'] }}</h1>
+    <h1 class="visually-hidden">{{ featured_header }}</h1>
   {% endif %}
 {% endif %}
 {% if theme.featured_items > 0 %}

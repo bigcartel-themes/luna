@@ -727,6 +727,44 @@
       ]
     },
     {
+      "variable": "home_featured_video_url",
+      "label": "Featured video URL",
+      "section": "homepage",
+      "type": "text",
+      "description": "Displays a featured video on the Home page. Supports YouTube, Vimeo, Twitch and direct video links."
+    },
+    {
+      "variable": "home_featured_video_size",
+      "label": "Featured video size",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Small", "small"],
+        ["Medium", "medium"],
+        ["Large", "large"]
+      ],
+      "default": "large",
+      "description": "Sets the size of the featured video on the Home page",
+      "requires": [
+        "home_featured_video_url present"
+      ]
+    },
+    {
+      "variable": "home_featured_video_border",
+      "label": "Featured video border style",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Rounded", "rounded"],
+        ["Sharp", "sharp"]
+      ],
+      "default": "rounded",
+      "description": "Sets the style of the featured video border on the Home page",
+      "requires": [
+        "home_featured_video_url present"
+      ]
+    },
+    {
       "variable": "featured_items",
       "label": "Featured products",
       "section": "homepage",
@@ -1192,6 +1230,17 @@
       "default": "Featured categories",
       "allow_blank": true,
       "description": "Text for the featured categories section on the home page.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "home_featured_video_tr_text",
+      "label": "'Featured video'",
+      "section": "translations",
+      "sub_section": "homepage",
+      "type": "text",
+      "default": "",
+      "allow_blank": true,
+      "description": "Text for the featured video section on the home page.",
       "requires": [ "translation_mode eq manual" ]
     },
     {
