@@ -17,11 +17,22 @@
   </div>
 {% endif %}
 
+{% if theme.home_featured_video_url %}
+  {% assign featured_video_header = t['home.featured_video'] %}
+  <div class="home-featured-video-section">
+    {% if featured_video_header != blank %}
+      <h1 class="page-title">{{ featured_video_header }}</h1>
+    {% endif %}
+    <div id="featured-video"></div>
+  </div>
+{% endif %}
+
 {% if theme.featured_items > 0 %}
-  {% if theme.featured_header != blank %}
-    <h1 class="page-title">{{ theme.featured_header }}</h1>
+  {% assign featured_header = t['home.featured'] %}
+  {% if featured_header != blank %}
+    <h1 class="page-title">{{ featured_header }}</h1>
   {% else %}
-    <h1 class="visually-hidden">Featured Products</h1>
+    <h1 class="visually-hidden">{{ featured_header }}</h1>
   {% endif %}
 {% endif %}
 {% if theme.featured_items > 0 %}
@@ -36,15 +47,17 @@
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}
-                {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                {% if product.on_sale %}
+                  {% assign product_status = t['products.on_sale'] %}
+                {% endif %}
               {% when 'sold-out' %}
-                {% assign product_status = 'Sold out' %}
+                {% assign product_status = t['products.sold_out'] %}
               {% when 'coming-soon' %}
-                {% assign product_status = 'Coming soon' %}
+                {% assign product_status = t['products.coming_soon'] %}
             {% endcase %}
             {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
             <div class="product-list-thumb {{ product.css_class }}">
-              <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="{{ product.name | escape }}">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img
                     alt=""
@@ -90,10 +103,13 @@
         </div>
       </div>
       {% if paginate.pages > 1 %}
-        {% if theme.all_products_button_text != blank %}<a class="button all-products-button" href="/products">{{ theme.all_products_button_text }}</a>{% endif %}
+      {% assign all_products_button_text = t['home.all_products'] %}
+        {% if all_products_button_text != blank %}
+          <a class="button all-products-button" href="/products">{{ all_products_button_text }}</a>
+        {% endif %}
       {% endif %}
     {% else %}
-      <div class="empty-products centered-message">No products found.</div>
+      <div class="empty-products centered-message">{{ t['products.no_products'] }}</div>
     {% endif %}
   {% endpaginate %}
 {% endif %}

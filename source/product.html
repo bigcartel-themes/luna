@@ -1,14 +1,26 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.products'] %}
+{% if page.full_url contains "search=" %}
+  {% assign page_title = t['products.search_results'] %}
+{% elsif page.name != 'Products' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 {% assign product_status = '' %}
 {% case product.status %}
 	{% when 'active' %}
-		{% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+		{% if product.on_sale %}
+      {% assign product_status = t['products.on_sale'] %}
+    {% endif %}
 	{% when 'sold-out' %}
-		{% assign product_status = 'Sold out' %}
+		{% assign product_status = t['products.sold_out'] %}
 	{% when 'coming-soon' %}
-		{% assign product_status = 'Coming soon' %}
+		{% assign product_status = t['products.coming_soon'] %}
 {% endcase %}
 {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
-<div class="product-page {{ theme.product_page_layout }}">
+<div class="product-page {{ theme.product_page_layout }}" data-bc-hook="product-container">
   <div class="product-page-headings">
     {% if product_status != blank %}<div class="product-status {{ status_class }}">{{ product_status }}</div>{% endif %}
     <h1 class="product-title has-dash">{{ product.name }}</h1>
@@ -42,8 +54,8 @@
               <input id="option" name="cart[add][id]" type="hidden" value="0">
               {% for option_group in product.option_groups %}
                 <div class="select">
-                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
-                    <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                  <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                    <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                     {% for value in option_group.values %}
                       <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
                     {% endfor %}
@@ -54,22 +66,22 @@
             </div>
           {% else %}
             <div class="select">
-              <select class="product-option-select" id="option" name="cart[add][id]" aria-label="Select variant" required>
-                <option value="" disabled="disabled" selected>Select variant</option>
+              <select class="product-option-select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
+                <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
                 {% for option in product.options %}
-                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
                 {% endfor %}
               </select>
               <svg viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
+        <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}">{{ t['products.add_to_cart'] }}</button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         <div class="inventory-status-message" data-inventory-message></div>
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
-            <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
+            <button class="button minimal-button reset-selection-button" title="{{ t['products.reset'] }}" type="reset">{{ t['products.reset'] }}</button>
           </div>
         {% endif %}
       </form>
@@ -95,14 +107,14 @@
     {% if product.status == 'active' %}
       {% if theme.show_inventory_bars %}
         <div class="product-inventory">
-        	<h2 class="product-inventory-header">Availability</h2>
+        	<h2 class="product-inventory-header">{{ t['products.inventory'] }}</h2>
         	<ul class="inventory-bars">
             {% for option in product.options %}
         		<li>
         		  {% unless product.has_default_option %}<div class="option-name">{{ option.name }}</div>{% endunless %}
         			<div class="inventory-bar">
         			  <span class="inventory-percentage" style="width:{{ option.inventory }}%;"></span>
-                <span class="inventory-label">{{ option.quantity }} in stock</span>
+                <span class="inventory-label">{{ option.quantity }} {{ t['products.in_stock'] }}</span>
         			</div>
         		</li>
         		{% endfor %}

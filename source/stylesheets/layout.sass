@@ -34,6 +34,12 @@
   --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
 
+  // Video player customization
+  --video-rounded-radius: var(--border-radius)
+  --video-margin-small: var(--small-padding)
+  --video-margin-large: var(--large-padding)
+  --video-size-large: 100%
+
 html
   height: 100%
   min-height: 100%
@@ -108,7 +114,7 @@ a
   &:focus, &:hover
     color: var(--link-rollover-color)
     text-decoration: underline
-    text-underline-offset: 2px
+    text-underline-offset: 3px
 
 h1, h2, h3, h4, h5
   color: var(--header-text-color)
@@ -183,7 +189,7 @@ header
     a
       color: var(--secondary-text-color)
       display: block
-      font-size: $luna-font-base-px - 1
+      font-size: $luna-font-base-px + 2
       padding: $luna-base
       text-decoration: none
 
@@ -193,7 +199,7 @@ header
       &:hover, &:focus
         color: var(--link-rollover-color) !important
         text-decoration: underline
-        text-underline-offset: 2px
+        text-underline-offset: 3px
 
   &.mobile-nav
     display: none
@@ -247,7 +253,7 @@ header
     padding-bottom: 0
   
   h1.page-title
-    font-size: 20px
+    font-size: 25px
     text-align: center
 
 _:-ms-fullscreen, :root .main
@@ -349,7 +355,7 @@ button.button, a.button
   a
     color: var(--secondary-text-color)
     text-decoration: underline
-    text-underline-offset: 2px
+    text-underline-offset: 3px
 
     &:hover, &:focus
       color: var(--link-rollover-color)
@@ -364,13 +370,29 @@ button.button, a.button
     margin-bottom: 0
 
   ol, ul
-    margin: 1em
+    padding-left: 1.5em
+    margin: 1em 0
 
+    ol, ul
+      margin: 0.5em 0
+  
   ul
     list-style: disc
 
   ol
     list-style: decimal
+  
+  img
+    display: inline-block
+    max-width: 100%
+    margin: 0 auto
+    padding-bottom: 16px
+
+  iframe
+    display: block
+    margin: 0 auto
+    max-width: 100%
+    margin-bottom: 16px
 
 .custom .footer-nav
   border: none
@@ -522,7 +544,7 @@ button.search-button
   text-align: center
 
 input, textarea
-  border: 2px solid var(--secondary-text-color)
+  border: 2px solid var(--primary-text-color)
   padding: $luna-base
 
 a.back-to-site
@@ -576,7 +598,7 @@ a.back-to-site
 
   a
     text-decoration: underline
-    text-underline-offset: 2px
+    text-underline-offset: 3px
 
 .visually-hidden
   border: 0

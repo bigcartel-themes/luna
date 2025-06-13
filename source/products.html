@@ -1,16 +1,20 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.products'] %}
+{% if page.full_url contains "search=" %}
+  {% assign page_title = t['products.search_results'] %}
+{% elsif page.name != 'Products' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 {% if categories.active != blank or artists.active != blank %}
   <div class="artist-category-nav artist-category-nav-header">
     <nav aria-label="Category navigation" class="category-nav products-nav">
-      <h1 class="nav-title">
-        {% if page.full_url contains "search=" %}
-          Search Results
-        {% else %}
-          {{ page.name }}
-        {% endif %}
-      </h1>
+      <h1 class="nav-title">{{ page_title }}</h1>
       {% unless page.full_url contains 'search=' %}
       <ul>
-        <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+        <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">{{ t['navigation.all'] }}</a></li>
         {% for category in categories.active %}
           <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
         {% endfor %}
@@ -20,7 +24,7 @@
     {% if artists.active != blank %}
       {% unless page.full_url contains 'search=' %}
         <nav class="products-nav artist-nav" aria-label="Artist navigation">
-          <div class="nav-title">Artists</div>
+          <div class="nav-title">{{ page_title }}</div>
           <ul>
             {% for artist in artists.active %}
               <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
@@ -42,15 +46,17 @@
           {% assign product_status = '' %}
           {% case product.status %}
             {% when 'active' %}
-              {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+              {% if product.on_sale %}
+                {% assign product_status = t['products.on_sale'] %}
+              {% endif %}
             {% when 'sold-out' %}
-              {% assign product_status = 'Sold out' %}
+              {% assign product_status = t['products.sold_out'] %}
             {% when 'coming-soon' %}
-              {% assign product_status = 'Coming soon' %}
+              {% assign product_status = t['products.coming_soon'] %}
           {% endcase %}
           {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
           <div class="product-list-thumb {{ product.css_class }}">
-            <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+            <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ product.url }}" title="{{ t['navigation.view'] }} {{ product.name | escape }}">
               <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                 <img
                   alt=""
@@ -101,6 +107,6 @@
       </nav>
     {% endif %}
   {% else %}
-    <div class="empty-products centered-message">No products found.</div>
+    <div class="empty-products centered-message">{{ t['products.no_products'] }}</div>
   {% endif %}
 {% endpaginate %}

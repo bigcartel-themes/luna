@@ -1,12 +1,23 @@
-<h1 class="page-title has-dash">{{ page.name }}</h1>
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.cart'] %}
+{% if page.name != 'Cart' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
+<h1 class="page-title has-dash">{{ page_title }}</h1>
 <div class="cart-container{% if cart.item_count == 0 %} empty-cart{% endif %}">
   <div class="empty-cart-message">
     <p class="empty-cart-message centered-message">
-      Your cart is empty, <a href="/products" title="Start shopping">shop now</a>.
+      {{ t['cart.empty_cart'] }}
     </p>
   </div>
   {% if cart.items != blank %}
     <div class="cart-holder">
+      {% if theme.cart_text != blank %}
+        <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
+      {% endif %}
       <form method="post" action="/cart" id="cart-form" class="cart-form">
         <input type="hidden" name="cart_submit" value="true">
         <ul class="cart-items">
@@ -27,17 +38,17 @@
                 </div>
 
                 <div class="cart-item-details-unit-price"></div>
-                <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="Remove item: {{ item.product.name | escape }}">Remove</button>
+                <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="{{ t['cart.remove'] }}: {{ item.product.name | escape }}">{{ t['cart.remove'] }}</button>
               </div>
               <div class="cart-item-quantity-price">
                 <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-                  <label class="visually-hidden" for="item_{{item.id}}_qty">Quantity</label>
+                  <label class="visually-hidden" for="item_{{item.id}}_qty">{{ t['cart.quantity'] }}</label>
                   {{ item | item_quantity_input, nil, 'option-quantity' }}
                 </div>
                 <div class="cart-item-details-price">
                   {{ item.price | money: theme.money_format }}
                 </div>
-                <button title="Remove item: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="Remove item: {{ item.product.name }}" type="button">
+                <button title="{{ t['cart.remove'] }}: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="{{ t['cart.remove'] }}: {{ item.product.name }}" type="button">
                   <svg class="cart-item-remove-icon" aria-hidden="true" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"/></svg>
                 </button>
               </div>
@@ -47,13 +58,13 @@
         <div class="cart-footer">
           <div class="cart-totals">
             <div class="cart-subtotal cart-total" aria-live="polite" aria-atomic="true">
-              Subtotal <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
+              {{ t['cart.subtotal'] }} <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
             </div>
           </div>
           <div class="cart-footer-buttons">
-            <button type="submit" name="checkout" class="button checkout-btn">Checkout</button>
+            <button type="submit" name="checkout" class="button checkout-btn">{{ t['cart.checkout'] }}</button>
             {% if cart.shareable_link %}
-              <a href="{{ cart.shareable_link }}" class="button footer minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
+              <a href="{{ cart.shareable_link }}" class="button footer minimal-button copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">{{ t['cart.share_this_cart'] }}</a>
             {% endif %}
             {% if theme.show_bnpl_messaging and cart.items != blank %}
               <div id="payment-processor-messaging">

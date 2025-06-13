@@ -1,0 +1,273 @@
+// MediaElement.js Video Player Styles
+// =============================================================================
+// PORTABLE VIDEO PLAYER COMPONENT
+// =============================================================================
+// This file uses CSS custom properties for theme customization.
+// Each theme should define these variables in their layout.sass file.
+
+// Size values - Uses CSS custom properties with fallbacks
+$size-small: var(--video-size-small, 400px)
+$size-medium: var(--video-size-medium, 640px)
+$size-large: var(--video-size-large, 960px)
+$size-full-width: 100%
+
+// Visual styling - Uses theme-aware CSS custom properties
+$video-border-radius: var(--video-border-radius, 0)
+$video-rounded-radius: var(--video-rounded-radius, 16px)
+$video-shadow: var(--video-shadow, 0 4px 12px rgba(0, 0, 0, 0.15))
+$video-shadow-heavy: var(--video-shadow-heavy, 0 8px 24px rgba(0, 0, 0, 0.25))
+
+// Responsive behavior
+$mobile-breakpoint: var(--video-mobile-breakpoint, 768px)
+$mobile-padding: var(--video-mobile-padding, 16px)
+
+// Placeholder fallback
+$placeholder-min-height: var(--video-placeholder-min-height, 200px)
+
+// Placeholder colors
+$placeholder-bg: var(--video-placeholder-bg, #f8f9fa)
+$placeholder-color: var(--video-placeholder-color, #6c757d)
+$placeholder-border: var(--video-placeholder-border, #dee2e6)
+
+// Spacing - Uses theme-specific spacing variables
+$featured-video-margin-size-small: var(--video-margin-small, 16px)
+$featured-video-margin-size-large: var(--video-margin-large, 32px)
+$video-container-padding: var(--video-container-padding, 0)
+
+// Mixins
+@mixin flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin video-base-style
+  border-radius: $video-border-radius
+  box-shadow: $video-shadow
+  overflow: hidden
+  margin: 0 auto
+
+// Main container
+.video-embed-container
+  @include flex-center
+  width: 100%
+  margin: 0 auto
+  margin-bottom: $featured-video-margin-size-large
+  padding: $video-container-padding
+
+  // Base MediaElement.js styling
+  .mejs__container
+    @include video-base-style
+    width: 100%
+    background: #000
+    aspect-ratio: 16 / 9
+    height: auto !important
+    position: relative
+
+    &:focus
+      outline: 0
+
+  .mejs__mediaelement
+    width: 100% !important
+    height: 100% !important
+    position: absolute !important
+    top: 0 !important
+    left: 0 !important
+    
+    video,
+    iframe
+      width: 100% !important
+      height: 100% !important
+      position: absolute !important
+      top: 0 !important
+      left: 0 !important
+      object-fit: contain
+
+  .mejs__controls
+    position: absolute !important
+    bottom: 0 !important
+    left: 0 !important
+    right: 0 !important
+    z-index: 10 !important
+
+  // Hide play button for vimeo to avoid double controls
+  &[data-video-type="vimeo"]
+    .mejs__overlay-play
+      display: none !important
+  
+  // Hide MediaElement.js controls for Twitch to avoid double controls
+  &[data-video-type="twitch"]
+    // Hide controls when not playing
+    &:not(.mejs__playing) .mejs__controls
+      display: none !important
+    
+    // Always hide center play button overlay for Twitch (Twitch has its own)
+    .mejs__overlay-play
+      display: none !important
+    
+    .mejs__overlay-button
+      display: none !important
+    
+    .mejs__poster
+      display: none !important
+
+  // Size variations
+  &.size-small
+    .mejs__container
+      max-width: $size-small
+      width: 100%
+    
+    .video-placeholder
+      max-width: $size-small
+      min-height: calc(#{$size-small} * 9 / 16) // 16:9 aspect ratio
+
+  &.size-medium
+    .mejs__container
+      max-width: $size-medium
+      width: 100%
+    
+    .video-placeholder
+      max-width: $size-medium
+      min-height: calc(#{$size-medium} * 9 / 16) // 16:9 aspect ratio
+
+  &.size-large
+    .mejs__container
+      max-width: $size-large
+      width: 100%
+    
+    .video-placeholder
+      max-width: $size-large
+      min-height: calc(#{$size-large} * 9 / 16) // 16:9 aspect ratio
+
+  &.size-full-width
+    .mejs__container
+      max-width: none
+      width: 100%
+    
+    .video-placeholder
+      width: 100%
+      min-height: $placeholder-min-height
+
+  // Border variations
+  &.border-rounded
+    .mejs__container
+      border-radius: $video-rounded-radius
+
+  // Responsive behavior
+  @media (max-width: $mobile-breakpoint)
+    &.size-small,
+    &.size-medium,
+    &.size-large
+      .mejs__container
+        max-width: 100%
+        margin: 0 $mobile-padding
+
+// Placeholder styling
+.video-placeholder
+  @include flex-center
+  background: $placeholder-bg
+  color: $placeholder-color
+  border: 2px dashed $placeholder-border
+  border-radius: $video-border-radius
+  min-height: $placeholder-min-height
+  text-align: center
+  aspect-ratio: 16 / 9
+  margin: 0 auto
+
+// Twitch-specific placeholder styling
+.twitch-placeholder
+  @include flex-center
+  background: #000
+  border: 0
+  border-radius: $video-border-radius
+  color: rgba(255, 255, 255, 0.8)
+  aspect-ratio: 16 / 9
+  margin: 0 auto
+  width: 100% // Ensure it respects container width
+  max-width: 500px // Default max-width fallback
+  
+  .twitch-placeholder-content
+    text-align: center
+    padding: 2rem
+    width: 100%
+    
+  .twitch-placeholder-icon
+    margin-bottom: 1rem
+    color: #9146ff // Twitch brand purple
+    
+    svg
+      display: block
+      margin: 0 auto
+      
+  .twitch-placeholder-text
+    h3
+      margin: 0 0 0.5rem 0
+      font-size: 1.125rem
+      font-weight: 600
+      color: #ffffff
+      
+    p
+      margin: 0 0 1rem 0
+      font-size: 1rem
+      line-height: 1.5
+      color: rgba(255, 255, 255, 0.8)
+      
+    small
+      font-size: 0.9rem
+      color: rgba(255, 255, 255, 0.6)
+      font-weight: 500
+
+// Size variations for Twitch placeholder - using higher specificity
+.video-embed-container
+  &.size-small .twitch-placeholder
+    max-width: $size-small !important
+    min-height: auto !important
+    aspect-ratio: 16 / 9 !important
+    height: auto !important
+    
+    .twitch-placeholder-content
+      max-width: 320px !important
+    
+  &.size-medium .twitch-placeholder
+    max-width: $size-medium !important
+    min-height: auto !important
+    aspect-ratio: 16 / 9 !important
+    height: auto !important
+    
+    .twitch-placeholder-content
+      max-width: 320px !important
+    
+  &.size-large .twitch-placeholder
+    max-width: $size-large !important
+    min-height: auto !important
+    aspect-ratio: 16 / 9 !important
+    height: auto !important
+    
+    .twitch-placeholder-content
+      max-width: none !important
+    
+  &.size-full-width
+    padding: 0 !important // Remove side padding for full-width videos
+    
+    .mejs__container
+      max-width: none
+      width: 100%
+    
+    .video-placeholder
+      width: 100%
+      max-width: none
+    
+    .twitch-placeholder
+      width: 100% !important
+      max-width: none !important
+      min-height: auto !important
+      aspect-ratio: 16 / 9 !important
+      height: auto !important
+
+// Override for full-width content with higher specificity
+.video-embed-container.size-full-width .twitch-placeholder .twitch-placeholder-content
+  max-width: none !important
+  width: 100% !important
+
+  // Border variations for Twitch placeholder
+  &.border-rounded .twitch-placeholder
+    border-radius: $video-rounded-radius !important

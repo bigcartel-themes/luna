@@ -1,7 +1,24 @@
+{% comment %} Define a consistent title suffix {% endcomment %}
+{% capture title_suffix %} | {{ store.name }}{% endcapture %}
+
+{% comment %} Set default page title {% endcomment %}
+{% assign page_title = page.name | append: title_suffix %}
+
+{% comment %} Handle special page cases {% endcomment %}
+{% if page.name == 'Home' %}
+  {% assign page_title = store.name %}
+{% elsif page.full_url contains '/products' %}
+  {% if page.full_url contains 'search=' %}
+    {% assign page_title = t['products.search_results'] | append: title_suffix %}
+  {% elsif theme.collections %}
+    {% assign page_title = t['navigation.categories'] | append: title_suffix %}
+  {% endif %}
+{% endif %}
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ page.name }} | {{ store.name }}</title>
+    <title>{{ page_title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
@@ -10,7 +27,6 @@
   </head>
 
   <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
-    <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
@@ -25,12 +41,12 @@
       <div class="wrapper">
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
-            <li><a href="/products">{{ pages.products.name }}</a></li>
+            <li><a href="/products">{{ t['navigation.products'] }}</a></li>
             {% for page in pages.all limit:theme.nav_items %}
               <li>{{ page | link_to }}</li>
             {% endfor %}
-            <li><a href="/contact">{{ pages.contact.name }}</a></li>
-            <li><a href="/cart">{{ pages.cart.name }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
+            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
           </ul>
         </nav>
 
@@ -54,14 +70,14 @@
       </div>
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
-          <li><a href="/products">{{ pages.products.name }}</a></li>
-          <li><a href="/contact">{{ pages.contact.name }}</a></li>
-          <li><a href="/cart">{{ pages.cart.name }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
+          <li><a href="/products">{{ t['navigation.products'] }}</a></li>
+          <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
         </ul>
       </nav>
     </header>
     <main class="main" id="main">
-      <div class="wrapper">
+      <div class="wrapper" data-bc-hook="content">
         {% if errors != blank %}
           <ul class="errors {{ page.permalink }}-errors">
             {% for error in errors %}
@@ -82,7 +98,7 @@
     </main>
     {% if page.full_url contains '/product/' %}
       {% if theme.show_similar_products %}
-        {% assign related_products_header = theme.similar_products_header | default: 'You might also like' %}
+        {% assign related_products_header = t['products.related_products'] %}
         {% assign related_products_collection = product.related_products %}
 
         {% if related_products_collection.size > 0 %}
@@ -93,10 +109,10 @@
                 {% if product.previous_product != blank or product.next_product != blank %}
                   <ul class="prev-next-products">
                     {% if product.previous_product != blank %}
-                      <li>{{ product.previous_product | link_to: "Previous product" }}</li>
+                      <li>{{ product.previous_product | link_to: t['navigation.previous'] }}</li>
                     {% endif %}
                     {% if product.next_product != blank %}
-                      <li>{{ product.next_product | link_to: "Next product" }}</li>
+                      <li>{{ product.next_product | link_to: t['navigation.next'] }}</li>
                     {% endif %}
                   </ul>
                 {% endif %}
@@ -107,15 +123,17 @@
                     {% assign related_product_status = '' %}
                     {% case related_product.status %} 
                       {% when 'active' %} 
-                        {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %} 
+                        {% if related_product.on_sale %}
+                          {% assign related_product_status = t['products.on_sale'] %}
+                        {% endif %} 
                       {% when 'sold-out' %} 
-                        {% assign related_product_status = 'Sold out' %} 
+                        {% assign related_product_status = t['products.sold_out'] %} 
                       {% when 'coming-soon' %} 
-                        {% assign related_product_status = 'Coming soon' %} 
+                        {% assign related_product_status = t['products.coming_soon'] %} 
                     {% endcase %}
                     {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                     <div class="product-list-thumb {{ related_product.css_class }}">
-                      <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+                      <a class="product-list-link product-list-link--{{ theme.show_overlay }}" href="{{ related_product.url }}" title="{{ related_product.name | escape }}">
                         <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                           <img
                             alt="{{ related_product.name }}"
@@ -165,15 +183,15 @@
         {% endif %}
         <nav class="footer-nav footer-nav--main" role="navigation" aria-label="Footer main">
           <ul class="footer-links">
-            <li><a href="/">{{ pages.home.name }}</a></li>
-            <li><a href="/products">{{ pages.products.name }}</a></li>
+            <li><a href="/">{{ t['navigation.home'] }}</a></li>
+            <li><a href="/products">{{ t['navigation.products'] }}</a></li>
             {% if pages.all.size <= 2 %}
               {% for page in pages.all %}
                 <li>{{ page | link_to }}</li>
               {% endfor %}
             {% endif %}
-            <li><a href="/contact">{{ pages.contact.name }}</a></li>
-            <li><a href="/cart">{{ pages.cart.name }}</a></li>
+            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            <li><a href="/cart">{{ t['navigation.cart'] }}</a></li>
           </ul>
         </nav>
         {% if categories.active.size > 0 and theme.show_categories_in_footer == true %}
@@ -185,12 +203,21 @@
             </ul>
           </nav>
         {% endif %}
+        {% assign show_pages_in_footer = false %}
         {% if pages.all.size >= 3 and theme.show_custom_pages_in_footer == true %}
+          {% assign show_pages_in_footer = true %}
+        {% elsif store.website != blank %}
+          {% assign show_pages_in_footer = true %}
+        {% endif %}
+        {% if show_pages_in_footer %}
           <nav class="footer-nav footer-nav--pages" role="navigation" aria-label="Footer pages">
             <ul class="footer-links">
               {% for page in pages.all %}
                 <li>{{ page | link_to }}</li>
               {% endfor %}
+              {% if store.website != blank %}
+                <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
+              {% endif %}
             </ul>
           </nav>
         {% endif %}
@@ -199,8 +226,8 @@
             <div class="footer-search">
               <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
                 <input type="hidden" name="utf8" value='✓'>
-                <label class="visually-hidden" for="search">Search products</label>
-                <input class="search-input" id="search" name="search" placeholder="Search products" type="search" autocomplete="off" />
+                <label class="visually-hidden" for="search">{{ t['navigation.search'] }}</label>
+                <input class="search-input" id="search" name="search" placeholder="{{ t['navigation.search'] }}" type="search" autocomplete="off" />
                 <button type="submit" class="search-button" aria-label="Submit search form">
                   <svg aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.707 14.293l-3.112-3.092-.006-.004c.882-1.197 1.411-2.597 1.411-4.197 0-3.859-3.141-7-7-7s-7 3.1-7 7 3.141 7 7 7c1.575 0 3.025-.529 4.196-1.41v.006l3.093 3.111c.199.193.411.293.711.293s.512-.098.707-.293c.391-.407.393-1.007-.007-1.414zm-8.707-2.293c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.2 5 5-2.243 5-5 5z"/></svg>
                 </button>
@@ -283,7 +310,9 @@
             <div class="footer-custom-content">{{ theme.footer_text }} </div>
           {% endif %}
           <div data-bc-hook="credit">
-            {{ powered_by_big_cartel }}
+            {% unless theme.hide_big_cartel_credit %}
+              {{ big_cartel_credit_logo }}
+            {% endunless %}
           </div>
         </nav>
       </div>
@@ -308,8 +337,8 @@
         showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         showSoldOutPrices: {{ theme.show_sold_out_product_prices }},
         showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
-        lowInventoryMessage: "{{ theme.low_inventory_message | replace: '"', '\"' | replace: "'", "\\'" }}",
-        almostSoldOutMessage: "{{ theme.almost_sold_out_message | replace: '"', '\"' | replace: "'", "\\'" }}",
+        lowInventoryMessage: "{{ t['products.low_inventory'] | replace: '"', '\"' | replace: "'", "\\'" }}",
+        almostSoldOutMessage: "{{ t['products.almost_sold_out'] | replace: '"', '\"' | replace: "'", "\\'" }}",
         showInventoryBars: {{ theme.show_inventory_bars }},
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
@@ -317,7 +346,15 @@
         homepageSlideshowAutoplay: {{ theme.homepage_slideshow_autoplay }},
         homepageSlideshowSpeed: {{ theme.homepage_slideshow_speed }},
         showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
-      }
+        homeFeaturedVideoUrl: "{{ theme.home_featured_video_url }}",
+        homeFeaturedVideoSize: "{{ theme.home_featured_video_size }}",
+        homeFeaturedVideoBorder: "{{ theme.home_featured_video_border }}",
+      };
+      const themeTranslations = {
+        cart: {
+          shareThisCartLinkCopySuccess: "{{ t['cart.share_this_cart_link_copy_success'] | replace: '"', '\"' | replace: "'", "\\'" }}"
+        }
+      };
     </script>
     {% if theme.announcement_message_text != blank %}
       <script>
@@ -344,6 +381,12 @@
     {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
+    <script type="text/javascript">
+      window.bigcartel = window.bigcartel || {};
+      window.bigcartel.account = window.bigcartel.account || {};
+      window.bigcartel.account.currency = window.bigcartel.account.currency || "{{ store.currency.code }}";
+      window.bigcartel.account.moneyFormat = "{{ theme.money_format }}";
+    </script>
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
       <script>
