@@ -1476,6 +1476,7 @@
       "section": "translations",
       "sub_section": "cart",
       "type": "text",
+      "max_length": 250,
       "default": "Your cart is empty",
       "description": "Text for the empty cart message",
       "requires": [ "translation_mode eq manual" ]
