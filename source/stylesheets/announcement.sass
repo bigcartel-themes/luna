@@ -10,6 +10,14 @@
   z-index: 1
   font-family: var(--secondary-font)
 
+  a, a:visited
+    color: var(--announcement-text-color)
+    text-decoration: underline
+    text-underline-offset: 3px
+
+    &:hover, &:focus
+      color: var(--announcement-text-color)
+
   @media screen and (max-width: $break-medium)
     padding: 16px 88px
 
