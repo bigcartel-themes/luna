@@ -683,7 +683,7 @@
       "section": "global_navigation",
       "type": "textarea",
       "max_length": 2048,
-      "description": "Show a custom message in your shop's footer. Accepts HTML for links and styling."
+      "description": "Show a custom message in your shop's footer. Supports HTML for advanced customization."
     },
     {
       "variable": "footer_text_position",
@@ -783,6 +783,29 @@
       "description": "The order of products on the Home page",
       "requires": [
         "featured_items gt 0"
+      ]
+    },
+    {
+      "variable": "homepage_featured_text",
+      "label": "Featured message",
+      "section": "homepage",
+      "max_length": 2048,
+      "type": "textarea",
+      "description": "Add a message on the homepage above the featured products. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "homepage_featured_text_position",
+      "label": "Featured message position",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Above featured section", "above"],
+        ["Within featured section", "within"]
+      ],
+      "default": "within",
+      "description": "Sets position of the featured message",
+      "requires": [
+        "homepage_featured_text present"
       ]
     },
     {
@@ -958,7 +981,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 500,
-      "description": "Displays an announcement message on the top of every page. Accepts HTML for links and styling."
+      "description": "Displays an announcement message on the top of every page. Supports HTML for advanced customization."
     },
     {
       "variable": "contact_text",
@@ -966,7 +989,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 1024,
-      "description": "Displays a message at the top of your contact page. Accepts HTML for links and styling."
+      "description": "Displays a message at the top of your contact page. Supports HTML for advanced customization."
     },
     {
       "variable": "cart_text",
@@ -974,7 +997,7 @@
       "section": "messaging",
       "max_length": 1024,
       "type": "textarea",
-      "description": "Displays a message at the top your cart page when there are items in the cart. Accepts HTML for links and styling."
+      "description": "Displays a message at the top your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
       "variable": "maintenance_message",
@@ -982,7 +1005,7 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode. Accepts HTML for links and styling.",
+      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
@@ -1278,11 +1301,11 @@
     },
     {
       "variable": "products_select_variant_tr_text",
-      "label": "'Select variant'",
+      "label": "'Select option'",
       "section": "translations",
       "sub_section": "products",
       "type": "text",
-      "default": "Select variant",
+      "default": "Select option",
       "description": "Text for product variant dropdowns and selections",
       "requires": [ "translation_mode eq manual" ]
     },
@@ -1396,6 +1419,49 @@
       "type": "text",
       "default": "in stock",
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_password_protected_heading_tr_text",
+      "label": "Password protected product heading",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "max_length": 100,
+      "default": "Password required",
+      "description": "Text displayed as heading on password protected product pages",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_password_protected_subheading_tr_text",
+      "label": "Password protected product sub-heading",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "textarea",
+      "max_length": 1024,
+      "default": "",
+      "description": "Text displayed as a sub-heading on password protected product pages.",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_password_protected_button_tr_text",
+      "label": "Password protected product button caption",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Unlock",
+      "description": "Text displayed as button caption on password protected pages",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_password_protected_error_tr_text",
+      "label": "Password protected product error text",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "textarea",
+      "max_length": 500,
+      "default": "Hm, that password isn't right. Try again.",
+      "description": "Error message displayed when a visitor enters the wrong password on password protected products",
       "requires": [ "translation_mode eq manual" ]
     },
 
