@@ -33,6 +33,7 @@
 
   a
     text-decoration: underline
+    text-underline-offset: 3px
 
 button.send-message-button
   margin: 0 auto
@@ -52,10 +53,15 @@ button.send-message-button
     text-align: center
     width: 100%
 
-    a
+    a, a:visited
+      color: var(--primary-text-color)
       display: inline
       white-space: nowrap
       text-decoration: underline
+      text-underline-offset: 3px
+
+      &:hover, &:focus
+        color: var(--primary-text-color)
 
     ul
       list-style: none

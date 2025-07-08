@@ -219,6 +219,7 @@ button.cart-item-remove-text
 
   &:hover, &:focus
     text-decoration: underline
+    text-underline-offset: 3px
 
 .message-banner
   &--cart
@@ -230,3 +231,13 @@ button.cart-item-remove-text
     text-align: center
     width: 100%
     max-width: 760px
+
+    a, a:visited
+      color: var(--announcement-text-color)
+      display: inline
+      white-space: nowrap
+      text-decoration: underline
+      text-underline-offset: 3px
+
+      &:hover, &:focus
+        color: var(--announcement-text-color)
