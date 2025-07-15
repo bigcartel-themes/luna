@@ -141,6 +141,23 @@ function getStripeTextColors(backgroundColor) {
 }
 
 /**
+ * Gets the appropriate background color for Stripe elements
+ * @param {string} backgroundColor - Background color in hex
+ * @returns {string} Background color in hex
+ */
+function getStripeBackgroundColors(backgroundColor) {
+  const luminance = calculateLuminance(backgroundColor);
+  const isLightBackground = luminance > 0.5;
+
+  // Use standard colors with PayPal for consistency
+  if (isPaypalPresent()) {
+    return isLightBackground ? '#FFFFFF' : '#000000';
+  } else {
+    return backgroundColor || PAYMENT_CONFIG.DEFAULT_COLORS.background;
+  }
+}
+
+/**
  * Gets Stripe appearance options with configurable text alignment
  * @param {string} backgroundColor - Background color in hex
  * @param {string} alignment - Text alignment value ('left', 'center', 'right')
@@ -156,6 +173,7 @@ function getStripeAppearanceOptions(backgroundColor, alignment = 'left') {
     appearance: {
       variables: {
         colorText: getStripeTextColors(backgroundColor),
+        colorBackground: getStripeBackgroundColors(backgroundColor),
         logoColor: getTextColorMode(backgroundColor, 'stripe'),
         fontFamily,
         fontSizeBase: '16px',
