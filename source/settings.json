@@ -896,8 +896,8 @@
       "label": "Related products",
       "section": "product_page",
       "type": "select",
-      "options": "1..8",
-      "default": 3,
+      "options": "1..12",
+      "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
         "show_similar_products eq true"
