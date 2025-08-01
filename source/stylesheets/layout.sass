@@ -420,10 +420,13 @@ footer
   list-style: none
   gap: $luna-base * 5
   margin: 0
-  padding: $luna-base * 3 0
+  padding: 10px 0
+
+  @media screen and (max-width: $break-small)
+    padding: 20px 0
 
   &--social
-    padding: $luna-base * 4 0
+    padding: 30px 0
 
   ul
     +flexbox
@@ -462,6 +465,7 @@ footer
     width: 1080px
     max-width: 100%
     border-top: 1px solid var(--border-color)
+    padding-top: 30px
 
 .social-links
   +flexbox
