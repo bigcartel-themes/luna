@@ -503,16 +503,16 @@ footer
   width: 240px
 
   &::-webkit-input-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &::-moz-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &:-ms-input-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &:-moz-placeholder
-    color: var(--primary-text-color)
+    color: var(--primary-secondary-color)
 
   @media screen and (max-width: $break-small)
     display: block
@@ -533,6 +533,9 @@ button.search-button
   top: 50%
   transform: translateY(-50%)
   width: 24px
+
+  svg
+    fill: var(--secondary-text-color)
 
 .search-icon
   fill: var(--primary-text-color)
