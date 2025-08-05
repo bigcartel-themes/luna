@@ -165,6 +165,9 @@ header
 .header-nav
   margin-top: $luna-base
 
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
+
   @media screen and (max-width: $break-small)
     display: none
 
@@ -422,6 +425,9 @@ footer
   gap: $luna-base * 5
   margin: 0
   padding: 10px 0
+
+  *
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
 
   @media screen and (max-width: $break-small)
     padding: 20px 0
