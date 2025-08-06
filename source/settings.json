@@ -582,13 +582,31 @@
       "description": "Controls the maximum height of your header image"
     },
     {
-      "variable": "nav_items",
-      "label": "Navigation items",
+      "variable": "nav_page_display",
+      "label": "Pages to show in your header",
       "section": "global_navigation",
       "type": "select",
-      "options": "0..6",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your header"
+    },
+    {
+      "variable": "nav_items",
+      "label": "Custom page limit in header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
       "default": 2,
-      "description": "The number of custom page links to display in the main navigation."
+      "description": "The number of custom page links to display in your header",
+      "requires": [
+        "nav_page_display neq contact_only",
+        "nav_page_display neq none"
+      ]
     },
     {
       "variable": "nav_text_transform_header",
@@ -601,7 +619,7 @@
         ["Lowercase", "lowercase"]
       ],
       "default": "initial",
-      "description": "Controls the text case styling in your header"
+      "description": "Controls the text case styling in your main navigation"
     },
     {
       "variable": "nav_text_transform_footer",
@@ -680,20 +698,47 @@
       }
     },
     {
+      "variable": "show_search",
+      "label": "Show search",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a search field in the footer"
+    },
+    {
       "variable": "show_categories_in_footer",
       "label": "Show categories in footer",
       "section": "global_navigation",
       "type": "boolean",
       "default": true,
-      "description": "Display product category links in your shop's footer"
+      "description": "Display product category links in your footer"
     },
     {
-      "variable": "show_custom_pages_in_footer",
-      "label": "Show custom pages in footer",
+      "variable": "nav_page_display_footer",
+      "label": "Pages to show in your footer",
       "section": "global_navigation",
-      "type": "boolean",
-      "default": true,
-      "description": "Display links to your custom pages in your shop's footer"
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your footer"
+    },
+    {
+      "variable": "nav_items_footer",
+      "label": "Custom page limit in footer",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
+      "default": 100,
+      "description": "Maximum number of custom pages shown in your footer",
+      "requires": [
+        "nav_page_display_footer neq contact_only",
+        "nav_page_display_footer neq none"
+      ]
     },
     {
       "variable": "footer_text",

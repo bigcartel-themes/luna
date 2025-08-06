@@ -42,10 +42,17 @@
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
             <li><a href="/products">{{ t['navigation.products'] }}</a></li>
-            {% for page in pages.all limit:theme.nav_items %}
-              <li>{{ page | link_to }}</li>
-            {% endfor %}
-            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
+              {% for custom_page in pages.custom_pages limit:theme.nav_items %}
+                <li>{{ custom_page | link_to }}</li>
+              {% endfor %}
+            {% endif %}
+            {% if pages.subscribe_page %}
+              <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+            {% endif %}
+            {% if theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
+              <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            {% endif %}
             <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
           </ul>
         </nav>
@@ -71,7 +78,14 @@
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
           <li><a href="/products">{{ t['navigation.products'] }}</a></li>
-          <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
+            {% for custom_page in pages.custom_pages limit:theme.nav_items %}
+              <li>{{ custom_page | link_to }}</li>
+            {% endfor %}
+          {% endif %}
+          {% if theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
+            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+          {% endif %}
           <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
         </ul>
       </nav>
@@ -176,6 +190,16 @@
       {% endif %}
     {% endif %}
 
+    {% assign show_pages_section_in_footer = false %}
+    {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "pages_only" %}
+      {% if pages.custom_pages.size >= 3 or theme.nav_items_footer >= 3 %}
+        {% assign show_pages_section_in_footer = true %}
+      {% endif %}
+    {% endif %}
+
+    {% if pages.required_pages.size > 0 %}
+      {% assign show_pages_section_in_footer = true %}
+    {% endif %}
     <footer data-bc-hook="footer">
       <div class="wrapper">
         {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
@@ -197,13 +221,22 @@
           <ul class="footer-links">
             <li><a href="/">{{ t['navigation.home'] }}</a></li>
             <li><a href="/products">{{ t['navigation.products'] }}</a></li>
-            {% if pages.all.size <= 2 %}
-              {% for page in pages.all %}
-                <li>{{ page | link_to }}</li>
-              {% endfor %}
+            {% if show_pages_section_in_footer == false %}
+              {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "pages_only" %}
+                {% if pages.custom_pages.size <= 2 or theme.nav_items_footer <= 2 %}
+                  {% for custom_page in pages.custom_pages limit: theme.nav_items_footer %}
+                    <li>{{ custom_page | link_to }}</li>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
             {% endif %}
-            <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
-            <li><a href="/cart">{{ t['navigation.cart'] }}</a></li>
+            {% if pages.subscribe_page %}
+              <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+            {% endif %}
+            {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "contact_only" %}
+              <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
+            {% endif %}
+            <li><a href="/cart">{{ t['navigation.cart'] }} (<span class="cart-num-items">{{ cart.item_count }}</span>)</a></li>
           </ul>
         </nav>
         {% if categories.active.size > 0 and theme.show_categories_in_footer == true %}
@@ -215,24 +248,27 @@
             </ul>
           </nav>
         {% endif %}
-        {% assign show_pages_in_footer = false %}
-        {% if pages.all.size >= 3 and theme.show_custom_pages_in_footer == true %}
-          {% assign show_pages_in_footer = true %}
-        {% elsif store.website != blank %}
-          {% assign show_pages_in_footer = true %}
-        {% endif %}
-        {% if show_pages_in_footer %}
+
+        {% if show_pages_section_in_footer %}
           <nav class="footer-nav footer-nav--pages" role="navigation" aria-label="Footer pages">
             <ul class="footer-links">
-              {% for page in pages.all %}
-                <li>{{ page | link_to }}</li>
-              {% endfor %}
+              {% if theme.nav_page_display_footer == "all" or theme.nav_page_display_footer == "pages_only" %}
+                {% for custom_page in pages.custom_pages limit: theme.nav_items_footer %}
+                  <li>{{ custom_page | link_to }}</li>
+                {% endfor %}
+              {% endif %}
               {% if store.website != blank %}
                 <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
+              {% endif %}
+              {% if pages.required_pages.size > 0 %}
+                {% for required_page in pages.required_pages %}
+                  <li>{{ required_page | link_to }}</li>
+                {% endfor %}
               {% endif %}
             </ul>
           </nav>
         {% endif %}
+
         <nav class="footer-nav footer-nav--social" role="navigation" aria-label="Footer social">
           {% if theme.instagram_url != blank
             or theme.tiktok_url != blank
