@@ -1223,7 +1223,7 @@
       "section": "translations",
       "sub_section": "navigation",
       "type": "text",
-      "default": "Follow us",
+      "default": "Subscribe",
       "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
