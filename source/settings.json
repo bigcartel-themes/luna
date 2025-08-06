@@ -1439,49 +1439,6 @@
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
       "requires": [ "translation_mode eq manual" ]
     },
-    {
-      "variable": "products_password_protected_heading_tr_text",
-      "label": "Password protected product heading",
-      "section": "translations",
-      "sub_section": "products",
-      "type": "text",
-      "max_length": 100,
-      "default": "Password required",
-      "description": "Text displayed as heading on password protected product pages",
-      "requires": [ "translation_mode eq manual" ]
-    },
-    {
-      "variable": "products_password_protected_subheading_tr_text",
-      "label": "Password protected product sub-heading",
-      "section": "translations",
-      "sub_section": "products",
-      "type": "textarea",
-      "max_length": 1024,
-      "default": "",
-      "description": "Text displayed as a sub-heading on password protected product pages.",
-      "requires": [ "translation_mode eq manual" ]
-    },
-    {
-      "variable": "products_password_protected_button_tr_text",
-      "label": "Password protected product button caption",
-      "section": "translations",
-      "sub_section": "products",
-      "type": "text",
-      "default": "Unlock",
-      "description": "Text displayed as button caption on password protected pages",
-      "requires": [ "translation_mode eq manual" ]
-    },
-    {
-      "variable": "products_password_protected_error_tr_text",
-      "label": "Password protected product error text",
-      "section": "translations",
-      "sub_section": "products",
-      "type": "textarea",
-      "max_length": 500,
-      "default": "Hm, that password isn't right. Try again.",
-      "description": "Error message displayed when a visitor enters the wrong password on password protected products",
-      "requires": [ "translation_mode eq manual" ]
-    },
 
     // Manual Cart Translations
     {
