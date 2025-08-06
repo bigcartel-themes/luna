@@ -33,7 +33,7 @@ const PAYMENT_CONFIG = {
         minVisibleHeight: 16
       },
       timeouts: {
-        initialization: 1000,
+        render: 2000,
         heightCheck: 300
       },
       detection: {
@@ -46,7 +46,7 @@ const PAYMENT_CONFIG = {
       elementId: 'paypal-messaging-element',
       containerId: 'paypal-messaging-container',
       timeouts: {
-        render: 1000
+        render: 2000
       },
       pageTypes: {
         product: 'product-details',
@@ -575,9 +575,9 @@ async function updateStripeMessaging(price, { backgroundColor }, container, alig
     // Mount to the new element
     await messagingElement.mount(`#${elementId}`);
     
-    // Add initialization timeout to ensure rendering completes
+    // Add render timeout to ensure messaging completes rendering
     await new Promise(resolve => 
-      setTimeout(resolve, PAYMENT_CONFIG.SUPPORTED_PROCESSORS.stripe.timeouts.initialization * 1.5)
+      setTimeout(resolve, PAYMENT_CONFIG.SUPPORTED_PROCESSORS.stripe.timeouts.render)
     );
     
     // Check if iframe exists after remount
