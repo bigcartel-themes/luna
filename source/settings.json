@@ -764,6 +764,18 @@
       ]
     },
     {
+      "variable": "homepage_slideshow_transition",
+      "label": "Slideshow type",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Slide", "slide"],
+        ["Fade", "fade"]
+      ],
+      "default": "slide",
+      "description": "Controls how homepage slideshow transitions between images"
+    },
+    {
       "variable": "homepage_slideshow_autoplay",
       "label": "Auto-play homepage slideshow",
       "section": "homepage",

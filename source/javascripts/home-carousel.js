@@ -5,7 +5,7 @@ function initSplide() {
       rewind: true,
       keyboard: true,
       arrows: true,
-      type: 'loop',
+      type: themeOptions.homepageSlideshowTransition,
       pagination: true,
       lazyLoad: 'sequential',
       autoplay: themeOptions.homepageSlideshowAutoplay,
