@@ -773,7 +773,10 @@
         ["Fade", "fade"]
       ],
       "default": "slide",
-      "description": "Controls how homepage slideshow transitions between images"
+      "description": "Controls how homepage slideshow transitions between images",
+      "requires": [
+        "slideshow present"
+      ]
     },
     {
       "variable": "homepage_slideshow_autoplay",
@@ -781,7 +784,10 @@
       "section": "homepage",
       "type": "boolean",
       "default": true,
-      "description": "Automatically advances slides in the homepage slideshow"
+      "description": "Automatically advances slides in the homepage slideshow",
+      "requires": [
+        "slideshow present"
+      ]
     },
     {
       "variable": "homepage_slideshow_speed",
@@ -798,7 +804,19 @@
       "default": 4000,
       "description": "Controls how quickly slides advance in the auto-playing slideshow",
       "requires": [
+        "slideshow present",
         "homepage_slideshow_autoplay eq true"
+      ]
+    },
+    {
+      "variable": "homepage_slideshow_link",
+      "label": "Slideshow link",
+      "section": "homepage",
+      "type": "text",
+      "default": "",
+      "description": "Link destination when slideshow is clicked. Leave blank to disable clicking. Accepts relative paths (/products) or full URLs.",
+      "requires": [
+        "slideshow present"
       ]
     },
     {

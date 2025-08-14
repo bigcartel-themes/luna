@@ -148,3 +148,20 @@ function formatMoney(amount, withDelimiter = true, withSign = true, withCode = f
   
   return result;
 }
+
+/**
+ * Check if a URL is external (different hostname) or internal
+ * @param {string} url - The URL to check
+ * @returns {boolean} True if external, false if internal
+ */
+function isExternalLink(url) {
+  if (!url) return false;
+  
+  try {
+    const linkUrl = new URL(url, window.location.origin);
+    return linkUrl.hostname !== window.location.hostname;
+  } catch (e) {
+    // Invalid URL, treat as internal
+    return false;
+  }
+}
