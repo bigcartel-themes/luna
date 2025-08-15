@@ -30,14 +30,14 @@
                 <a class="cart-item-details-name" href="{{ item.product.url }}">
                   {{ item.product.name }}
                 </a>
-                <div class="cart-item-details-option">
-                  {% unless item.product.has_default_option %}
-                    {{ item.option.name }} -
-                  {% endunless %}
-                  {{ item.unit_price | money: theme.money_format }}
-                </div>
+                {% unless item.product.has_default_option %}
+                  <div class="cart-item-details-option">
+                    {{ item.option.name }}
+                  </div>
+                {% endunless %}
 
-                <div class="cart-item-details-unit-price"></div>
+                <div class="cart-item-details-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
+
                 <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="{{ t['cart.remove'] }}: {{ item.product.name | escape }}">{{ t['cart.remove'] }}</button>
               </div>
               <div class="cart-item-quantity-price">
