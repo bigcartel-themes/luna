@@ -1519,6 +1519,26 @@
       "description": "Text displayed next to certain product variants quantities (e.g. '123 in stock')",
       "requires": [ "translation_mode eq manual" ]
     },
+    {
+      "variable": "products_variant_tr_text",
+      "label": "'Option'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Option",
+      "description": "Text in some cases to reference the product variant (singular)",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_variants_tr_text",
+      "label": "'Options'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Options",
+      "description": "Text in some cases to reference product variants (plural)",
+      "requires": [ "translation_mode eq manual" ]
+    },
 
     {
       "variable": "cart_checkout_tr_text",
