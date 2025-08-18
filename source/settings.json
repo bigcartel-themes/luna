@@ -931,6 +931,19 @@
       "description": "Show the price of coming soon products on product grids and product pages"
     },
     {
+      "variable": "product_variable_pricing_display_format",
+      "label": "Price display for products with varying prices",
+      "section": "product_page",
+      "type": "select",
+      "options": [
+        ["Show price range", "default"],
+        ["Show lowest price only", "min_only"],
+        ["Show highest price only", "max_only"]
+      ],
+      "default": "default",
+      "description": "Choose how to display prices in your product grid when a product's variants have different prices. Individual product pages will always show the full range."
+    },
+    {
       "variable": "product_page_layout",
       "label": "Product page layout",
       "section": "product_page",

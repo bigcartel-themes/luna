@@ -169,22 +169,26 @@
                         <div class="product-list-thumb-info">
                           <div class="product-list-thumb-name">{{ related_product.name }}</div>
                           <div class="product-list-thumb-price">
-                            {% unless related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
-                              {% if related_product.variable_pricing %}
-                                {{ related_product.min_price | money: theme.money_format }} - {{ related_product.max_price | money: theme.money_format }}
-                              {% else %}
-                                {{ related_product.default_price | money: theme.money_format }}
+                            {% assign hide_price = false %}
+                            {% if related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                              {% assign hide_price = true %}
+                            {% endif %}
+                            {% if related_product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+                              {% assign hide_price = true %}
+                            {% endif %}
+
+                            {% unless hide_price %}
+                              {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+                            
+                              {% if related_product.price_suffix != blank %}
+                                {% if related_product.variable_pricing %}
+                                  {% assign formatted_suffix = '(' | append: related_product.price_suffix | append: ')' %}
+                                {% else %}
+                                  {% assign formatted_suffix = related_product.price_suffix %}
+                                {% endif %}
+                                <span class="price-suffix">{{ formatted_suffix }}</span>
                               {% endif %}
                             {% endunless %}
-
-                            {% if related_product.price_suffix != blank %}
-                              {% if related_product.variable_pricing %}
-                                {% assign formatted_suffix = '(' | append: related_product.price_suffix | append: ')' %}
-                              {% else %}
-                                {% assign formatted_suffix = related_product.price_suffix %}
-                              {% endif %}
-                              <span class="price-suffix">{{ formatted_suffix }}</span>
-                            {% endif %}
                           </div>
                           {% if related_product_status != blank %}<div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>{% endif %}
                         </div>

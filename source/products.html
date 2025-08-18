@@ -87,11 +87,7 @@
                   {% endif %}
 
                   {% unless hide_price %}
-                    {% if product.variable_pricing %}
-                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                    {% else %}
-                      {{ product.default_price | money: theme.money_format }}
-                    {% endif %}
+                    {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
 
                     {% if product.price_suffix != blank %}
                       {% if product.variable_pricing %}
