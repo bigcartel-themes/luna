@@ -164,6 +164,7 @@ header
 
 .header-nav
   margin-top: $luna-base
+  padding-bottom: $luna-base
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
@@ -175,12 +176,16 @@ header
     +flexbox
     +justify-content(center)
     list-style: none
-    margin: 0
-    padding: 0
+    margin: 0 auto
+    padding: 0 0 $luna-base 0
     flex-wrap: wrap
+    border-bottom: 1px solid var(--border-color)
+    width: fit-content
+
+    @media screen and (max-width: $break-small)
+      border-bottom: none
 
     li
-      border-bottom: 1px solid var(--border-color)
       padding: 0 $luna-base
 
       @media screen and (max-width: $break-small)
@@ -193,7 +198,7 @@ header
     a
       color: var(--secondary-text-color)
       display: block
-      font-size: $luna-font-base-px + 2
+      font-size: $luna-font-base-px
       padding: $luna-base
       text-decoration: none
 
@@ -209,7 +214,7 @@ header
     display: none
 
     ul
-      gap: $luna-base
+      gap: 0 $luna-base
 
       li
         padding: 0
