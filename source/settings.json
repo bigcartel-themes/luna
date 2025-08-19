@@ -632,7 +632,7 @@
         ["Lowercase", "lowercase"]
       ],
       "default": "initial",
-      "description": "Controls the text case styling in your footer"
+      "description": "Controls the text case styling in the footer, excluding custom footer text"
     },
     {
       "variable": "show_overlay",
