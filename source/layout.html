@@ -190,6 +190,13 @@
                               {% endif %}
                             {% endunless %}
                           </div>
+                          {% unless hide_price %}
+                            {% if related_product.options.size > 1 and theme.show_product_variant_count_in_grid %}
+                              <div class="product-list-thumb-options-description">
+                                {{ related_product.options.size }} {{ t['products.variants'] }}
+                              </div>
+                            {% endif %}
+                          {% endunless %}
                           {% if related_product_status != blank %}<div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>{% endif %}
                         </div>
                       </a>

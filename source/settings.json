@@ -944,6 +944,14 @@
       "description": "Choose how to display prices in your product grid when a product's variants have different prices. Individual product pages will always show the full range."
     },
     {
+      "variable": "show_product_variant_count_in_grid",
+      "label": "Show product variant count in product grids",
+      "section": "product_page",
+      "type": "boolean",
+      "default": false,
+      "description": "For products with multiple variants, show the variant count in product grids."
+    },
+    {
       "variable": "product_page_layout",
       "label": "Product page layout",
       "section": "product_page",
