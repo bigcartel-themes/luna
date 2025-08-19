@@ -909,10 +909,13 @@
       "options": [
         ["Currency sign", "sign"],
         ["Currency code", "code"],
-        ["No currency indicator", "none"]
+        ["No currency indicator", "none"],
+        ["Currency sign (rounded)", "sign_rounded"],
+        ["Currency code (rounded)", "code_rounded"],
+        ["No currency indicator (rounded)", "rounded"]
       ],
       "default": "sign",
-      "description": "Sets how prices appear in your shop"
+      "description": "Choose how prices display. Rounded options remove decimals and round up to the next whole number."
     },
     {
       "variable": "show_sold_out_product_prices",
