@@ -814,7 +814,7 @@
       "section": "homepage",
       "type": "text",
       "default": "",
-      "description": "Link destination when slideshow is clicked. Leave blank to disable clicking. Accepts relative paths (/products) or full URLs.",
+      "description": "Link destination when slideshow is clicked. Leave blank to keep slides unclickable. Accepts relative paths (e.g. /products) or full URLs.",
       "requires": [
         "slideshow present"
       ]
