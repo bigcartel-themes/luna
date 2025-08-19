@@ -90,7 +90,12 @@
                     {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
 
                     {% if product.price_suffix != blank %}
-                      {% if product.variable_pricing %}
+                      {% assign variable_price_shown = true %}
+                      {% if theme.product_variable_pricing_display_format == "min_only" or theme.product_variable_pricing_display_format == "max_only" %}
+                        {% assign variable_price_shown = false %}
+                      {% endif %}
+
+                      {% if product.variable_pricing and variable_price_shown %}
                         {% assign formatted_suffix = '(' | append: product.price_suffix | append: ')' %}
                       {% else %}
                         {% assign formatted_suffix = product.price_suffix %}

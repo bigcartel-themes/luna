@@ -181,7 +181,12 @@
                               {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
                             
                               {% if related_product.price_suffix != blank %}
-                                {% if related_product.variable_pricing %}
+                                {% assign variable_price_shown = true %}
+                                {% if theme.product_variable_pricing_display_format == "min_only" or theme.product_variable_pricing_display_format == "max_only" %}
+                                  {% assign variable_price_shown = false %}
+                                {% endif %}
+
+                                {% if related_product.variable_pricing and variable_price_shown %}
                                   {% assign formatted_suffix = '(' | append: related_product.price_suffix | append: ')' %}
                                 {% else %}
                                   {% assign formatted_suffix = related_product.price_suffix %}
