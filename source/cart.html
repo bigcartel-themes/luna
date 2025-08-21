@@ -30,14 +30,14 @@
                 <a class="cart-item-details-name" href="{{ item.product.url }}">
                   {{ item.product.name }}
                 </a>
-                <div class="cart-item-details-option">
-                  {% unless item.product.has_default_option %}
-                    {{ item.option.name }} -
-                  {% endunless %}
-                  {{ item.unit_price | money: theme.money_format }}
-                </div>
+                {% unless item.product.has_default_option %}
+                  <div class="cart-item-details-option">
+                    {{ item.option.name }}
+                  </div>
+                {% endunless %}
 
-                <div class="cart-item-details-unit-price"></div>
+                <div class="cart-item-details-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
+
                 <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="{{ t['cart.remove'] }}: {{ item.product.name | escape }}">{{ t['cart.remove'] }}</button>
               </div>
               <div class="cart-item-quantity-price">
@@ -46,7 +46,11 @@
                   {{ item | item_quantity_input, nil, 'option-quantity' }}
                 </div>
                 <div class="cart-item-details-price">
-                  {{ item.price | money: theme.money_format }}
+                  <span class="cart-item-details-price__update">{{ item.price | money: theme.money_format }}</span>
+
+                  {% if item.product.price_suffix != blank %}
+                    <span class="price-suffix">{{ item.product.price_suffix }}</span>
+                  {% endif %}
                 </div>
                 <button title="{{ t['cart.remove'] }}: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="{{ t['cart.remove'] }}: {{ item.product.name }}" type="button">
                   <svg class="cart-item-remove-icon" aria-hidden="true" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"/></svg>

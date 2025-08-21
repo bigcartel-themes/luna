@@ -4,6 +4,10 @@
   --pagination-active-page: var(--primary-text-color)
 
 #main
+  .featured-container
+    @media screen and (max-width: $break-small)
+      margin-top: 30px
+
   .featured-message
     text-align: center
     margin: 20px auto 60px auto
@@ -51,10 +55,27 @@
     border-radius: var(--border-radius)
     width: 100%
 
+  .splide__slide.slideshow-clickable
+    cursor: pointer
+
   .splide__arrow
     border-radius: var(--border-radius)
     width: 2em
-    height: 4em
+    height: 3em
+    opacity: 0
+    transition: opacity 0.2s
+    background: rgba(255, 255, 255, 0.5)
+    // Position arrows to center on the image area, excluding pagination space
+    top: calc(50% - 15px)
+    transform: translateY(-50%)
+
+    &:not(:disabled):hover
+      opacity: 1
+      background: rgba(255, 255, 255, 0.95)
+
+    svg
+      fill: #262626
+      transition: fill 0.2s
 
   .splide__slide
     width: 100%

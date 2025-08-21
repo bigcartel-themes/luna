@@ -164,6 +164,10 @@ header
 
 .header-nav
   margin-top: $luna-base
+  padding-bottom: $luna-base
+
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
 
   @media screen and (max-width: $break-small)
     display: none
@@ -172,12 +176,17 @@ header
     +flexbox
     +justify-content(center)
     list-style: none
-    margin: 0
-    padding: 0
+    margin: 0 auto
+    padding: 0 0 $luna-base 0
+    flex-wrap: wrap
+    border-bottom: 1px solid var(--border-color)
+    width: fit-content
+
+    @media screen and (max-width: $break-small)
+      border-bottom: none
 
     li
-      border-bottom: 1px solid var(--border-color)
-      padding: $luna-base
+      padding: 0 $luna-base
 
       @media screen and (max-width: $break-small)
         border-bottom: none
@@ -189,7 +198,7 @@ header
     a
       color: var(--secondary-text-color)
       display: block
-      font-size: $luna-font-base-px + 2
+      font-size: $luna-font-base-px
       padding: $luna-base
       text-decoration: none
 
@@ -205,7 +214,7 @@ header
     display: none
 
     ul
-      gap: $luna-base
+      gap: 0 $luna-base
 
       li
         padding: 0
@@ -214,6 +223,7 @@ header
       display: block
       font-family: var(--secondary-font)
       padding-bottom: $luna-base * 2
+      margin: 20px 5px
 
 .branding
   font-size: 20px
@@ -400,15 +410,17 @@ button.button, a.button
 
 .footer-custom-content
   color: var(--secondary-text-color)
-  display: grid
-  grid-template-columns: 1fr
-  justify-content: center
+  display: block
   text-align: center
   padding: 20px 0
-  gap: 20px
 
-  > *
-    justify-self: center
+  img
+    display: block
+    margin: 20px auto
+
+  a
+    text-decoration: underline
+    text-underline-offset: 3px
 
 footer
   padding-top: 100px
@@ -420,10 +432,16 @@ footer
   list-style: none
   gap: $luna-base * 5
   margin: 0
-  padding: $luna-base * 3 0
+  padding: 10px 0
+
+  *:not(.footer-custom-content)
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
+
+  @media screen and (max-width: $break-small)
+    padding: 20px 0
 
   &--social
-    padding: $luna-base * 4 0
+    padding: 30px 0
 
   ul
     +flexbox
@@ -462,6 +480,7 @@ footer
     width: 1080px
     max-width: 100%
     border-top: 1px solid var(--border-color)
+    padding-top: 30px
 
 .social-links
   +flexbox
@@ -479,11 +498,16 @@ footer
   svg
     display: block
     fill: currentColor
-    height: 22px
-    width: 22px
+    height: 24px
+    width: 24px
 
     &.tumblr-icon
-      width: 16px
+      width: 15px
+
+    &.reddit-icon,
+    &.discord-icon
+      width: 26px
+      height: 26px
 
   &:hover, &:focus
     color: var(--link-rollover-color)
@@ -498,16 +522,16 @@ footer
   width: 240px
 
   &::-webkit-input-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &::-moz-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &:-ms-input-placeholder
-    color: var(--primary-text-color)
+    color: var(--secondary-text-color)
 
   &:-moz-placeholder
-    color: var(--primary-text-color)
+    color: var(--primary-secondary-color)
 
   @media screen and (max-width: $break-small)
     display: block
@@ -528,6 +552,9 @@ button.search-button
   top: 50%
   transform: translateY(-50%)
   width: 24px
+
+  svg
+    fill: var(--secondary-text-color)
 
 .search-icon
   fill: var(--primary-text-color)

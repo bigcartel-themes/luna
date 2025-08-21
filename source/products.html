@@ -87,13 +87,30 @@
                   {% endif %}
 
                   {% unless hide_price %}
-                    {% if product.variable_pricing %}
-                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                    {% else %}
-                      {{ product.default_price | money: theme.money_format }}
+                    {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+
+                    {% if product.price_suffix != blank %}
+                      {% assign variable_price_shown = true %}
+                      {% if theme.product_variable_pricing_display_format == "min_only" or theme.product_variable_pricing_display_format == "max_only" %}
+                        {% assign variable_price_shown = false %}
+                      {% endif %}
+
+                      {% if product.variable_pricing and variable_price_shown %}
+                        {% assign formatted_suffix = '(' | append: product.price_suffix | append: ')' %}
+                      {% else %}
+                        {% assign formatted_suffix = product.price_suffix %}
+                      {% endif %}
+                      <span class="price-suffix">{{ formatted_suffix }}</span>
                     {% endif %}
                   {% endunless %}
                 </div>
+                {% unless hide_price %}
+                  {% if product.options.size > 1 and theme.show_product_variant_count_in_grid %}
+                    <div class="product-list-thumb-options-description">
+                      {{ product.options.size }} {{ t['products.variants'] }}
+                    </div>
+                  {% endif %}
+                {% endunless %}
                 {% if product_status != blank %}<div class="product-list-thumb-status {{status_class}}">{{ product_status }}</div>{% endif %}
               </div>
             </a>
