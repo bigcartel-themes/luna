@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "images": [
     {
       "variable": "header",
@@ -887,6 +887,44 @@
       "description": "Add a message on the homepage above the featured products. Supports HTML for advanced customization."
     },
     {
+      "variable": "featured_categories",
+      "label": "Featured categories",
+      "section": "homepage",
+      "type": "select",
+      "options": "0..48",
+      "default": 6,
+      "description": "The number of categories featured on the Home page"
+    },
+    {
+      "variable": "home_page_categories_image_style",
+      "label": "Category image style",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Single image", "single"],
+        ["Grid collage", "grid"],
+        ["Strip collage", "strip"],
+        ["Featured collage", "featured"]
+      ],
+      "default": "single",
+      "description": "Style of images shown for each category",
+      "requires": [
+        "feature:theme_category_collages eq visible",
+        "featured_categories gt 0"
+      ]
+    },
+    {
+      "variable": "home_page_categories_product_count_display",
+      "label": "Show product count",
+      "section": "homepage",
+      "type": "boolean",
+      "default": false,
+      "description": "Display the number of products in each category",
+      "requires": [
+        "featured_categories gt 0"
+      ]
+    },
+    {
       "variable": "homepage_featured_text_position",
       "label": "Featured message position",
       "section": "homepage",
@@ -951,7 +989,8 @@
       "label": "Show product variant count in product grids",
       "section": "product_page",
       "type": "boolean",
-      "default": false,
+      "default": true,
+      "upgrade_default": false,
       "description": "For products with multiple variants, show the variant count in product grids."
     },
     {
@@ -1373,7 +1412,7 @@
       "section": "translations",
       "sub_section": "homepage",
       "type": "text",
-      "default": "Featured categories",
+      "default": "Shop by Category",
       "allow_blank": true,
       "description": "Text for the featured categories section on the home page.",
       "requires": [ "translation_mode eq manual" ]
@@ -1479,6 +1518,26 @@
       "type": "text",
       "default": "Sold out",
       "description": "Text displayed when a product is out of stock",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_product_tr_text",
+      "label": "'Product'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Product",
+      "description": "Text displayed when referencing a single item in your shop",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_products_tr_text",
+      "label": "'Products'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Products",
+      "description": "Text displayed when referencing multiple items in your shop",
       "requires": [ "translation_mode eq manual" ]
     },
     {
