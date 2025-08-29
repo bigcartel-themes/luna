@@ -187,6 +187,10 @@ a.product-list-link
   @media screen and (max-width: $break-small)
     font-size: 1rem
 
+  // Hide the line when there's no content below (e.g., category without product count)
+  &:last-child:after
+    display: none
+
 .product-list-thumb-price
   font-size: 1rem
   margin-top: $luna-base

@@ -887,6 +887,44 @@
       "description": "Add a message on the homepage above the featured products. Supports HTML for advanced customization."
     },
     {
+      "variable": "featured_categories",
+      "label": "Featured categories",
+      "section": "homepage",
+      "type": "select",
+      "options": "0..48",
+      "default": 6,
+      "description": "The number of categories featured on the Home page"
+    },
+    {
+      "variable": "home_page_categories_image_style",
+      "label": "Category image style",
+      "section": "homepage",
+      "type": "select",
+      "options": [
+        ["Single image", "single"],
+        ["Grid collage", "grid"],
+        ["Strip collage", "strip"],
+        ["Featured collage", "featured"]
+      ],
+      "default": "single",
+      "description": "Style of images shown for each category",
+      "requires": [
+        "feature:theme_category_collages eq visible",
+        "featured_categories gt 0"
+      ]
+    },
+    {
+      "variable": "home_page_categories_product_count_display",
+      "label": "Show product count",
+      "section": "homepage",
+      "type": "boolean",
+      "default": false,
+      "description": "Display the number of products in each category",
+      "requires": [
+        "featured_categories gt 0"
+      ]
+    },
+    {
       "variable": "homepage_featured_text_position",
       "label": "Featured message position",
       "section": "homepage",

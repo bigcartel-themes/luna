@@ -8,3 +8,4 @@
 //= require javascripts/product-carousel
 //= require javascripts/home
 //= require javascripts/home-carousel
+//= require javascripts/image-collage

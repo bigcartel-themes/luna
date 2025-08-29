@@ -128,3 +128,20 @@ a.all-products-button
 // Video player theme-specific override
 .video-embed-container
   margin-top: var(--video-margin-small)
+
+// Featured Categories
+.featured-categories
+  margin-top: 64px
+
+  .page-title
+    margin-bottom: 16px
+
+  .product-list-container
+    // inherit spacing from products grid
+    margin-top: 0
+
+  // Reuse product grid styles via `.product-list` and `.product-list-thumb`
+  // Only add minimal overrides for category count treatment to mirror price styling
+  .category-count
+    margin-top: 4px
+    opacity: .9
