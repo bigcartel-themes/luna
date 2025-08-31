@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.20.0",
+  "version": "2.20.1",
   "images": [
     {
       "variable": "header",
@@ -893,6 +893,7 @@
       "type": "select",
       "options": "0..48",
       "default": 6,
+      "upgrade_default": 0,
       "description": "The number of categories featured on the Home page"
     },
     {
