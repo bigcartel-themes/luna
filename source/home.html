@@ -146,7 +146,7 @@
 
   {% if categories_with_products != blank %}
     {% assign category_collages_enabled = false %}
-    {% if theme.features.has_theme_category_collages %}
+    {% if theme.features.has_theme_category_collages and theme.home_page_categories_image_style != 'single' %}
       {% assign category_collages_enabled = true %}
     {% endif %}
 
