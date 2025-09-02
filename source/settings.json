@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.20.2",
+  "version": "2.20.3",
   "images": [
     {
       "variable": "header",
@@ -911,8 +911,7 @@
       "description": "Style of images shown for each category",
       "requires": [
         "feature:theme_category_collages eq visible",
-        "featured_categories gt 0",
-        "grid_image_style eq crop-to-square"
+        "featured_categories gt 0"
       ]
     },
     {
@@ -923,8 +922,7 @@
       "default": false,
       "description": "Display the number of products in each category",
       "requires": [
-        "featured_categories gt 0",
-        "grid_image_style eq crop-to-square"
+        "featured_categories gt 0"
       ]
     },
     {
