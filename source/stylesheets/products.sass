@@ -144,6 +144,15 @@ a.product-list-link
   &.grid-contain
     object-fit: contain
 
+// Featured Categories: when grid_image_style is default, keep category thumbs square and contained
+.featured-categories
+  .product-list-image-container-default
+    padding-bottom: 100%
+
+  .product-list-image.grid-default
+    position: absolute
+    object-fit: contain
+
 .product-list-thumb-status
   font-family: var(--secondary-font)
   font-size: 1em
