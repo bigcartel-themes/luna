@@ -1198,6 +1198,17 @@ function processContainer(container, collageOptions = {}) {
     return;
   }
 
+  // If only one image, use original URL directly - let CSS handle object-fit for themes that support it
+  if (imageUrls.length === 1) {
+    const img = container.querySelector('img');
+    if (img) {
+      img.src = imageUrls[0];
+      img.classList.remove('loading');
+      img.classList.add('lazyloaded');
+    }
+    return;
+  }
+
   // Validate and sanitize layout type
   let layoutType;
   if (COLLAGE_CONFIG.VALID_LAYOUT_TYPES.includes(imageStyle)) {

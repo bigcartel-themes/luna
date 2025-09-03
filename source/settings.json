@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.20.3",
+  "version": "2.20.4",
   "images": [
     {
       "variable": "header",
@@ -679,10 +679,11 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Fit to square", "fit-to-square"],
-        ["Crop to square", "crop-to-square"]
+        ["Normal", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
       ],
-      "default": "crop-to-square",
+      "default": "cover",
       "description": "Sets the display of images in the product grid"
     },
     {
