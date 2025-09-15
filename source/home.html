@@ -208,7 +208,8 @@
                         {% capture image_urls %}
                           [{% for product in category.products limit:4 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
                         {% endcapture %}
-                      {% elsif theme.home_page_categories_image_style == "single" %}
+                      {% else %}
+                        {% comment %} Fallback to single image (first product) {% endcomment %}
                         {% capture image_urls %}
                           ["{{ first_product.image | product_image_url | constrain: 800 }}"]
                         {% endcapture %}
