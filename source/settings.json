@@ -893,8 +893,7 @@
       "section": "homepage",
       "type": "select",
       "options": "0..48",
-      "default": 6,
-      "upgrade_default": 0,
+      "default": 0,
       "description": "The number of categories featured on the Home page"
     },
     {
