@@ -1172,7 +1172,7 @@
       "type": "textarea",
       "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+      "default": "We’re getting things ready. Check back soon!"
     },
     {
       "variable": "translation_locale",
