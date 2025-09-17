@@ -973,6 +973,18 @@
       "description": "Show the price of coming soon products on product grids and product pages"
     },
     {
+      "variable": "show_password_protected_product_prices",
+      "label": "Show prices for password protected products",
+      "section": "product_page",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the price of password protected products on product grids. <a href='https://www.bigcartel.com/resources/help/article/password-protected-products' target='_blank'>Learn more</a>",
+      "requires_upgrade": {
+        "unless": "feature:product_passwords",
+        "analytics_label": "Password Protected Products"
+      }
+    },
+    {
       "variable": "product_variable_pricing_display_format",
       "label": "Price display for products with varying prices",
       "section": "product_page",
