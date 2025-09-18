@@ -33,6 +33,7 @@
 
   --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
+  --header-logo-image-size-numeric: #{"{{ theme.header_logo_image_size }}"}
 
   // Video player customization
   --video-rounded-radius: var(--border-radius)
@@ -253,7 +254,17 @@ header
   display: block
   margin: 0 auto
   max-width: 100%
-  max-height: 200px
+  object-fit: contain
+  width: auto
+  // Desktop: force height to theme setting, width scales proportionally
+  height: calc(var(--header-logo-image-size-numeric) * 1px)
+
+  // Responsive scaling for different screen sizes
+  @media screen and (max-width: $break-medium)
+    height: calc(var(--header-logo-image-size-numeric) * 0.8 * 1px)
+
+  @media screen and (max-width: $break-small)
+    height: calc(var(--header-logo-image-size-numeric) * 0.65 * 1px)
 
 .main
   +flex(1)
