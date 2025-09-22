@@ -80,8 +80,55 @@ body
       text-align: center
       width: 100%
 
+      img
+        display: block
+        margin: 0 auto
+        max-width: 100%
+        height: auto
+
+      .store-name
+        font-size: $luna-font-base-px + 16
+        margin: 0
+        line-height: 1.2
+
+      .maintenance-message
+        font-size: $luna-font-base-px + 2
+        line-height: 1.4
+
     .social-links
-      margin: 0
+      margin-top: 10px
+
+      svg
+        width: 20px
+        height: 20px
+
+    @media screen and (max-width: $break-small)
+      &.maintenance-page
+        padding: 50px 20px
+
+        .maintenance-content
+          padding: $luna-base * 3 $luna-base * 2
+          gap: 20px
+
+          .store-name
+            font-size: $luna-font-base-px + 12
+
+          .maintenance-message
+            font-size: $luna-font-base-px + 4
+
+    @media  screen and (max-width: $break-extra-small)
+      &.maintenance-page
+        padding: 30px 15px
+
+        .maintenance-content
+          padding: $luna-base * 2 $luna-base * 1.5
+          gap: 16px
+
+          .store-name
+            font-size: $luna-font-base-px + 8
+
+          .maintenance-message
+            font-size: $luna-font-base-px
 
 a.skip-link
   +transition(all .3s)

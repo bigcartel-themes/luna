@@ -9,7 +9,10 @@
   </head>
   <body class="maintenance-page">
     <main class="maintenance-content">
-      <h1 class="maintenance-header">{{ store.name }}</h1>
+      {% if theme.maintenance_image %}
+        <img src="{{ theme.maintenance_image.url }}" alt="" loading="lazy">
+      {% endif %}
+      <h1 class="store-name {% if theme.show_shop_name_on_maintenance_page == false %}visually-hidden{% endif %}">{{ store.name }}</h1>
       <div class="maintenance-message">{{ theme.maintenance_message }}</div>
       {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
