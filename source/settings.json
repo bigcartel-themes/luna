@@ -947,7 +947,8 @@
       "default": "within",
       "description": "Sets position of the featured message",
       "requires": [
-        "homepage_featured_text present"
+        "homepage_featured_text present",
+        "featured_items gt 0"
       ]
     },
     {
