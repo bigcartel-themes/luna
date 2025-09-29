@@ -35,6 +35,14 @@
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
   --header-logo-image-size-numeric: #{"{{ theme.header_logo_image_size }}"}
 
+  --font-scale: #{'{{ theme.global_text_scale | default: 1 }}'}
+  --shop-name-scale: #{'{{ theme.shop_name_text_scale | default: 1 }}'}
+  --product-grid-scale: #{'{{ theme.product_grid_scale | default: 1 }}'}
+  --product-title-scale: #{'{{ theme.product_page_heading_scale | default: 1 }}'}
+  --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
+  --header-text-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
+  --footer-text-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
+
   // Video player customization
   --video-rounded-radius: var(--border-radius)
   --video-margin-small: var(--small-padding)
@@ -42,6 +50,7 @@
   --video-size-large: 100%
 
 html
+  font-size: calc(#{$luna-font-base-px} * var(--font-scale, 1))
   height: 100%
   min-height: 100%
   position: relative
@@ -56,6 +65,7 @@ body
   background-size: 200px 200px
   color: var(--primary-text-color)
   font-family: var(--primary-font)
+  font-size: 1rem
   height: 100%
   margin: 0
   padding: 0
@@ -213,6 +223,7 @@ header
 .header-nav
   margin-top: $luna-base
   padding-bottom: $luna-base
+  font-size: calc(1rem * var(--header-text-scale, 1))
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
@@ -246,12 +257,14 @@ header
     a
       color: var(--secondary-text-color)
       display: block
-      font-size: $luna-font-base-px
+      +global-font-size($luna-font-base-px)
+      font-size: calc(#{$luna-font-base-px} * var(--font-scale, 1) * var(--header-text-scale, 1))
       padding: $luna-base
       text-decoration: none
 
       @media screen and (max-width: $break-small)
-        font-size: $luna-font-base-px
+        +global-font-size($luna-font-base-px)
+        font-size: calc(#{$luna-font-base-px} * var(--font-scale, 1) * var(--header-text-scale, 1))
 
       &:hover, &:focus
         color: var(--link-rollover-color) !important
@@ -274,7 +287,7 @@ header
       margin: 20px 5px
 
 .branding
-  font-size: 20px
+  +global-font-size(20px)
   margin: 54px auto
 
   @media screen and (max-width: $break-small)
@@ -288,11 +301,11 @@ header
 
 .store-header
   color: var(--shop-name-text-color)
-  font-size: 42px
+  font-size: calc(42px * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
   word-break: break-word
 
   @media screen and (max-width: $break-small)
-    font-size: 32px
+    font-size: calc(32px * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
 
 .page-title
   text-align: center
@@ -321,7 +334,7 @@ header
     padding-bottom: 0
   
   h1.page-title
-    font-size: 25px
+    +global-font-size(25px)
     text-align: center
 
 _:-ms-fullscreen, :root .main
@@ -342,7 +355,7 @@ button.button, a.button
   background: var(--button-background-color)
   color: var(--button-text-color)
   display: block
-  font-size: 16px
+  +global-font-size(16px)
   height: 56px
   max-width: 100%
   padding: 0 $luna-base * 2
@@ -353,7 +366,7 @@ button.button, a.button
     background: none
     color: var(--primary-text-color)
     border: none
-    font-size: 14px
+    +global-font-size(14px)
 
     &:not(:disabled):hover, &:not(:disabled):focus
       background: none !important
@@ -417,7 +430,7 @@ button.button, a.button
 
 .custom-page-content
   font-family: var(--secondary-font)
-  font-size: $luna-font-base-px
+  +global-font-size($luna-font-base-px)
   margin: 0 auto
   max-width: 700px
 
@@ -471,6 +484,7 @@ button.button, a.button
   display: block
   text-align: center
   padding: 20px 0
+  font-size: calc(1rem * var(--footer-text-scale, 1))
 
   img
     display: block
@@ -482,6 +496,7 @@ button.button, a.button
 
 footer
   padding-top: 100px
+  font-size: calc(1rem * var(--footer-text-scale, 1))
 
 .footer-nav
   +flexbox
@@ -556,16 +571,16 @@ footer
   svg
     display: block
     fill: currentColor
-    height: 24px
-    width: 24px
+    height: 22px
+    width: 22px
 
     &.tumblr-icon
-      width: 15px
+      width: 14px
 
     &.reddit-icon,
     &.discord-icon
-      width: 26px
-      height: 26px
+      width: 24px
+      height: 24px
 
   &:hover, &:focus
     color: var(--link-rollover-color)
@@ -638,7 +653,7 @@ a.back-to-site
   border-radius: var(--border-radius)
   border: 2px solid var(--primary-text-color)
   color: var(--primary-text-color)
-  font-size: $luna-font-base-px - 4
+  +global-font-size($luna-font-base-px - 4)
   height: auto
   padding: $luna-base * 2 $luna-base * 4
   width: auto
@@ -655,7 +670,7 @@ a.back-to-site
 .bigcartel-credit
   color: var(--secondary-text-color)
   line-height: 1em
-  font-size: 15px
+  +global-font-size(15px)
   display: flex
   align-items: center
   gap: 8px
@@ -678,7 +693,7 @@ a.back-to-site
 .centered-message
   color: var(--secondary-text-color)
   font-family: var(--secondary-font)
-  font-size: 18px
+  +global-font-size(18px)
   padding: 0 16px
   text-align: center
 

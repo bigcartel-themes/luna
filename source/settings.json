@@ -1204,6 +1204,153 @@
       "description": "Displays a message at the top your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
+      "variable": "global_text_scale",
+      "label": "Global text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Set the base text size for your entire shop. All text will scale from this setting"
+    },
+    {
+      "variable": "header_text_scale",
+      "label": "Header navigation text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune header and sidebar navigation text size (applies on top of global setting)"
+    },
+    {
+      "variable": "footer_text_scale",
+      "label": "Footer text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune footer text size (applies on top of global setting)"
+    },
+    {
+      "variable": "shop_name_text_scale",
+      "label": "Shop name text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Adjust the shop name text shown in the header of Home page and custom pages relative to the template's default size"
+    },
+    {
+      "variable": "product_grid_scale",
+      "label": "Product grid text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product grid text size (applies on top of global setting)"
+    },
+    {
+      "variable": "product_page_heading_scale",
+      "label": "Product page heading area size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product title, price, and status text size (applies on top of global setting)"
+    },
+    {
+      "variable": "product_page_description_scale",
+      "label": "Product page description size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product description text size (applies on top of global setting)"
+    },
+    {
       "variable": "translation_locale",
       "label": "Language for text in your shop",
       "section": "translations",

@@ -78,21 +78,21 @@
     padding-right: $luna-base * 2
 
 .cart-item-details-name
-  font-size: 18px
+  +global-font-size(18px)
 
   @media screen and (max-width: $break-small)
-    font-size: 16px
+    +global-font-size(16px)
 
 .cart-item-details-option
   font-family: var(--secondary-font)
-  font-size: 15px
+  +global-font-size(15px)
   margin-top: $luna-base / 2.5
 
   @media screen and (max-width: $break-small)
-    font-size: 14px
+    +global-font-size(14px)
 
 .cart-item-details-unit-price
-  font-size: 15px
+  +global-font-size(15px)
   margin-top: 4px
 
 .cart-item-quantity-price
@@ -165,7 +165,7 @@ button.cart-item-remove
 
 .cart-footer
   border: 1px solid var(--border-color)
-  font-size: $luna-font-base-px
+  +global-font-size($luna-font-base-px)
   margin-left: auto
   max-width: 30%
   padding: $luna-base * 3 $luna-base * 2 $luna-base
@@ -178,7 +178,7 @@ button.cart-item-remove
 
 .cart-subtotal
   +flexbox
-  font-size: 20px
+  +global-font-size(20px)
   margin-bottom: $luna-base * 2
   padding: 0
 
@@ -195,7 +195,7 @@ button.cart-item-remove
 
 .checkout-btn
   display: block
-  font-size: $luna-font-base-px
+  +global-font-size($luna-font-base-px)
   margin: 0 auto $luna-base
   max-width: 100%
 
@@ -204,7 +204,7 @@ a.button.footer
   border-color: transparent
   color: var(--primary-text-color)
   display: block
-  font-size: $luna-font-base-px - 1
+  +global-font-size($luna-font-base-px - 1)
   height: auto
   margin: 0 auto
   padding: $luna-base
@@ -221,7 +221,7 @@ button.cart-item-remove-text
   padding: 0
   text-decoration: none
   width: auto
-  font-size: 14px
+  +global-font-size(14px)
 
   @media screen and (max-width: $break-small)
     display: inline-block
