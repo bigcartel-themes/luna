@@ -1181,6 +1181,36 @@
       "description": "Displays an announcement message on the top of every page. Supports HTML for advanced customization."
     },
     {
+      "variable": "announcement_message_scroll",
+      "label": "Scroll announcement banner",
+      "section": "messaging",
+      "type": "boolean",
+      "default": false,
+      "description": "Enable smooth scrolling animation for the announcement banner. Best for longer messages and when you want a more eye-catching, dynamic effect.",
+      "requires": [
+        "announcement_message_text present"
+      ]
+    },
+    {
+      "variable": "announcement_scroll_speed",
+      "label": "Announcement scroll speed",
+      "section": "messaging",
+      "type": "select",
+      "options": [
+        ["Slowest", "50s"],
+        ["Slow", "30s"],
+        ["Medium", "15s"],
+        ["Fast", "7s"],
+        ["Fastest", "3s"]
+      ],
+      "default": "15s",
+      "description": "Controls how quickly the announcement scrolls across the screen",
+      "requires": [
+        "announcement_message_text present",
+        "announcement_message_scroll eq true"
+      ]
+    },
+    {
       "variable": "contact_text",
       "label": "Contact page",
       "section": "messaging",

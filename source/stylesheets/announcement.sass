@@ -45,3 +45,38 @@
     fill: currentColor
     height: 14px
     width: 14px
+
+  // Scrolling mode styles
+  &--scrolling
+    padding: 0
+    overflow: hidden
+    min-height: 55px
+
+    @media screen and (max-width: $break-small)
+      min-height: 55px
+
+    .announcement-message__close-button
+      display: none
+
+  &__scroll-wrapper
+    width: 100%
+    overflow: hidden
+    padding: 16px 0
+
+  &__scroll-content
+    display: inline-flex
+    white-space: nowrap
+    animation: scroll-announcement var(--scroll-duration) linear infinite
+
+    &:hover
+      animation-play-state: paused
+
+  &--scrolling &__text
+    display: inline-block
+    padding: 0 5em
+
+@keyframes scroll-announcement
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(-20%)
