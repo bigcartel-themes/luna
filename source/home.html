@@ -31,19 +31,30 @@
   {% assign featured_header = t['home.featured'] %}
   {% assign featured_text = theme.homepage_featured_text %}
   {% assign featured_text_position = theme.homepage_featured_text_position %}
-  
-  {% comment %} Show featured text above when position is "above" OR when no featured items {% endcomment %}
+
+  {% comment %} Determine if we can show categories - must be defined before featured text logic {% endcomment %}
+  {% assign can_show_categories = false %}
+  {% if theme.featured_categories > 0 and categories.active.size > 0 %}
+    {% for category in categories.active %}
+      {% if category.products.size > 0 %}
+        {% assign can_show_categories = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
   {% if featured_text != blank %}
-    {% if featured_text_position == "above" or theme.featured_items == 0 %}
+    {% if featured_text_position == "above" or (theme.featured_items == 0 and can_show_categories == false) %}
       <div class="featured-message">{{ featured_text }}</div>
     {% endif %}
   {% endif %}
-  
+
   <h1 class="{% if featured_header == blank or theme.featured_items == 0 %}visually-hidden{% else %}featured-title page-title{% endif %}">
     {{ featured_header }}
   </h1>
-  
-  {% comment %} Only show within if we have items AND position is within {% endcomment %}
+
+  {% comment %} Only show within if we have featured items AND position is within {% endcomment %}
   {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
     <div class="featured-message">{{ featured_text }}</div>
   {% endif %}
@@ -161,6 +172,11 @@
       {% assign featured_categories_header = t['home.featured_categories'] %}
       {% if featured_categories_header != blank %}
         <h2 class="page-title">{{ featured_categories_header }}</h2>
+      {% endif %}
+
+      {% comment %} Show featured text within categories when no products, categories exist, and position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items == 0 and can_show_categories %}
+        <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
 
       <div class="product-list-container">
