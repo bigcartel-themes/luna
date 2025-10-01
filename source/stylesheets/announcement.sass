@@ -50,10 +50,7 @@
   &--scrolling
     padding: 0
     overflow: hidden
-    min-height: 55px
-
-    @media screen and (max-width: $break-small)
-      min-height: 55px
+    min-height: fit-content
 
     .announcement-message__close-button
       display: none
@@ -62,18 +59,22 @@
     width: 100%
     overflow: hidden
     padding: 16px 0
+    display: flex
+    align-items: center
+    min-height: 55px
 
   &__scroll-content
     display: inline-flex
     white-space: nowrap
     animation: scroll-announcement var(--scroll-duration) linear infinite
+    flex-shrink: 0
 
     &:hover
       animation-play-state: paused
 
   &--scrolling &__text
     display: inline-block
-    padding: 0 5em
+    padding: 0 9em
 
 @keyframes scroll-announcement
   0%
