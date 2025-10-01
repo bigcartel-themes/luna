@@ -878,6 +878,14 @@
       "description": "The number of products featured on the Home page"
     },
     {
+      "variable": "homepage_show_all_items_link",
+      "label": "Show all products button",
+      "section": "homepage",
+      "type": "boolean",
+      "default": true,
+      "description": "Allow the 'All products' button to show on the Home page when eligible"
+    },
+    {
       "variable": "featured_order",
       "label": "Featured products order",
       "section": "homepage",
