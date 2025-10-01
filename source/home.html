@@ -45,7 +45,14 @@
 
   {% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
   {% if featured_text != blank %}
-    {% if featured_text_position == "above" or (theme.featured_items == 0 and can_show_categories == false) %}
+    {% assign show_above = false %}
+    {% if featured_text_position == "above" %}
+      {% assign show_above = true %}
+    {% endif %}
+    {% if theme.featured_items == 0 and can_show_categories == false %}
+      {% assign show_above = true %}
+    {% endif %}
+    {% if show_above %}
       <div class="featured-message">{{ featured_text }}</div>
     {% endif %}
   {% endif %}
