@@ -71,7 +71,7 @@
 
         <div class="branding">
           <a href="/" title="Home">
-            {% if theme.images.header != blank %}
+            {% if theme.images.welcome_image != blank %}
               {% comment %} Calculate optimal image size with width and height constraints for DPI optimization {% endcomment %}
               {% assign display_height = theme.header_logo_image_size %}
               {% assign optimal_width = display_height | times: 6 %}
@@ -79,8 +79,8 @@
               {% assign retina_height = display_height | times: 2 %}
               <img
                 class="store-logo"
-                srcset="{{ theme.images.header.url | constrain: optimal_width, display_height }} 1x, {{ theme.images.header.url | constrain: retina_width, retina_height }} 2x"
-                src="{{ theme.images.header.url | constrain: optimal_width, display_height }}"
+                srcset="{{ theme.images.welcome_image.url | constrain: optimal_width, display_height }} 1x, {{ theme.images.welcome_image.url | constrain: retina_width, retina_height }} 2x"
+                src="{{ theme.images.welcome_image.url | constrain: optimal_width, display_height }}"
                 alt="{{ store.name }} Home"
               >
             {% else %}
