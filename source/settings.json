@@ -1390,6 +1390,52 @@
       "description": "Fine-tune product description text size (applies on top of global setting)"
     },
     {
+      "variable": "shop_sprinkles_animation",
+      "label": "Shop sprinkles animation",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Drift", "shake"],
+        ["Orbit", "orbit"],
+        ["Tumble", "tumble"]
+      ],
+      "default": "shake",
+      "description": "Adjust the falling animation style of the shop sprinkles. You must select an emoji to turn on sprinkles."
+    },
+    {
+      "variable": "shop_sprinkles_size",
+      "label": "Shop sprinkles size",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Smallest", "0.75em"],
+        ["Small", "1.25em"],
+        ["Smaller", "1.5em"],
+        ["Default", "2em"],
+        ["Bigger", "2.75em"],
+        ["Big", "3.5em"],
+        ["Biggest", "4.25em"],
+        ["Jumbo", "5em"]
+      ],
+      "default": "2em",
+      "description": "Adjust the size of the shop sprinkles"
+    },
+    {
+      "variable": "shop_sprinkles_density",
+      "label": "Shop sprinkles density",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Very subtle", "4"],
+        ["Subtle", "8"],
+        ["Balanced", "14"],
+        ["Festive", "20"],
+        ["Party", "28"]
+      ],
+      "default": "14",
+      "description": "Adjust the density of shop sprinkles"
+    },
+    {
       "variable": "translation_locale",
       "label": "Language for text in your shop",
       "section": "translations",

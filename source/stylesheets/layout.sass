@@ -42,6 +42,13 @@
   --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
   --header-text-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
   --footer-text-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
+  --shop-sprinkles-size: #{"{{ theme.shop_sprinkles_size | default: '2em' }}"}
+  --shop-sprinkles-animation: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}orbit{% when 'tumble' %}tumble{% else %}shake{% endcase %}"}
+  --shop-sprinkles-style-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}5.2s{% else %}4.6s{% endcase %}"}
+  --shop-sprinkles-style-timing: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}linear{% else %}cubic-bezier(0.33,0.65,0.45,1){% endcase %}"}
+  --shop-sprinkles-fall-duration: #{"{% case theme.shop_sprinkles_animation %}{% when 'orbit' %}12.5s{% else %}10.8s{% endcase %}"}
+  --shop-sprinkles-spin-animation: #{"{% if theme.shop_sprinkles_animation == 'tumble' %}tumble-spin{% else %}none{% endif %}"}
+  --shop-sprinkles-density: #{"{{ theme.shop_sprinkles_density | default: 12 }}"}
 
   // Video player customization
   --video-rounded-radius: var(--border-radius)
@@ -139,6 +146,20 @@ body
 
           .maintenance-message
             font-size: $luna-font-base-px
+
+
+// shop sprinkles overrides
+.emoji
+  font-size: var(--shop-sprinkles-size) !important
+  animation-name: var(--shop-sprinkles-animation) !important
+  animation-duration: var(--shop-sprinkles-style-duration) !important
+  animation-timing-function: var(--shop-sprinkles-style-timing) !important
+
+.emoji .inner
+  animation-duration: var(--shop-sprinkles-fall-duration) !important
+
+.emoji .inner span
+  animation-name: var(--shop-sprinkles-spin-animation) !important
 
 a.skip-link
   +transition(all .3s)
