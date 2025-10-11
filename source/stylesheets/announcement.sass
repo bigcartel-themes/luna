@@ -63,12 +63,16 @@
     display: flex
     align-items: center
     min-height: 55px
+    // Isolate this container to prevent layout thrashing
+    isolation: isolate
 
   &__scroll-content
     display: inline-flex
     white-space: nowrap
     animation: scroll-announcement var(--scroll-duration) linear infinite
     flex-shrink: 0
+    // Contain the rendering to this element only
+    contain: layout style
 
   // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
   &--scrolling
@@ -87,8 +91,10 @@
     display: inline-block
     padding: 0 9em
 
+// Keyframe animation for smooth scrolling
+// Uses exact pixel distance calculated by JavaScript for seamless looping
 @keyframes scroll-announcement
   0%
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0)
   100%
-    transform: translateX(-20%)
+    transform: translate3d(var(--scroll-distance, -20%), 0, 0)

@@ -1194,7 +1194,7 @@
       "section": "messaging",
       "type": "boolean",
       "default": false,
-      "description": "Enable smooth scrolling animation for the announcement banner. Best for longer messages and when you want a more eye-catching, dynamic effect.",
+      "description": "Enable smooth scrolling animation. Works best with messages of 40+ characters for a continuous, eye-catching effect.",
       "requires": [
         "announcement_message_text present"
       ]
