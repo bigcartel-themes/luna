@@ -7,7 +7,7 @@
   position: relative
   text-align: center
   width: 100%
-  z-index: 1
+  z-index: 500
   font-family: var(--secondary-font)
 
   a, a:visited
@@ -48,6 +48,7 @@
 
   // Scrolling mode styles
   &--scrolling
+    cursor: pointer
     padding: 0
     overflow: hidden
     min-height: fit-content
@@ -69,7 +70,17 @@
     animation: scroll-announcement var(--scroll-duration) linear infinite
     flex-shrink: 0
 
-    &:hover
+  // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
+  &--scrolling
+    @media (hover: hover)
+      &:hover .announcement-message__scroll-content
+        animation-play-state: paused
+
+    &:focus-visible .announcement-message__scroll-content
+      animation-play-state: paused
+
+    // Pause when user taps on mobile (via JS class toggle)
+    &.is-paused .announcement-message__scroll-content
       animation-play-state: paused
 
   &--scrolling &__text

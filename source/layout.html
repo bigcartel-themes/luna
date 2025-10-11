@@ -28,7 +28,7 @@
 
   <body id="{{ page.permalink }}_page" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}" style="{% if theme.announcement_message_scroll %}--scroll-duration: {{ theme.announcement_scroll_speed }};{% endif %}">
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}">
+      <div role="{% if theme.announcement_message_scroll %}region{% else %}complementary{% endif %}" aria-label="{% if theme.announcement_message_scroll %}Scrolling announcement. Focus or hover to pause.{% else %}Announcement message{% endif %}" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}"{% if theme.announcement_message_scroll %} tabindex="0"{% endif %}>
         {% if theme.announcement_message_scroll %}
           <div class="announcement-message__scroll-wrapper">
             <div class="announcement-message__scroll-content">
