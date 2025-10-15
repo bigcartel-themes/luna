@@ -3,6 +3,13 @@
   .related-products-container.under_image + footer .footer-nav
     border-top: 1px solid var(--border-color)
 
+.product-password-form-container
+  margin: 40px auto
+  padding: 0 20px
+
+  h1
+    font-size: 1.5rem
+
 .product-page
   --headings-grid-area: 1 / 1 / 2 / 2
   --details-grid-area: 2 / 1 / 3 / 2
@@ -32,19 +39,19 @@
       max-width: 100%
 
   h1.product-title
-    font-size: 2em
+    font-size: calc(2em * var(--product-title-scale, 1))
     margin-bottom: $luna-base * 3
     text-align: center
 
   .product-price
     font-family: var(--secondary-font)
     text-align: center
-    font-size: $luna-font-base-px + 4
+    font-size: calc(#{$luna-font-base-px + 4} * var(--product-title-scale, 1))
     font-weight: normal
 
   .product-status
     font-family: var(--secondary-font)
-    font-size: $luna-font-base-px
+    font-size: calc(#{$luna-font-base-px} * min(var(--product-title-scale, 1), 1.3))
     font-style: italic
     margin-bottom: $luna-base * 1.75
     text-align: center
@@ -77,11 +84,11 @@
     margin: 20px auto 0
     padding: 4px
     width: auto
-    font-size: $luna-font-base-px - 2
+    +global-font-size($luna-font-base-px - 2)
 
   .product-description
     font-family: var(--secondary-font)
-    font-size: $luna-font-base-px
+    font-size: calc(#{$luna-font-base-px} * var(--product-description-scale, 1))
     margin-top: 32px
 
     a
@@ -170,12 +177,12 @@
     padding-bottom: $luna-base
 
   .similar-products-title
-    font-size: $luna-font-base-px + 8
+    +global-font-size($luna-font-base-px + 8)
 
   .prev-next-products
     +flexbox
     border: none
-    font-size: $luna-font-base-px - 1
+    +global-font-size($luna-font-base-px - 1)
     padding: 0
 
     @media screen and (max-width: $break-small)
@@ -186,7 +193,7 @@
   +flexbox
   +justify-content(center)
   font-family: var(--secondary-font)
-  font-size: $luna-font-base-px - 1
+  +global-font-size($luna-font-base-px - 1)
   list-style: none
   margin: 0
   margin-left: auto
@@ -218,7 +225,7 @@
 
   .product-inventory-header
     margin-bottom: $luna-base * 3
-    font-size: $luna-font-base-px - 1
+    +global-font-size($luna-font-base-px - 1)
     text-align: center
 
 .inventory-bars
@@ -232,7 +239,7 @@
 
   .option-name
     margin-bottom: $luna-base / 2
-    font-size: $luna-font-base-px - 1
+    +global-font-size($luna-font-base-px - 1)
     text-transform: none
 
   .inventory-bar
@@ -250,7 +257,7 @@
 
   .inventory-label
     color: var(--secondary-text-color)
-    font-size: 12px
+    +global-font-size(12px)
     display: none
     position: absolute
     right: 0

@@ -66,6 +66,10 @@
 @mixin align-content($value: stretch)
   align-content: $value
 
+@mixin global-font-size($value)
+  font-size: $value
+  font-size: calc(#{$value} * var(--font-scale, 1))
+
 $luna-base: 8px
 $luna-font-base-px: 16px
 

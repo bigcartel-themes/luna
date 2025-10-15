@@ -85,6 +85,9 @@
                   {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
                     {% assign hide_price = true %}
                   {% endif %}
+                  {% if product.has_password_protection and theme.show_password_protected_product_prices == false %}
+                    {% assign hide_price = true %}
+                  {% endif %}
 
                   {% unless hide_price %}
                     {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}

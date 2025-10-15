@@ -31,16 +31,38 @@
   {% assign featured_header = t['home.featured'] %}
   {% assign featured_text = theme.homepage_featured_text %}
   {% assign featured_text_position = theme.homepage_featured_text_position %}
-  
-  {% if featured_text != blank and featured_text_position == "above" %}
-    <div class="featured-message">{{ featured_text }}</div>
+
+  {% comment %} Determine if we can show categories - must be defined before featured text logic {% endcomment %}
+  {% assign can_show_categories = false %}
+  {% if theme.featured_categories > 0 and categories.active.size > 0 %}
+    {% for category in categories.active %}
+      {% if category.products.size > 0 %}
+        {% assign can_show_categories = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  
+
+  {% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
+  {% if featured_text != blank %}
+    {% assign show_above = false %}
+    {% if featured_text_position == "above" %}
+      {% assign show_above = true %}
+    {% endif %}
+    {% if theme.featured_items == 0 and can_show_categories == false %}
+      {% assign show_above = true %}
+    {% endif %}
+    {% if show_above %}
+      <div class="featured-message">{{ featured_text }}</div>
+    {% endif %}
+  {% endif %}
+
   <h1 class="{% if featured_header == blank or theme.featured_items == 0 %}visually-hidden{% else %}featured-title page-title{% endif %}">
     {{ featured_header }}
   </h1>
-  
-  {% if featured_text != blank and featured_text_position != "above" %}
+
+  {% comment %} Only show within if we have featured items AND position is within {% endcomment %}
+  {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
     <div class="featured-message">{{ featured_text }}</div>
   {% endif %}
 </div>
@@ -94,6 +116,9 @@
                       {% assign hide_price = true %}
                     {% endif -%}
                     {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+                      {% assign hide_price = true %}
+                    {% endif %}
+                    {% if product.has_password_protection and theme.show_password_protected_product_prices == false %}
                       {% assign hide_price = true %}
                     {% endif %}
 
@@ -156,6 +181,11 @@
         <h2 class="page-title">{{ featured_categories_header }}</h2>
       {% endif %}
 
+      {% comment %} Show featured text within categories when no products, categories exist, and position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items == 0 and can_show_categories %}
+        <div class="featured-message">{{ featured_text }}</div>
+      {% endif %}
+
       <div class="product-list-container">
         <div class="product-list {% assign categories_count = 0 %}{% for category in categories.active limit:theme.featured_categories %}{% if category.products.size > 0 %}{% assign categories_count = categories_count | plus: 1 %}{% endif %}{% endfor %}{% if categories_count < 4 %}product-list--center{% endif %}" data-max-products-desktop="{{ theme.max_products_per_row }}" data-max-products-mobile="{{ theme.max_products_per_row_mobile }}">
           {% for category in categories.active limit:theme.featured_categories %}
@@ -208,7 +238,8 @@
                         {% capture image_urls %}
                           [{% for product in category.products limit:4 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
                         {% endcapture %}
-                      {% elsif theme.home_page_categories_image_style == "single" %}
+                      {% else %}
+                        {% comment %} Fallback to single image (first product) {% endcomment %}
                         {% capture image_urls %}
                           ["{{ first_product.image | product_image_url | constrain: 800 }}"]
                         {% endcapture %}
@@ -249,7 +280,7 @@
 {% if theme.featured_items > 0 %}
   {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
     {% if products != blank %}
-      {% if paginate.pages > 1 %}
+      {% if theme.homepage_show_all_items_link and paginate.pages > 1 %}
       {% assign all_products_button_text = t['home.all_products'] %}
         {% if all_products_button_text != blank %}
           <a class="button all-products-button" href="/products">{{ all_products_button_text }}</a>
@@ -260,7 +291,7 @@
 {% endif %}
 
 {% comment %} Show all products button below featured categories when only categories are displayed {% endcomment %}
-{% if theme.featured_items == 0 and categories_with_products != blank and products.all.size > 0 %}
+{% if theme.homepage_show_all_items_link and theme.featured_items == 0 and categories_with_products != blank and products.all.size > 0 %}
   {% assign all_products_button_text = t['home.all_products'] %}
   {% if all_products_button_text != blank %}
     <a class="button all-products-button" href="/products">{{ all_products_button_text }}</a>
