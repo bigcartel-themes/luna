@@ -36,10 +36,11 @@ $('.product-option-select').on('change',function() {
 });
 
 function updateInventoryMessage(optionId = null) {
-  const product = window.bigcartel.product;
+  const product = window.bigcartel?.product;
   const messageElement = document.querySelector('[data-inventory-message]');
 
   if (
+    !product ||
     !themeOptions?.showLowInventoryMessages ||
     themeOptions.showInventoryBars ||
     !messageElement

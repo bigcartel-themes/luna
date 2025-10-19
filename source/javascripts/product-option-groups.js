@@ -1,4 +1,7 @@
 function processProduct(product) {
+  window.bigcartel = window.bigcartel || {};
+  window.bigcartel.product = product;
+  updateInventoryMessage();
   if (product.has_option_groups) {
     setInitialProductOptionStatuses(product);
     $(".product_option_group").on('change',function() {
