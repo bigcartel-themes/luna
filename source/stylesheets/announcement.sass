@@ -93,6 +93,9 @@
   &--scrolling &__text
     display: inline-block
     padding: 0 9em
+    // Prevent iOS Safari text inflation
+    -webkit-text-size-adjust: 100%
+    text-size-adjust: 100%
 
 // Keyframe animation for smooth scrolling
 // Uses exact pixel distance calculated by JavaScript for seamless looping
