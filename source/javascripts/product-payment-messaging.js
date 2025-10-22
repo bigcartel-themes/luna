@@ -1,23 +1,27 @@
 /**
  * BNPL Payment Messaging Module
- * 
- * Handles detection and display of Buy Now Pay Later messaging for Stripe and PayPal 
+ *
+ * Handles detection and display of Buy Now Pay Later messaging for Stripe and PayPal
  * on Product and Cart pages
- * 
+ *
  * Key functionality:
  * - Renders appropriate messaging based on product price
  * - Custom visibility detection logic for Stripe since it lacks a built-in method
- * - Adapts styling to match shop theme for Stripe, but only when Paypal isn't shown due to 
+ * - Adapts styling to match shop theme for Stripe, but only when Paypal isn't shown due to
  *   their limitations
  * - Updates messaging when price changes
- * 
+ * - Supports forced re-rendering for responsive alignment changes
+ *
  * Usage:
  * // On product page:
  * showBnplMessaging(product.price, { alignment: 'left', pageType: 'product' });
- * 
+ *
  * // On cart page:
  * showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
- *  
+ *
+ * // Force re-render (e.g., for responsive alignment change):
+ * showBnplMessaging(product.price, { alignment: 'center', forceRender: true, pageType: 'product' });
+ *
  */
 
 /**
@@ -290,6 +294,7 @@ async function waitForContent(checkFn, options = {}) {
  * @param {string} options.alignment - Text alignment for messaging ('left', 'center', 'right')
  * @param {string} options.displayMode - Display mode for parent container ('block', 'flex', etc.)
  * @param {string} options.pageType - Page type for PayPal messaging ('product', 'cart')
+ * @param {boolean} options.forceRender - Force re-render even if price unchanged (e.g., for responsive alignment changes)
  */
 async function showBnplMessaging(price = null, options = {}) {
   if (!themeOptions.showBnplMessaging) {
@@ -317,7 +322,8 @@ async function showBnplMessaging(price = null, options = {}) {
     parentContainer.style.top === 'auto';
 
   // Price caching: Skip re-render if price unchanged and messaging already visible
-  if (lastRenderedPrice === finalPrice && isParentVisible) {
+  // unless forceRender is explicitly requested (e.g., for responsive alignment changes)
+  if (lastRenderedPrice === finalPrice && isParentVisible && !options.forceRender) {
     return; // Same price, already showing - skip re-render
   }
 
@@ -341,6 +347,7 @@ async function showBnplMessaging(price = null, options = {}) {
  * @param {string} options.alignment - Text alignment for messaging ('left', 'center', 'right')
  * @param {string} options.displayMode - Display mode for parent container ('block', 'flex', etc.')
  * @param {string} options.pageType - Page type for PayPal messaging ('product', 'cart')
+ * @param {boolean} options.forceRender - Force re-render flag (handled in wrapper, not used here)
  */
 async function renderBnplMessaging(price, options = {}) {
   if (!themeOptions.showBnplMessaging) {
