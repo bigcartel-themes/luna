@@ -205,7 +205,7 @@
             
             // Set the source URL - MediaElement.js will detect the platform automatically
             if (videoConfig.type === 'youtube') {
-                videoElement.src = `https://www.youtube-nocookie.com/embed/${videoConfig.id}?controls=0&modestbranding=1&rel=0`;
+                videoElement.src = `https://www.youtube-nocookie.com/embed/${videoConfig.id}?controls=0&rel=0`;
             } else if (videoConfig.type === 'vimeo') {
                 videoElement.src = `https://player.vimeo.com/video/${videoConfig.id}?dnt=1&title=0&byline=0&portrait=0&badge=0`;
             } else if (videoConfig.type === 'twitch') {
