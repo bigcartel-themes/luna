@@ -2,7 +2,7 @@
   background-color: var(--announcement-background-color)
   color: var(--announcement-text-color)
   display: none
-  font-size: calc(0.975em * var(--header-text-scale, 1))
+  font-size: calc(#{$luna-font-base-px} * var(--font-scale, 1) * var(--header-text-scale, 1))
   padding: 16px 144px
   position: relative
   text-align: center
@@ -93,6 +93,9 @@
   &--scrolling &__text
     display: inline-block
     padding: 0 9em
+    // Prevent iOS Safari text inflation
+    -webkit-text-size-adjust: 100%
+    text-size-adjust: 100%
 
 // Keyframe animation for smooth scrolling
 // Uses exact pixel distance calculated by JavaScript for seamless looping

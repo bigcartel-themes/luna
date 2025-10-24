@@ -1,23 +1,27 @@
 /**
  * BNPL Payment Messaging Module
- * 
- * Handles detection and display of Buy Now Pay Later messaging for Stripe and PayPal 
+ *
+ * Handles detection and display of Buy Now Pay Later messaging for Stripe and PayPal
  * on Product and Cart pages
- * 
+ *
  * Key functionality:
  * - Renders appropriate messaging based on product price
  * - Custom visibility detection logic for Stripe since it lacks a built-in method
- * - Adapts styling to match shop theme for Stripe, but only when Paypal isn't shown due to 
+ * - Adapts styling to match shop theme for Stripe, but only when Paypal isn't shown due to
  *   their limitations
  * - Updates messaging when price changes
- * 
+ * - Supports forced re-rendering for responsive alignment changes
+ *
  * Usage:
  * // On product page:
  * showBnplMessaging(product.price, { alignment: 'left', pageType: 'product' });
- * 
+ *
  * // On cart page:
  * showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
- *  
+ *
+ * // Force re-render (e.g., for responsive alignment change):
+ * showBnplMessaging(product.price, { alignment: 'center', forceRender: true, pageType: 'product' });
+ *
  */
 
 /**
@@ -65,6 +69,21 @@ const PAYMENT_CONFIG = {
     defaultDisplayMode: 'block'
   }
 };
+
+/**
+ * Optimization state tracking
+ * These variables help prevent layout shifts by:
+ * - Tracking maximum container heights (prevents collapse during re-renders)
+ * - Caching last rendered price (skips unnecessary re-renders)
+ * - Debouncing rapid updates (prevents flicker)
+ * - Tracking viewport width (resets heights on significant resize)
+ */
+let maxPaypalHeight = 0;
+let maxStripeHeight = 0;
+let lastRenderedPrice = null;
+let updateTimeout = null;
+let lastViewportWidth = window.innerWidth;
+let resizeTimeout = null;
 
 /**
  * Helper functions
@@ -268,14 +287,69 @@ async function waitForContent(checkFn, options = {}) {
  */
 
 /**
- * Displays Buy Now Pay Later messaging when available
+ * Wrapper function for BNPL messaging with optimization
+ * Handles price caching and debouncing to prevent layout shifts
  * @param {number} price - Product price
  * @param {Object} options - Optional configuration
  * @param {string} options.alignment - Text alignment for messaging ('left', 'center', 'right')
  * @param {string} options.displayMode - Display mode for parent container ('block', 'flex', etc.)
  * @param {string} options.pageType - Page type for PayPal messaging ('product', 'cart')
+ * @param {boolean} options.forceRender - Force re-render even if price unchanged (e.g., for responsive alignment changes)
  */
 async function showBnplMessaging(price = null, options = {}) {
+  if (!themeOptions.showBnplMessaging) {
+    return;
+  }
+
+  // Validate price early
+  const finalPrice = validatePrice(price);
+  if (!finalPrice) {
+    console.info('[BNPL] Invalid price:', price);
+    return;
+  }
+
+  // Get parent container to check visibility state
+  const parentContainer = document.getElementById(PAYMENT_CONFIG.PARENT_CONTAINER.containerId);
+  if (!parentContainer) {
+    return;
+  }
+
+  // Check if this is an update or initial render
+  const isParentVisible =
+    parentContainer.style.position === 'static' &&
+    !parentContainer.classList.contains('hidden') &&
+    parentContainer.style.left === 'auto' &&
+    parentContainer.style.top === 'auto';
+
+  // Price caching: Skip re-render if price unchanged and messaging already visible
+  // unless forceRender is explicitly requested (e.g., for responsive alignment changes)
+  if (lastRenderedPrice === finalPrice && isParentVisible && !options.forceRender) {
+    return; // Same price, already showing - skip re-render
+  }
+
+  // Debouncing: For updates, delay to prevent rapid sequential re-renders
+  if (isParentVisible) {
+    clearTimeout(updateTimeout);
+    updateTimeout = setTimeout(() => {
+      renderBnplMessaging(finalPrice, options);
+    }, 100);
+  } else {
+    // No debounce for initial page load
+    renderBnplMessaging(finalPrice, options);
+  }
+}
+
+/**
+ * Renders Buy Now Pay Later messaging (internal implementation)
+ * This is the actual rendering logic, called by showBnplMessaging wrapper
+ * @param {number} price - Product price (already validated)
+ * @param {Object} options - Optional configuration
+ * @param {string} options.alignment - Text alignment for messaging ('left', 'center', 'right')
+ * @param {string} options.displayMode - Display mode for parent container ('block', 'flex', etc.')
+ * @param {string} options.pageType - Page type for PayPal messaging ('product', 'cart')
+ * @param {boolean} options.forceRender - Force re-render flag (handled in wrapper, not used here)
+ */
+async function renderBnplMessaging(price, options = {}) {
   if (!themeOptions.showBnplMessaging) {
     return;
   }
@@ -289,11 +363,7 @@ async function showBnplMessaging(price = null, options = {}) {
     return;
   }
 
-  const finalPrice = validatePrice(price);
-  if (!finalPrice) {
-    console.info('[BNPL] Invalid price:', price);
-    return;
-  }
+  const finalPrice = price; // Already validated by wrapper
 
   const colors = {
     // Some themes have a content background color so we prioritize that to ensure we are using the correct 
@@ -326,10 +396,25 @@ async function showBnplMessaging(price = null, options = {}) {
     parentContainer.style.top === 'auto';
   const isUpdate = isParentVisible && (isStripeVisible || isPaypalVisible);
 
-  // Remove visibility classes initially
-  stripeContainer.classList.remove('visible');
-  paypalContainer.classList.remove('visible');
-  parentContainer.classList.remove('dual-messaging');
+  // Preserve classes independently to prevent layout shifts during re-renders
+  // Track which specific containers were visible before
+  const wasPayPalVisible = paypalContainer.classList.contains('visible');
+  const wasStripeVisible = stripeContainer.classList.contains('visible');
+  const wasDualVisible = wasPayPalVisible && wasStripeVisible;
+
+  // Preserve each container's visible class independently
+  // This prevents "shrink then grow" animation for single and dual messages
+  if (!wasPayPalVisible) {
+    paypalContainer.classList.remove('visible');
+  }
+  if (!wasStripeVisible) {
+    stripeContainer.classList.remove('visible');
+  }
+
+  // Only remove dual-messaging if both weren't visible
+  if (!wasDualVisible) {
+    parentContainer.classList.remove('dual-messaging');
+  }
 
   // Keep parent container out of the flow initially to prevent layout shifts
   if (!isUpdate) {
@@ -382,9 +467,14 @@ async function showBnplMessaging(price = null, options = {}) {
     paypalContainer.classList.add('visible');
   }
   
-  // If both are visible, add dual-messaging class to parent
+  // Validate dual-messaging class based on actual visibility
   if (stripeVisible && paypalVisible) {
+    // Both visible: ensure class is present
     parentContainer.classList.add('dual-messaging');
+  } else {
+    // Only one (or none) visible: remove class to handle edge cases
+    // This covers scenario where price change disqualifies a provider
+    parentContainer.classList.remove('dual-messaging');
   }
   
   // Only bring container on-screen if we have content
@@ -393,11 +483,14 @@ async function showBnplMessaging(price = null, options = {}) {
     parentContainer.style.left = 'auto';
     parentContainer.style.top = 'auto';
     parentContainer.classList.remove('hidden');
-    
+
     // Re-apply display class here, after the container is positioned properly
     if (displayClass) {
       parentContainer.classList.add(displayClass);
     }
+
+    // Update cache after successful render
+    lastRenderedPrice = finalPrice;
   } else {
     parentContainer.style.display = 'none';
   }
@@ -548,7 +641,16 @@ async function updateStripeMessaging(price, { backgroundColor }, container, alig
     return false;
   }
 
-  try {    
+  try {
+    // Max-height tracking: Capture current height before removing element to prevent collapse
+    const currentHeight = container.offsetHeight;
+    if (currentHeight > 0 && currentHeight > maxStripeHeight) {
+      maxStripeHeight = currentHeight;
+    }
+    if (maxStripeHeight > 0) {
+      container.style.minHeight = `${maxStripeHeight}px`;
+    }
+
     // First, remove the element completely from the DOM
     const parentElement = element.parentNode;
     parentElement.removeChild(element);
@@ -619,8 +721,17 @@ async function showPaypalMessaging(
   if (!container || typeof PayPalSDK === 'undefined') {
     return false;
   }
-  
+
   try {
+    // Max-height tracking: Capture current height before clearing to prevent collapse
+    const currentHeight = container.offsetHeight;
+    if (currentHeight > 0 && currentHeight > maxPaypalHeight) {
+      maxPaypalHeight = currentHeight;
+    }
+    if (maxPaypalHeight > 0) {
+      container.style.minHeight = `${maxPaypalHeight}px`;
+    }
+
     // Clear container and create a fresh element to prevent PayPal SDK caching
     container.innerHTML = '';
     
@@ -677,3 +788,25 @@ async function showPaypalMessaging(
     return false;
   }
 }
+
+/**
+ * Viewport resize handler
+ * Resets max-height tracking when viewport size changes significantly
+ * This ensures messaging adapts properly to device rotation or window resizing
+ */
+function handleViewportResize() {
+  const currentWidth = window.innerWidth;
+
+  // Reset if viewport changed significantly (>100px)
+  if (Math.abs(currentWidth - lastViewportWidth) > 100) {
+    maxPaypalHeight = 0;
+    maxStripeHeight = 0;
+    lastViewportWidth = currentWidth;
+  }
+}
+
+// Debounced resize handler (don't fire on every pixel change)
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(handleViewportResize, 250);
+});
