@@ -1,3 +1,41 @@
+/**
+ * Theme debug mode
+ *
+ * Enable: sessionStorage.setItem('themeDebug', 'true')
+ * Disable: sessionStorage.removeItem('themeDebug')
+ *
+ * Enables detailed console logging for BNPL, polling, and other theme operations.
+ */
+window.bigcartel = window.bigcartel || {};
+window.bigcartel.theme = window.bigcartel.theme || {};
+window.bigcartel.theme.DEBUG = (function() {
+  try {
+    return sessionStorage.getItem('themeDebug') === 'true';
+  } catch (e) {
+    return false;
+  }
+})();
+
+/**
+ * Debug logging utility (global)
+ * Available globally throughout the theme. Only logs when theme debug mode is enabled.
+ *
+ * @param {string} category - Log category (e.g., 'BNPL', 'Polling', 'Cart')
+ * @param {...*} args - Arguments to log (supports multiple arguments like console.log)
+ *
+ * @example
+ * debugLog('BNPL', 'Skipping re-render - price unchanged ($' + finalPrice + ')');
+ * debugLog('Polling', 'Check #' + attemptCount + ' at ' + elapsed + 'ms');
+ */
+function debugLog(category) {
+  if (window.bigcartel && window.bigcartel.theme && window.bigcartel.theme.DEBUG) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    args.unshift('[' + category + ']');
+    if (typeof console !== 'undefined' && console.log) {
+      console.log.apply(console, args);
+    }
+  }
+}
 
 function camelCaseToDash(string) {
   return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
