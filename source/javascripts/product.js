@@ -136,7 +136,7 @@ function disableSelectOption(select_option, type) {
   if (type === "sold-out") {
     disabled_text = select_option.parent().attr("data-sold-text");
     disabled_type = "sold-out";
-    if (themeOptions.showSoldOutOptions === 'false') {
+    if (themeOptions.showSoldOutOptions === false) {
       hide_option = true;
     }
     else {
