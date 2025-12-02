@@ -242,6 +242,9 @@
     {% if pages.required_pages.size > 0 %}
       {% assign show_pages_section_in_footer = true %}
     {% endif %}
+    {% if store.website != blank %}
+      {% assign show_pages_section_in_footer = true %}
+    {% endif %}
     <footer data-bc-hook="footer">
       <div class="wrapper">
         {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
