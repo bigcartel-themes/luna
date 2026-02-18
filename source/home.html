@@ -123,7 +123,32 @@
                     {% endif %}
 
                     {% unless hide_price %}
-                      {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+                      {% assign show_strikethrough = false %}
+                      {% assign strikethrough_regular = nil %}
+                      {% assign strikethrough_sale = nil %}
+
+                      {% if theme.show_strikethrough_pricing %}
+                        {% if product.variable_pricing == false and product.original_price > product.default_price %}
+                          {% assign show_strikethrough = true %}
+                          {% assign strikethrough_regular = product.original_price %}
+                          {% assign strikethrough_sale = product.default_price %}
+                        {% elsif product.variable_pricing and theme.product_variable_pricing_display_format == "min_only" and product.min_original_price > product.min_price %}
+                          {% assign show_strikethrough = true %}
+                          {% assign strikethrough_regular = product.min_original_price %}
+                          {% assign strikethrough_sale = product.min_price %}
+                        {% elsif product.variable_pricing and theme.product_variable_pricing_display_format == "max_only" and product.max_original_price > product.max_price %}
+                          {% assign show_strikethrough = true %}
+                          {% assign strikethrough_regular = product.max_original_price %}
+                          {% assign strikethrough_sale = product.max_price %}
+                        {% endif %}
+                      {% endif %}
+
+                      {% if show_strikethrough %}
+                        <s class="price-compare">{{ strikethrough_regular | money: theme.money_format }}</s>
+                        <span class="price-sale">{{ strikethrough_sale | money: theme.money_format }}</span>
+                      {% else %}
+                        {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+                      {% endif %}
 
                       {% if product.price_suffix != blank %}
                         {% assign variable_price_shown = true %}

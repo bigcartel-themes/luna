@@ -36,7 +36,19 @@
                   </div>
                 {% endunless %}
 
-                <div class="cart-item-details-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
+                <div class="cart-item-details-unit-price">
+                  {% assign show_unit_strikethrough = false %}
+                  {% if theme.show_strikethrough_pricing and item.original_unit_price > item.unit_price %}
+                    {% assign show_unit_strikethrough = true %}
+                  {% endif %}
+
+                  {% if show_unit_strikethrough %}
+                    <s class="price-compare">{{ item.original_unit_price | money: theme.money_format }}</s>
+                    <span class="price-sale">{{ item.unit_price | money: theme.money_format }}</span>
+                  {% else %}
+                    {{ item.unit_price | money: theme.money_format }}
+                  {% endif %}
+                </div>
 
                 <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="{{ t['cart.remove'] }}: {{ item.product.name | escape }}">{{ t['cart.remove'] }}</button>
               </div>

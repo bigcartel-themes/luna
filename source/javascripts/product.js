@@ -31,8 +31,10 @@ if (themeOptions.productImageZoom === true) {
 
 
 $('.product-option-select').on('change',function() {
-  var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
+  var selectedOption = $(this).find("option:selected");
+  var option_price = selectedOption.attr("data-price");
+  var original_price = selectedOption.attr("data-original-price");
+  enableAddButton(option_price, original_price);
 });
 
 function updateInventoryMessage(optionId = null) {
@@ -95,18 +97,54 @@ function updateInventoryMessage(optionId = null) {
   }
 }
 
-function enableAddButton(updated_price) {
+function updateProductPrice(updated_price, original_price) {
+  var priceContainer = $('.product-price-value');
+  if (!priceContainer.length) return;
+
+  // Convert to numbers for proper comparison (data attributes are strings)
+  var updatedNum = parseFloat(updated_price) || 0;
+  var originalNum = parseFloat(original_price) || 0;
+
+  var showStrikethrough = originalNum > updatedNum &&
+                          themeOptions.showStrikethroughPricing;
+
+  var priceHtml;
+  if (showStrikethrough) {
+    var regularFormatted = formatMoney(original_price, true, true);
+    var saleFormatted = formatMoney(updated_price, true, true);
+    priceHtml = '<s class="price-compare">' + regularFormatted + '</s> <span class="price-sale">' + saleFormatted + '</span>';
+  } else {
+    priceHtml = formatMoney(updated_price, true, true);
+  }
+
+  priceContainer.html(priceHtml);
+}
+
+function enableAddButton(updated_price, original_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
+
+  // On mobile, the price display is far from the button due to the product image between them.
+  // Show the price in the button so users see price changes when selecting options.
   if (updated_price) {
-    priceTitle = ' - ' + formatMoney(updated_price, true, true);
+    var updatedNum = parseFloat(updated_price) || 0;
+    var originalNum = parseFloat(original_price) || 0;
+    var showStrikethrough = originalNum > updatedNum && themeOptions.showStrikethroughPricing;
+
+    var priceHtml;
+    if (showStrikethrough) {
+      priceHtml = '<s class="price-compare">' + formatMoney(original_price, true, true) + '</s> <span class="price-sale">' + formatMoney(updated_price, true, true) + '</span>';
+    } else {
+      priceHtml = formatMoney(updated_price, true, true);
+    }
+    addButton.html('<span class="button-add-price">' + priceHtml + '</span><span class="button-add-text">' + addButtonTitle + '</span>');
+    updateProductPrice(updated_price, original_price);
+  } else {
+    addButton.html(addButtonTitle);
   }
-  else {
-    priceTitle = '';
-  }
-  addButton.html(addButtonTitle + priceTitle);
-  addButton.attr('aria-label',addButton.text());
+
+  addButton.attr('aria-label', addButtonTitle);
   updateInventoryMessage($('#option').val());
   showBnplMessaging(updated_price, { alignment: 'center', displayMode: 'flex', pageType: 'product' });
 }
@@ -165,8 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const isProductPage = document.body.getAttribute('data-bc-page-type') === 'product';
   if (isProductPage) {
     updateInventoryMessage();
-    
-    const price = window.bigcartel?.product?.default_price || null;    
+
+    const product = window.bigcartel?.product;
+    const price = product?.default_price || null;
+
+    // Initialize button price for default option products
+    if (product?.options?.length === 1) {
+      const option = product.options[0];
+      enableAddButton(option.price, option.original_price);
+    }
+
     showBnplMessaging(price, { alignment: 'center', displayMode: 'flex', pageType: 'product' });
   }
 });
