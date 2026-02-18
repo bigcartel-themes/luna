@@ -101,6 +101,17 @@ function updateProductPrice(updated_price, original_price) {
   var priceContainer = $('.product-price-value');
   if (!priceContainer.length) return;
 
+  if (!updated_price) {
+    if (priceContainer.data('original-html') !== undefined) {
+      priceContainer.html(priceContainer.data('original-html'));
+    }
+    return;
+  }
+
+  if (priceContainer.data('original-html') === undefined) {
+    priceContainer.data('original-html', priceContainer.html());
+  }
+
   // Convert to numbers for proper comparison (data attributes are strings)
   var updatedNum = parseFloat(updated_price) || 0;
   var originalNum = parseFloat(original_price) || 0;
