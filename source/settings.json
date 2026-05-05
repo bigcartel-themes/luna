@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.21.5",
+  "version": "2.22.0",
   "images": [
     {
       "variable": "welcome_image",
@@ -626,7 +626,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in your main navigation"
@@ -639,7 +640,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in the footer, excluding custom footer text"
@@ -1024,6 +1026,25 @@
       "default": true,
       "upgrade_default": false,
       "description": "For products with multiple variants, show the variant count in product grids."
+    },
+    {
+      "variable": "show_strikethrough_pricing",
+      "label": "Show strikethrough pricing",
+      "section": "product_page",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the original price crossed out next to the sale price",
+      "requires": [
+        "feature:theme_strikethrough_pricing eq visible"
+      ]
+    },
+    {
+      "variable": "show_sale_label_in_product_options",
+      "label": "Show sale label in variant dropdowns",
+      "section": "product_page",
+      "type": "boolean",
+      "default": true,
+      "description": "Adds a sale indicator next to discounted variants in the dropdown"
     },
     {
       "variable": "product_page_layout",

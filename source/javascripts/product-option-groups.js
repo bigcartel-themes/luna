@@ -305,7 +305,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
     if (product_option) {
       if (!product_option.sold_out && product_option.id > 0) {
         $('#option').val(product_option.id);
-        enableAddButton(product_option.price);
+        enableAddButton(product_option.price, product_option.original_price);
         if (num_option_groups > 1) {
           $('.reset-selection-button').fadeIn('fast');
         }

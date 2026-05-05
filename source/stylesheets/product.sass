@@ -73,6 +73,21 @@
     display: block
     width: 100%
 
+    .button-add-price
+      display: none
+
+    @media screen and (max-width: $break-small)
+      display: flex
+      flex-direction: column
+      align-items: center
+      height: auto
+      padding: 12px 20px
+
+      .button-add-price
+        display: block
+        margin-bottom: 4px
+        font-size: 0.875rem
+
   .reset-selection-button-container
     text-align: center
     width: 100%
@@ -90,6 +105,9 @@
     font-family: var(--secondary-font)
     font-size: calc(#{$luna-font-base-px} * var(--product-description-scale, 1))
     margin-top: 32px
+
+    &:empty
+      display: none
 
     a
       color: var(--link-text-color)

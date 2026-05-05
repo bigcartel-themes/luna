@@ -123,11 +123,14 @@ var processUpdate = function(input, item_id, new_val, cart) {
   if (new_val > 0) {
     for (itemIndex = 0; itemIndex < cart.items.length; itemIndex++) {
       if (cart.items[itemIndex].id == item_id) {
-        item_price = cart.items[itemIndex].price;
-        formatted_item_price = strip_tags(formatMoney(item_price, true, true));
-        item_price_element = $('.cart-item[data-item-id="'+item_id+'"]').find('.cart-item-details-price__update');
+        var item = cart.items[itemIndex];
+        var item_price = item.price;
+        var item_price_element = $('.cart-item[data-item-id="'+item_id+'"]').find('.cart-item-details-price__update');
+
+        // Line total only shows sale price (no strikethrough - strikethrough is on unit price only)
+        var formattedPrice = strip_tags(formatMoney(item_price, true, true));
         item_price_element.fadeOut(100, function() {
-          item_price_element.html(formatted_item_price);
+          item_price_element.html(formattedPrice);
           item_price_element.fadeIn(500);
         });
       }
