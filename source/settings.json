@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.21.5",
+  "version": "2.21.6",
   "images": [
     {
       "variable": "welcome_image",
@@ -1623,8 +1623,8 @@
       "section": "translations",
       "sub_section": "navigation",
       "type": "text",
-      "default": "Subscribe",
-      "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
+      "default": "Memberships",
+      "description": "Text for links to your Memberships page if you are using the <a href='/memberships'>Memberships</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
     {
