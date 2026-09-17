@@ -1624,7 +1624,7 @@
       "sub_section": "navigation",
       "type": "text",
       "default": "Memberships",
-      "description": "Text for links to your Memberships page if you are using the <a href='/account/payment-options'>Memberships</a> feature",
+      "description": "Text for links to your Memberships page if you are using the <a href='/memberships'>Memberships</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
     {
