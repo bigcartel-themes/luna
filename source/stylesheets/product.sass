@@ -91,6 +91,9 @@
     font-size: calc(#{$luna-font-base-px} * var(--product-description-scale, 1))
     margin-top: 32px
 
+    &:empty
+      display: none
+
     a
       color: var(--link-text-color)
       text-decoration: underline

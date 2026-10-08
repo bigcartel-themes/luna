@@ -108,11 +108,7 @@
       </div>
     {% endif %}
 
-    {% if product.description != blank %}
-      <div class="product-description">
-        {{ product.description | paragraphs }}
-      </div>
-    {% endif %}
+    <div class="product-description" data-bc-hook="product-description">{%- if product.description != blank %}{{ product.description | paragraphs }}{% endif -%}</div>
 
     {% if product.status == 'active' %}
       {% if theme.show_inventory_bars %}
@@ -186,6 +182,7 @@
                 <img
                   alt=""
                   class="lazyload"
+                  loading="lazy"
                   src="{{ image | product_image_url | constrain: 150 }}"
                   data-srcset="
                     {{ image | product_image_url | constrain: 250 }} 250w,
