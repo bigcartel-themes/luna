@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.21.5",
+  "version": "2.21.6",
   "images": [
     {
       "variable": "welcome_image",
@@ -626,7 +626,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in your main navigation"
@@ -639,7 +640,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in the footer, excluding custom footer text"
