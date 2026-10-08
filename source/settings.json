@@ -1,6 +1,6 @@
 {
   "name": "Luna",
-  "version": "2.21.6",
+  "version": "2.21.7",
   "images": [
     {
       "variable": "welcome_image",
