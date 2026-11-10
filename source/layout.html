@@ -54,13 +54,13 @@
         <nav class="header-nav" role="navigation" aria-label="Main">
           <ul>
             <li><a href="/products">{{ t['navigation.products'] }}</a></li>
+            {% if pages.subscribe_page %}
+              <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+            {% endif %}
             {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
               {% for custom_page in pages.custom_pages limit:theme.nav_items %}
                 <li>{{ custom_page | link_to }}</li>
               {% endfor %}
-            {% endif %}
-            {% if pages.subscribe_page %}
-              <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
             {% endif %}
             {% if theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
               <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
@@ -92,6 +92,9 @@
       <nav class="header-nav mobile-nav" aria-label="Mobile Main" role="navigation">
         <ul>
           <li><a href="/products">{{ t['navigation.products'] }}</a></li>
+          {% if pages.subscribe_page %}
+            <li class="artist-support"><a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a></li>
+          {% endif %}
           {% if theme.nav_page_display == "all" or theme.nav_page_display == "pages_only" %}
             {% for custom_page in pages.custom_pages limit:theme.nav_items %}
               <li>{{ custom_page | link_to }}</li>
